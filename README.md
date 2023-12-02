@@ -52,9 +52,9 @@ Basically, it is not intended to be used by non-CCL members. It is planned to be
 Please install the library with the following command.
 
 ```zsh
-> yarn add ccl-component-kit
+> yarn add ccl-component-kit4svelte
 
 or 
 
-> npm i ccl-component-kit
+> npm i ccl-component-kit4svelte
 ```
