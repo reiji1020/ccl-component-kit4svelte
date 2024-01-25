@@ -1,5 +1,23 @@
+<script lang="ts">
+    /**
+     * ヘッダー背景色
+     * CCLVividColorの中から指定する
+     * @default --strawberry-pink
+     * @type string
+     */
+    export let bgColor: string;
+    /**
+     * ヘッダー高さ
+     * HeaderHeightの中から指定する
+     * @default --hd-nomal
+     * @type string
+     */
+    export let height: string;
+</script>
+
+<!--汎用ヘッダー-->
 <header>
-    <div class="wrapper">
+    <div class="wrapper" style="background: var({bgColor}); height: var({height})">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 768">
             <title>CANDY CHUPS Lab.</title>
             <path class="a"
@@ -37,10 +55,9 @@
 <style>
     .wrapper {
         display: flex;
-        align-items: center;
+        padding: 0 298px;
         justify-content: center;
-        background: #ed3b7d;
-        height: 60px;
+        align-items: center;
     }
 
     svg {
