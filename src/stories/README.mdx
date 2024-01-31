@@ -7,7 +7,7 @@ CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 
 ## Figma
 
-https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196
+https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
 
 ## 利用用途
 
@@ -22,10 +22,30 @@ CANDY CHUPS Lab.名義でWebサービスを開発したり、ハッカソンに�
 ```zsh
 > yarn add ccl-component-kit4svelte
 
-or 
+or
 
 > npm i ccl-component-kit4svelte
 ```
+
+## 本ライブラリの開発について
+
+コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
+
+Node.jsのバージョン切り替えには[Volta](https://volta.sh/)をおすすめします。
+
+```zsh
+volta install node
+# or
+volta install node@18
+
+node -v
+#任意のNodeのバージョンが表示されればOK
+v18.16.1
+```
+
+新規コンポーネントを開発する場合は、必ずStorybookで確認できるコンポーネント仕様書を一緒に作成してください。`stories`は`src/stories`ディレクトリの中に格納してください。
+
+コンポーネントそのものは`lib`ディレクトリの中に格納してください。
 
 ---
 
@@ -39,7 +59,7 @@ Everything you need to build a Svelte project, powered by [`create-svelte`](http
 
 ## Figma
 
-https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196
+https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
 
 ## Usage
 
@@ -54,7 +74,27 @@ Please install the library with the following command.
 ```zsh
 > yarn add ccl-component-kit4svelte
 
-or 
+or
 
 > npm i ccl-component-kit4svelte
 ```
+
+## About the development of this library
+
+The development of component libraries requires a Node.js environment with Version 18 or higher. Use npm as the package manager. Please check the `package.json` for detailed version information.
+
+We recommend [Volta](https://volta.sh/) for switching Node.js versions.
+
+```zsh
+volta install node
+# or
+volta install node@18
+
+node -v
+#Once the desired Node version is displayed, it is OK.
+v18.16.1
+```
+
+When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store `stories` in the `src/stories` directory.
+
+The component itself should be stored in the `lib` directory.
