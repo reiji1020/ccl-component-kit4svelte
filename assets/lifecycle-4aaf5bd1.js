@@ -1,0 +1,1 @@
+let t;function r(n){t=n}function o(){if(!t)throw new Error("Function called outside component initialization");return t}function c(n){o().$$.on_mount.push(n)}function u(n,e){return o().$$.context.set(n,e),e}function i(n){return o().$$.context.get(n)}export{r as a,t as c,i as g,c as o,u as s};
