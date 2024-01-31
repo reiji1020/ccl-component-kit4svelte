@@ -27,6 +27,28 @@ or
 > npm i ccl-component-kit4svelte
 ```
 
+## 本ライブラリの開発について
+
+コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。
+
+Node.jsのバージョン切り替えには[Volta](https://volta.sh/)をおすすめします。
+
+```zsh
+volta install node
+
+# or
+
+volta install node@18
+
+node -v
+#任意のNodeのバージョンが表示されればOK
+v18.16.1
+```
+
+新規コンポーネントを開発する場合は、必ずStorybookで確認できるコンポーネント仕様書を一緒に作成してください。`stories`は`src/stories`ディレクトリの中に格納してください。
+
+コンポーネントそのものは`lib`ディレクトリの中に格納してください。
+
 ---
 
 # ccl-component-kit
@@ -58,3 +80,25 @@ or
 
 > npm i ccl-component-kit4svelte
 ```
+
+## About the development of this library
+
+The development of component libraries requires a Node.js environment with Version 18 or higher.
+
+We recommend [Volta](https://volta.sh/) for switching Node.js versions.
+
+```zsh
+volta install node
+
+# or
+
+volta install node@18
+
+node -v
+#Once the desired Node version is displayed, it is OK.
+v18.16.1
+```
+
+When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store `stories` in the `src/stories` directory.
+
+The component itself should be stored in the `lib` directory.
