@@ -29,15 +29,13 @@ or
 
 ## 本ライブラリの開発について
 
-コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。
+コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
 
 Node.jsのバージョン切り替えには[Volta](https://volta.sh/)をおすすめします。
 
 ```zsh
 volta install node
-
 # or
-
 volta install node@18
 
 node -v
@@ -83,15 +81,13 @@ or
 
 ## About the development of this library
 
-The development of component libraries requires a Node.js environment with Version 18 or higher.
+The development of component libraries requires a Node.js environment with Version 18 or higher. Use npm as the package manager. Please check the `package.json` for detailed version information.
 
 We recommend [Volta](https://volta.sh/) for switching Node.js versions.
 
 ```zsh
 volta install node
-
 # or
-
 volta install node@18
 
 node -v
