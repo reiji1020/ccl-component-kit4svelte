@@ -1,7 +1,9 @@
 {
-  "name": "@ccl/ccl4svelte",
+  "name": "cclkit4svelte",
   "version": "0.1.0",
   "author": "reiji1020 <sk@reiji1020.info>",
+  "license": "MIT",
+  "type": "module",
   "repository": "https://github.com/reiji1020/ccl-component-kit4svelte.git",
   "bugs": {
     "url": "https://github.com/reiji1020/ccl-component-kit4svelte/issues"
@@ -60,7 +62,6 @@
     "typescript": "^5.0.0",
     "vite": "^4.4.2"
   },
-  "type": "module",
   "volta": {
     "node": "18.19.0",
     "npm": "10.4.0"

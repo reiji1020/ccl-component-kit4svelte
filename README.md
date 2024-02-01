@@ -20,11 +20,11 @@ CANDY CHUPS Lab.名義でWebサービスを開発したり、ハッカソンに�
 以下のコマンドでライブラリを導入して下さい。
 
 ```zsh
-> yarn add ccl-component-kit4svelte
+> yarn add cclkit4svelte
 
 or 
 
-> npm i ccl-component-kit4svelte
+> npm i cclkit4svelte
 ```
 
 ## 本ライブラリの開発について
@@ -72,11 +72,11 @@ Basically, it is not intended to be used by non-CCL members. It is planned to be
 Please install the library with the following command.
 
 ```zsh
-> yarn add ccl-component-kit4svelte
+> yarn add cclkit4svelte
 
 or 
 
-> npm i ccl-component-kit4svelte
+> npm i cclkit4svelte
 ```
 
 ## About the development of this library
