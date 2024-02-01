@@ -1,6 +1,6 @@
 {
   "name": "cclkit4svelte",
-  "version": "0.1.1-a",
+  "version": "0.1.1-b",
   "author": "reiji1020 <sk@reiji1020.info>",
   "license": "MIT",
   "type": "module",
@@ -65,5 +65,8 @@
   "volta": {
     "node": "18.19.0",
     "npm": "10.4.0"
+  },
+  "dependencies": {
+    "cclkit4svelte": "^0.1.1-a"
   }
 }
