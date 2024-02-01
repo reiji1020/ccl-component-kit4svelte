@@ -1,11 +1,8 @@
 {
   "name": "@reiji1020/ccl4svelte",
   "version": "0.1.0",
-  "author": "Saya Katafuchi",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reiji1020/ccl-component-kit4svelte.git"
-  },
+  "author": "reiji1020 <sk@reiji1020.info>",
+  "repository": "https://github.com/reiji1020/ccl-component-kit4svelte.git",
   "bugs": {
     "url": "https://github.com/reiji1020/ccl-component-kit4svelte/issues"
   },
