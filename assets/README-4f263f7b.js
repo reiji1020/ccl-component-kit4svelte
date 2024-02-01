@@ -6,7 +6,7 @@ import{r as j}from"./index-c013ead5.js";import{u as a}from"./index-dc1d5b46.js";
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var m=j,x=Symbol.for("react.element"),f=Symbol.for("react.fragment"),v=Object.prototype.hasOwnProperty,u=m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,g={key:!0,ref:!0,__self:!0,__source:!0};function p(o,e,l){var r,t={},i=null,c=null;l!==void 0&&(i=""+l),e.key!==void 0&&(i=""+e.key),e.ref!==void 0&&(c=e.ref);for(r in e)v.call(e,r)&&!g.hasOwnProperty(r)&&(t[r]=e[r]);if(o&&o.defaultProps)for(r in e=o.defaultProps,e)t[r]===void 0&&(t[r]=e[r]);return{$$typeof:x,type:o,key:i,ref:c,props:t,_owner:u.current}}s.Fragment=f;s.jsx=p;s.jsxs=p;h.exports=s;var n=h.exports;function d(o){const e=Object.assign({h1:"h1",p:"p",h2:"h2",pre:"pre",code:"code",a:"a",hr:"hr"},a(),o.components);return n.jsxs(n.Fragment,{children:[n.jsx(e.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
+ */var x=j,m=Symbol.for("react.element"),f=Symbol.for("react.fragment"),v=Object.prototype.hasOwnProperty,u=x.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,g={key:!0,ref:!0,__self:!0,__source:!0};function p(r,e,l){var o,t={},i=null,c=null;l!==void 0&&(i=""+l),e.key!==void 0&&(i=""+e.key),e.ref!==void 0&&(c=e.ref);for(o in e)v.call(e,o)&&!g.hasOwnProperty(o)&&(t[o]=e[o]);if(r&&r.defaultProps)for(o in e=r.defaultProps,e)t[o]===void 0&&(t[o]=e[o]);return{$$typeof:m,type:r,key:i,ref:c,props:t,_owner:u.current}}s.Fragment=f;s.jsx=p;s.jsxs=p;h.exports=s;var n=h.exports;function d(r){const e=Object.assign({h1:"h1",p:"p",h2:"h2",pre:"pre",code:"code",a:"a",hr:"hr"},a(),r.components);return n.jsxs(n.Fragment,{children:[n.jsx(e.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
 `,n.jsx(e.p,{children:`CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 元々Reactコンポーネントで開発していたのをSvelteに移行しました。`}),`
 `,n.jsx(e.p,{children:"このライブラリの開発を行うにはSvelteの動作導入が必要です。"}),`
@@ -17,11 +17,11 @@ import{r as j}from"./index-c013ead5.js";import{u as a}from"./index-dc1d5b46.js";
 `,n.jsx(e.p,{children:"基本的にはCCLメンバー以外が使ってもうま味はないです。俺得ライブラリの予定です。"}),`
 `,n.jsx(e.h2,{id:"利用方法",children:"利用方法"}),`
 `,n.jsx(e.p,{children:"以下のコマンドでライブラリを導入して下さい。"}),`
-`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-zsh",children:`> yarn add ccl-component-kit4svelte
+`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-zsh",children:`> yarn add cclkit4svelte
 
 or
 
-> npm i ccl-component-kit4svelte
+> npm i cclkit4svelte
 `})}),`
 `,n.jsx(e.h2,{id:"本ライブラリの開発について",children:"本ライブラリの開発について"}),`
 `,n.jsxs(e.p,{children:["コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては",n.jsx(e.code,{children:"package.json"}),"に記載をしていますのでご確認ください。"]}),`
@@ -48,11 +48,11 @@ Originally developed with React components, we migrated to Svelte.`}),`
 `,n.jsx(e.p,{children:"Basically, it is not intended to be used by non-CCL members. It is planned to be a private library."}),`
 `,n.jsx(e.h2,{id:"how-to-use",children:"How to use"}),`
 `,n.jsx(e.p,{children:"Please install the library with the following command."}),`
-`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-zsh",children:`> yarn add ccl-component-kit4svelte
+`,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-zsh",children:`> yarn add cclkit4svelte
 
 or
 
-> npm i ccl-component-kit4svelte
+> npm i cclkit4svelte
 `})}),`
 `,n.jsx(e.h2,{id:"about-the-development-of-this-library",children:"About the development of this library"}),`
 `,n.jsxs(e.p,{children:["The development of component libraries requires a Node.js environment with Version 18 or higher. Use npm as the package manager. Please check the ",n.jsx(e.code,{children:"package.json"})," for detailed version information."]}),`
@@ -66,4 +66,4 @@ node -v
 v18.16.1
 `})}),`
 `,n.jsxs(e.p,{children:["When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store ",n.jsx(e.code,{children:"stories"})," in the ",n.jsx(e.code,{children:"src/stories"})," directory."]}),`
-`,n.jsxs(e.p,{children:["The component itself should be stored in the ",n.jsx(e.code,{children:"lib"})," directory."]})]})}function k(o={}){const{wrapper:e}=Object.assign({},a(),o.components);return e?n.jsx(e,Object.assign({},o,{children:n.jsx(d,o)})):d(o)}export{k as default};
+`,n.jsxs(e.p,{children:["The component itself should be stored in the ",n.jsx(e.code,{children:"lib"})," directory."]})]})}function k(r={}){const{wrapper:e}=Object.assign({},a(),r.components);return e?n.jsx(e,Object.assign({},r,{children:n.jsx(d,r)})):d(r)}export{k as default};
