@@ -1,7 +1,12 @@
 {
   "name": "ccl4svelte",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.1.0",
+  "author": "Saya Katafuchi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reiji1020/ccl-component-kit4svelte.git"
+  },
+  "description": "Component kit for CANDY CHUPS Lab.",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",

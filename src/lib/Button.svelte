@@ -5,12 +5,7 @@
      * @type string
      */
     export let bgColor: string;
-    /**
-     * クリックイベント
-     * @default void
-     * @type void
-     */
-    export let onclick: void | null;
+
     /**
      * ボタンの中に表示するテキスト
      * @default Button
@@ -20,7 +15,7 @@
 </script>
 
 <!--汎用ボタン-->
-<button class="buttonWrapper" style="background: var({bgColor})" onclick={onclick}><span class="btLabel">{label}</span></button>
+<button class="buttonWrapper" style="background: var({bgColor})"><span class="btLabel">{label}</span></button>
 
 <style>
     .buttonWrapper {
