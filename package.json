@@ -65,8 +65,5 @@
   "volta": {
     "node": "18.19.0",
     "npm": "10.4.0"
-  },
-  "dependencies": {
-    "cclkit4svelte": "^0.1.1-a"
   }
 }
