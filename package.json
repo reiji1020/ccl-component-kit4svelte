@@ -1,6 +1,6 @@
 {
   "name": "cclkit4svelte",
-  "version": "0.1.1-b",
+  "version": "0.1.1-c",
   "author": "reiji1020 <sk@reiji1020.info>",
   "license": "MIT",
   "type": "module",
@@ -11,6 +11,7 @@
   "homepage": "https://github.com/reiji1020/ccl-component-kit4svelte#readme",
   "description": "Component kit for CANDY CHUPS Lab.",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
