@@ -43,6 +43,12 @@ node -v
 v18.16.1
 ```
 
+また、本ライブラリの開発には`pnpm`の導入が必要です。`npm`や`yarn`では開発準備ができないためご注意ください。voltaを使用している場合、pnpmもvoltaを使用して導入することができます。
+
+```zsh
+volta install pnpm
+```
+
 新規コンポーネントを開発する場合は、必ずStorybookで確認できるコンポーネント仕様書を一緒に作成してください。`stories`は`src/stories`ディレクトリの中に格納してください。
 
 コンポーネントそのものは`lib`ディレクトリの中に格納してください。
@@ -93,6 +99,12 @@ volta install node@18
 node -v
 #Once the desired Node version is displayed, it is OK.
 v18.16.1
+```
+
+Also, you need to install `pnpm` to develop this library. Note that `npm` and `yarn` do not prepare you for development; if you are using volta, pnpm can also be installed using volta.
+
+```zsh
+volta install pnpm
 ```
 
 When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store `stories` in the `src/stories` directory.
