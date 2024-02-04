@@ -27,9 +27,6 @@ jobs:
       - name: Build Package
         run: pnpm run package
 
-      - name: Run CI
-        run: npm ci
-
       - name: Deploy Package to NPM
         run: npm publish --access public
         env:
