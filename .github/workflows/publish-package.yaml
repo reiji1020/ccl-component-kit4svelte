@@ -6,13 +6,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Chack out Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install Node.js
       # Setup .npmrc file to publish to npm
-      - uses: pnpm/action-setup@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
+
+      - name: Install Node Dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build Package
+        run: pnpm run svelte-package
+
+      - name: Run CI
+        run: npm ci
+
+      - name: Deploy Package to NPM
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
