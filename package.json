@@ -1,9 +1,13 @@
 {
   "name": "cclkit4svelte",
-  "version": "0.1.1-c",
+  "version": "0.1.1-d",
   "author": "reiji1020 <sk@reiji1020.info>",
   "license": "MIT",
   "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": "https://github.com/reiji1020/ccl-component-kit4svelte.git",
   "bugs": {
     "url": "https://github.com/reiji1020/ccl-component-kit4svelte/issues"
@@ -23,16 +27,12 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ./public/storybook"
   },
-  "files": [
-    "dist"
-  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "svelte": "./dist/index.js"
     }
   },
-  "main": "svelte.config.js",
   "devDependencies": {
     "@storybook/addon-actions": "^7.6.10",
     "@storybook/addon-essentials": "^7.6.3",
