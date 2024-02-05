@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
-import { CCLVividColor } from "../const/config";
+import { CCLVividColor } from "$lib/const/config";
 import { action } from "@storybook/addon-actions";
 
 const meta = {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Header from '$lib/Header.svelte';
-import {CCLVividColor, HeaderHeight } from "../const/config";
+import {CCLVividColor, HeaderHeight } from "$lib/const/config";
 
 const meta = {
   title: 'Common/Header',
