@@ -24,11 +24,11 @@ or
 > npm i cclkit4svelte
 `})}),`
 `,n.jsx(e.h2,{id:"本ライブラリの開発について",children:"本ライブラリの開発について"}),`
-`,n.jsxs(e.p,{children:["コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては",n.jsx(e.code,{children:"package.json"}),"に記載をしていますのでご確認ください。"]}),`
+`,n.jsxs(e.p,{children:["コンポーネントライブラリの開発には、Node.jsのVersion20以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては",n.jsx(e.code,{children:"package.json"}),"に記載をしていますのでご確認ください。"]}),`
 `,n.jsxs(e.p,{children:["Node.jsのバージョン切り替えには",n.jsx(e.a,{href:"https://volta.sh/",target:"_blank",rel:"nofollow noopener noreferrer",children:"Volta"}),"をおすすめします。"]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-zsh",children:`volta install node
 # or
-volta install node@18
+volta install node@20
 
 node -v
 #任意のNodeのバージョンが表示されればOK
@@ -58,11 +58,11 @@ or
 > npm i cclkit4svelte
 `})}),`
 `,n.jsx(e.h2,{id:"about-the-development-of-this-library",children:"About the development of this library"}),`
-`,n.jsxs(e.p,{children:["The development of component libraries requires a Node.js environment with Version 18 or higher. Use npm as the package manager. Please check the ",n.jsx(e.code,{children:"package.json"})," for detailed version information."]}),`
+`,n.jsxs(e.p,{children:["The development of component libraries requires a Node.js environment with Version 20 or higher. Use npm as the package manager. Please check the ",n.jsx(e.code,{children:"package.json"})," for detailed version information."]}),`
 `,n.jsxs(e.p,{children:["We recommend ",n.jsx(e.a,{href:"https://volta.sh/",target:"_blank",rel:"nofollow noopener noreferrer",children:"Volta"})," for switching Node.js versions."]}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-zsh",children:`volta install node
 # or
-volta install node@18
+volta install node@20
 
 node -v
 #Once the desired Node version is displayed, it is OK.
