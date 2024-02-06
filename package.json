@@ -1,6 +1,6 @@
 {
   "name": "cclkit4svelte",
-  "version": "0.1.4",
+  "version": "0.1.4-a",
   "author": "reiji1020 <sk@reiji1020.info>",
   "license": "MIT",
   "type": "module",
@@ -14,40 +14,6 @@
   },
   "homepage": "https://github.com/reiji1020/ccl-component-kit4svelte#readme",
   "description": "Component kit for CANDY CHUPS Lab.",
-  "release": {
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "docs/CHANGELOG.md"
-        }
-      ],
-      "@semantic-release/npm",
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "docs/CHANGELOG.md"
-          ]
-        }
-      ]
-    ],
-    "main": [
-      "main"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite dev",
@@ -68,8 +34,6 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.6.0",
-    "@commitlint/config-conventional": "^18.6.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@storybook/addon-actions": "^7.6.10",
