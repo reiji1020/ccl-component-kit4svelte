@@ -7,7 +7,7 @@ CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 
 ## Figma
 
-<https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
+https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
 
 ## 利用用途
 
@@ -29,14 +29,14 @@ or
 
 ## 本ライブラリの開発について
 
-コンポーネントライブラリの開発には、Node.jsのVersion18以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
+コンポーネントライブラリの開発には、Node.jsのVersion20以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
 
 Node.jsのバージョン切り替えには[Volta](https://volta.sh/)をおすすめします。
 
 ```zsh
 volta install node
 # or
-volta install node@18
+volta install node@20
 
 node -v
 #任意のNodeのバージョンが表示されればOK
@@ -65,7 +65,7 @@ Everything you need to build a Svelte project, powered by [`create-svelte`](http
 
 ## Figma
 
-<https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
+https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
 
 ## Usage
 
@@ -87,14 +87,14 @@ or
 
 ## About the development of this library
 
-The development of component libraries requires a Node.js environment with Version 18 or higher. Use npm as the package manager. Please check the `package.json` for detailed version information.
+The development of component libraries requires a Node.js environment with Version 20 or higher. Use npm as the package manager. Please check the `package.json` for detailed version information.
 
 We recommend [Volta](https://volta.sh/) for switching Node.js versions.
 
 ```zsh
 volta install node
 # or
-volta install node@18
+volta install node@20
 
 node -v
 #Once the desired Node version is displayed, it is OK.
