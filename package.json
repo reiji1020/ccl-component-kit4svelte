@@ -31,7 +31,6 @@
           "assets": ["docs/CHANGELOG.md"]
         }
       ]
-    ]
     ],
     "main": [
       "main"
