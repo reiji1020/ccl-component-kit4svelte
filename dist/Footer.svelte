@@ -5,18 +5,20 @@ const year = date.getFullYear();
 
 <!--汎用フッター-->
 <footer>
-    <div class="wrapper" style="background: var({bgColor});">
+    <div class="wrapper" style="--bgColor: var({bgColor});">
         <span class="copy">Copyright © 2015-{year} CANDY CHUPS Lab. All Rights Reserved.</span>
     </div>
 </footer>
 
 <style>
+
     .wrapper {
         display: flex;
         padding: 0 298px;
         height: 30px;
         justify-content: center;
         align-items: center;
+        background: var(--bgColor);
     }
 
     .copy {

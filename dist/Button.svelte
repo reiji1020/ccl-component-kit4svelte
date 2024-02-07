@@ -3,7 +3,7 @@ export let label;
 </script>
 
 <!--汎用ボタン-->
-<button class="buttonWrapper" style="background: var({bgColor})"><span class="btLabel">{label}</span></button>
+<button class="buttonWrapper" style="--bgColor: var({bgColor})"><span class="btLabel">{label}</span></button>
 
 <style>
     .buttonWrapper {
@@ -11,6 +11,7 @@ export let label;
         border-radius: 50px;
         border: none;
         padding: 15px 45px;
+        background: var(--bgColor);
     }
     .btLabel {
         flex-direction: column;

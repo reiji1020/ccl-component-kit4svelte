@@ -4,7 +4,7 @@ export let height;
 
 <!--汎用ヘッダー-->
 <header>
-    <div class="wrapper" style="background: var({bgColor}); height: var({height})">
+    <div class="wrapper" style="--bgColor: var({bgColor}); --height: var({height})">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 768">
             <title>CANDY CHUPS Lab.</title>
             <path class="a"
@@ -45,6 +45,8 @@ export let height;
         padding: 0 298px;
         justify-content: center;
         align-items: center;
+        background: var(--bgColor);
+        height: var(--height);
     }
 
     svg {
