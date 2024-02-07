@@ -1,25 +1,7 @@
-<script lang="ts">
-    /**
-     * サムネイル画像の大きさ
-     * @type number
-     */
-    export let imageSize: string;
-    /**
-     * 枠線の色
-     * @default --strawberry-pink
-     * @type string
-     */
-    export let borderColor: string;
-    /**
-     * 画像ソース
-     * @type string
-     */
-    export let src: string;
-    /**
-     * alt属性に指定する値
-     * @type string
-     */
-    export let altText: string
+<script>export let imageSize;
+export let borderColor;
+export let src;
+export let altText;
 </script>
 
 <div class="ThumbnailWrapper" style="--imageSize: {imageSize}">
