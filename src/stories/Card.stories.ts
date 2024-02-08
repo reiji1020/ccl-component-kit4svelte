@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Card from "$lib/Card.svelte";
 import { CCLVividColor } from "$lib/const/config";
-import {CCLPastelColor} from "../../.svelte-kit/__package__/const/config";
+import { CCLPastelColor } from "$lib/const/config";
 
 const meta = {
   title: 'Common/Card',
