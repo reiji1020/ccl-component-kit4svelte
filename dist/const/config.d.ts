@@ -7,7 +7,7 @@ export declare const CCLVividColor: {
     readonly WRAP_GREY: "--wrap-grey";
 };
 export declare const CCLPastelColor: {
-    readonly PEACH_PINK: "--peach-yellow";
+    readonly PEACH_PINK: "--peach-pink";
     readonly LEMON_YELLOW: "--lemon-yellow";
     readonly SUGAR_BLUE: "--sugar-blue";
     readonly MATCHA_GREEN: "--matcha-green";
