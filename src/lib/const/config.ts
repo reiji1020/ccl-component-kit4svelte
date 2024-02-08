@@ -8,7 +8,7 @@ export const CCLVividColor = {
 } as const;
 
 export const CCLPastelColor = {
-    PEACH_PINK: '--peach-yellow',
+    PEACH_PINK: '--peach-pink',
     LEMON_YELLOW: '--lemon-yellow',
     SUGAR_BLUE: '--sugar-blue',
     MATCHA_GREEN: '--matcha-green',
