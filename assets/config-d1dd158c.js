@@ -1,1 +1,0 @@
-const e={STRAWBERRY_PINK:"--strawberry-pink",PINEAPPLE_YELLOW:"--pineapple-yellow",SODA_BLUE:"--soda-blue",MELON_GREEN:"--melon-green",GRAPE_PURPLE:"--grape-purple",WRAP_GREY:"--wrap-grey"},E={WIDE:"--hd-wide",NOMAL:"--hd-nomal",NALLOW:"--hd-nallow"};export{e as C,E as H};
