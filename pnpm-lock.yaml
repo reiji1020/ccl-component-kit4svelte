@@ -23,6 +23,9 @@ devDependencies:
   '@storybook/addon-links':
     specifier: ^7.6.3
     version: 7.6.12(react@18.2.0)
+  '@storybook/addon-viewport':
+    specifier: ^7.6.13
+    version: 7.6.13
   '@storybook/blocks':
     specifier: ^7.6.3
     version: 7.6.12(react-dom@18.2.0)(react@18.2.0)
@@ -2821,6 +2824,12 @@ packages:
 
   /@storybook/addon-viewport@7.6.12:
     resolution: {integrity: sha512-51zsBeoaEzq699SKDCe+GG/2PDAJKKJtpjqxIc4lDskogaCJSb3Ie8LyookHAKYgbi2qealVgK8zaP27KUj3Pg==}
+    dependencies:
+      memoizerific: 1.11.3
+    dev: true
+
+  /@storybook/addon-viewport@7.6.13:
+    resolution: {integrity: sha512-yqUCWzp3IY/tlS488k9iAXMgOWW/rTswbVgGEh8alUg38QjbUnh4lKFLtd9Va8Fd1zNeVd9nkpCMTSsGy85uMg==}
     dependencies:
       memoizerific: 1.11.3
     dev: true
