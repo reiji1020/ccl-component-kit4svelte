@@ -25,7 +25,6 @@
 
     .wrapper {
         display: flex;
-        padding: 0 298px;
         height: 30px;
         justify-content: center;
         align-items: center;
@@ -34,6 +33,6 @@
 
     .copy {
         color: #fff;
-        font-size: 12px;
+        font-size: 9px;
     }
 </style>
