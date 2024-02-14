@@ -1,5 +1,7 @@
-## [0.1.6](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.1.5...0.1.6) (2024/02/09)
+## [0.1.6-a](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.1.6...0.1.6-a) (2024/02/15)
 
-### ADD CARD COMPONENTS
+### HOTFIX FOR HEADER AND FOOTER
 
-* add Card Component
+* Make header components responsive.
+* Make the footer component responsive.
+* Add the Storybook mobile preview add-on.
