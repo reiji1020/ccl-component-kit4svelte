@@ -14,7 +14,6 @@ const year = date.getFullYear();
 
     .wrapper {
         display: flex;
-        padding: 0 298px;
         height: 30px;
         justify-content: center;
         align-items: center;
@@ -23,6 +22,6 @@ const year = date.getFullYear();
 
     .copy {
         color: #fff;
-        font-size: 12px;
+        font-size: 9px;
     }
 </style>
