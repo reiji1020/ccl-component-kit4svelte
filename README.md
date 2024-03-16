@@ -9,7 +9,7 @@ CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 
 ## Figma
 
-https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
+[Figma](https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196)
 
 ## 利用用途
 
