@@ -11,7 +11,7 @@ import{r as j}from"./index-c013ead5.js";import{u as a}from"./index-2d8ea55a.js";
 元々Reactコンポーネントで開発していたのをSvelteに移行しました。`}),`
 `,n.jsx(e.p,{children:"このライブラリの開発を行うにはSvelteの動作導入が必要です。"}),`
 `,n.jsx(e.h2,{id:"figma",children:"Figma"}),`
-`,n.jsx(e.p,{children:"https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>"}),`
+`,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196",rel:"nofollow",children:"Figma"})}),`
 `,n.jsx(e.h2,{id:"利用用途",children:"利用用途"}),`
 `,n.jsx(e.p,{children:"CANDY CHUPS Lab.名義でWebサービスを開発したり、ハッカソンに参加する時に簡単に使用できるコンポーネントになります。"}),`
 `,n.jsx(e.p,{children:"基本的にはCCLメンバー以外が使ってもうま味はないです。俺得ライブラリの予定です。"}),`
