@@ -4,6 +4,7 @@
     import Footer from "$lib/Footer.svelte";
     import Thumbnail from "$lib/Thumbnail.svelte";
     import Card from "$lib/Card.svelte";
+    import Table from "$lib/Table.svelte";
 </script>
 
 <Header />
@@ -11,3 +12,4 @@
 <Footer />
 <Thumbnail />
 <Card />
+<Table />

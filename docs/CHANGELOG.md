@@ -1,7 +1,6 @@
-## [0.1.6-a](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.1.6...0.1.6-a) (2024/02/15)
+## [0.1.7](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.1.6-a...0.1.7) (2024/03/20)
 
-### HOTFIX FOR HEADER AND FOOTER
+### ADD TABLE COMPONENT!
 
-* Make header components responsive.
-* Make the footer component responsive.
-* Add the Storybook mobile preview add-on.
+* add table components.
+* upgrade storybook v8.
