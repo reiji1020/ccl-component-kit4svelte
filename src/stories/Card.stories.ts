@@ -10,6 +10,34 @@ const meta = {
   tags: ['autodocs'],
   parameters:{
     layout: 'fullscreen',
+  },
+  argTypes: {
+    borderColor: {
+      control: { type: 'select' },
+      options: [
+        CCLVividColor.STRAWBERRY_PINK,
+        CCLVividColor.PINEAPPLE_YELLOW,
+        CCLVividColor.SODA_BLUE,
+        CCLVividColor.MELON_GREEN,
+        CCLVividColor.GRAPE_PURPLE,
+        CCLVividColor.WRAP_GREY
+      ]
+    },
+    bgColor: {
+      control: { type: 'select' },
+      options: [
+        CCLPastelColor.PEACH_PINK,
+        CCLPastelColor.LEMON_YELLOW,
+        CCLPastelColor.SUGAR_BLUE,
+        CCLPastelColor.MATCHA_GREEN,
+        CCLPastelColor.AKEBI_PURPLE,
+        CCLPastelColor.CLOUD_GREY
+      ]
+    },
+    altText: { control: { type: 'text'} },
+    title: { control: { type: 'text'} },
+    cardText: { control: { type: 'text'} },
+    src: { control: { type: 'text'} }
   }
 } satisfies Meta<Card>;
 

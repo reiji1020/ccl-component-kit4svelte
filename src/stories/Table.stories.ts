@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Table from "$lib/Table.svelte";
-import {CCLPastelColor, CCLVividColor} from "$lib/const/config";
+import { CCLPastelColor, CCLVividColor } from "$lib/const/config";
 
 const meta = {
   title: 'Common/Table',
@@ -9,6 +9,30 @@ const meta = {
   tags: ['autodocs'],
   parameters:{
     layout: 'fullscreen',
+  },
+  argTypes: {
+    tableColor: {
+      control: { type: 'select' },
+      options: [
+        CCLVividColor.STRAWBERRY_PINK,
+        CCLVividColor.PINEAPPLE_YELLOW,
+        CCLVividColor.SODA_BLUE,
+        CCLVividColor.MELON_GREEN,
+        CCLVividColor.GRAPE_PURPLE,
+        CCLVividColor.WRAP_GREY
+      ]
+    },
+    subTableColor: {
+      control: { type: 'select' },
+      options: [
+        CCLPastelColor.PEACH_PINK,
+        CCLPastelColor.LEMON_YELLOW,
+        CCLPastelColor.SUGAR_BLUE,
+        CCLPastelColor.MATCHA_GREEN,
+        CCLPastelColor.AKEBI_PURPLE,
+        CCLPastelColor.CLOUD_GREY
+      ]
+    }
   }
 } satisfies Meta<Table>;
 

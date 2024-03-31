@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Header from '$lib/Header.svelte';
-import {CCLVividColor, HeaderHeight } from "$lib/const/config";
+import { CCLVividColor, HeaderHeight } from "$lib/const/config";
 
 const meta = {
   title: 'Common/Header',
@@ -9,6 +9,27 @@ const meta = {
   tags: ['autodocs'],
   parameters:{
     layout: 'fullscreen',
+  },
+  argTypes: {
+    bgColor: {
+      control: { type: 'select' },
+      options: [
+        CCLVividColor.STRAWBERRY_PINK,
+        CCLVividColor.PINEAPPLE_YELLOW,
+        CCLVividColor.SODA_BLUE,
+        CCLVividColor.MELON_GREEN,
+        CCLVividColor.GRAPE_PURPLE,
+        CCLVividColor.WRAP_GREY
+      ]
+    },
+    height: {
+      control: { type: 'select' },
+      options: [
+          HeaderHeight.NALLOW,
+          HeaderHeight.NOMAL,
+          HeaderHeight.WIDE
+      ]
+    }
   }
 } satisfies Meta<Header>;
 

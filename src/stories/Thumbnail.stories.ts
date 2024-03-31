@@ -9,6 +9,22 @@ const meta = {
   tags: ['autodocs'],
   parameters:{
     layout: 'fullscreen',
+  },
+  argTypes: {
+    borderColor: {
+      control: { type: 'select' },
+      options: [
+        CCLVividColor.STRAWBERRY_PINK,
+        CCLVividColor.PINEAPPLE_YELLOW,
+        CCLVividColor.SODA_BLUE,
+        CCLVividColor.MELON_GREEN,
+        CCLVividColor.GRAPE_PURPLE,
+        CCLVividColor.WRAP_GREY
+      ]
+    },
+    altText: { control: { type: 'text' } },
+    imageSize: { control: { type: 'text' } },
+    src: { control: { type: 'text' } },
   }
 } satisfies Meta<Thumbnail>;
 

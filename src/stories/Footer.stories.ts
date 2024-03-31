@@ -9,6 +9,19 @@ const meta = {
   tags: ['autodocs'],
   parameters:{
     layout: 'fullscreen',
+  },
+  argTypes: {
+    bgColor: {
+      control: { type: 'select' },
+      options: [
+        CCLVividColor.STRAWBERRY_PINK,
+        CCLVividColor.PINEAPPLE_YELLOW,
+        CCLVividColor.SODA_BLUE,
+        CCLVividColor.MELON_GREEN,
+        CCLVividColor.GRAPE_PURPLE,
+        CCLVividColor.WRAP_GREY
+      ]
+    }
   }
 } satisfies Meta<Footer>;
 
