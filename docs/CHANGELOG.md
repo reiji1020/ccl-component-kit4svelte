@@ -1,5 +1,6 @@
-## [0.2.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.1.6-a...0.2.0) (2024/04/01)
+## [0.2.1](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.0...0.2.1) (2024/04/03)
 
-### UPDATE STORYBOOK
+### UPDATE TABLE COMPONENT
 
-* Easy behaviour checking of components by parameters in Storybook.
+* Fixes to allow sub-colours of table components to be set automatically.
+* The Storybook has been upgraded.
