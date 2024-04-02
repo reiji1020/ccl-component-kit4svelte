@@ -1,4 +1,6 @@
 <script lang="ts">
+    import {CCLPastelColor, CCLVividColor} from "$lib/const/config";
+
     /**
      * テーブルメインカラー
      * CCLVividColorの中から指定する
@@ -12,7 +14,31 @@
      * @default --peach-pink
      * @type string
      */
-    export let subTableColor: string;
+    let bodyColor: string;
+
+    switch (tableColor) {
+        case CCLVividColor.STRAWBERRY_PINK:
+            bodyColor = CCLPastelColor.PEACH_PINK;
+            break;
+        case CCLVividColor.PINEAPPLE_YELLOW:
+            bodyColor = CCLPastelColor.LEMON_YELLOW;
+            break;
+        case CCLVividColor.SODA_BLUE:
+            bodyColor = CCLPastelColor.SUGAR_BLUE;
+            break;
+        case CCLVividColor.MELON_GREEN:
+            bodyColor = CCLPastelColor.MATCHA_GREEN;
+            break;
+        case CCLVividColor.GRAPE_PURPLE:
+            bodyColor = CCLPastelColor.AKEBI_PURPLE;
+            break;
+        case CCLVividColor.WRAP_GREY:
+            bodyColor = CCLPastelColor.CLOUD_GREY;
+            break;
+        default:
+            bodyColor = CCLPastelColor.PEACH_PINK;
+            break;
+    }
     /**
      * テーブルのヘッダー
      * 一次元配列で自由長、
@@ -28,44 +54,43 @@
 </script>
 
 <!--汎用テーブル-->
-<table class="tableWrapper">
+<table class="table-wrapper">
     <!--テーブルヘッダー-->
-    <tr class="tableHeader" style="--bgColor: var({tableColor})">
-        {#each dataHeader as title, index}
-                <th>{title}</th>
-        {/each}
-    </tr>
-    {#each tableData as row}
-        <tr style="--subBgColor: var({subTableColor})">
-            {#each row as data}
-                <td>{data}</td>
+    <thead class="table-header" style="--bgColor: var({tableColor})">
+        <tr>
+            {#each dataHeader as title, index}
+                    <th>{title}</th>
             {/each}
         </tr>
-    {/each}
+    </thead>
+    <tbody>
+        {#each tableData as row}
+            <tr class="table-body-style" style="--table-body-color: var({bodyColor})">
+                {#each row as data}
+                    <td>{data}</td>
+                {/each}
+            </tr>
+        {/each}
+    </tbody>
 </table>
 
 <style>
-    tr {
-        color: var(--wrap-grey);
-    }
-
-    tr:nth-child(even) {
-        background-color: var(--subBgColor);
-    }
-
     th {
         padding: 5px 60px;
     }
 
-    td {
-        text-align: center;
-    }
-
-    .tableWrapper {
+    .table-wrapper {
         border-collapse: collapse;
     }
-    .tableHeader {
+    .table-header {
         background-color: var(--bgColor);
         color: #ffffff;
+    }
+    .table-body-style {
+        text-align: center;
+        color: var(--wrap-grey);
+    }
+    .table-body-style:nth-child(odd) {
+             background-color: var(--table-body-color);
     }
 </style>

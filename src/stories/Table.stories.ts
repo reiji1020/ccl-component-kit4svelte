@@ -21,17 +21,6 @@ const meta = {
         CCLVividColor.GRAPE_PURPLE,
         CCLVividColor.WRAP_GREY
       ]
-    },
-    subTableColor: {
-      control: { type: 'select' },
-      options: [
-        CCLPastelColor.PEACH_PINK,
-        CCLPastelColor.LEMON_YELLOW,
-        CCLPastelColor.SUGAR_BLUE,
-        CCLPastelColor.MATCHA_GREEN,
-        CCLPastelColor.AKEBI_PURPLE,
-        CCLPastelColor.CLOUD_GREY
-      ]
     }
   }
 } satisfies Meta<Table>;
@@ -43,7 +32,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     tableColor: CCLVividColor.STRAWBERRY_PINK,
-    subTableColor: CCLPastelColor.PEACH_PINK,
     dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
     tableData: [
       ['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
@@ -57,7 +45,6 @@ export const Default: Story = {
 export const SecondColor: Story = {
   args: {
     tableColor: CCLVividColor.PINEAPPLE_YELLOW,
-    subTableColor: CCLPastelColor.LEMON_YELLOW,
     dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
     tableData: [
       ['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
@@ -71,7 +58,6 @@ export const SecondColor: Story = {
 export const ThirdColor: Story = {
   args: {
     tableColor: CCLVividColor.SODA_BLUE,
-    subTableColor: CCLPastelColor.SUGAR_BLUE,
     dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
     tableData: [
       ['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
