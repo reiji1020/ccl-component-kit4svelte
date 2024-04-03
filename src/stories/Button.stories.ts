@@ -1,30 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
-import { CCLVividColor } from "$lib/const/config";
-import { fn } from "@storybook/test";
+import { CCLVividColor } from '$lib/const/config';
+import { fn } from '@storybook/test';
 
 const meta = {
-  title: 'Common/Button',
-  component: Button,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
-  tags: ['autodocs'],
-  parameters:{
-    layout: 'fullscreen',
-  },
-  argTypes: {
-    onClick: { onClick: fn() },
-    bgColor: {
-      control: { type: 'select' },
-      options: [
-          CCLVividColor.STRAWBERRY_PINK,
-          CCLVividColor.PINEAPPLE_YELLOW,
-          CCLVividColor.SODA_BLUE,
-          CCLVividColor.MELON_GREEN,
-          CCLVividColor.GRAPE_PURPLE,
-          CCLVividColor.WRAP_GREY
-      ]
-    }
-  }
+	title: 'Common/Button',
+	component: Button,
+	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+	tags: ['autodocs'],
+	parameters: {
+		layout: 'fullscreen'
+	},
+	argTypes: {
+		onClick: { onClick: fn() },
+		bgColor: {
+			control: { type: 'select' },
+			options: [
+				CCLVividColor.STRAWBERRY_PINK,
+				CCLVividColor.PINEAPPLE_YELLOW,
+				CCLVividColor.SODA_BLUE,
+				CCLVividColor.MELON_GREEN,
+				CCLVividColor.GRAPE_PURPLE,
+				CCLVividColor.WRAP_GREY
+			]
+		}
+	}
 } satisfies Meta<Button>;
 
 export default meta;
@@ -40,11 +40,11 @@ type Story = StoryObj<typeof meta>;
  * Used in decision-making situations to obtain agreement of affirmation, e.g. 'Next' or 'OK'.
  */
 export const Pink: Story = {
-  args: {
-    bgColor: CCLVividColor.STRAWBERRY_PINK,
-    label: "Strawberry　Pink",
-    onClick: fn()
-  }
+	args: {
+		bgColor: CCLVividColor.STRAWBERRY_PINK,
+		label: 'Strawberry　Pink',
+		onClick: fn()
+	}
 };
 
 /**
@@ -53,11 +53,11 @@ export const Pink: Story = {
  * Used when presenting information to help or assist users in decision-making. Neutral colour.
  */
 export const Yellow: Story = {
-  args: {
-    bgColor: CCLVividColor.PINEAPPLE_YELLOW,
-    label: "Pineapple Yellow",
-    onClick: fn()
-  }
+	args: {
+		bgColor: CCLVividColor.PINEAPPLE_YELLOW,
+		label: 'Pineapple Yellow',
+		onClick: fn()
+	}
 };
 
 /**
@@ -66,33 +66,33 @@ export const Yellow: Story = {
  * Used in decision-making situations with buttons for negative decisions such as cancel or withdraw.
  */
 export const Blue: Story = {
-  args: {
-    bgColor: CCLVividColor.SODA_BLUE,
-    label: "Soda Blue",
-    onClick: fn()
-  }
+	args: {
+		bgColor: CCLVividColor.SODA_BLUE,
+		label: 'Soda Blue',
+		onClick: fn()
+	}
 };
 
 export const Green: Story = {
-  args: {
-    bgColor: CCLVividColor.MELON_GREEN,
-    label: "Melon Green",
-    onClick: fn()
-  }
+	args: {
+		bgColor: CCLVividColor.MELON_GREEN,
+		label: 'Melon Green',
+		onClick: fn()
+	}
 };
 
 export const Purple: Story = {
-  args: {
-    bgColor: CCLVividColor.GRAPE_PURPLE,
-    label: "Grape Purple",
-    onClick: fn()
-  }
+	args: {
+		bgColor: CCLVividColor.GRAPE_PURPLE,
+		label: 'Grape Purple',
+		onClick: fn()
+	}
 };
 
 export const Grey: Story = {
-  args: {
-    bgColor: CCLVividColor.WRAP_GREY,
-    label: "Wrap Grey",
-    onClick: fn()
-  }
+	args: {
+		bgColor: CCLVividColor.WRAP_GREY,
+		label: 'Wrap Grey',
+		onClick: fn()
+	}
 };

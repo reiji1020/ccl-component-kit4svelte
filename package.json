@@ -1,78 +1,78 @@
 {
-  "name": "cclkit4svelte",
-  "version": "0.2.2",
-  "author": "reiji1020 <sk@reiji1020.info>",
-  "license": "MIT",
-  "type": "module",
-  "main": "./dist/index.js",
-  "files": [
-    "dist"
-  ],
-  "repository": "https://github.com/reiji1020/ccl-component-kit4svelte.git",
-  "bugs": {
-    "url": "https://github.com/reiji1020/ccl-component-kit4svelte/issues"
-  },
-  "homepage": "https://github.com/reiji1020/ccl-component-kit4svelte#readme",
-  "description": "Component kit for CANDY CHUPS Lab.",
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "package": "svelte-package",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "lint": "prettier --check . && eslint .",
-    "format": "prettier --write .",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o ./public/storybook",
-    "chromatic": "chromatic"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
-    }
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "^1.2.26",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@storybook/addon-actions": "^8.0.5",
-    "@storybook/addon-essentials": "^8.0.5",
-    "@storybook/addon-interactions": "^8.0.5",
-    "@storybook/addon-links": "^8.0.5",
-    "@storybook/addon-mdx-gfm": "8.0.5",
-    "@storybook/addon-viewport": "^8.0.5",
-    "@storybook/blocks": "^8.0.5",
-    "@storybook/svelte": "^8.0.5",
-    "@storybook/sveltekit": "^8.0.5",
-    "@storybook/test": "^8.0.5",
-    "@sveltejs/adapter-auto": "^2.1.1",
-    "@sveltejs/kit": "^1.30.4",
-    "@sveltejs/package": "^2.3.0",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "chromatic": "^11.3.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-storybook": "^0.6.15",
-    "eslint-plugin-svelte": "^2.35.1",
-    "prettier": "^3.2.5",
-    "prettier-plugin-svelte": "^3.2.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "semantic-release": "^23.0.6",
-    "storybook": "^8.0.5",
-    "svelte": "^4.2.12",
-    "svelte-check": "^3.6.9",
-    "svelte2tsx": "^0.6.27",
-    "tslib": "^2.6.2",
-    "typescript": "^5.4.3",
-    "vite": "^4.5.3"
-  },
-  "volta": {
-    "node": "20.11.1",
-    "npm": "10.5.0"
-  }
+	"name": "cclkit4svelte",
+	"version": "0.2.2",
+	"author": "reiji1020 <sk@reiji1020.info>",
+	"license": "MIT",
+	"type": "module",
+	"main": "./dist/index.js",
+	"files": [
+		"dist"
+	],
+	"repository": "https://github.com/reiji1020/ccl-component-kit4svelte.git",
+	"bugs": {
+		"url": "https://github.com/reiji1020/ccl-component-kit4svelte/issues"
+	},
+	"homepage": "https://github.com/reiji1020/ccl-component-kit4svelte#readme",
+	"description": "Component kit for CANDY CHUPS Lab.",
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"package": "svelte-package",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build -o ./public/storybook",
+		"chromatic": "chromatic"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "^1.2.26",
+		"@semantic-release/changelog": "^6.0.3",
+		"@semantic-release/git": "^10.0.1",
+		"@storybook/addon-actions": "^8.0.5",
+		"@storybook/addon-essentials": "^8.0.5",
+		"@storybook/addon-interactions": "^8.0.5",
+		"@storybook/addon-links": "^8.0.5",
+		"@storybook/addon-mdx-gfm": "8.0.5",
+		"@storybook/addon-viewport": "^8.0.5",
+		"@storybook/blocks": "^8.0.5",
+		"@storybook/svelte": "^8.0.5",
+		"@storybook/sveltekit": "^8.0.5",
+		"@storybook/test": "^8.0.5",
+		"@sveltejs/adapter-auto": "^2.1.1",
+		"@sveltejs/kit": "^1.30.4",
+		"@sveltejs/package": "^2.3.0",
+		"@typescript-eslint/eslint-plugin": "^6.21.0",
+		"@typescript-eslint/parser": "^6.21.0",
+		"chromatic": "^11.3.0",
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-storybook": "^0.6.15",
+		"eslint-plugin-svelte": "^2.35.1",
+		"prettier": "^3.2.5",
+		"prettier-plugin-svelte": "^3.2.2",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"semantic-release": "^23.0.6",
+		"storybook": "^8.0.5",
+		"svelte": "^4.2.12",
+		"svelte-check": "^3.6.9",
+		"svelte2tsx": "^0.6.27",
+		"tslib": "^2.6.2",
+		"typescript": "^5.4.3",
+		"vite": "^4.5.3"
+	},
+	"volta": {
+		"node": "20.11.1",
+		"npm": "10.5.0"
+	}
 }

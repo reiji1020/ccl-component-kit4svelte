@@ -1,23 +1,23 @@
 :root {
-    --hd-color: var(--strawberry-pink);
-    /*Vivid*/
-    --strawberry-pink: #ED3B7D;
-    --pineapple-yellow: #ED9126;
-    --soda-blue: #2089EA;
-    --melon-green: #70AF0A;
-    --grape-purple: #9707DB;
-    --wrap-grey: #5F5F60;
-    /*Pastel*/
-    --peach-pink: #FFB4C3;
-    --lemon-yellow: #FFF27A;
-    --sugar-blue: #AEE4FF;
-    --matcha-green: #D8FF85;
-    --akebi-purple: #DDB2FF;
-    --cloud-grey: #A3A3A3;
+	--hd-color: var(--strawberry-pink);
+	/*Vivid*/
+	--strawberry-pink: #ed3b7d;
+	--pineapple-yellow: #ed9126;
+	--soda-blue: #2089ea;
+	--melon-green: #70af0a;
+	--grape-purple: #9707db;
+	--wrap-grey: #5f5f60;
+	/*Pastel*/
+	--peach-pink: #ffb4c3;
+	--lemon-yellow: #fff27a;
+	--sugar-blue: #aee4ff;
+	--matcha-green: #d8ff85;
+	--akebi-purple: #ddb2ff;
+	--cloud-grey: #a3a3a3;
 
-    --hd-height: var(--hd-nomal);
-    /*header height*/
-    --hd-wide: 130px;
-    --hd-nomal: 80px;
-    --hd-nallow: 60px;
+	--hd-height: var(--hd-nomal);
+	/*header height*/
+	--hd-wide: 130px;
+	--hd-nomal: 80px;
+	--hd-nallow: 60px;
 }

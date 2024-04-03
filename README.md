@@ -1,11 +1,12 @@
 # ccl-component-kit4svelte
+
 [![Release Storybook to GitHubPages](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml/badge.svg?branch=main)](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml)
 [![Publish Package to npmjs](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml/badge.svg?branch=main)](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml)
 
 CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 元々Reactコンポーネントで開発していたのをSvelteに移行しました。
 
-このライブラリの開発を行うにはSvelteの動作導入が必要です。
+このライブラリの開発を行うにはSvelteの導入が必要です。
 
 ## Figma
 
@@ -24,7 +25,7 @@ CANDY CHUPS Lab.名義でWebサービスを開発したり、ハッカソンに�
 ```zsh
 > yarn add cclkit4svelte
 
-or 
+or
 
 > npm i cclkit4svelte
 ```
@@ -64,7 +65,6 @@ Originally developed with React components, we migrated to Svelte.
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-
 ## Figma
 
 https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>
@@ -82,7 +82,7 @@ Please install the library with the following command.
 ```zsh
 > yarn add cclkit4svelte
 
-or 
+or
 
 > npm i cclkit4svelte
 ```
