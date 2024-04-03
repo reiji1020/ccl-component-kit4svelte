@@ -1,0 +1,28 @@
+import{S as q,i as z,s as J,e as E,l as k,t as S,c as f,a as B,m as R,b as I,d as _,f as n,o as N,g as D,h as Q,j as C,k as O,n as Y}from"./index-5bf62044.js";import{C as c,a as d}from"./config-9a519810.js";import"./lifecycle-4aaf5bd1.js";function X(s){let e,t,p,A,l,o,i,y,r,m,b;return{c(){e=E("div"),t=E("img"),A=k(),l=E("div"),o=E("div"),i=E("h2"),y=S(s[4]),r=k(),m=E("span"),b=S(s[5]),this.h()},l(u){e=f(u,"DIV",{class:!0,style:!0});var a=B(e);t=f(a,"IMG",{class:!0,src:!0,alt:!0}),A=R(a),l=f(a,"DIV",{class:!0,style:!0});var T=B(l);o=f(T,"DIV",{class:!0});var g=B(o);i=f(g,"H2",{class:!0});var P=B(i);y=I(P,s[4]),P.forEach(_),r=R(g),m=f(g,"SPAN",{class:!0});var h=B(m);b=I(h,s[5]),h.forEach(_),g.forEach(_),T.forEach(_),a.forEach(_),this.h()},h(){n(t,"class","CardImage svelte-1fsl7jx"),N(t.src,p=s[2])||n(t,"src",p),n(t,"alt",s[3]),n(i,"class","CardTitle svelte-1fsl7jx"),n(m,"class","CardText svelte-1fsl7jx"),n(o,"class","CardTextWrapper svelte-1fsl7jx"),n(l,"class","CardInfo svelte-1fsl7jx"),D(l,"--background-color","var("+s[1]+")"),n(e,"class","CardWrapper svelte-1fsl7jx"),D(e,"--border-color","var("+s[0]+")")},m(u,a){Q(u,e,a),C(e,t),C(e,A),C(e,l),C(l,o),C(o,i),C(i,y),C(o,r),C(o,m),C(m,b)},p(u,[a]){a&4&&!N(t.src,p=u[2])&&n(t,"src",p),a&8&&n(t,"alt",u[3]),a&16&&O(y,u[4]),a&32&&O(b,u[5]),a&2&&D(l,"--background-color","var("+u[1]+")"),a&1&&D(e,"--border-color","var("+u[0]+")")},i:Y,o:Y,d(u){u&&_(e)}}}function Z(s,e,t){let{borderColor:p}=e,{bgColor:A}=e,{src:l}=e,{altText:o}=e,{title:i}=e,{cardText:y}=e;return s.$$set=r=>{"borderColor"in r&&t(0,p=r.borderColor),"bgColor"in r&&t(1,A=r.bgColor),"src"in r&&t(2,l=r.src),"altText"in r&&t(3,o=r.altText),"title"in r&&t(4,i=r.title),"cardText"in r&&t(5,y=r.cardText)},[p,A,l,o,i,y]}class H extends q{constructor(e){super(),z(this,e,Z,X,J,{borderColor:0,bgColor:1,src:2,altText:3,title:4,cardText:5})}}H.__docgen={version:3,name:"Card.svelte",data:[{keywords:[{name:"default",description:"--strawberry-pink"},{name:"type",description:"string"}],visibility:"public",description:"枠線の色",name:"borderColor",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{keywords:[{name:"default",description:"--peach-pink"},{name:"type",description:"string"}],visibility:"public",description:"説明文の背景色",name:"bgColor",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{keywords:[{name:"type",description:"string"}],visibility:"public",description:"画像ソース",name:"src",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{keywords:[{name:"type",description:"string"}],visibility:"public",description:"alt属性に指定する値",name:"altText",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{keywords:[{name:"type",description:"string"}],visibility:"public",description:"記事の見出し",name:"title",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}},{keywords:[{name:"type",description:"string"}],visibility:"public",description:"カードの詳細テキスト(140字程度推奨)",name:"cardText",kind:"let",static:!1,readonly:!1,type:{kind:"type",text:"any",type:"any"}}],computed:[],methods:[],components:[],description:null,keywords:[],events:[],slots:[],refs:[]};const re={title:"Common/Card",component:H,tags:["autodocs"],parameters:{layout:"fullscreen"},argTypes:{borderColor:{control:{type:"select"},options:[c.STRAWBERRY_PINK,c.PINEAPPLE_YELLOW,c.SODA_BLUE,c.MELON_GREEN,c.GRAPE_PURPLE,c.WRAP_GREY]},bgColor:{control:{type:"select"},options:[d.PEACH_PINK,d.LEMON_YELLOW,d.SUGAR_BLUE,d.MATCHA_GREEN,d.AKEBI_PURPLE,d.CLOUD_GREY]},altText:{control:{type:"text"}},title:{control:{type:"text"}},cardText:{control:{type:"text"}},src:{control:{type:"text"}}}},v={args:{borderColor:c.STRAWBERRY_PINK,bgColor:d.PEACH_PINK,src:"thumbnail.png",altText:"Strawberry Pink",title:"プライマリカラーのカードです",cardText:"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"}},L={args:{borderColor:c.PINEAPPLE_YELLOW,bgColor:d.LEMON_YELLOW,src:"thumbnail.png",altText:"Pineapple Yellow",title:"セカンダリカラーのカードです",cardText:"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"}},x={args:{borderColor:c.SODA_BLUE,bgColor:d.SUGAR_BLUE,src:"thumbnail.png",altText:"Soda Blue",title:"その他のプライマリカラーのカードです",cardText:"テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"}};var w,U,W;v.parameters={...v.parameters,docs:{...(w=v.parameters)==null?void 0:w.docs,source:{originalSource:`{
+  args: {
+    borderColor: CCLVividColor.STRAWBERRY_PINK,
+    bgColor: CCLPastelColor.PEACH_PINK,
+    src: "thumbnail.png",
+    altText: "Strawberry Pink",
+    title: "プライマリカラーのカードです",
+    cardText: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
+  }
+}`,...(W=(U=v.parameters)==null?void 0:U.docs)==null?void 0:W.source}}};var G,j,F;L.parameters={...L.parameters,docs:{...(G=L.parameters)==null?void 0:G.docs,source:{originalSource:`{
+  args: {
+    borderColor: CCLVividColor.PINEAPPLE_YELLOW,
+    bgColor: CCLPastelColor.LEMON_YELLOW,
+    src: "thumbnail.png",
+    altText: "Pineapple Yellow",
+    title: "セカンダリカラーのカードです",
+    cardText: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
+  }
+}`,...(F=(j=L.parameters)==null?void 0:j.docs)==null?void 0:F.source}}};var K,V,M;x.parameters={...x.parameters,docs:{...(K=x.parameters)==null?void 0:K.docs,source:{originalSource:`{
+  args: {
+    borderColor: CCLVividColor.SODA_BLUE,
+    bgColor: CCLPastelColor.SUGAR_BLUE,
+    src: "thumbnail.png",
+    altText: "Soda Blue",
+    title: "その他のプライマリカラーのカードです",
+    cardText: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
+  }
+}`,...(M=(V=x.parameters)==null?void 0:V.docs)==null?void 0:M.source}}};const ae=["Default","SecondColor","ThirdColor"];export{v as Default,L as SecondColor,x as ThirdColor,ae as __namedExportsOrder,re as default};
