@@ -25,7 +25,8 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o ./public/storybook"
+    "build-storybook": "storybook build -o ./public/storybook",
+    "chromatic": "chromatic"
   },
   "exports": {
     ".": {
@@ -52,6 +53,7 @@
     "@sveltejs/package": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "chromatic": "^11.3.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "^0.6.15",
