@@ -25,6 +25,9 @@
         padding: 15px 45px;
         background: var(--bgColor);
     }
+    .buttonWrapper:hover {
+        cursor: pointer;
+    }
     .btLabel {
         flex-direction: column;
         justify-content: center;

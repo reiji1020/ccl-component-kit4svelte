@@ -1,4 +1,6 @@
 <script lang="ts">
+    import {CCLPastelColor, CCLVividColor} from "$lib/const/config";
+
     /**
      * 枠線の色
      * @default --strawberry-pink
@@ -10,7 +12,30 @@
      * @default --peach-pink
      * @type string
      */
-    export let bgColor: string;
+    let bodyColor: string;
+    switch (borderColor) {
+        case CCLVividColor.STRAWBERRY_PINK:
+            bodyColor = CCLPastelColor.PEACH_PINK;
+            break;
+        case CCLVividColor.PINEAPPLE_YELLOW:
+            bodyColor = CCLPastelColor.LEMON_YELLOW;
+            break;
+        case CCLVividColor.SODA_BLUE:
+            bodyColor = CCLPastelColor.SUGAR_BLUE;
+            break;
+        case CCLVividColor.MELON_GREEN:
+            bodyColor = CCLPastelColor.MATCHA_GREEN;
+            break;
+        case CCLVividColor.GRAPE_PURPLE:
+            bodyColor = CCLPastelColor.AKEBI_PURPLE;
+            break;
+        case CCLVividColor.WRAP_GREY:
+            bodyColor = CCLPastelColor.CLOUD_GREY;
+            break;
+        default:
+            bodyColor = CCLPastelColor.PEACH_PINK;
+            break;
+    }
     /**
      * 画像ソース
      * @type string
@@ -35,7 +60,7 @@
 
 <div class="CardWrapper" style="--border-color: var({borderColor})">
     <img class="CardImage" src={src} alt={altText} />
-    <div class="CardInfo" style="--background-color: var({bgColor});">
+    <div class="CardInfo" style="--background-color: var({bodyColor});">
         <div class="CardTextWrapper">
             <h2 class="CardTitle">{title}</h2>
             <span class="CardText">{cardText}</span>

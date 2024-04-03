@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
 import { CCLVividColor } from "$lib/const/config";
-import { action } from "@storybook/addon-actions";
+import { fn } from "@storybook/test";
 
 const meta = {
   title: 'Common/Button',
@@ -12,7 +12,7 @@ const meta = {
     layout: 'fullscreen',
   },
   argTypes: {
-    onClick: action('clicked'),
+    onClick: { onClick: fn() },
     bgColor: {
       control: { type: 'select' },
       options: [
@@ -42,7 +42,8 @@ type Story = StoryObj<typeof meta>;
 export const Pink: Story = {
   args: {
     bgColor: CCLVividColor.STRAWBERRY_PINK,
-    label: "Strawberry　Pink"
+    label: "Strawberry　Pink",
+    onClick: fn()
   }
 };
 
@@ -54,7 +55,8 @@ export const Pink: Story = {
 export const Yellow: Story = {
   args: {
     bgColor: CCLVividColor.PINEAPPLE_YELLOW,
-    label: "Pineapple Yellow"
+    label: "Pineapple Yellow",
+    onClick: fn()
   }
 };
 
@@ -66,27 +68,31 @@ export const Yellow: Story = {
 export const Blue: Story = {
   args: {
     bgColor: CCLVividColor.SODA_BLUE,
-    label: "Soda Blue"
+    label: "Soda Blue",
+    onClick: fn()
   }
 };
 
 export const Green: Story = {
   args: {
     bgColor: CCLVividColor.MELON_GREEN,
-    label: "Melon Green"
+    label: "Melon Green",
+    onClick: fn()
   }
 };
 
 export const Purple: Story = {
   args: {
     bgColor: CCLVividColor.GRAPE_PURPLE,
-    label: "Grape Purple"
+    label: "Grape Purple",
+    onClick: fn()
   }
 };
 
 export const Grey: Story = {
   args: {
     bgColor: CCLVividColor.WRAP_GREY,
-    label: "Wrap Grey"
+    label: "Wrap Grey",
+    onClick: fn()
   }
 };

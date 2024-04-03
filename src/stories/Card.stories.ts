@@ -23,17 +23,6 @@ const meta = {
         CCLVividColor.WRAP_GREY
       ]
     },
-    bgColor: {
-      control: { type: 'select' },
-      options: [
-        CCLPastelColor.PEACH_PINK,
-        CCLPastelColor.LEMON_YELLOW,
-        CCLPastelColor.SUGAR_BLUE,
-        CCLPastelColor.MATCHA_GREEN,
-        CCLPastelColor.AKEBI_PURPLE,
-        CCLPastelColor.CLOUD_GREY
-      ]
-    },
     altText: { control: { type: 'text'} },
     title: { control: { type: 'text'} },
     cardText: { control: { type: 'text'} },
@@ -44,33 +33,42 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 通常カラー
+/**
+ * イベント出展などのお知らせはプライマリカラーを使用します。
+ *
+ * Primary colour for notices of event exhibits, etc.
+ */
 export const Default: Story = {
   args: {
     borderColor: CCLVividColor.STRAWBERRY_PINK,
-    bgColor: CCLPastelColor.PEACH_PINK,
     src: "thumbnail.png",
     altText: "Strawberry Pink",
     title: "プライマリカラーのカードです",
     cardText: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
   }
 };
-// 2ndカラー
+/**
+ * 書籍の出版などのオフライン活動に関してはセカンダリカラーを使用します。
+ *
+ *　For offline activities such as book publishing, a secondary colour is used.
+ */
 export const SecondColor: Story = {
   args: {
     borderColor: CCLVividColor.PINEAPPLE_YELLOW,
-    bgColor: CCLPastelColor.LEMON_YELLOW,
     src: "thumbnail.png",
     altText: "Pineapple Yellow",
     title: "セカンダリカラーのカードです",
     cardText: "テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
   }
 };
-// 3rdカラー
+/**
+ * その他の汎用的なお知らせとしてサードカラーを使用します。
+ *
+ * Use third colour for other generic notices.
+ */
 export const ThirdColor: Story = {
   args: {
     borderColor: CCLVividColor.SODA_BLUE,
-    bgColor: CCLPastelColor.SUGAR_BLUE,
     src: "thumbnail.png",
     altText: "Soda Blue",
     title: "その他のプライマリカラーのカードです",
