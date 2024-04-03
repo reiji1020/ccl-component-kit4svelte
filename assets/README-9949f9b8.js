@@ -9,7 +9,7 @@ import{r as j}from"./index-c013ead5.js";import{u as a}from"./index-2d8ea55a.js";
  */var m=j,x=Symbol.for("react.element"),f=Symbol.for("react.fragment"),v=Object.prototype.hasOwnProperty,u=m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,g={key:!0,ref:!0,__self:!0,__source:!0};function p(o,e,l){var s,r={},i=null,c=null;l!==void 0&&(i=""+l),e.key!==void 0&&(i=""+e.key),e.ref!==void 0&&(c=e.ref);for(s in e)v.call(e,s)&&!g.hasOwnProperty(s)&&(r[s]=e[s]);if(o&&o.defaultProps)for(s in e=o.defaultProps,e)r[s]===void 0&&(r[s]=e[s]);return{$$typeof:x,type:o,key:i,ref:c,props:r,_owner:u.current}}t.Fragment=f;t.jsx=p;t.jsxs=p;h.exports=t;var n=h.exports;function d(o){const e={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",p:"p",pre:"pre",...a(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(e.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
 `,n.jsx(e.p,{children:`CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 元々Reactコンポーネントで開発していたのをSvelteに移行しました。`}),`
-`,n.jsx(e.p,{children:"このライブラリの開発を行うにはSvelteの動作導入が必要です。"}),`
+`,n.jsx(e.p,{children:"このライブラリの開発を行うにはSvelteの導入が必要です。"}),`
 `,n.jsx(e.h2,{id:"figma",children:"Figma"}),`
 `,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.figma.com/file/RWLq3IaUeF0soEH666sXQC/Common-Component?type=design&node-id=0%3A1&mode=design&t=ESVNyUtQevAFIe3o-1",rel:"nofollow",children:"Figma"})}),`
 `,n.jsx(e.h2,{id:"利用用途",children:"利用用途"}),`
