@@ -1,4 +1,4 @@
-import{r as j}from"./index-c013ead5.js";import{u as a}from"./index-2d8ea55a.js";import"./_commonjsHelpers-725317a4.js";var h={exports:{}},t={};/**
+import{r as m}from"./index-c013ead5.js";import{u as a}from"./index-2d8ea55a.js";import"./_commonjsHelpers-725317a4.js";var h={exports:{}},s={};/**
  * @license React
  * react-jsx-runtime.production.min.js
  *
@@ -6,12 +6,15 @@ import{r as j}from"./index-c013ead5.js";import{u as a}from"./index-2d8ea55a.js";
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var m=j,x=Symbol.for("react.element"),f=Symbol.for("react.fragment"),v=Object.prototype.hasOwnProperty,u=m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,g={key:!0,ref:!0,__self:!0,__source:!0};function p(o,e,l){var s,r={},i=null,c=null;l!==void 0&&(i=""+l),e.key!==void 0&&(i=""+e.key),e.ref!==void 0&&(c=e.ref);for(s in e)v.call(e,s)&&!g.hasOwnProperty(s)&&(r[s]=e[s]);if(o&&o.defaultProps)for(s in e=o.defaultProps,e)r[s]===void 0&&(r[s]=e[s]);return{$$typeof:x,type:o,key:i,ref:c,props:r,_owner:u.current}}t.Fragment=f;t.jsx=p;t.jsxs=p;h.exports=t;var n=h.exports;function d(o){const e={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",p:"p",pre:"pre",...a(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(e.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
+ */var j=m,x=Symbol.for("react.element"),f=Symbol.for("react.fragment"),v=Object.prototype.hasOwnProperty,u=j.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,g={key:!0,ref:!0,__self:!0,__source:!0};function p(o,e,l){var i,r={},t=null,c=null;l!==void 0&&(t=""+l),e.key!==void 0&&(t=""+e.key),e.ref!==void 0&&(c=e.ref);for(i in e)v.call(e,i)&&!g.hasOwnProperty(i)&&(r[i]=e[i]);if(o&&o.defaultProps)for(i in e=o.defaultProps,e)r[i]===void 0&&(r[i]=e[i]);return{$$typeof:x,type:o,key:t,ref:c,props:r,_owner:u.current}}s.Fragment=f;s.jsx=p;s.jsxs=p;h.exports=s;var n=h.exports;function d(o){const e={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",p:"p",pre:"pre",...a(),...o.components};return n.jsxs(n.Fragment,{children:[n.jsx(e.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
 `,n.jsx(e.p,{children:`CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 元々Reactコンポーネントで開発していたのをSvelteに移行しました。`}),`
 `,n.jsx(e.p,{children:"このライブラリの開発を行うにはSvelteの導入が必要です。"}),`
 `,n.jsx(e.h2,{id:"figma",children:"Figma"}),`
 `,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.figma.com/file/RWLq3IaUeF0soEH666sXQC/Common-Component?type=design&node-id=0%3A1&mode=design&t=ESVNyUtQevAFIe3o-1",rel:"nofollow",children:"Figma"})}),`
+`,n.jsx(e.h2,{id:"chromatic",children:"Chromatic"}),`
+`,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.chromatic.com/builds?appId=660998abb5c9b86c546695d3",rel:"nofollow",children:"Chromatic"})}),`
+`,n.jsxs(e.p,{children:["Chromaticによるビジュアルテストをローカルで実施したい場合は",n.jsx(e.a,{href:"https://github.com/reiji1020",rel:"nofollow",children:"reiji1020"}),"までご連絡ください。"]}),`
 `,n.jsx(e.h2,{id:"利用用途",children:"利用用途"}),`
 `,n.jsx(e.p,{children:"CANDY CHUPS Lab.名義でWebサービスを開発したり、ハッカソンに参加する時に簡単に使用できるコンポーネントになります。"}),`
 `,n.jsx(e.p,{children:"基本的にはCCLメンバー以外が使ってもうま味はないです。俺得ライブラリの予定です。"}),`
@@ -45,7 +48,10 @@ v18.16.1
 Originally developed with React components, we migrated to Svelte.`}),`
 `,n.jsxs(e.p,{children:["Everything you need to build a Svelte project, powered by ",n.jsx(e.a,{href:"https://github.com/sveltejs/kit/tree/master/packages/create-svelte",rel:"nofollow",children:n.jsx(e.code,{children:"create-svelte"})}),"."]}),`
 `,n.jsx(e.h2,{id:"figma-1",children:"Figma"}),`
-`,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196%3E",rel:"nofollow",children:"https://www.figma.com/files/project/71337935/CCL_Component?fuid=1036675751093311196>"})}),`
+`,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.figma.com/file/RWLq3IaUeF0soEH666sXQC/Common-Component?type=design&node-id=0%3A1&mode=design&t=ESVNyUtQevAFIe3o-1",rel:"nofollow",children:"Figma"})}),`
+`,n.jsx(e.h2,{id:"chromatic-1",children:"Chromatic"}),`
+`,n.jsx(e.p,{children:n.jsx(e.a,{href:"https://www.chromatic.com/builds?appId=660998abb5c9b86c546695d3",rel:"nofollow",children:"Chromatic"})}),`
+`,n.jsxs(e.p,{children:["Please contact ",n.jsx(e.a,{href:"https://github.com/reiji1020",rel:"nofollow",children:"reiji1020"})," if you wish to carry out visual testing with Chromatic locally."]}),`
 `,n.jsx(e.h2,{id:"usage",children:"Usage"}),`
 `,n.jsx(e.p,{children:"It will be a component that can be easily used when developing web services under the name of CANDY CHUPS Lab. or participating in hackathons."}),`
 `,n.jsx(e.p,{children:"Basically, it is not intended to be used by non-CCL members. It is planned to be a private library."}),`
