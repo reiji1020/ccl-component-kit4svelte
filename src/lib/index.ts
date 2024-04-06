@@ -6,3 +6,4 @@ export { default as Footer } from './Footer.svelte';
 export { default as Thumbnail } from './Thumbnail.svelte';
 export { default as Card } from './Card.svelte';
 export { default as Table } from './Table.svelte';
+export { CCLVividColor, CCLPastelColor, HeaderHeight } from './const/config';

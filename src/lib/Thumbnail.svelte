@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './const/variables.css';
 	/**
 	 * サムネイル画像の大きさ
 	 * @type number

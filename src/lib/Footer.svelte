@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './const/variables.css';
 	/**
 	 * フッター背景色
 	 * CCLVividColorの中から指定する

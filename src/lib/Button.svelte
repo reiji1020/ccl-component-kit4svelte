@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './const/variables.css';
 	/**
 	 * ボタンカラー、CCLVividColorの中から選ぶ
 	 * @default --strawberry-pink

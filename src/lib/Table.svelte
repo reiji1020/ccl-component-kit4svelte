@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
-
+	import './const/variables.css';
 	/**
 	 * テーブルメインカラー
 	 * CCLVividColorの中から指定する
