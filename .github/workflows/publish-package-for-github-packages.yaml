@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@reiji1020'
 
       - name: Install Node Dependencies
         run: pnpm i --frozen-lockfile
