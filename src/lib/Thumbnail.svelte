@@ -2,7 +2,7 @@
 	import './const/variables.css';
 	/**
 	 * サムネイル画像の大きさ
-	 * @type number
+	 * @type string
 	 */
 	export let imageSize: string;
 	/**
@@ -24,7 +24,7 @@
 </script>
 
 <div class="ThumbnailWrapper" style="--imageSize: {imageSize}">
-	<img {src} alt={altText} class="Thumbnail" style="--borderColor: var({borderColor})" />
+	<img src={src} alt={altText} class="Thumbnail" style="--borderColor: var({borderColor})" />
 </div>
 
 <style>
