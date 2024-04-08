@@ -1,7 +1,6 @@
-## [0.2.3](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.2...0.2.3) (2024/04/06)
+## [0.2.4](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.3...0.2.4) (2024/04/09)
 
-### UPDATEED CSS IMPORT INSTRUCTIONS
+### FIX THUMBNAIL COMPONENTS
 
-- A link to the Chromatic has been added to the Readme.
-- The CSS loading method for each component has been reviewed.
-- Exported constant values for service colours.
+- Fixed the way images are specified in the Thumbnail component.
+- Additional tsconfig rules.
