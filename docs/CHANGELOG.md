@@ -1,6 +1,6 @@
-## [0.2.4](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.3...0.2.4) (2024/04/09)
+## [0.2.5](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.4...0.2.5) (2024/04/10)
 
-### FIX THUMBNAIL COMPONENTS
+### EXPENDED STORYBOOK DOCUMENTATION
 
-- Fixed the way images are specified in the Thumbnail component.
-- Additional tsconfig rules.
+- The CSS properties of the Header component have been corrected.
+- You can now see how it looks on different devices in Storybook.
