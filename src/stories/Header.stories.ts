@@ -32,36 +32,77 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 通常カラー、通常幅
-export const Default: Story = {
+/**
+ * メインカラー、通常はこの幅・このカラーのヘッダーを使用する。
+ *
+ * ロゴ部分にはサービストップへのリンクがあることが望ましい。
+ */
+export const Pink: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.NOMAL
 	}
 };
-// 2ndカラー、通常幅
-export const SecondColor: Story = {
+/**
+ * セカンドカラー、メインカラーのピンクが使用できない場合に代用する
+ */
+export const Yellow: Story = {
 	args: {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW,
 		height: HeaderHeight.NOMAL
 	}
 };
-// 3rdカラー、通常幅
-export const ThirdColor: Story = {
+/**
+ * こちらも何らかの理由でピンクが利用できないときに代用する
+ */
+export const Blue: Story = {
 	args: {
 		bgColor: CCLVividColor.SODA_BLUE,
 		height: HeaderHeight.NOMAL
 	}
 };
+/**
+ * あまり活用機会は無いかも
+ */
+export const Green: Story = {
+	args: {
+		bgColor: CCLVividColor.MELON_GREEN,
+		height: HeaderHeight.NOMAL
+	}
+};
+/**
+ * あまり活用機会は無いかも
+ */
+export const Purple: Story = {
+	args: {
+		bgColor: CCLVividColor.GRAPE_PURPLE,
+		height: HeaderHeight.NOMAL
+	}
+};
+/**
+ * あまり活用機会は無いかも
+ */
+export const GREY: Story = {
+	args: {
+		bgColor: CCLVividColor.WRAP_GREY,
+		height: HeaderHeight.NOMAL
+	}
+};
 
-// 通常カラー、太幅
+/**
+ * 太幅対応版
+ *
+ * ペライチのページなどでヘッダーを強調したい場合に使用する？
+ */
 export const WideHeader: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.WIDE
 	}
 };
-// 通常カラー、細幅
+/**
+ * お知らせページなど、文章主体の控えめなページなどで使用する
+ */
 export const NallowHeader: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,

@@ -10,7 +10,7 @@ const preview: Preview = {
 			}
 		},
 		viewport: {
-			viewport: INITIAL_VIEWPORTS,
+			viewports: INITIAL_VIEWPORTS,
 			defaultViewport: 'responsive'
 		}
 	}
