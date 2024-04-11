@@ -29,11 +29,19 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // 通常カラー
-export const Default: Story = {
+export const withScroll: Story = {
 	args: {
 		tableColor: CCLVividColor.STRAWBERRY_PINK,
 		dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
 		tableData: [
+			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
+			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
+			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
+			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
 			['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
 			['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
@@ -42,7 +50,7 @@ export const Default: Story = {
 	}
 };
 // 2ndカラー
-export const SecondColor: Story = {
+export const Yellow: Story = {
 	args: {
 		tableColor: CCLVividColor.PINEAPPLE_YELLOW,
 		dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
@@ -55,7 +63,7 @@ export const SecondColor: Story = {
 	}
 };
 // 3rdカラー
-export const ThirdColor: Story = {
+export const Blue: Story = {
 	args: {
 		tableColor: CCLVividColor.SODA_BLUE,
 		dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
