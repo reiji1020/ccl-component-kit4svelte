@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './const/variables.css';
+	import { getYear } from '$lib/scripts/date';
 	/**
 	 * フッター背景色
 	 * CCLVividColorの中から指定する
@@ -11,8 +12,7 @@
 	/**
 	 * アクセス当日の年を４桁で算出、フッターの中に配置する
 	 */
-	const date = new Date();
-	const year = date.getFullYear();
+	const year = getYear();
 </script>
 
 <!--汎用フッター-->
