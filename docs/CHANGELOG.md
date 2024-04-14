@@ -1,6 +1,7 @@
-## [0.2.4](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.3...0.2.4) (2024/04/09)
+## [0.2.7](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.6...0.2.7) (2024/04/14)
 
-### FIX THUMBNAIL COMPONENTS
+### ADD INTERACTION TESTS
 
-- Fixed the way images are specified in the Thumbnail component.
-- Additional tsconfig rules.
+- Interaction tests have been added to components under developments,
+- Incorrect class names have been corrected.
+- In the footer component, the script that calculates the year of the access date has been cut out to a separate file.
