@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Card from '$lib/Card.svelte';
 import { CCLVividColor } from '$lib/const/config';
-import { CCLPastelColor } from '$lib/const/config';
+import { expect, getByRole, userEvent, within } from '@storybook/test';
 
 const meta = {
 	title: 'Common/Card',
@@ -45,6 +45,15 @@ export const Default: Story = {
 		altText: 'Strawberry Pink',
 		title: 'プライマリカラーのカードです',
 		cardText: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+	},
+	play: async ({ args, canvasElement }) => {
+		const canvas = within(canvasElement);
+		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Strawberry Pink');
+		await expect(args.borderColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+		await expect(args.title).toBe('プライマリカラーのカードです');
+		await expect(args.cardText).toBe(
+			'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+		);
 	}
 };
 /**
@@ -59,6 +68,15 @@ export const SecondColor: Story = {
 		altText: 'Pineapple Yellow',
 		title: 'セカンダリカラーのカードです',
 		cardText: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+	},
+	play: async ({ args, canvasElement }) => {
+		const canvas = within(canvasElement);
+		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Pineapple Yellow');
+		await expect(args.borderColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
+		await expect(args.title).toBe('セカンダリカラーのカードです');
+		await expect(args.cardText).toBe(
+			'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+		);
 	}
 };
 /**
@@ -71,7 +89,16 @@ export const ThirdColor: Story = {
 		borderColor: CCLVividColor.SODA_BLUE,
 		src: 'thumbnail.png',
 		altText: 'Soda Blue',
-		title: 'その他のプライマリカラーのカードです',
+		title: '汎用的なお知らせ用のカードです',
 		cardText: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+	},
+	play: async ({ args, canvasElement }) => {
+		const canvas = within(canvasElement);
+		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Soda Blue');
+		await expect(args.borderColor).toBe(CCLVividColor.SODA_BLUE);
+		await expect(args.title).toBe('汎用的なお知らせ用のカードです');
+		await expect(args.cardText).toBe(
+			'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+		);
 	}
 };

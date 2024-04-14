@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Footer from '$lib/Footer.svelte';
-import { CCLVividColor } from '$lib/const/config';
+import { CCLVividColor, HeaderHeight } from '$lib/const/config';
+import { expect } from '@storybook/test';
 
 const meta = {
 	title: 'Common/Footer',
@@ -32,17 +33,26 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
 	}
 };
 // 2ndカラー、通常幅
 export const SecondColor: Story = {
 	args: {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
 	}
 };
 // 3rdカラー、通常幅
 export const ThirdColor: Story = {
 	args: {
 		bgColor: CCLVividColor.SODA_BLUE
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.SODA_BLUE);
 	}
 };
