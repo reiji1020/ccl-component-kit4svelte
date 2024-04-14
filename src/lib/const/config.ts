@@ -18,7 +18,7 @@ const CCLPastelColor = {
 
 const HeaderHeight = {
 	WIDE: '--hd-wide',
-	NOMAL: '--hd-nomal',
+	NORMAL: '--hd-normal',
 	NALLOW: '--hd-nallow'
 };
 

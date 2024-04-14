@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Table from '$lib/Table.svelte';
 import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
+import { expect, within } from '@storybook/test';
 
 const meta = {
 	title: 'Common/Table',
@@ -47,6 +48,9 @@ export const withScroll: Story = {
 			['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物']
 		]
+	},
+	play: async ({ args }) => {
+		await expect(args.tableColor).toBe(CCLVividColor.STRAWBERRY_PINK);
 	}
 };
 // 2ndカラー
@@ -60,6 +64,9 @@ export const Yellow: Story = {
 			['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物']
 		]
+	},
+	play: async ({ args }) => {
+		await expect(args.tableColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
 	}
 };
 // 3rdカラー
@@ -73,5 +80,8 @@ export const Blue: Story = {
 			['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物']
 		]
+	},
+	play: async ({ args }) => {
+		await expect(args.tableColor).toBe(CCLVividColor.SODA_BLUE);
 	}
 };

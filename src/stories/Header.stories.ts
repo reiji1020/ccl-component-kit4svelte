@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
+import { expect } from '@storybook/test';
 import Header from '$lib/Header.svelte';
 import { CCLVividColor, HeaderHeight } from '$lib/const/config';
 
@@ -24,7 +25,7 @@ const meta = {
 		},
 		height: {
 			control: { type: 'select' },
-			options: [HeaderHeight.NALLOW, HeaderHeight.NOMAL, HeaderHeight.WIDE]
+			options: [HeaderHeight.NALLOW, HeaderHeight.NORMAL, HeaderHeight.WIDE]
 		}
 	}
 } satisfies Meta<Header>;
@@ -40,7 +41,11 @@ type Story = StoryObj<typeof meta>;
 export const Pink: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
-		height: HeaderHeight.NOMAL
+		height: HeaderHeight.NORMAL
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+		await expect(args.height).toBe(HeaderHeight.NORMAL);
 	}
 };
 /**
@@ -49,16 +54,24 @@ export const Pink: Story = {
 export const Yellow: Story = {
 	args: {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW,
-		height: HeaderHeight.NOMAL
+		height: HeaderHeight.NORMAL
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
+		await expect(args.height).toBe(HeaderHeight.NORMAL);
 	}
 };
 /**
- * こちらも何らかの理由でピンクが利用できないときに代用する
+ * サービスカラーを変えた場合などに使用、もしくはナイトモードでのプライマリカラーを想定。
  */
-export const Blue: Story = {
+export const ThirdColor: Story = {
 	args: {
 		bgColor: CCLVividColor.SODA_BLUE,
-		height: HeaderHeight.NOMAL
+		height: HeaderHeight.NORMAL
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.SODA_BLUE);
+		await expect(args.height).toBe(HeaderHeight.NORMAL);
 	}
 };
 /**
@@ -90,22 +103,30 @@ export const GREY: Story = {
 };
 
 /**
- * 太幅対応版
- *
- * ペライチのページなどでヘッダーを強調したい場合に使用する？
+ * PC向けサービスなどでヘッダーの太さがもっと欲しいときなどに使用する
+
  */
 export const WideHeader: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.WIDE
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+		await expect(args.height).toBe(HeaderHeight.WIDE);
 	}
 };
 /**
- * お知らせページなど、文章主体の控えめなページなどで使用する
+ * スマホ向けサービスなどでヘッダーの太さを削りたい時に使用する。
+
  */
 export const NallowHeader: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.NALLOW
+	},
+	play: async ({ args }) => {
+		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+		await expect(args.height).toBe(HeaderHeight.NALLOW);
 	}
 };
