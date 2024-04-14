@@ -34,9 +34,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 /**
- * 基本のカラー、特になにか事情がない場合はこの通常カラー＆通常幅のヘッダーを使用する
+ * メインカラー、通常はこの幅・このカラーのヘッダーを使用する。
+ *
+ * ロゴ部分にはサービストップへのリンクがあることが望ましい。
  */
-export const Default: Story = {
+export const Pink: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.NORMAL
@@ -47,9 +49,9 @@ export const Default: Story = {
 	}
 };
 /**
- * サービスカラーを変えた場合などに使用。
+ * セカンドカラー、メインカラーのピンクが使用できない場合に代用する
  */
-export const SecondColor: Story = {
+export const Yellow: Story = {
 	args: {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW,
 		height: HeaderHeight.NORMAL
@@ -72,9 +74,37 @@ export const ThirdColor: Story = {
 		await expect(args.height).toBe(HeaderHeight.NORMAL);
 	}
 };
+/**
+ * あまり活用機会は無いかも
+ */
+export const Green: Story = {
+	args: {
+		bgColor: CCLVividColor.MELON_GREEN,
+		height: HeaderHeight.NOMAL
+	}
+};
+/**
+ * あまり活用機会は無いかも
+ */
+export const Purple: Story = {
+	args: {
+		bgColor: CCLVividColor.GRAPE_PURPLE,
+		height: HeaderHeight.NOMAL
+	}
+};
+/**
+ * あまり活用機会は無いかも
+ */
+export const GREY: Story = {
+	args: {
+		bgColor: CCLVividColor.WRAP_GREY,
+		height: HeaderHeight.NOMAL
+	}
+};
 
 /**
  * PC向けサービスなどでヘッダーの太さがもっと欲しいときなどに使用する
+
  */
 export const WideHeader: Story = {
 	args: {
@@ -88,6 +118,7 @@ export const WideHeader: Story = {
 };
 /**
  * スマホ向けサービスなどでヘッダーの太さを削りたい時に使用する。
+
  */
 export const NallowHeader: Story = {
 	args: {

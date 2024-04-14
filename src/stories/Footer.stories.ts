@@ -29,8 +29,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 通常カラー、通常幅
-export const Default: Story = {
+/**
+ * 通常カラー、基本的にはこの色を使用する
+ *
+ * 必ずHeaderコンポーネントの色と揃えて使用する
+ */
+export const Pink: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK
 	},
@@ -38,8 +42,12 @@ export const Default: Story = {
 		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
 	}
 };
-// 2ndカラー、通常幅
-export const SecondColor: Story = {
+/**
+ * サブカラー、ピンクが使用できない時に使う
+ *
+ * 必ずHeaderコンポーネントの色と揃えて使用する
+ */
+export const Yellow: Story = {
 	args: {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW
 	},
@@ -47,8 +55,12 @@ export const SecondColor: Story = {
 		await expect(args.bgColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
 	}
 };
-// 3rdカラー、通常幅
-export const ThirdColor: Story = {
+/**
+ * ピンク、イエローが使えない時に使う
+ *
+ * 必ずHeaderコンポーネントの色と揃えて使用する
+ */
+export const Blue: Story = {
 	args: {
 		bgColor: CCLVividColor.SODA_BLUE
 	},

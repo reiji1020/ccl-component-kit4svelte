@@ -97,19 +97,14 @@
 
 <style>
 	.wrapper {
-		position: relative;
 		background: var(--bgColor);
 		height: var(--height);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	svg {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-		padding: 24px;
 		height: 70%;
 		width: 70%;
 	}
