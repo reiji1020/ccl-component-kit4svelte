@@ -36,5 +36,5 @@ jobs:
         with:
           install_command: pnpm i --frozen-lockfile
           build_command: pnpm run build-storybook
-          path: storybook-static
+          path: ./public/storybook
           checkout: false
