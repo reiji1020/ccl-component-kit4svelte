@@ -40,10 +40,14 @@ export const Default: Story = {
 		imageSize: '120px',
 		src: 'thumbnail.png'
 	},
-	play: async ({ args, canvasElement }) => {
-		const canvas = within(canvasElement);
-		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Strawberry Pink');
-		await expect(args.borderColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+	play: async ({ args, canvasElement, step }) => {
+		await step('画像にalt属性が存在し、データが設定されていていること', async () => {
+			const canvas = within(canvasElement);
+			await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Strawberry Pink');
+		});
+		await step('ふちどり用として指定した色が正しいこと', async () => {
+			await expect(args.borderColor).toBe('--strawberry-pink');
+		});
 	}
 };
 // 2ndカラー
@@ -54,10 +58,14 @@ export const Yellow: Story = {
 		imageSize: '120px',
 		src: 'thumbnail.png'
 	},
-	play: async ({ args, canvasElement }) => {
-		const canvas = within(canvasElement);
-		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Pineapple Yellow');
-		await expect(args.borderColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
+	play: async ({ args, canvasElement, step }) => {
+		await step('画像にalt属性が存在し、データが設定されていていること', async () => {
+			const canvas = within(canvasElement);
+			await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Pineapple Yellow');
+		});
+		await step('ふちどり用として指定した色が正しいこと', async () => {
+			await expect(args.borderColor).toBe('--pineapple-yellow');
+		});
 	}
 };
 // 3rdカラー
@@ -68,9 +76,13 @@ export const Blue: Story = {
 		imageSize: '120px',
 		src: 'thumbnail.png'
 	},
-	play: async ({ args, canvasElement }) => {
-		const canvas = within(canvasElement);
-		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Soda Blue');
-		await expect(args.borderColor).toBe(CCLVividColor.SODA_BLUE);
+	play: async ({ args, canvasElement, step }) => {
+		await step('画像にalt属性が存在し、データが設定されていていること', async () => {
+			const canvas = within(canvasElement);
+			await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Soda Blue');
+		});
+		await step('ふちどり用として指定した色が正しいこと', async () => {
+			await expect(args.borderColor).toBe('--soda-blue');
+		});
 	}
 };

@@ -43,9 +43,13 @@ export const Pink: Story = {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.NORMAL
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
-		await expect(args.height).toBe(HeaderHeight.NORMAL);
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--strawberry-pink');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-normal');
+		});
 	}
 };
 /**
@@ -56,9 +60,13 @@ export const Yellow: Story = {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW,
 		height: HeaderHeight.NORMAL
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
-		await expect(args.height).toBe(HeaderHeight.NORMAL);
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--pineapple-yellow');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-normal');
+		});
 	}
 };
 /**
@@ -69,9 +77,13 @@ export const ThirdColor: Story = {
 		bgColor: CCLVividColor.SODA_BLUE,
 		height: HeaderHeight.NORMAL
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.SODA_BLUE);
-		await expect(args.height).toBe(HeaderHeight.NORMAL);
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--soda-blue');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-normal');
+		});
 	}
 };
 /**
@@ -80,7 +92,15 @@ export const ThirdColor: Story = {
 export const Green: Story = {
 	args: {
 		bgColor: CCLVividColor.MELON_GREEN,
-		height: HeaderHeight.NOMAL
+		height: HeaderHeight.NORMAL
+	},
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--melon-green');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-normal');
+		});
 	}
 };
 /**
@@ -89,7 +109,15 @@ export const Green: Story = {
 export const Purple: Story = {
 	args: {
 		bgColor: CCLVividColor.GRAPE_PURPLE,
-		height: HeaderHeight.NOMAL
+		height: HeaderHeight.NORMAL
+	},
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--grape-purple');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-normal');
+		});
 	}
 };
 /**
@@ -98,7 +126,15 @@ export const Purple: Story = {
 export const GREY: Story = {
 	args: {
 		bgColor: CCLVividColor.WRAP_GREY,
-		height: HeaderHeight.NOMAL
+		height: HeaderHeight.NORMAL
+	},
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--wrap-grey');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-normal');
+		});
 	}
 };
 
@@ -111,9 +147,13 @@ export const WideHeader: Story = {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.WIDE
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
-		await expect(args.height).toBe(HeaderHeight.WIDE);
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--strawberry-pink');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-wide');
+		});
 	}
 };
 /**
@@ -125,8 +165,12 @@ export const NallowHeader: Story = {
 		bgColor: CCLVividColor.STRAWBERRY_PINK,
 		height: HeaderHeight.NALLOW
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
-		await expect(args.height).toBe(HeaderHeight.NALLOW);
+	play: async ({ args, step }) => {
+		await step('背景色にセットした色が渡されていること', async () => {
+			await expect(args.bgColor).toBe('--strawberry-pink');
+		});
+		await step('Headerの高さがセットした大きさになっていること', async () => {
+			await expect(args.height).toBe('--hd-nallow');
+		});
 	}
 };

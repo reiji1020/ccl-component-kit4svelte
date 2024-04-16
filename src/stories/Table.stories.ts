@@ -35,13 +35,29 @@ export const withScroll: Story = {
 		tableColor: CCLVividColor.STRAWBERRY_PINK,
 		dataHeader: ['更新日', 'お知らせ内容', 'カテゴリ'],
 		tableData: [
-			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			[
+				'2024/03/19',
+				'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ',
+				'イベント'
+			],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
-			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			[
+				'2024/03/19',
+				'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ',
+				'イベント'
+			],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
-			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			[
+				'2024/03/19',
+				'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ',
+				'イベント'
+			],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
-			['2024/03/19', 'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ', 'イベント'],
+			[
+				'2024/03/19',
+				'イベント参加のお知らせイベント参加のお知らせイベント参加のお知らせイベント参加のお知らせ',
+				'イベント'
+			],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
 			['2024/03/19', 'イベント参加のお知らせ', 'イベント'],
 			['2024/03/19', '商業誌出版のお知らせ', '出版物'],
@@ -49,8 +65,10 @@ export const withScroll: Story = {
 			['2024/03/19', '商業誌出版のお知らせ', '出版物']
 		]
 	},
-	play: async ({ args }) => {
-		await expect(args.tableColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+	play: async ({ args, step }) => {
+		await step('メインカラーとして指定した色が正しいこと', async () => {
+			await expect(args.tableColor).toBe('--strawberry-pink');
+		});
 	}
 };
 // 2ndカラー
@@ -65,8 +83,10 @@ export const Yellow: Story = {
 			['2024/03/19', '商業誌出版のお知らせ', '出版物']
 		]
 	},
-	play: async ({ args }) => {
-		await expect(args.tableColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
+	play: async ({ args, step }) => {
+		await step('メインカラーとして指定した色が正しいこと', async () => {
+			await expect(args.tableColor).toBe('--pineapple-yellow');
+		});
 	}
 };
 // 3rdカラー
@@ -81,7 +101,9 @@ export const Blue: Story = {
 			['2024/03/19', '商業誌出版のお知らせ', '出版物']
 		]
 	},
-	play: async ({ args }) => {
-		await expect(args.tableColor).toBe(CCLVividColor.SODA_BLUE);
+	play: async ({ args, step }) => {
+		await step('メインカラーとして指定した色が正しいこと', async () => {
+			await expect(args.tableColor).toBe('--soda-blue');
+		});
 	}
 };

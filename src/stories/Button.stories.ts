@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
-import { CCLVividColor, HeaderHeight } from '$lib/const/config';
-import { expect, fireEvent, fn, userEvent, within } from '@storybook/test';
+import { CCLVividColor } from '$lib/const/config';
+import { expect, fn, userEvent, within } from '@storybook/test';
 
 const meta = {
 	title: 'Common/Button',
@@ -12,7 +12,6 @@ const meta = {
 		layout: 'fullscreen'
 	},
 	argTypes: {
-		onClick: fn(),
 		bgColor: {
 			control: { type: 'select' },
 			options: [
@@ -23,7 +22,8 @@ const meta = {
 				CCLVividColor.GRAPE_PURPLE,
 				CCLVividColor.WRAP_GREY
 			]
-		}
+		},
+		onClick: fn()
 	}
 } satisfies Meta<Button>;
 
@@ -45,12 +45,19 @@ export const Pink: Story = {
 		label: 'Strawberry Pink',
 		onClick: fn()
 	},
-	play: async ({ args, canvasElement }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
-		await expect(args.label).toBe('Strawberry Pink');
-		// Buttonがクリックされた時のイベントを取得
-		const canvas = within(canvasElement);
-		await userEvent.click(canvas.getByRole('button'));
+	play: async ({ args, canvasElement, step }) => {
+		await step('ボタンが存在するかどうかをチェックする', async () => {
+			const canvas = within(canvasElement);
+			await userEvent.click(canvas.getByRole('button'));
+		});
+
+		await step('ボタンの色がプロパティの通りに設定されている', async () => {
+			await expect(args.bgColor).toBe('--strawberry-pink');
+		});
+
+		await step('ボタンのテキストがプロパティの通りに設定されている', async () => {
+			await expect(args.label).toBe('Strawberry Pink');
+		});
 	}
 };
 
@@ -65,12 +72,19 @@ export const Yellow: Story = {
 		label: 'Pineapple Yellow',
 		onClick: fn()
 	},
-	play: async ({ args, canvasElement }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
-		await expect(args.label).toBe('Pineapple Yellow');
-		// Buttonがクリックされた時のイベントを取得
-		const canvas = within(canvasElement);
-		await userEvent.click(canvas.getByRole('button'));
+	play: async ({ args, canvasElement, step }) => {
+		await step('ボタンが存在するかどうかをチェックする', async () => {
+			const canvas = within(canvasElement);
+			await userEvent.click(canvas.getByRole('button'));
+		});
+
+		await step('ボタンの色がプロパティの通りに設定されている', async () => {
+			await expect(args.bgColor).toBe('--pineapple-yellow');
+		});
+
+		await step('ボタンのテキストがプロパティの通りに設定されている', async () => {
+			await expect(args.label).toBe('Pineapple Yellow');
+		});
 	}
 };
 
@@ -85,12 +99,19 @@ export const Blue: Story = {
 		label: 'Soda Blue',
 		onClick: fn()
 	},
-	play: async ({ args, canvasElement }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.SODA_BLUE);
-		await expect(args.label).toBe('Soda Blue');
-		// Buttonがクリックされた時のイベントを取得
-		const canvas = within(canvasElement);
-		await userEvent.click(canvas.getByRole('button'));
+	play: async ({ args, canvasElement, step }) => {
+		await step('ボタンが存在するかどうかをチェックする', async () => {
+			const canvas = within(canvasElement);
+			await userEvent.click(canvas.getByRole('button'));
+		});
+
+		await step('ボタンの色がプロパティの通りに設定されている', async () => {
+			await expect(args.bgColor).toBe('--soda-blue');
+		});
+
+		await step('ボタンのテキストがプロパティの通りに設定されている', async () => {
+			await expect(args.label).toBe('Soda Blue');
+		});
 	}
 };
 
@@ -100,12 +121,19 @@ export const Green: Story = {
 		label: 'Melon Green',
 		onClick: fn()
 	},
-	play: async ({ args, canvasElement }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.MELON_GREEN);
-		await expect(args.label).toBe('Melon Green');
-		// Buttonがクリックされた時のイベントを取得
-		const canvas = within(canvasElement);
-		await userEvent.click(canvas.getByRole('button'));
+	play: async ({ args, canvasElement, step }) => {
+		await step('ボタンが存在するかどうかをチェックする', async () => {
+			const canvas = within(canvasElement);
+			await userEvent.click(canvas.getByRole('button'));
+		});
+
+		await step('ボタンの色がプロパティの通りに設定されている', async () => {
+			await expect(args.bgColor).toBe('--melon-green');
+		});
+
+		await step('ボタンのテキストがプロパティの通りに設定されている', async () => {
+			await expect(args.label).toBe('Melon Green');
+		});
 	}
 };
 
@@ -115,12 +143,19 @@ export const Purple: Story = {
 		label: 'Grape Purple',
 		onClick: fn()
 	},
-	play: async ({ args, canvasElement }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.GRAPE_PURPLE);
-		await expect(args.label).toBe('Grape Purple');
-		// Buttonがクリックされた時のイベントを取得
-		const canvas = within(canvasElement);
-		await userEvent.click(canvas.getByRole('button'));
+	play: async ({ args, canvasElement, step }) => {
+		await step('ボタンが存在するかどうかをチェックする', async () => {
+			const canvas = within(canvasElement);
+			await userEvent.click(canvas.getByRole('button'));
+		});
+
+		await step('ボタンの色がプロパティの通りに設定されている', async () => {
+			await expect(args.bgColor).toBe('--grape-purple');
+		});
+
+		await step('ボタンのテキストがプロパティの通りに設定されている', async () => {
+			await expect(args.label).toBe('Grape Purple');
+		});
 	}
 };
 
@@ -130,11 +165,18 @@ export const Grey: Story = {
 		label: 'Wrap Grey',
 		onClick: fn()
 	},
-	play: async ({ args, canvasElement }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.WRAP_GREY);
-		await expect(args.label).toBe('Wrap Grey');
-		// Buttonがクリックされた時のイベントを取得
-		const canvas = within(canvasElement);
-		await userEvent.click(canvas.getByRole('button'));
+	play: async ({ args, canvasElement, step }) => {
+		await step('ボタンが存在するかどうかをチェックする', async () => {
+			const canvas = within(canvasElement);
+			await userEvent.click(canvas.getByRole('button'));
+		});
+
+		await step('ボタンの色がプロパティの通りに設定されている', async () => {
+			await expect(args.bgColor).toBe('--wrap-grey');
+		});
+
+		await step('ボタンのテキストがプロパティの通りに設定されている', async () => {
+			await expect(args.label).toBe('Wrap Grey');
+		});
 	}
 };

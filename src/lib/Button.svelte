@@ -12,7 +12,7 @@
 	 * @default Button
 	 * @type string
 	 */
-	export let label: string | 'Button';
+	export let label: string;
 </script>
 
 <!--汎用ボタン-->

@@ -38,8 +38,10 @@ export const Pink: Story = {
 	args: {
 		bgColor: CCLVividColor.STRAWBERRY_PINK
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.STRAWBERRY_PINK);
+	play: async ({ args, step }) => {
+		await step('背景色に指定した色がセットされていること', async () => {
+			await expect(args.bgColor).toBe('--strawberry-pink');
+		});
 	}
 };
 /**
@@ -51,8 +53,10 @@ export const Yellow: Story = {
 	args: {
 		bgColor: CCLVividColor.PINEAPPLE_YELLOW
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.PINEAPPLE_YELLOW);
+	play: async ({ args, step }) => {
+		await step('背景色に指定した色がセットされていること', async () => {
+			await expect(args.bgColor).toBe('--pineapple-yellow');
+		});
 	}
 };
 /**
@@ -64,7 +68,9 @@ export const Blue: Story = {
 	args: {
 		bgColor: CCLVividColor.SODA_BLUE
 	},
-	play: async ({ args }) => {
-		await expect(args.bgColor).toBe(CCLVividColor.SODA_BLUE);
+	play: async ({ args, step }) => {
+		await step('背景色に指定した色がセットされていること', async () => {
+			await expect(args.bgColor).toBe('--soda-blue');
+		});
 	}
 };
