@@ -1,24 +1,20 @@
-# Workflow name
-name: Build and Publish Storybook to GitHub Pages
+name: Release Storybook to GitHubPages
 
 on:
-  # Event for the workflow to run on
   push:
     branches:
       - main
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+env:
+  cache-version: v1
 
-# List of jobs
 jobs:
-  deploy:
+  release:
+    name: Project Build
     runs-on: ubuntu-latest
-    # Job steps
+
     steps:
-      - name: Check out Code
+      - name: Check out code
         uses: actions/checkout@v3
 
       - name: Install pnpm
@@ -29,12 +25,19 @@ jobs:
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v3
         with:
-          node-version: '20.x'
+          node-version: 20.x
 
-      - name: Add Storybook build and deploy to GitHub Pages as a step in the workflow
-        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+      - name: Install Node Dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Build package
+        run: pnpm run build
+
+      - name: Build storybook
+        run: pnpm run build-storybook
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          install_command: pnpm i --frozen-lockfile
-          build_command: pnpm run build-storybook
-          path: ./public/storybook
-          checkout: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public/storybook
