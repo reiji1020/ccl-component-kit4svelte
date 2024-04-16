@@ -13,3 +13,5 @@ vite.config.ts.timestamp-*
 .idea/
 chromatic.config.json
 build-storybook.log
+coverage
+.storybook/coverage-storybook.json

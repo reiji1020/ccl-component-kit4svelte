@@ -1,4 +1,11 @@
 import type { StorybookConfig } from '@storybook/sveltekit';
+import type { AddonOptionsVite } from '@storybook/addon-coverage';
+
+const coverageConfig: AddonOptionsVite = {
+	istanbul: {
+		include: ['**/stories/**']
+	}
+};
 
 const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -6,7 +13,9 @@ const config: StorybookConfig = {
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
 		'@storybook/addon-interactions',
-		'@chromatic-com/storybook'
+		'@storybook/addon-coverage',
+		'@chromatic-com/storybook',
+		'@storybook/addon-mdx-gfm'
 	],
 	framework: {
 		name: '@storybook/sveltekit',
