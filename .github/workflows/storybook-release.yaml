@@ -3,7 +3,7 @@ name: Release Storybook to GitHubPages
 on:
   push:
     branches:
-      - main
+      - fix-storybook-deploy-pipeline
 
 env:
   cache-version: v1
@@ -29,9 +29,6 @@ jobs:
 
       - name: Install Node Dependencies
         run: pnpm i --frozen-lockfile
-
-      - name: Build package
-        run: pnpm run build
 
       - name: Build storybook
         run: pnpm run build-storybook
