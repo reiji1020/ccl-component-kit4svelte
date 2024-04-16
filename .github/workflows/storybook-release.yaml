@@ -5,7 +5,7 @@ on:
   # Event for the workflow to run on
   push:
     branches:
-      - update-storybook-deploy-pipeline
+      - main
 
 permissions:
   contents: read
