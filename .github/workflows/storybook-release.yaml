@@ -30,9 +30,6 @@ jobs:
       - name: Install Node Dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Build package
-        run: pnpm run build
-
       - name: Build storybook
         run: pnpm run build-storybook
 
