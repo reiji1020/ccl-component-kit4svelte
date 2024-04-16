@@ -79,3 +79,4 @@ v18.16.1
 `})}),`
 `,n.jsxs(e.p,{children:["When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store ",n.jsx(e.code,{children:"stories"})," in the ",n.jsx(e.code,{children:"src/stories"})," directory."]}),`
 `,n.jsxs(e.p,{children:["The component itself should be stored in the ",n.jsx(e.code,{children:"lib"})," directory."]})]})}function C(o={}){const{wrapper:e}={...a(),...o.components};return e?n.jsx(e,{...o,children:n.jsx(d,{...o})}):d(o)}export{C as default};
+//# sourceMappingURL=README-7a50fca6.js.map
