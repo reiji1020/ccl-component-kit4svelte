@@ -1,4 +1,4 @@
-## [1.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.8...1.0.0) (2024/05/06)
+## [1.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.9...1.0.0) (2024/05/06)
 
 ### MAJOR RELEASE!
 
