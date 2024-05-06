@@ -4,7 +4,7 @@ import { CCLVividColor } from '$lib/const/config';
 import { expect, getByRole, userEvent, within } from '@storybook/test';
 
 const meta = {
-	title: 'Common/Card',
+	title: 'CommonComponents/Card',
 	component: Card,
 	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ['autodocs'],

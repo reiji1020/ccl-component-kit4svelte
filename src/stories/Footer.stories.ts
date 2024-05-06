@@ -4,7 +4,7 @@ import { CCLVividColor, HeaderHeight } from '$lib/const/config';
 import { expect } from '@storybook/test';
 
 const meta = {
-	title: 'Common/Footer',
+	title: 'CommonComponents/Footer',
 	component: Footer,
 	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ['autodocs'],

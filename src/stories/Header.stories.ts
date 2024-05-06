@@ -4,7 +4,7 @@ import Header from '$lib/Header.svelte';
 import { CCLVividColor, HeaderHeight } from '$lib/const/config';
 
 const meta = {
-	title: 'Common/Header',
+	title: 'CommonComponents/Header',
 	component: Header,
 	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ['autodocs'],

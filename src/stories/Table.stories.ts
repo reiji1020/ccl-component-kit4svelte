@@ -4,7 +4,7 @@ import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
 
 const meta = {
-	title: 'Common/Table',
+	title: 'CommonComponents/Table',
 	component: Table,
 	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ['autodocs'],

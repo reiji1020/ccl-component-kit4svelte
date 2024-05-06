@@ -4,7 +4,7 @@ import { CCLVividColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
 
 const meta = {
-	title: 'Common/Thumbnail',
+	title: 'CommonComponents/Thumbnail',
 	component: Thumbnail,
 	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ['autodocs'],
