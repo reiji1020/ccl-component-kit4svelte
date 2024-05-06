@@ -1,6 +1,6 @@
-## [0.2.8](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.7...0.2.8) (2024/04/16)
+## [1.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/0.2.8...1.0.0) (2024/05/06)
 
-### UPDATE INTERACTION TESTS
+### MAJOR RELEASE!
 
-- Add-ons for coverage calculations have been introduced.
-- Fixed the way interaction tests are written.
+- Additional library cards.
+- The contents of the README have been corrected.

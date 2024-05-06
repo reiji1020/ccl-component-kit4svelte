@@ -15,7 +15,8 @@ const config: StorybookConfig = {
 		'@storybook/addon-interactions',
 		'@storybook/addon-coverage',
 		'@chromatic-com/storybook',
-		'@storybook/addon-mdx-gfm'
+		'@storybook/addon-mdx-gfm',
+		'@storybook/addon-viewport'
 	],
 	framework: {
 		name: '@storybook/sveltekit',
