@@ -1,4 +1,4 @@
-import{d as m,M as j}from"./index-19f4a29e.js";import{u as d}from"./index-13f377a3.js";import"./iframe-c5573744.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-725317a4.js";import"./index-02182706.js";import"./index-75890171.js";import"./index-356e4a49.js";var h={exports:{}},r={};/**
+import{d as m,M as j}from"./index-01e4cb7b.js";import{u as d}from"./index-073525ac.js";import"./iframe-953a7537.js";import"../sb-preview/runtime.js";import"./_commonjsHelpers-725317a4.js";import"./index-02182706.js";import"./index-75890171.js";import"./index-356e4a49.js";var h={exports:{}},r={};/**
  * @license React
  * react-jsx-runtime.production.min.js
  *
@@ -83,4 +83,4 @@ v18.16.1
 `})}),`
 `,n.jsxs(e.p,{children:["When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store ",n.jsx(e.code,{children:"stories"})," in the ",n.jsx(e.code,{children:"src/stories"})," directory."]}),`
 `,n.jsxs(e.p,{children:["The component itself should be stored in the ",n.jsx(e.code,{children:"lib"})," directory."]})]})}function P(o={}){const{wrapper:e}={...d(),...o.components};return e?n.jsx(e,{...o,children:n.jsx(a,{...o})}):a(o)}export{P as default};
-//# sourceMappingURL=README-7eacec90.js.map
+//# sourceMappingURL=README-90b6da36.js.map
