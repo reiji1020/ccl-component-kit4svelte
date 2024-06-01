@@ -1,5 +1,4 @@
-import * as Luxon from 'luxon';
-const { DateTime } = Luxon;
+import { DateTime } from 'luxon';
 
 const getYear = (): number => {
 	return DateTime.now().year;
