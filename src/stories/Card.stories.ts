@@ -57,7 +57,7 @@ export const Default: Story = {
 	}
 };
 /**
- * 書籍の出版などのオフライン活動に関してはセカンダリカラーを使用します。
+ * オフライン活動に関してはセカンダリカラーを使用します。
  *
  *　For offline activities such as book publishing, a secondary colour is used.
  */
@@ -80,7 +80,7 @@ export const SecondColor: Story = {
 	}
 };
 /**
- * その他の汎用的なお知らせとしてサードカラーを使用します。
+ * 汎用的なお知らせとしてサードカラーを使用します。
  *
  * Use third colour for other generic notices.
  */
@@ -97,6 +97,52 @@ export const ThirdColor: Story = {
 		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Soda Blue');
 		await expect(args.borderColor).toBe(CCLVividColor.SODA_BLUE);
 		await expect(args.title).toBe('汎用的なお知らせ用のカードです');
+		await expect(args.cardText).toBe(
+			'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+		);
+	}
+};
+/**
+ * 商業誌など書籍の出版に関しては特別にグリーンを使用します。
+ *
+ *　Special green is used for commercial magazines and other book publications.
+ */
+export const Writing: Story = {
+	args: {
+		borderColor: CCLVividColor.MELON_GREEN,
+		src: 'thumbnail.png',
+		altText: 'Melon Green',
+		title: '書籍出版お知らせ用のカードです',
+		cardText: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+	},
+	play: async ({ args, canvasElement }) => {
+		const canvas = within(canvasElement);
+		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Melon Green');
+		await expect(args.borderColor).toBe(CCLVividColor.MELON_GREEN);
+		await expect(args.title).toBe('書籍出版お知らせ用のカードです');
+		await expect(args.cardText).toBe(
+			'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+		);
+	}
+};
+/**
+ * コーディングの成果物のお知らせに関しては特別にパープルを使用します。
+ *
+ *　Special purple is used with regard to notices of coding deliverables.
+ */
+export const Coding: Story = {
+	args: {
+		borderColor: CCLVividColor.GRAPE_PURPLE,
+		src: 'thumbnail.png',
+		altText: 'Grape Purple',
+		title: 'コーディング成果物お知らせ用のカードです',
+		cardText: 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
+	},
+	play: async ({ args, canvasElement }) => {
+		const canvas = within(canvasElement);
+		await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Grape Purple');
+		await expect(args.borderColor).toBe(CCLVividColor.GRAPE_PURPLE);
+		await expect(args.title).toBe('コーディング成果物お知らせ用のカードです');
 		await expect(args.cardText).toBe(
 			'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト'
 		);
