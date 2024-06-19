@@ -1,4 +1,4 @@
-## [1.0.5](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.4...1.0.5) (2024/06/19)
+## [1.0.5-a](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.4...1.0.5-a) (2024/06/19)
 
 ### VULNERABILITY FIXES
 
