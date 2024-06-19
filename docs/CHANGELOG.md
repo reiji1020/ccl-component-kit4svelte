@@ -1,5 +1,5 @@
-## [1.0.4](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.3...1.0.4) (2024/06/14)
+## [1.0.5](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.4...1.0.5) (2024/06/19)
 
 ### VULNERABILITY FIXES
 
-- Vulnerability fixes from storybook.
+- Vulnerability fixes from [ws](https://github.com/websockets/ws/releases/tag/8.17.1)
