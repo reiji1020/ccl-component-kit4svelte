@@ -1,5 +1,5 @@
-## [1.0.6](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.5-a...1.0.6) (2024/08/31)
+## [1.0.7](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.6...1.0.7) (2024/09/18)
 
 ### VULNERABILITY FIXES
 
-- Vulnerability fixes svelte and axios.
+- Vulnerability fixes vite.
