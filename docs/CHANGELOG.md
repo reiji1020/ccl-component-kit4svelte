@@ -1,5 +1,5 @@
-## [1.0.8](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.7-a...1.0.8) (2024/09/27)
+## [1.0.9](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.9...1.0.9) (2024/09/27)
 
-### Vulnerability Response
+### UPDATE STORYBOOK
 
-- Vulnerability fixes rollup.
+- The Storybook version was raised to 8.
