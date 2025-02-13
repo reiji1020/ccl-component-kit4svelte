@@ -65,13 +65,13 @@
 			</tr>
 		</thead>
 		<tbody>
-		{#each tableData as row}
-			<tr class="table-body-style" style="--table-body-color: var({bodyColor})">
-				{#each row as data}
-					<td>{data}</td>
-				{/each}
-			</tr>
-		{/each}
+			{#each tableData as row}
+				<tr class="table-body-style" style="--table-body-color: var({bodyColor})">
+					{#each row as data}
+						<td>{data}</td>
+					{/each}
+				</tr>
+			{/each}
 		</tbody>
 	</table>
 </div>
