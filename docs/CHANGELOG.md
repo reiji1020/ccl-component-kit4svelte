@@ -1,6 +1,6 @@
-## [1.0.11](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.10...1.0.11) (2025/02/13)
+## [1.1.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.0.11...1.1.0) (2025/02/22)
 
-### UPDATE PACKAGES
+### ADD NEW COMPONENT.
 
-- Vulnerability support.
-- fix lint.
+- Additional carousel components.
+- Update storybook version.

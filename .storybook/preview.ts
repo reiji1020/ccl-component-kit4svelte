@@ -2,7 +2,7 @@ import type { Preview } from '@storybook/svelte';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const preview: Preview = {
-	parameters: {
+    parameters: {
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
@@ -13,7 +13,9 @@ const preview: Preview = {
 			viewports: INITIAL_VIEWPORTS,
 			defaultViewport: 'responsive'
 		}
-	}
+	},
+
+    tags: ['autodocs']
 };
 
 export default preview;
