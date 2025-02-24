@@ -7,4 +7,5 @@ export { default as Thumbnail } from './Thumbnail.svelte';
 export { default as Card } from './Card.svelte';
 export { default as Table } from './Table.svelte';
 export { default as Carousel } from './Carousel.svelte';
+export { default as CommonHeader } from './CommonHeader.svelte';
 export { CCLVividColor, CCLPastelColor, HeaderHeight } from './const/config';
