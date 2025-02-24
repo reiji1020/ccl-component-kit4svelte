@@ -1,3 +1,5 @@
-## [1.2.1](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.0...1.2.1) (2025/02/24)
+## [1.2.2](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.1...1.2.2) (2025/02/25)
 
-### BUG FIX
+### improvement modification
+
+- Increased flexibility in the size of carousel components.
