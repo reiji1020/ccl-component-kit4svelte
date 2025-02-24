@@ -3,7 +3,7 @@
 	import * as string_decoder from "node:string_decoder";
 
 	/**
-	 * カルーセルに設定する画像のデータ
+	 * カルーセルに設定する画像のデータのインタフェース
 	 * @type sre 画像URL
 	 * @type alt altに設定するテキスト
 	 */
@@ -17,6 +17,12 @@
 	 * @type Array<ImgSrc>
 	 */
 	export let src: Array<Imgsrc>;
+
+	/**
+	 * カルーセルコンポーネントの横幅
+	 * @type string
+	 */
+	export let csWidth: string;
 
 	let currentIndex = 0;
 
@@ -37,7 +43,7 @@
 	}
 </script>
 
-<div class="carousel">
+<div class="carouselWrapper" style="width: {csWidth}">
 	<div class="slides" style="transform: translateX({-currentIndex * 100}%)">
 		{#each src as item, index}
 			<img class="slide" src={item.src} alt={item.alt} />
@@ -50,10 +56,8 @@
 </div>
 
 <style>
-	.carousel {
+	.carouselWrapper {
 		position: relative;
-		width: 800px;
-		height: 400px;
 		overflow: hidden;
 	}
 	.slides {
