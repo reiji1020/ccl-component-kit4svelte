@@ -1,25 +1,25 @@
 <script lang="ts">
 	import './const/variables.css';
-	import * as string_decoder from "node:string_decoder";
 
 	/**
-	 * カルーセルに設定する画像のデータのインタフェース
-	 * @type sre 画像URL
-	 * @type alt altに設定するテキスト
+	 * Interface for carousel image data
+	 * @type src - Image URL
+	 * @type alt - Text for alt attribute
 	 */
 	export interface Imgsrc {
 		src: string,
 		alt: string
 	}
+
 	/**
-	 * 画像データ
-	 * 画像URLとaltに設定するテキストをセットで入力すること
-	 * @type Array<ImgSrc>
+	 * Image data
+	 * Provide an array of objects containing image URL and alt text
+	 * @type Array<Imgsrc>
 	 */
 	export let src: Array<Imgsrc>;
 
 	/**
-	 * カルーセルコンポーネントの横幅
+	 * Width of the carousel component
 	 * @type string
 	 */
 	export let csWidth: string;
@@ -27,24 +27,22 @@
 	let currentIndex = 0;
 
 	/**
-	 * nextSlide
-	 * 次のスライドに進む
+	 * Move to the next slide
 	 */
 	const nextSlide = () => {
 		currentIndex = (currentIndex + 1) % src.length;
 	}
 
 	/**
-	 * nextSlide
-	 * 次のスライドに進む
+	 * Move to the previous slide
 	 */
 	const prevSlide = () => {
 		currentIndex = (currentIndex - 1 + src.length) % src.length;
 	}
 </script>
 
-<div class="carouselWrapper" style="width: {csWidth}">
-	<div class="slides" style="transform: translateX({-currentIndex * 100}%)">
+<div class="carouselWrapper" style="--carousel-width: {csWidth}; --translate-x: {-currentIndex * 100}%)">
+	<div class="slides">
 		{#each src as item, index}
 			<img class="slide" src={item.src} alt={item.alt} />
 		{/each}
@@ -59,10 +57,12 @@
 	.carouselWrapper {
 		position: relative;
 		overflow: hidden;
+		width: var(--carousel-width);
 	}
 	.slides {
 		display: flex;
 		transition: transform 0.5s ease-in-out;
+		transform: translateX(var(--translate-x));
 	}
 	.slide {
 		min-width: 100%;

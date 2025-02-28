@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './const/variables.css';
 	import { getYear } from '$lib/scripts/date';
+
 	/**
 	 * フッター背景色
 	 * CCLVividColorの中から指定する
@@ -16,14 +17,12 @@
 </script>
 
 <!--汎用フッター-->
-<footer>
-	<div class="wrapper" style="--bgColor: var({bgColor});">
-		<span class="copy">Copyright © 2015-{year} CANDY CHUPS Lab. All Rights Reserved.</span>
-	</div>
+<footer class="footerWrapper" style="--bgColor: var({bgColor});">
+	<span class="copy">Copyright © 2015-{year} CANDY CHUPS Lab. All Rights Reserved.</span>
 </footer>
 
 <style>
-	.wrapper {
+	.footerWrapper {
 		display: flex;
 		height: 30px;
 		justify-content: center;
