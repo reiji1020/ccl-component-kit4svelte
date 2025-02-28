@@ -1,5 +1,5 @@
-## [1.2.2](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.1...1.2.2) (2025/02/25)
+## [1.2.3](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.2...1.2.3) (2025/03/01)
 
-### improvement modification
+### REFACTORING
 
-- Increased flexibility in the size of carousel components.
+- Testing refactoring using Copilot.
