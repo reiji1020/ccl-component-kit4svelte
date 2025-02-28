@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
 	import './const/variables.css';
+
 	/**
 	 * テーブルメインカラー
 	 * CCLVividColorの中から指定する
@@ -8,6 +9,7 @@
 	 * @type string
 	 */
 	export let tableColor: string;
+
 	/**
 	 * テーブルサブカラー
 	 * CCLPasterColorの中から指定する
@@ -16,41 +18,46 @@
 	 */
 	let bodyColor: string;
 
-	switch (tableColor) {
-		case CCLVividColor.STRAWBERRY_PINK:
-			bodyColor = CCLPastelColor.PEACH_PINK;
-			break;
-		case CCLVividColor.PINEAPPLE_YELLOW:
-			bodyColor = CCLPastelColor.LEMON_YELLOW;
-			break;
-		case CCLVividColor.SODA_BLUE:
-			bodyColor = CCLPastelColor.SUGAR_BLUE;
-			break;
-		case CCLVividColor.MELON_GREEN:
-			bodyColor = CCLPastelColor.MATCHA_GREEN;
-			break;
-		case CCLVividColor.GRAPE_PURPLE:
-			bodyColor = CCLPastelColor.AKEBI_PURPLE;
-			break;
-		case CCLVividColor.WRAP_GREY:
-			bodyColor = CCLPastelColor.CLOUD_GREY;
-			break;
-		default:
-			bodyColor = CCLPastelColor.PEACH_PINK;
-			break;
-	}
 	/**
 	 * テーブルのヘッダー
 	 * 一次元配列で自由長、
 	 * @type Array<string>
 	 */
 	export let dataHeader: string[];
+
 	/**
 	 * テーブルにいれるデータ
 	 * 2次元の配列で自由長
 	 * @type Array<string | number>
 	 */
 	export let tableData: string | number[][];
+
+	/**
+	 * テーブルカラーに応じた背景色を取得する関数
+	 * @param tableColor - テーブルのメインカラー
+	 * @returns 背景色
+	 */
+	function getBodyColor(tableColor: string): string {
+		switch (tableColor) {
+			case CCLVividColor.STRAWBERRY_PINK:
+				return CCLPastelColor.PEACH_PINK;
+			case CCLVividColor.PINEAPPLE_YELLOW:
+				return CCLPastelColor.LEMON_YELLOW;
+			case CCLVividColor.SODA_BLUE:
+				return CCLPastelColor.SUGAR_BLUE;
+			case CCLVividColor.MELON_GREEN:
+				return CCLPastelColor.MATCHA_GREEN;
+			case CCLVividColor.GRAPE_PURPLE:
+				return CCLPastelColor.AKEBI_PURPLE;
+			case CCLVividColor.WRAP_GREY:
+				return CCLPastelColor.CLOUD_GREY;
+			default:
+				return CCLPastelColor.PEACH_PINK;
+		}
+	}
+
+	// 背景色を取得
+	bodyColor = getBodyColor(tableColor);
 </script>
 
 <!--汎用テーブル-->
@@ -58,20 +65,20 @@
 	<table>
 		<!--テーブルヘッダー-->
 		<thead class="table-header" style="--bgColor: var({tableColor})">
-			<tr>
-				{#each dataHeader as title, index}
-					<th>{title}</th>
-				{/each}
-			</tr>
+		<tr>
+			{#each dataHeader as title, index}
+				<th>{title}</th>
+			{/each}
+		</tr>
 		</thead>
 		<tbody>
-			{#each tableData as row}
-				<tr class="table-body-style" style="--table-body-color: var({bodyColor})">
-					{#each row as data}
-						<td>{data}</td>
-					{/each}
-				</tr>
-			{/each}
+		{#each tableData as row}
+			<tr class="table-body-style" style="--table-body-color: var({bodyColor})">
+				{#each row as data}
+					<td>{data}</td>
+				{/each}
+			</tr>
+		{/each}
 		</tbody>
 	</table>
 </div>

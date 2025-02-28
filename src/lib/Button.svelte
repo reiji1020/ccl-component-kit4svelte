@@ -1,5 +1,6 @@
 <script lang="ts">
 	import './const/variables.css';
+
 	/**
 	 * ボタンカラー、CCLVividColorの中から選ぶ
 	 * @default --strawberry-pink
@@ -13,12 +14,24 @@
 	 * @type string
 	 */
 	export let label: string;
+
+	/**
+	 * ボタンの背景色を取得する関数
+	 * @param bgColor - ボタンの背景色
+	 * @returns 背景色
+	 */
+	function getButtonColor(bgColor: string): string {
+		return `var(${bgColor})`;
+	}
+
+	// 背景色を取得
+	let buttonColor = getButtonColor(bgColor);
 </script>
 
 <!--汎用ボタン-->
-<button class="buttonWrapper" style="--bgColor: var({bgColor})"
-	><span class="btLabel">{label}</span></button
->
+<button class="buttonWrapper" style="--bgColor: {buttonColor}">
+	<span class="btLabel">{label}</span>
+</button>
 
 <style>
 	.buttonWrapper {

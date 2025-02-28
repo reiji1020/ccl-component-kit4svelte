@@ -23,8 +23,8 @@
 	export let altText: string;
 </script>
 
-<div class="ThumbnailWrapper" style="--imageSize: {imageSize}">
-	<img {src} alt={altText} class="Thumbnail" style="--borderColor: var({borderColor})" />
+<div class="ThumbnailWrapper" style="--imageSize: {imageSize}; --borderColor: var({borderColor})">
+	<img {src} alt={altText} class="Thumbnail" />
 </div>
 
 <style>

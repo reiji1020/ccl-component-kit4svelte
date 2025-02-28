@@ -3,10 +3,18 @@ import Thumbnail from '$lib/Thumbnail.svelte';
 import { CCLVividColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
 
+const colorOptions = [
+	CCLVividColor.STRAWBERRY_PINK,
+	CCLVividColor.PINEAPPLE_YELLOW,
+	CCLVividColor.SODA_BLUE,
+	CCLVividColor.MELON_GREEN,
+	CCLVividColor.GRAPE_PURPLE,
+	CCLVividColor.WRAP_GREY
+];
+
 const meta = {
 	title: 'CommonComponents/Thumbnail',
 	component: Thumbnail,
-	// This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'fullscreen'
@@ -14,14 +22,7 @@ const meta = {
 	argTypes: {
 		borderColor: {
 			control: { type: 'select' },
-			options: [
-				CCLVividColor.STRAWBERRY_PINK,
-				CCLVividColor.PINEAPPLE_YELLOW,
-				CCLVividColor.SODA_BLUE,
-				CCLVividColor.MELON_GREEN,
-				CCLVividColor.GRAPE_PURPLE,
-				CCLVividColor.WRAP_GREY
-			]
+			options: colorOptions
 		},
 		altText: { control: { type: 'text' } },
 		imageSize: { control: { type: 'text' } },
@@ -32,57 +33,39 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// 通常カラー
-export const Default: Story = {
+const createStory = (
+	borderColor: string,
+	altText: string,
+	imageSize: string,
+	src: string
+): Story => ({
 	args: {
-		borderColor: CCLVividColor.STRAWBERRY_PINK,
-		altText: 'Strawberry Pink',
-		imageSize: '120px',
-		src: 'thumbnail.png'
+		borderColor,
+		altText,
+		imageSize,
+		src
 	},
 	play: async ({ args, canvasElement, step }) => {
+		const canvas = within(canvasElement);
 		await step('画像にalt属性が存在し、データが設定されていていること', async () => {
-			const canvas = within(canvasElement);
-			await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Strawberry Pink');
+			await expect(canvas.getByRole('img')).toHaveAttribute('alt', altText);
 		});
 		await step('ふちどり用として指定した色が正しいこと', async () => {
-			await expect(args.borderColor).toBe('--strawberry-pink');
+			await expect(args.borderColor).toBe(borderColor);
 		});
 	}
-};
-// 2ndカラー
-export const Yellow: Story = {
-	args: {
-		borderColor: CCLVividColor.PINEAPPLE_YELLOW,
-		altText: 'Pineapple Yellow',
-		imageSize: '120px',
-		src: 'thumbnail.png'
-	},
-	play: async ({ args, canvasElement, step }) => {
-		await step('画像にalt属性が存在し、データが設定されていていること', async () => {
-			const canvas = within(canvasElement);
-			await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Pineapple Yellow');
-		});
-		await step('ふちどり用として指定した色が正しいこと', async () => {
-			await expect(args.borderColor).toBe('--pineapple-yellow');
-		});
-	}
-};
-// 3rdカラー
-export const Blue: Story = {
-	args: {
-		borderColor: CCLVividColor.SODA_BLUE,
-		altText: 'Soda Blue',
-		imageSize: '120px',
-		src: 'thumbnail.png'
-	},
-	play: async ({ args, canvasElement, step }) => {
-		await step('画像にalt属性が存在し、データが設定されていていること', async () => {
-			const canvas = within(canvasElement);
-			await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'Soda Blue');
-		});
-		await step('ふちどり用として指定した色が正しいこと', async () => {
-			await expect(args.borderColor).toBe('--soda-blue');
-		});
-	}
-};
+});
+
+export const Default = createStory(
+	CCLVividColor.STRAWBERRY_PINK,
+	'Strawberry Pink',
+	'120px',
+	'thumbnail.png'
+);
+export const Yellow = createStory(
+	CCLVividColor.PINEAPPLE_YELLOW,
+	'Pineapple Yellow',
+	'120px',
+	'thumbnail.png'
+);
+export const Blue = createStory(CCLVividColor.SODA_BLUE, 'Soda Blue', '120px', 'thumbnail.png');

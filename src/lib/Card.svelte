@@ -1,61 +1,64 @@
 <script lang="ts">
 	import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
 	import './const/variables.css';
+
 	/**
 	 * 枠線の色
 	 * @default --strawberry-pink
 	 * @type string
 	 */
 	export let borderColor: string;
-	/**
-	 * 説明文の背景色
-	 * @default --peach-pink
-	 * @type string
-	 */
-	let bodyColor: string;
-	switch (borderColor) {
-		case CCLVividColor.STRAWBERRY_PINK:
-			bodyColor = CCLPastelColor.PEACH_PINK;
-			break;
-		case CCLVividColor.PINEAPPLE_YELLOW:
-			bodyColor = CCLPastelColor.LEMON_YELLOW;
-			break;
-		case CCLVividColor.SODA_BLUE:
-			bodyColor = CCLPastelColor.SUGAR_BLUE;
-			break;
-		case CCLVividColor.MELON_GREEN:
-			bodyColor = CCLPastelColor.MATCHA_GREEN;
-			break;
-		case CCLVividColor.GRAPE_PURPLE:
-			bodyColor = CCLPastelColor.AKEBI_PURPLE;
-			break;
-		case CCLVividColor.WRAP_GREY:
-			bodyColor = CCLPastelColor.CLOUD_GREY;
-			break;
-		default:
-			bodyColor = CCLPastelColor.PEACH_PINK;
-			break;
-	}
+
 	/**
 	 * 画像ソース
 	 * @type string
 	 */
 	export let src: string;
+
 	/**
 	 * alt属性に指定する値
 	 * @type string
 	 */
 	export let altText: string;
+
 	/**
 	 * 記事の見出し
 	 * @type string
 	 */
 	export let title: string;
+
 	/**
 	 * カードの詳細テキスト(140字程度推奨)
 	 * @type string
 	 */
 	export let cardText: string;
+
+	/**
+	 * 枠線の色に応じた背景色を取得する関数
+	 * @param borderColor - 枠線の色
+	 * @returns 背景色
+	 */
+	function getBodyColor(borderColor: string): string {
+		switch (borderColor) {
+			case CCLVividColor.STRAWBERRY_PINK:
+				return CCLPastelColor.PEACH_PINK;
+			case CCLVividColor.PINEAPPLE_YELLOW:
+				return CCLPastelColor.LEMON_YELLOW;
+			case CCLVividColor.SODA_BLUE:
+				return CCLPastelColor.SUGAR_BLUE;
+			case CCLVividColor.MELON_GREEN:
+				return CCLPastelColor.MATCHA_GREEN;
+			case CCLVividColor.GRAPE_PURPLE:
+				return CCLPastelColor.AKEBI_PURPLE;
+			case CCLVividColor.WRAP_GREY:
+				return CCLPastelColor.CLOUD_GREY;
+			default:
+				return CCLPastelColor.PEACH_PINK;
+		}
+	}
+
+	// 背景色を取得
+	let bodyColor = getBodyColor(borderColor);
 </script>
 
 <div class="CardWrapper" style="--border-color: var({borderColor})">
