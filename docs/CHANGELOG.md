@@ -1,5 +1,5 @@
-## [1.2.3](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.2...1.2.3) (2025/03/01)
+## [1.2.4](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.3...1.2.4) (2025/03/18)
 
-### REFACTORING
+### BUG FIX
 
-- Testing refactoring using Copilot.
+- Fixed the issue where the carousel component was not functioning correctly.
