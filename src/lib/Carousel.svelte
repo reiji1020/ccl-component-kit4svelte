@@ -41,7 +41,7 @@
 	}
 </script>
 
-<div class="carouselWrapper" style="--carousel-width: {csWidth}; --translate-x: {-currentIndex * 100}%)">
+<div class="carouselWrapper" style="--carousel-width: {csWidth}; --translate-x: calc(-{currentIndex} * 100%)">
 	<div class="slides">
 		{#each src as item, index}
 			<img class="slide" src={item.src} alt={item.alt} />
