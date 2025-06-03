@@ -1,4 +1,4 @@
-import{af as e,ag as l}from"./index-3b10e989.js";import{u as s}from"./index-b43c2074.js";import"./iframe-1282655f.js";import"./_commonjsHelpers-725317a4.js";import"./index-1b441bc2.js";import"./index-75b40af3.js";import"./index-356e4a49.js";function i(o){const n={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",img:"img",p:"p",pre:"pre",...s(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"Docs/README"}),`
+import{af as e,ag as l}from"./index-cec83432.js";import{u as s}from"./index-2ba5297d.js";import"./iframe-d17a9823.js";import"./_commonjsHelpers-725317a4.js";import"./index-1b441bc2.js";import"./index-75b40af3.js";import"./index-356e4a49.js";function i(o){const n={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",img:"img",p:"p",pre:"pre",...s(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"Docs/README"}),`
 `,e.jsx(n.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
 `,e.jsxs(n.p,{children:[e.jsx(n.a,{href:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml",rel:"nofollow",children:e.jsx(n.img,{src:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml/badge.svg?branch=main",alt:"Release Storybook to GitHubPages"})}),`
 `,e.jsx(n.a,{href:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml",rel:"nofollow",children:e.jsx(n.img,{src:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml/badge.svg?branch=main",alt:"Publish Package to npmjs"})})]}),`
@@ -75,4 +75,4 @@ v18.16.1
 `})}),`
 `,e.jsxs(n.p,{children:["When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store ",e.jsx(n.code,{children:"stories"})," in the ",e.jsx(n.code,{children:"src/stories"})," directory."]}),`
 `,e.jsxs(n.p,{children:["The component itself should be stored in the ",e.jsx(n.code,{children:"lib"})," directory."]})]})}function m(o={}){const{wrapper:n}={...s(),...o.components};return n?e.jsx(n,{...o,children:e.jsx(i,{...o})}):i(o)}export{m as default};
-//# sourceMappingURL=README-20db9ef8.js.map
+//# sourceMappingURL=README-42272b24.js.map
