@@ -1,5 +1,5 @@
-## [1.2.4](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.3...1.2.4) (2025/03/18)
+## [1.2.5](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.4...1.2.5) (2025/06/04)
 
 ### BUG FIX
 
-- Fixed the issue where the carousel component was not functioning correctly.
+- Corrected the position of the paging button on the carousel component.
