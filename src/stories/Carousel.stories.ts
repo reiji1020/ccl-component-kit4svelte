@@ -32,5 +32,3 @@ const imageSources = [
 ];
 
 export const Default = createStory(imageSources, '680px');
-export const Large = createStory(imageSources, '900px');
-export const Small = createStory(imageSources, '350px');
