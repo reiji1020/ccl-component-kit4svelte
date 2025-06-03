@@ -65,12 +65,13 @@
 		transform: translateX(var(--translate-x));
 	}
 	.slide {
-		min-width: 100%;
+		width: 100%;
+		height: 100%;
 	}
 	.buttons {
 		position: absolute;
 		top: 50%;
-		width: 95%;
+		width: 100%;
 		display: flex;
 		justify-content: space-between;
 		transform: translateY(-50%);
