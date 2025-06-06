@@ -11,7 +11,7 @@
 	/**
 	 * ヘッダー高さ
 	 * HeaderHeightの中から指定する
-	 * @default --hd-nomal
+	 * @default --hd-normal
 	 * @type string
 	 */
 	export let height: string;
