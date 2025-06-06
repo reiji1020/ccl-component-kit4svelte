@@ -28,9 +28,9 @@
 	/**
 	 * テーブルにいれるデータ
 	 * 2次元の配列で自由長
-	 * @type Array<string | number>
+	 * @type Array<Array<string | number>>
 	 */
-	export let tableData: string | number[][];
+	export let tableData: (string | number)[][];
 
 	/**
 	 * テーブルカラーに応じた背景色を取得する関数
@@ -57,7 +57,7 @@
 	}
 
 	// 背景色を取得
-	bodyColor = getBodyColor(tableColor);
+	$: bodyColor = getBodyColor(tableColor);
 </script>
 
 <!--汎用テーブル-->
@@ -65,20 +65,20 @@
 	<table>
 		<!--テーブルヘッダー-->
 		<thead class="table-header" style="--bgColor: var({tableColor})">
-		<tr>
-			{#each dataHeader as title, index}
-				<th>{title}</th>
-			{/each}
-		</tr>
-		</thead>
-		<tbody>
-		{#each tableData as row}
-			<tr class="table-body-style" style="--table-body-color: var({bodyColor})">
-				{#each row as data}
-					<td>{data}</td>
+			<tr>
+				{#each dataHeader as title}
+					<th>{title}</th>
 				{/each}
 			</tr>
-		{/each}
+		</thead>
+		<tbody>
+			{#each tableData as row}
+				<tr class="table-body-style" style="--table-body-color: var({bodyColor})">
+					{#each row as data}
+						<td>{data}</td>
+					{/each}
+				</tr>
+			{/each}
 		</tbody>
 	</table>
 </div>
