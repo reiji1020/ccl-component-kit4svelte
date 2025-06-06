@@ -30,6 +30,7 @@
 	 * Move to the next slide
 	 */
 	const nextSlide = () => {
+		if (src.length === 0) return;
 		currentIndex = (currentIndex + 1) % src.length;
 	}
 
@@ -37,6 +38,7 @@
 	 * Move to the previous slide
 	 */
 	const prevSlide = () => {
+		if (src.length === 0) return;
 		currentIndex = (currentIndex - 1 + src.length) % src.length;
 	}
 </script>
@@ -65,8 +67,7 @@
 		transform: translateX(var(--translate-x));
 	}
 	.slide {
-		width: 100%;
-		height: 100%;
+		min-width: 100%;
 	}
 	.buttons {
 		position: absolute;
