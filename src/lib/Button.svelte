@@ -16,6 +16,13 @@
 	export let label: string;
 
 	/**
+	 * クリックイベントハンドラ
+	 * @default () => {}
+	 * @type {() => void}
+	 */
+	export let onClick: () => void = () => {};
+
+	/**
 	 * ボタンの背景色を取得する関数
 	 * @param bgColor - ボタンの背景色
 	 * @returns 背景色
@@ -29,7 +36,7 @@
 </script>
 
 <!--汎用ボタン-->
-<button class="buttonWrapper" style="--bgColor: {buttonColor}">
+<button class="buttonWrapper" style="--bgColor: {buttonColor}" on:click={onClick}>
 	<span class="btLabel">{label}</span>
 </button>
 

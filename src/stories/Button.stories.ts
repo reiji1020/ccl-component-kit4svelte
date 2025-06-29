@@ -46,7 +46,10 @@ const createStory = (bgColor: string, label: string): Story => ({
 			await expect(args.bgColor).toBe(bgColor);
 		});
 		await step('Check if the button label is set correctly', async () => {
-			await expect(args.label).toBe(label);
+						await expect(args.label).toBe(label);
+		});
+		await step('Check if onClick is called', async () => {
+			await expect(args.onClick).toHaveBeenCalled();
 		});
 	}
 });
