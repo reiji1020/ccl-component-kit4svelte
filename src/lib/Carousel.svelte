@@ -72,11 +72,18 @@
 	.buttons {
 		position: absolute;
 		top: 50%;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
 		transform: translateY(-50%);
-		padding: 0 20px;
+		width: 100%;
+	}
+	.buttons button:first-child {
+		position: absolute;
+		left: 20px;
+		z-index: 1;
+	}
+	.buttons button:last-child {
+		position: absolute;
+		right: 20px;
+		z-index: 1;
 	}
 	button {
 		background: white;
