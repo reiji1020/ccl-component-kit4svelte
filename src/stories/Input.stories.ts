@@ -4,7 +4,7 @@ import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 
 const meta = {
-	title: 'CommonComponents/Input',
+	title: 'Form/Input',
 	component: Input,
 	tags: ['autodocs'],
 	argTypes: {

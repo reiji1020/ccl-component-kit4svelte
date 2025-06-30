@@ -10,7 +10,7 @@ const defaultOptions = [
 ];
 
 const meta = {
-	title: 'CommonComponents/Select',
+	title: 'Form/Select',
 	component: Select,
 	tags: ['autodocs'],
 	argTypes: {

@@ -4,7 +4,7 @@ import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 
 const meta = {
-	title: 'CommonComponents/Textarea',
+	title: 'Form/Textarea',
 	component: Textarea,
 	tags: ['autodocs'],
 	argTypes: {
