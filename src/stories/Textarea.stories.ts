@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Textarea from '../lib/Textarea.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
+import AllColorsTextareaWrapper from './AllColors/AllColorsTextareaWrapper.svelte';
 
 const meta = {
 	title: 'Form/Textarea',
@@ -54,7 +55,7 @@ export const Disabled: Story = {
 		id: 'disabled-textarea',
 		label: '入力不可',
 		placeholder: 'このフィールドは無効です',
-		value: '編集できません。\n複数行のテキストです。\n無効化されています。',
+		value: '編集できません.\n複数行のテキストです.\n無効化されています.',
 		disabled: true,
 		borderColor: CCLVividColor.WRAP_GREY,
 		rows: 7,
@@ -72,35 +73,14 @@ export const NoLabel: Story = {
 	}
 };
 
-export const SodaBlue: Story = {
-	args: {
-		id: 'soda-blue-textarea',
-		label: 'ソーダブルー',
-		placeholder: 'ソーダブルーのテキストエリア',
-		borderColor: CCLVividColor.SODA_BLUE,
-		rows: 6,
-		cols: 35
-	}
-};
-
-export const MelonGreen: Story = {
-	args: {
-		id: 'melon-green-textarea',
-		label: 'メロングリーン',
-		placeholder: 'メロングリーンのテキストエリア',
-		borderColor: CCLVividColor.MELON_GREEN,
-		rows: 4,
-		cols: 28
-	}
-};
-
-export const GrapePurple: Story = {
-	args: {
-		id: 'grape-purple-textarea',
-		label: 'グレープパープル',
-		placeholder: 'グレープパープルのテキストエリア',
-		borderColor: CCLVividColor.GRAPE_PURPLE,
-		rows: 8,
-		cols: 45
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsTextareaWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
 	}
 };

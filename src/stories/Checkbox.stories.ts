@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Checkbox from '../lib/Checkbox.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import MultipleCheckboxesWrapper from './MultipleCheckboxesWrapper.svelte';
+import AllColorsCheckboxWrapper from './AllColors/AllColorsCheckboxWrapper.svelte';
 
 const meta = {
 	title: 'Form/Checkbox',
@@ -70,12 +71,6 @@ const createStory = (initialArgs: Story['args']): Story => ({
 
 export const Default = createStory({ label: 'Checkbox', checked: false });
 export const Checked = createStory({ label: 'Checked', checked: true });
-export const Pink = createStory({ label: 'Strawberry Pink', checked: true, color: CCLVividColor.STRAWBERRY_PINK });
-export const Yellow = createStory({ label: 'Pineapple Yellow', checked: true, color: CCLVividColor.PINEAPPLE_YELLOW });
-export const Blue = createStory({ label: 'Soda Blue', checked: true, color: CCLVividColor.SODA_BLUE });
-export const Green = createStory({ label: 'Melon Green', checked: true, color: CCLVividColor.MELON_GREEN });
-export const Purple = createStory({ label: 'Grape Purple', checked: true, color: CCLVividColor.GRAPE_PURPLE });
-export const Grey = createStory({ label: 'Wrap Grey', checked: true, color: CCLVividColor.WRAP_GREY });
 export const Disabled = createStory({ label: 'Disabled', checked: false, disabled: true });
 export const DisabledChecked = createStory({ label: 'Disabled Checked', checked: true, disabled: true });
 
@@ -129,6 +124,18 @@ export const MultipleCheckboxes: Story = {
 			await expect(checkbox3).toBeChecked();
 		});
 	},
+};
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsCheckboxWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
 };
 
 

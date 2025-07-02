@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import RadioButton from '../lib/RadioButton.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import MultipleRadioButtonsWrapper from './MultipleRadioButtonsWrapper.svelte';
+import AllColorsRadioButtonWrapper from './AllColors/AllColorsRadioButtonWrapper.svelte';
 
 const meta = {
 	title: 'Form/RadioButton',
@@ -27,7 +28,7 @@ type Story = StoryObj<typeof meta>;
 
 const createStory = (initialArgs: Story['args']): Story => ({
 	args: {
-		...initialArgs,
+		...initialArgs
 	},
 	play: async ({ args, canvasElement, step }) => {
 		const canvas = within(canvasElement);
@@ -58,48 +59,6 @@ export const Default = createStory({
 	group: 'option1'
 });
 
-export const Pink = createStory({
-	label: 'Strawberry Pink',
-	value: 'pink',
-	group: 'pink',
-	color: CCLVividColor.STRAWBERRY_PINK
-});
-
-export const Yellow = createStory({
-	label: 'Pineapple Yellow',
-	value: 'yellow',
-	group: 'yellow',
-	color: CCLVividColor.PINEAPPLE_YELLOW
-});
-
-export const Blue = createStory({
-	label: 'Soda Blue',
-	value: 'blue',
-	group: 'blue',
-	color: CCLVividColor.SODA_BLUE
-});
-
-export const Green = createStory({
-	label: 'Melon Green',
-	value: 'green',
-	group: 'green',
-	color: CCLVividColor.MELON_GREEN
-});
-
-export const Purple = createStory({
-	label: 'Grape Purple',
-	value: 'purple',
-	group: 'purple',
-	color: CCLVividColor.GRAPE_PURPLE
-});
-
-export const Grey = createStory({
-	label: 'Wrap Grey',
-	value: 'grey',
-	group: 'grey',
-	color: CCLVividColor.WRAP_GREY
-});
-
 export const Disabled = createStory({
 	label: 'Disabled',
 	value: 'disabled',
@@ -118,8 +77,8 @@ export const MultipleRadioButtons: Story = {
 	render: () => ({
 		Component: MultipleRadioButtonsWrapper,
 		props: {
-			selectedValue: 'option1',
-		},
+			selectedValue: 'option1'
+		}
 	}),
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
@@ -154,5 +113,17 @@ export const MultipleRadioButtons: Story = {
 			await expect(radio2).not.toBeChecked();
 			await expect(radio3).not.toBeChecked();
 		});
-	},
+	}
+};
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsRadioButtonWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
 };

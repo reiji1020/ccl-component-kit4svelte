@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
-import { CCLVividColor } from '$lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '$lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
+import AllColorsButtonWrapper from './AllColors/AllColorsButtonWrapper.svelte';
 
 const colorOptions = [
 	CCLVividColor.STRAWBERRY_PINK,
@@ -77,13 +78,20 @@ const createStory = (bgColor: string, label: string, disabled: boolean = false):
 	}
 });
 
-export const Pink = createStory(CCLVividColor.STRAWBERRY_PINK, 'Strawberry Pink');
-export const Yellow = createStory(CCLVividColor.PINEAPPLE_YELLOW, 'Pineapple Yellow');
-export const Blue = createStory(CCLVividColor.SODA_BLUE, 'Soda Blue');
-export const Green = createStory(CCLVividColor.MELON_GREEN, 'Melon Green');
-export const Purple = createStory(CCLVividColor.GRAPE_PURPLE, 'Grape Purple');
-export const Grey = createStory(CCLVividColor.WRAP_GREY, 'Wrap Grey');
+
 
 export const Disabled = createStory(CCLVividColor.SODA_BLUE, 'Disabled Button', true);
 
 export const DisabledClicked = createStory(CCLVividColor.SODA_BLUE, 'Disabled Clicked', true);
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsButtonWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};

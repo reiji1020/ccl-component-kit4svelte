@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Select from '../lib/Select.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
+import AllColorsSelectWrapper from './AllColors/AllColorsSelectWrapper.svelte';
 
 const defaultOptions = [
 	{ value: 'option1', label: 'オプション 1' },
@@ -69,32 +70,15 @@ export const NoLabel: Story = {
 	}
 };
 
-export const SodaBlue: Story = {
-	args: {
-		id: 'soda-blue-select',
-		label: 'ソーダブルー',
-		options: defaultOptions,
-		value: 'option1',
-		borderColor: CCLVividColor.SODA_BLUE
-	}
-};
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsSelectWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
 
-export const MelonGreen: Story = {
-	args: {
-		id: 'melon-green-select',
-		label: 'メロングリーン',
-		options: defaultOptions,
-		value: 'option2',
-		borderColor: CCLVividColor.MELON_GREEN
-	}
-};
-
-export const GrapePurple: Story = {
-	args: {
-		id: 'grape-purple-select',
-		label: 'グレープパープル',
-		options: defaultOptions,
-		value: 'option3',
-		borderColor: CCLVividColor.GRAPE_PURPLE
+				code: null
+			}
+		}
 	}
 };

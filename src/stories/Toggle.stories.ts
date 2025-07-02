@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Toggle from '../lib/Toggle.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
+import AllColorsToggleWrapper from './AllColors/AllColorsToggleWrapper.svelte';
 
 const meta = {
 	title: 'Form/Toggle',
@@ -20,7 +21,7 @@ const meta = {
 		},
 		onChange: fn()
 	}
-} satisfies Meta<ToggleSwitch>;
+} satisfies Meta<Toggle>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -75,36 +76,6 @@ export const Checked = createStory({
 	checked: true
 });
 
-export const Pink = createStory({
-	checked: true,
-	color: CCLVividColor.STRAWBERRY_PINK
-});
-
-export const Yellow = createStory({
-	checked: true,
-	color: CCLVividColor.PINEAPPLE_YELLOW
-});
-
-export const Blue = createStory({
-	checked: true,
-	color: CCLVividColor.SODA_BLUE
-});
-
-export const Green = createStory({
-	checked: true,
-	color: CCLVividColor.MELON_GREEN
-});
-
-export const Purple = createStory({
-	checked: true,
-	color: CCLVividColor.GRAPE_PURPLE
-});
-
-export const Grey = createStory({
-	checked: true,
-	color: CCLVividColor.WRAP_GREY
-});
-
 export const Disabled = createStory({
 	checked: false,
 	disabled: true
@@ -114,3 +85,15 @@ export const DisabledChecked = createStory({
 	checked: true,
 	disabled: true
 });
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsToggleWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};

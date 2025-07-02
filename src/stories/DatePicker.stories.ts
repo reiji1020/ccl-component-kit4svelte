@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import DatePicker from '../lib/DatePicker.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import { DateTime } from 'luxon';
+import AllColorsDatePickerWrapper from './AllColors/AllColorsDatePickerWrapper.svelte';
 
 const colorOptions = Object.values(CCLVividColor);
 
@@ -88,26 +89,14 @@ WithInitialDate.play = async ({ canvasElement, step, args }) => {
 	});
 };
 
-export const Blue = createStory({
-	placeholder: 'ソーダブルー',
-	selectedDate: new Date(),
-	borderColor: CCLVividColor.SODA_BLUE
-});
-
-export const Green = createStory({
-	placeholder: 'メロングリーン',
-	selectedDate: new Date(),
-	borderColor: CCLVividColor.MELON_GREEN
-});
-
-export const Purple = createStory({
-	placeholder: 'グレープパープル',
-	selectedDate: new Date(),
-	borderColor: CCLVividColor.GRAPE_PURPLE
-});
-
-export const Grey = createStory({
-	placeholder: 'ラップグレー',
-	selectedDate: new Date(),
-	borderColor: CCLVividColor.WRAP_GREY
-});
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsDatePickerWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Footer from '$lib/Footer.svelte';
-import { CCLVividColor } from '$lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '$lib/const/config';
 import { expect } from '@storybook/test';
+import AllColorsFooterWrapper from './AllColors/AllColorsFooterWrapper.svelte';
 
 const colorOptions = [
 	CCLVividColor.STRAWBERRY_PINK,
@@ -41,9 +42,14 @@ const createStory = (bgColor: string): Story => ({
 	}
 });
 
-export const Pink = createStory(CCLVividColor.STRAWBERRY_PINK);
-export const Yellow = createStory(CCLVividColor.PINEAPPLE_YELLOW);
-export const Blue = createStory(CCLVividColor.SODA_BLUE);
-export const Green = createStory(CCLVividColor.MELON_GREEN);
-export const Purple = createStory(CCLVividColor.GRAPE_PURPLE);
-export const Grey = createStory(CCLVividColor.WRAP_GREY);
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsFooterWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};
