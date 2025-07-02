@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Thumbnail from '$lib/Thumbnail.svelte';
-import { CCLVividColor } from '$lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
+import AllColorsThumbnailWrapper from './AllColors/AllColorsThumbnailWrapper.svelte';
 
 const colorOptions = [
 	CCLVividColor.STRAWBERRY_PINK,
@@ -62,10 +63,15 @@ export const Default = createStory(
 	'120px',
 	'thumbnail.png'
 );
-export const Yellow = createStory(
-	CCLVividColor.PINEAPPLE_YELLOW,
-	'Pineapple Yellow',
-	'120px',
-	'thumbnail.png'
-);
-export const Blue = createStory(CCLVividColor.SODA_BLUE, 'Soda Blue', '120px', 'thumbnail.png');
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsThumbnailWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};

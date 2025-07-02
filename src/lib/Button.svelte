@@ -16,6 +16,20 @@
 	export let label: string;
 
 	/**
+	 * クリックイベントハンドラ
+	 * @default () => {}
+	 * @type {() => void}
+	 */
+	export let onClick: () => void = () => {};
+
+	/**
+	 * ボタンの非活性状態
+	 * @default false
+	 * @type boolean
+	 */
+	export let disabled: boolean = false;
+
+	/**
 	 * ボタンの背景色を取得する関数
 	 * @param bgColor - ボタンの背景色
 	 * @returns 背景色
@@ -29,7 +43,7 @@
 </script>
 
 <!--汎用ボタン-->
-<button class="buttonWrapper" style="--bgColor: {buttonColor}">
+<button class="buttonWrapper" style="--bgColor: {buttonColor}" on:click={onClick} {disabled}>
 	<span class="btLabel">{label}</span>
 </button>
 
@@ -43,6 +57,10 @@
 	}
 	.buttonWrapper:hover {
 		cursor: pointer;
+	}
+	.buttonWrapper:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
 	}
 	.btLabel {
 		flex-direction: column;

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
-import { CCLVividColor } from '$lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '$lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
+import AllColorsButtonWrapper from './AllColors/AllColorsButtonWrapper.svelte';
 
 const colorOptions = [
 	CCLVividColor.STRAWBERRY_PINK,
@@ -24,36 +25,73 @@ const meta = {
 			control: { type: 'select' },
 			options: colorOptions
 		},
-		onClick: fn()
+		onClick: fn(),
+		disabled: {
+			control: { type: 'boolean' }
+		}
 	}
 } satisfies Meta<Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createStory = (bgColor: string, label: string): Story => ({
+const createStory = (bgColor: string, label: string, disabled: boolean = false): Story => ({
 	args: {
 		bgColor,
 		label,
-		onClick: fn()
+		onClick: fn(),
+		disabled
 	},
 	play: async ({ args, canvasElement, step }) => {
 		const canvas = within(canvasElement);
-		await step('Check if the button exists', async () => {
-			await userEvent.click(canvas.getByRole('button'));
+		const button = canvas.getByRole('button');
+
+		await step('ボタンが存在すること', async () => {
+			await expect(button).toBeInTheDocument();
 		});
-		await step('Check if the button color is set correctly', async () => {
+
+		await step('ボタンの色が正しく設定されていること', async () => {
 			await expect(args.bgColor).toBe(bgColor);
 		});
-		await step('Check if the button label is set correctly', async () => {
+
+		await step('ボタンのラベルが正しく設定されていること', async () => {
 			await expect(args.label).toBe(label);
 		});
+
+		if (disabled) {
+			await step('非活性状態であること', async () => {
+				await expect(button).toBeDisabled();
+			});
+			await step('クリックしてもonClickが呼ばれないこと', async () => {
+				await userEvent.click(button);
+				await expect(args.onClick).not.toHaveBeenCalled();
+			});
+		} else {
+			await step('活性状態であること', async () => {
+				await expect(button).toBeEnabled();
+			});
+			await step('クリックするとonClickが呼ばれること', async () => {
+				await userEvent.click(button);
+				await expect(args.onClick).toHaveBeenCalled();
+			});
+		}
 	}
 });
 
-export const Pink = createStory(CCLVividColor.STRAWBERRY_PINK, 'Strawberry Pink');
-export const Yellow = createStory(CCLVividColor.PINEAPPLE_YELLOW, 'Pineapple Yellow');
-export const Blue = createStory(CCLVividColor.SODA_BLUE, 'Soda Blue');
-export const Green = createStory(CCLVividColor.MELON_GREEN, 'Melon Green');
-export const Purple = createStory(CCLVividColor.GRAPE_PURPLE, 'Grape Purple');
-export const Grey = createStory(CCLVividColor.WRAP_GREY, 'Wrap Grey');
+
+
+export const Disabled = createStory(CCLVividColor.SODA_BLUE, 'Disabled Button', true);
+
+export const DisabledClicked = createStory(CCLVividColor.SODA_BLUE, 'Disabled Clicked', true);
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsButtonWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};

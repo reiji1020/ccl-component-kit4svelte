@@ -1,5 +1,8 @@
-## [1.2.7](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.6...1.2.7) (2025/06/29)
+## [2.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.7...2.0.0) (2025/07/02)
 
-### Bug Fixes
+### More attractive components have been added!
 
-* Fix carousel arrow button display issue.
+* Additional form-based components.
+* Add an alert component.
+* Storybook stories have been organised.
+* Upgraded SvelteKit version.

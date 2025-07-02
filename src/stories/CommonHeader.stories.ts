@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import { expect, within } from '@storybook/test';
 import CommonHeader from '$lib/CommonHeader.svelte';
-import { CCLVividColor, HeaderHeight } from '$lib/const/config';
+import { CCLVividColor, CCLPastelColor, HeaderHeight } from '$lib/const/config';
+import AllColorsCommonHeaderWrapper from './AllColors/AllColorsCommonHeaderWrapper.svelte';
 
 const colorOptions = [
 	CCLVividColor.STRAWBERRY_PINK,
@@ -62,37 +63,8 @@ const createStory = (bgColor: string, height: string, logo: string, logoHeight: 
 	}
 });
 
-export const Pink = createStory(
-	CCLVividColor.STRAWBERRY_PINK,
-	HeaderHeight.NORMAL,
-	'beace.svg',
-	'50px'
-);
-export const Yellow = createStory(
-	CCLVividColor.PINEAPPLE_YELLOW,
-	HeaderHeight.NORMAL,
-	'beace.svg',
-	'50px'
-);
-export const ThirdColor = createStory(
-	CCLVividColor.SODA_BLUE,
-	HeaderHeight.NORMAL,
-	'beace.svg',
-	'50px'
-);
-export const Green = createStory(
-	CCLVividColor.MELON_GREEN,
-	HeaderHeight.NORMAL,
-	'beace.svg',
-	'50px'
-);
-export const Purple = createStory(
-	CCLVividColor.GRAPE_PURPLE,
-	HeaderHeight.NORMAL,
-	'beace.svg',
-	'50px'
-);
-export const Grey = createStory(CCLVividColor.WRAP_GREY, HeaderHeight.NORMAL, 'beace.svg', '50px');
+
+
 export const WideHeader = createStory(
 	CCLVividColor.STRAWBERRY_PINK,
 	HeaderHeight.WIDE,
@@ -105,3 +77,16 @@ export const NallowHeader = createStory(
 	'beace.svg',
 	'30px'
 );
+
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsCommonHeaderWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
+	}
+};
+
