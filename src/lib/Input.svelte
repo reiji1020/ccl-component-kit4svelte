@@ -50,6 +50,20 @@
 	 * @type string
 	 */
 	export let id: string = 'ccl-input';
+
+	/**
+	 * バリデーションメッセージ
+	 * @default ''
+	 * @type string
+	 */
+	export let validationMessage: string = '';
+
+	/**
+	 * バリデーションの状態
+	 * @default true
+	 * @type boolean
+	 */
+	export let isValid: boolean = true;
 </script>
 
 <div class="input-wrapper">
@@ -64,6 +78,7 @@
 			{placeholder}
 			{disabled}
 			class="input-field"
+			class:invalid={!isValid}
 			style="--border-color: var({borderColor})"
 		/>
 	{:else if type === 'password'}
@@ -74,6 +89,7 @@
 			{placeholder}
 			{disabled}
 			class="input-field"
+			class:invalid={!isValid}
 			style="--border-color: var({borderColor})"
 		/>
 	{:else if type === 'email'}
@@ -84,6 +100,7 @@
 			{placeholder}
 			{disabled}
 			class="input-field"
+			class:invalid={!isValid}
 			style="--border-color: var({borderColor})"
 		/>
 	{:else if type === 'number'}
@@ -94,8 +111,12 @@
 			{placeholder}
 			{disabled}
 			class="input-field"
+			class:invalid={!isValid}
 			style="--border-color: var({borderColor})"
 		/>
+	{/if}
+	{#if !isValid && validationMessage}
+		<span class="validation-message">{validationMessage}</span>
 	{/if}
 </div>
 
@@ -128,5 +149,14 @@
 		background-color: var(--cloud-grey);
 		cursor: not-allowed;
 		border-color: var(--cloud-grey);
+	}
+
+	.input-field.invalid {
+		border-color: var(--ccl-error-color, var(--strawberry-pink));
+	}
+
+	.validation-message {
+		font-size: 12px;
+		color: var(--ccl-error-color, var(--strawberry-pink));
 	}
 </style>

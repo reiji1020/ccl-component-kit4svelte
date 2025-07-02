@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Input from '../lib/Input.svelte';
-import { CCLVividColor } from '../lib/const/config';
+import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
+import AllColorsWrapper from './AllColors/AllColorsWrapper.svelte';
 
 const meta = {
 	title: 'Form/Input',
@@ -72,20 +73,39 @@ export const NoLabel: Story = {
 	}
 };
 
-export const MelonGreen: Story = {
+export const Invalid: Story = {
 	args: {
-		id: 'melon-green-input',
-		label: 'メロングリーン',
-		placeholder: 'メロングリーンの入力フィールド',
-		borderColor: CCLVividColor.MELON_GREEN
+		id: 'invalid-input',
+		label: 'メールアドレス',
+		placeholder: 'メールアドレスを入力',
+		borderColor: CCLVividColor.STRAWBERRY_PINK,
+		value: 'invalid-email',
+		isValid: false,
+		validationMessage: '有効なメールアドレスを入力してください。'
+	},
+	play: async ({ canvasElement, args, step }) => {
+		const canvas = within(canvasElement);
+		const input = canvas.getByLabelText('メールアドレス');
+
+		await step('バリデーションメッセージが正しく表示されること', async () => {
+			const validationMessage = canvas.getByText(args.validationMessage);
+			await expect(validationMessage).toBeInTheDocument();
+		});
+
+		await step('入力フィールドにinvalidクラスが付与されていること', async () => {
+			await expect(input).toHaveClass('input-field invalid');
+		});
 	}
 };
 
-export const GrapePurple: Story = {
-	args: {
-		id: 'grape-purple-input',
-		label: 'グレープパープル',
-		placeholder: 'グレープパープルの入力フィールド',
-		borderColor: CCLVividColor.GRAPE_PURPLE
+export const AllColors: Story = {
+	render: () => ({ Component: AllColorsWrapper }),
+	args: {},
+	parameters: {
+		docs: {
+			source: {
+				code: null
+			}
+		}
 	}
 };
