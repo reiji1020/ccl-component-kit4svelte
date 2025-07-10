@@ -12,7 +12,7 @@
 		"strictFunctionTypes": true,
 		"importsNotUsedAsValues": "remove",
 		"preserveValueImports": false,
-		"verbatimModuleSyntax": true
+		"verbatimModuleSyntax": false
 	}
 	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
 	//
