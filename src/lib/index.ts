@@ -15,3 +15,4 @@ export { default as FormGroup } from './FormGroup.svelte';
 export { default as DatePicker } from './DatePicker.svelte';
 export { CCLVividColor, CCLPastelColor, HeaderHeight } from './const/config';
 export { default as Spinner } from './Spinner.svelte';
+export { default as ProgressBar } from './ProgressBar.svelte';
