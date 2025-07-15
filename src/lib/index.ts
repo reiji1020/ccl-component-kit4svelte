@@ -16,3 +16,8 @@ export { default as DatePicker } from './DatePicker.svelte';
 export { CCLVividColor, CCLPastelColor, HeaderHeight } from './const/config';
 export { default as Spinner } from './Spinner.svelte';
 export { default as ProgressBar } from './ProgressBar.svelte';
+export { default as Textarea } from './Textarea.svelte';
+export { default as Alert } from './Alert.svelte';
+export { default as Select } from './Select.svelte';
+export { default as ToolTip } from './Tooltip.svelte';
+export { default as Input } from './Input.svelte';
