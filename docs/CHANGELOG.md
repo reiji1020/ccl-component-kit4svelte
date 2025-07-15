@@ -1,8 +1,6 @@
-## [2.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/1.2.7...2.0.0) (2025/07/02)
+## [2.0.1](https://github.com/reiji1020/ccl-component-kit4svelte/compare/2.0.0...2.0.1) (2025/07/16)
 
-### More attractive components have been added!
+### New components and bug fixes.
 
-* Additional form-based components.
-* Add an alert component.
-* Storybook stories have been organised.
-* Upgraded SvelteKit version.
+* Additional essential components for form manipulation.
+* Fixed an issue where multiple components could not be exported.

@@ -1,5 +1,6 @@
 import type { StorybookConfig } from '@storybook/sveltekit';
 import type { AddonOptionsVite } from '@storybook/addon-coverage';
+import { mergeConfig } from 'vite';
 
 const coverageConfig: AddonOptionsVite = {
 	istanbul: {
@@ -23,6 +24,15 @@ const config: StorybookConfig = {
 		options: {}
 	},
 	docs: {},
-	staticDirs: ['../src/stories/assets']
+	staticDirs: ['../src/stories/assets'],
+	viteFinal: async (config) => {
+		return mergeConfig(config, {
+			resolve: {
+				alias: {
+					'$lib': './src/lib'
+				}
+			}
+		});
+	}
 };
 export default config;
