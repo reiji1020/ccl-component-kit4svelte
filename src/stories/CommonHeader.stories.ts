@@ -32,19 +32,27 @@ const meta = {
 			options: heightOptions
 		},
 		logo: { control: { type: 'text' } },
-		logoHeight: { control: { type: 'text' } }
+		logoHeight: { control: { type: 'text' } },
+		href: { control: { type: 'text' }, description: 'ロゴのリンク先（必須）' }
 	}
 } satisfies Meta<CommonHeader>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createStory = (bgColor: string, height: string, logo: string, logoHeight: string): Story => ({
+const createStory = (
+	bgColor: string,
+	height: string,
+	logo: string,
+	logoHeight: string,
+	href: string
+): Story => ({
 	args: {
 		bgColor,
 		height,
 		logo,
-		logoHeight
+		logoHeight,
+		href
 	},
 	play: async ({ args, step, canvasElement }) => {
 		const canvas = within(canvasElement);
@@ -60,22 +68,25 @@ const createStory = (bgColor: string, height: string, logo: string, logoHeight: 
 		await step('Headerに指定したsvg画像のheightが正しく指定されていること', async () => {
 			await expect(args.logoHeight).toBe(logoHeight);
 		});
+		await step('aタグにリンクが設定されていること', async () => {
+			await expect(canvas.getByRole('link')).toHaveAttribute('href', href);
+		});
 	}
 });
-
-
 
 export const WideHeader = createStory(
 	CCLVividColor.STRAWBERRY_PINK,
 	HeaderHeight.WIDE,
 	'beace.svg',
-	'50px'
+	'50px',
+	'https://www.google.com/'
 );
 export const NallowHeader = createStory(
 	CCLVividColor.STRAWBERRY_PINK,
 	HeaderHeight.NALLOW,
 	'beace.svg',
-	'30px'
+	'30px',
+	'https://www.google.com/'
 );
 
 export const AllColors: Story = {
@@ -89,4 +100,5 @@ export const AllColors: Story = {
 		}
 	}
 };
+
 

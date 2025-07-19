@@ -15,4 +15,5 @@ chromatic.config.json
 build-storybook.log
 coverage
 .storybook/coverage-storybook.json
+debug-storybook.log
 GEMINI.md

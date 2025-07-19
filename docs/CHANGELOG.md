@@ -1,6 +1,5 @@
-## [2.0.1](https://github.com/reiji1020/ccl-component-kit4svelte/compare/2.0.0...2.0.1) (2025/07/16)
+## [2.0.2](https://github.com/reiji1020/ccl-component-kit4svelte/compare/2.0.1...2.0.2) (2025/07/19)
 
-### New components and bug fixes.
+### Improved functionality of header components.
 
-* Additional essential components for form manipulation.
-* Fixed an issue where multiple components could not be exported.
+* Allows links to be set in header components.

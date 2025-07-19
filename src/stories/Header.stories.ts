@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
-import { expect } from '@storybook/test';
+import { expect, within } from '@storybook/test';
 import Header from '$lib/Header.svelte';
 import { CCLVividColor, CCLPastelColor, HeaderHeight } from '$lib/const/config';
 import AllColorsHeaderWrapper from './AllColors/AllColorsHeaderWrapper.svelte';
@@ -42,12 +42,17 @@ const createStory = (bgColor: string, height: string): Story => ({
 		bgColor,
 		height
 	},
-	play: async ({ args, step }) => {
+	play: async ({ args, step, canvasElement }) => {
+		const canvas = within(canvasElement);
 		await step('背景色にセットした色が渡されていること', async () => {
 			await expect(args.bgColor).toBe(bgColor);
 		});
 		await step('Headerの高さがセットした大きさになっていること', async () => {
 			await expect(args.height).toBe(height);
+		});
+		await step('aタグにリンクが設定されていること', async () => {
+			const link = canvas.getByRole('link');
+			await expect(link).toHaveAttribute('href', 'https://candychupslab.netlify.app/');
 		});
 	}
 });
