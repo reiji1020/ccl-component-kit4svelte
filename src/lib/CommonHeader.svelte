@@ -28,13 +28,21 @@
 	 * @type string
 	 */
 	export let logoHeight: string;
+
+	/**
+	 * ロゴのリンク先
+	 * @type string
+	 */
+	export let href: string;
 </script>
 
 <!--汎用ヘッダー-->
 <header>
 	<div class="wrapper" style="--bgColor: var({bgColor}); --height: var({height})">
 		{#if logo}
-			<img style="height: {logoHeight}" src={logo} alt="SVG Image" />
+			<a {href}>
+				<img style="height: {logoHeight}" src={logo} alt="SVG Image" />
+			</a>
 		{:else}
 			<p>SVGファイルが指定されていません</p>
 		{/if}
