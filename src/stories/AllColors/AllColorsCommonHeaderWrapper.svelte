@@ -8,7 +8,12 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLVividColor) as [name, color]}
 			<div class="color-sample">
-				<CommonHeader bgColor={color} height={HeaderHeight.NORMAL} logo="beace.svg" logoHeight="50px" />
+				<CommonHeader
+					bgColor={color}
+					height={HeaderHeight.NORMAL}
+					logo="beace.svg"
+					logoHeight="50px"
+				/>
 				<span>{name}</span>
 			</div>
 		{/each}
@@ -18,7 +23,12 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLPastelColor) as [name, color]}
 			<div class="color-sample">
-				<CommonHeader bgColor={color} height={HeaderHeight.NORMAL} logo="beace.svg" logoHeight="50px" />
+				<CommonHeader
+					bgColor={color}
+					height={HeaderHeight.NORMAL}
+					logo="beace.svg"
+					logoHeight="50px"
+				/>
 				<span>{name}</span>
 			</div>
 		{/each}

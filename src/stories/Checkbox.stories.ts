@@ -72,7 +72,11 @@ const createStory = (initialArgs: Story['args']): Story => ({
 export const Default = createStory({ label: 'Checkbox', checked: false });
 export const Checked = createStory({ label: 'Checked', checked: true });
 export const Disabled = createStory({ label: 'Disabled', checked: false, disabled: true });
-export const DisabledChecked = createStory({ label: 'Disabled Checked', checked: true, disabled: true });
+export const DisabledChecked = createStory({
+	label: 'Disabled Checked',
+	checked: true,
+	disabled: true
+});
 
 export const MultipleCheckboxes: Story = {
 	render: () => ({
@@ -80,8 +84,8 @@ export const MultipleCheckboxes: Story = {
 		props: {
 			checked1: false,
 			checked2: false,
-			checked3: false,
-		},
+			checked3: false
+		}
 	}),
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
@@ -123,7 +127,7 @@ export const MultipleCheckboxes: Story = {
 			await expect(checkbox2).toBeChecked();
 			await expect(checkbox3).toBeChecked();
 		});
-	},
+	}
 };
 
 export const AllColors: Story = {
@@ -137,5 +141,3 @@ export const AllColors: Story = {
 		}
 	}
 };
-
-

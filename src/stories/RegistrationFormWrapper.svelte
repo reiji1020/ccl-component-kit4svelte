@@ -13,7 +13,11 @@
 		<Input type="text" id="reg-username" bind:value={username} />
 	</FormGroup>
 
-	<FormGroup label="メールアドレス" helpText="有効なメールアドレスを入力してください" forId="reg-email">
+	<FormGroup
+		label="メールアドレス"
+		helpText="有効なメールアドレスを入力してください"
+		forId="reg-email"
+	>
 		<Input type="email" id="reg-email" bind:value={email} />
 	</FormGroup>
 

@@ -76,7 +76,6 @@ export const AllColors: Story = {
 	parameters: {
 		docs: {
 			source: {
-
 				code: null
 			}
 		}

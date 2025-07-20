@@ -8,11 +8,7 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLVividColor) as [name, color]}
 			<div class="color-sample">
-				<DatePicker
-					id={`vivid-${name.toLowerCase()}`}
-					placeholder={name}
-					borderColor={color}
-				/>
+				<DatePicker id={`vivid-${name.toLowerCase()}`} placeholder={name} borderColor={color} />
 			</div>
 		{/each}
 	</div>
@@ -21,11 +17,7 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLPastelColor) as [name, color]}
 			<div class="color-sample">
-				<DatePicker
-					id={`pastel-${name.toLowerCase()}`}
-					placeholder={name}
-					borderColor={color}
-				/>
+				<DatePicker id={`pastel-${name.toLowerCase()}`} placeholder={name} borderColor={color} />
 			</div>
 		{/each}
 	</div>

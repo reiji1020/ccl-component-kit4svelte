@@ -2,4 +2,4 @@
 
 ### Improved functionality of header components.
 
-* Allows links to be set in header components.
+- Allows links to be set in header components.

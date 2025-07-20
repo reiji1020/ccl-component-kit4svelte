@@ -19,8 +19,8 @@
 					id={`vivid-${name.toLowerCase()}`}
 					label={name}
 					{options}
-					value={"option1"}
-										borderColor={color}
+					value={'option1'}
+					borderColor={color}
 				/>
 			</div>
 		{/each}
@@ -34,8 +34,8 @@
 					id={`pastel-${name.toLowerCase()}`}
 					label={name}
 					{options}
-					value={"option1"}
-										borderColor={color}
+					value={'option1'}
+					borderColor={color}
 				/>
 			</div>
 		{/each}

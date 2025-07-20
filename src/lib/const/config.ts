@@ -17,15 +17,14 @@ const CCLPastelColorBase = {
 };
 
 const CCLPastelColor = {
-  ...CCLPastelColorBase
+	...CCLPastelColorBase
 } as const;
 
 export enum ProgressBarHeight {
-  NARROW = '5px',
-  DEFAULT = '10px',
-  WIDE = '20px'
+	NARROW = '5px',
+	DEFAULT = '10px',
+	WIDE = '20px'
 }
-
 
 const HeaderHeight = {
 	WIDE: '--hd-wide',

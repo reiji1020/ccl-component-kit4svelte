@@ -94,7 +94,18 @@
 </script>
 
 <div class="datePickerWrapper" style="--selected-color: var({borderColor});">
-	<input type="text" {id} value={formattedDate} placeholder={placeholder} on:focus={toggleCalendar} on:blur={() => { if (!disableBlurClose) toggleCalendar(); }} readonly style="border-color: var({borderColor});" />
+	<input
+		type="text"
+		{id}
+		value={formattedDate}
+		{placeholder}
+		on:focus={toggleCalendar}
+		on:blur={() => {
+			if (!disableBlurClose) toggleCalendar();
+		}}
+		readonly
+		style="border-color: var({borderColor});"
+	/>
 
 	{#if showCalendar}
 		<div class="calendarOverlay" on:mousedown|preventDefault={() => {}}>
@@ -116,7 +127,10 @@
 				{#each daysInMonth as day}
 					<button
 						class:currentMonthDay={day !== null}
-						class:selected={selectedDate && day === DateTime.fromJSDate(selectedDate).day && currentMonth.month === DateTime.fromJSDate(selectedDate).month && currentMonth.year === DateTime.fromJSDate(selectedDate).year}
+						class:selected={selectedDate &&
+							day === DateTime.fromJSDate(selectedDate).day &&
+							currentMonth.month === DateTime.fromJSDate(selectedDate).month &&
+							currentMonth.year === DateTime.fromJSDate(selectedDate).year}
 						on:click={() => day && selectDay(day)}
 						disabled={day === null}
 					>

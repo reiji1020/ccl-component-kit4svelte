@@ -39,8 +39,11 @@ export const Default: Story = {
 		const textarea = canvas.getByLabelText('ご意見・ご要望');
 
 		await step('ユーザーがテキストエリアに複数行のテキストを入力できること', async () => {
-			await userEvent.type(textarea, `テスト入力です。
-複数行のテキストを試します。`);
+			await userEvent.type(
+				textarea,
+				`テスト入力です。
+複数行のテキストを試します。`
+			);
 		});
 
 		await step('テキストエリアの値が正しく更新されること', async () => {

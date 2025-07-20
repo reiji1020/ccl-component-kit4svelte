@@ -41,12 +41,10 @@ export const Default: Story = {
 	})
 };
 
-
-
 export const RegistrationFormExample: Story = {
 	render: () => ({
 		Component: RegistrationFormWrapper,
-		props: {},
+		props: {}
 	}),
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
@@ -64,13 +62,13 @@ export const RegistrationFormExample: Story = {
 			await expect(emailInput).toHaveValue('unique.email@example.com');
 			await expect(passwordInput).toHaveValue('StrongP@ssw0rd!');
 		});
-	},
+	}
 };
 
 export const TermsOfServiceFormExample: Story = {
 	render: () => ({
 		Component: TermsOfServiceFormWrapper,
-		props: {},
+		props: {}
 	}),
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
@@ -93,5 +91,5 @@ export const TermsOfServiceFormExample: Story = {
 			await expect(checkbox).not.toBeChecked();
 			await expect(button).toBeDisabled();
 		});
-	},
+	}
 };

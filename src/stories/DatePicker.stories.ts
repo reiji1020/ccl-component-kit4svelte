@@ -51,7 +51,7 @@ const createStory = (args: Story['args']): Story => ({
 			await expect(canvas.getByText(/\d{4}年\d{2}月/)).toBeInTheDocument(); // 例: 2023年10月
 		});
 
-				await step('日付を選択できること', async () => {
+		await step('日付を選択できること', async () => {
 			const today = DateTime.local(); // Luxonを使用して現在の日付を取得
 			const dayOfMonth = today.day;
 			const dayButton = await canvas.findByRole('button', { name: String(dayOfMonth) });
@@ -62,8 +62,6 @@ const createStory = (args: Story['args']): Story => ({
 		await step('日付ピッカーが閉じること', async () => {
 			await expect(canvas.queryByText(/\d{4}年\d{2}月/)).not.toBeInTheDocument();
 		});
-
-		
 	}
 });
 

@@ -29,7 +29,7 @@ const config: StorybookConfig = {
 		return mergeConfig(config, {
 			resolve: {
 				alias: {
-					'$lib': './src/lib'
+					$lib: './src/lib'
 				}
 			}
 		});

@@ -48,9 +48,19 @@
 	}
 </script>
 
-<label class="checkboxWrapper" class:disabled={disabled}>
-	<input type="checkbox" bind:checked on:change={handleChange} {disabled} aria-label={label} name={label} />
-	<span class="customCheckbox" style="--bg-color: var({color}); --check-mark-color: {checkMarkColor};">
+<label class="checkboxWrapper" class:disabled>
+	<input
+		type="checkbox"
+		bind:checked
+		on:change={handleChange}
+		{disabled}
+		aria-label={label}
+		name={label}
+	/>
+	<span
+		class="customCheckbox"
+		style="--bg-color: var({color}); --check-mark-color: {checkMarkColor};"
+	>
 		{#if checked}
 			<svg
 				class="checkMark"

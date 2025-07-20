@@ -11,12 +11,7 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLVividColor) as [name, color]}
 			<div class="color-sample">
-				<RadioButton
-					label={name}
-					value={name}
-					bind:group={vividGroup}
-					{color}
-				/>
+				<RadioButton label={name} value={name} bind:group={vividGroup} {color} />
 			</div>
 		{/each}
 	</div>
@@ -25,12 +20,7 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLPastelColor) as [name, color]}
 			<div class="color-sample">
-				<RadioButton
-					label={name}
-					value={name}
-					bind:group={pastelGroup}
-					{color}
-				/>
+				<RadioButton label={name} value={name} bind:group={pastelGroup} {color} />
 			</div>
 		{/each}
 	</div>
