@@ -34,9 +34,9 @@
 	 * 状態が変更されたときのイベントハンドラ
 	 * @type {() => void}
 	 */
-	export let onChange: () => void = () => {};
+ export let onChange: () => void = () => {};
 
-	let checkMarkColor: 'white' = 'white';
+ const checkMarkColor = 'white' as const;
 
 	function handleChange(event: Event) {
 		if (disabled) {
