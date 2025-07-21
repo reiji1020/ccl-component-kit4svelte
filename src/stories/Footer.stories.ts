@@ -42,6 +42,8 @@ const createStory = (bgColor: string): Story => ({
 	}
 });
 
+export const Default = createStory(CCLVividColor.STRAWBERRY_PINK);
+
 export const AllColors: Story = {
 	render: () => ({ Component: AllColorsFooterWrapper }),
 	args: {},
