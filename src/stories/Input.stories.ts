@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Input from '../lib/Input.svelte';
-import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
+import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 import AllColorsWrapper from './AllColors/AllColorsWrapper.svelte';
 
@@ -23,14 +23,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-	args: {
+const createStory = (initialArgs: Story['args'], play?: Story['play']): Story => ({
+	args: initialArgs,
+	play
+});
+
+export const Default = createStory(
+	{
 		id: 'default-input',
 		label: 'お名前',
 		placeholder: '山田 太郎',
 		borderColor: CCLVividColor.STRAWBERRY_PINK
 	},
-	play: async ({ canvasElement, args, step }) => {
+	async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByLabelText('お名前');
 
@@ -42,39 +47,33 @@ export const Default: Story = {
 			await expect(input).toHaveValue('テスト入力');
 		});
 	}
-};
+);
 
-export const Password: Story = {
-	args: {
-		id: 'password-input',
-		label: 'パスワード',
-		type: 'password',
-		placeholder: 'パスワードを入力',
-		borderColor: CCLVividColor.SODA_BLUE
-	}
-};
+export const Password = createStory({
+	id: 'password-input',
+	label: 'パスワード',
+	type: 'password',
+	placeholder: 'パスワードを入力',
+	borderColor: CCLVividColor.SODA_BLUE
+});
 
-export const Disabled: Story = {
-	args: {
-		id: 'disabled-input',
-		label: '入力不可',
-		placeholder: 'このフィールドは無効です',
-		value: '編集できません',
-		disabled: true,
-		borderColor: CCLVividColor.WRAP_GREY
-	}
-};
+export const Disabled = createStory({
+	id: 'disabled-input',
+	label: '入力不可',
+	placeholder: 'このフィールドは無効です',
+	value: '編集できません',
+	disabled: true,
+	borderColor: CCLVividColor.WRAP_GREY
+});
 
-export const NoLabel: Story = {
-	args: {
-		id: 'no-label-input',
-		placeholder: 'ラベルなしの入力フィールド',
-		borderColor: CCLVividColor.PINEAPPLE_YELLOW
-	}
-};
+export const NoLabel = createStory({
+	id: 'no-label-input',
+	placeholder: 'ラベルなしの入力フィールド',
+	borderColor: CCLVividColor.PINEAPPLE_YELLOW
+});
 
-export const Invalid: Story = {
-	args: {
+export const Invalid = createStory(
+	{
 		id: 'invalid-input',
 		label: 'メールアドレス',
 		placeholder: 'メールアドレスを入力',
@@ -83,7 +82,7 @@ export const Invalid: Story = {
 		isValid: false,
 		validationMessage: '有効なメールアドレスを入力してください。'
 	},
-	play: async ({ canvasElement, args, step }) => {
+	async ({ canvasElement, args, step }) => {
 		const canvas = within(canvasElement);
 		const input = canvas.getByLabelText('メールアドレス');
 
@@ -96,7 +95,7 @@ export const Invalid: Story = {
 			await expect(input).toHaveClass('input-field invalid');
 		});
 	}
-};
+);
 
 export const AllColors: Story = {
 	render: () => ({ Component: AllColorsWrapper }),
