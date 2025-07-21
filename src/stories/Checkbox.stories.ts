@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Checkbox from '../lib/Checkbox.svelte';
-import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
+import { CCLVividColor } from '../lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import MultipleCheckboxesWrapper from './MultipleCheckboxesWrapper.svelte';
 import AllColorsCheckboxWrapper from './AllColors/AllColorsCheckboxWrapper.svelte';
@@ -13,15 +13,18 @@ const meta = {
 		label: {
 			control: { type: 'text' }
 		},
-		checked: {
-			control: { type: 'boolean' }
-		},
-		color: {
-			control: { type: 'select' },
-			options: Object.values(CCLVividColor)
-		},
-		onChange: fn()
-	}
+               checked: {
+                       control: { type: 'boolean' }
+               },
+               color: {
+                       control: { type: 'select' },
+                       options: Object.values(CCLVividColor)
+               },
+               disabled: {
+                       control: { type: 'boolean' }
+               },
+               onChange: fn()
+       }
 } satisfies Meta<Checkbox>;
 
 export default meta;
