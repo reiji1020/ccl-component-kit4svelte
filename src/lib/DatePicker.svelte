@@ -1,9 +1,18 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { DateTime } from 'luxon';
+	import {
+		prevMonth as prevMonthDate,
+		nextMonth as nextMonthDate,
+		getDaysInMonth
+	} from './utils/datePicker';
 	import './const/variables.css';
 
-	const dispatch = createEventDispatcher();
+	type DatePickerEvents = {
+		change: Date;
+	};
+
+	const dispatch = createEventDispatcher<DatePickerEvents>();
 
 	/**
 	 * 選択された日付
@@ -43,8 +52,10 @@
 
 	let showCalendar = false;
 	let currentMonth: DateTime = selectedDate ? DateTime.fromJSDate(selectedDate) : DateTime.local();
+	let selected: DateTime | null = selectedDate ? DateTime.fromJSDate(selectedDate) : null;
 
-	$: formattedDate = selectedDate ? DateTime.fromJSDate(selectedDate).toFormat('yyyy/MM/dd') : '';
+	$: formattedDate = selected ? selected.toFormat('yyyy/MM/dd') : '';
+	$: selected = selectedDate ? DateTime.fromJSDate(selectedDate) : null;
 
 	function toggleCalendar() {
 		showCalendar = !showCalendar;
@@ -58,43 +69,29 @@
 	}
 
 	function prevMonth() {
-		currentMonth = currentMonth.minus({ months: 1 });
+		currentMonth = prevMonthDate(currentMonth);
 	}
 
 	function nextMonth() {
-		currentMonth = currentMonth.plus({ months: 1 });
-	}
-
-	function getDaysInMonth(date: DateTime) {
-		const startOfMonth = date.startOf('month');
-		const endOfMonth = date.endOf('month');
-		const days = [];
-
-		// 前月の日付を埋める
-		const startDayOfWeek = startOfMonth.weekday === 7 ? 0 : startOfMonth.weekday; // Luxon: 1=Mon, 7=Sun. Adjust to 0=Sun, 6=Sat
-		for (let i = 0; i < startDayOfWeek; i++) {
-			days.push(null);
-		}
-
-		// 今月の日付
-		for (let i = 1; i <= endOfMonth.day; i++) {
-			days.push(i);
-		}
-
-		// 次月の日付を埋める
-		const remainingDays = 42 - days.length; // 6 rows * 7 days
-		for (let i = 0; i < remainingDays; i++) {
-			days.push(null);
-		}
-
-		return days;
+		currentMonth = nextMonthDate(currentMonth);
 	}
 
 	$: daysInMonth = getDaysInMonth(currentMonth);
 </script>
 
 <div class="datePickerWrapper" style="--selected-color: var({borderColor});">
-	<input type="text" {id} value={formattedDate} placeholder={placeholder} on:focus={toggleCalendar} on:blur={() => { if (!disableBlurClose) toggleCalendar(); }} readonly style="border-color: var({borderColor});" />
+	<input
+		type="text"
+		{id}
+		value={formattedDate}
+		{placeholder}
+		on:focus={toggleCalendar}
+		on:blur={() => {
+			if (!disableBlurClose) toggleCalendar();
+		}}
+		readonly
+		style="border-color: var({borderColor});"
+	/>
 
 	{#if showCalendar}
 		<div class="calendarOverlay" on:mousedown|preventDefault={() => {}}>
@@ -116,7 +113,10 @@
 				{#each daysInMonth as day}
 					<button
 						class:currentMonthDay={day !== null}
-						class:selected={selectedDate && day === DateTime.fromJSDate(selectedDate).day && currentMonth.month === DateTime.fromJSDate(selectedDate).month && currentMonth.year === DateTime.fromJSDate(selectedDate).year}
+						class:selected={selected &&
+							day === selected.day &&
+							currentMonth.month === selected.month &&
+							currentMonth.year === selected.year}
 						on:click={() => day && selectDay(day)}
 						disabled={day === null}
 					>
