@@ -33,28 +33,25 @@
 	 */
 	export let borderColor: string = '--strawberry-pink';
 
-	/**
-	 * blurイベントでカレンダーを閉じないようにするか
-	 * テスト用途で利用
-	 * @default false
-	 * @type boolean
-	 */
-	export let disableBlurClose: boolean = false;
-
 	let showCalendar = false;
 	let currentMonth: DateTime = selectedDate ? DateTime.fromJSDate(selectedDate) : DateTime.local();
 
 	$: formattedDate = selectedDate ? DateTime.fromJSDate(selectedDate).toFormat('yyyy/MM/dd') : '';
 
-	function toggleCalendar() {
-		showCalendar = !showCalendar;
+	// --- イベントハンドラを整理 ---
+	function openCalendar() {
+		showCalendar = true;
+	}
+
+	function closeCalendar() {
+		showCalendar = false;
 	}
 
 	function selectDay(day: number) {
 		const newDate = currentMonth.set({ day }).toJSDate();
 		selectedDate = newDate;
 		dispatch('change', newDate);
-		showCalendar = false;
+		closeCalendar(); // 日付選択後はカレンダーを閉じる
 	}
 
 	function prevMonth() {
@@ -70,8 +67,8 @@
 		const endOfMonth = date.endOf('month');
 		const days = [];
 
-		// 前月の日付を埋める
-		const startDayOfWeek = startOfMonth.weekday === 7 ? 0 : startOfMonth.weekday; // Luxon: 1=Mon, 7=Sun. Adjust to 0=Sun, 6=Sat
+		// 前月の日付を埋める (日曜始まりに調整)
+		const startDayOfWeek = startOfMonth.weekday % 7; // 1(月)..6(土), 0(日)
 		for (let i = 0; i < startDayOfWeek; i++) {
 			days.push(null);
 		}
@@ -81,34 +78,63 @@
 			days.push(i);
 		}
 
-		// 次月の日付を埋める
-		const remainingDays = 42 - days.length; // 6 rows * 7 days
-		for (let i = 0; i < remainingDays; i++) {
+		// 6行x7列=42マスを埋めるために次月の日付を追加
+		while (days.length < 42) {
 			days.push(null);
 		}
 
 		return days;
 	}
 
+	/**
+	 * Svelte Action to detect clicks outside an element.
+	 * @param {HTMLElement} node
+	 */
+	function clickOutside(node: HTMLElement) {
+		const handleClick = (event: MouseEvent) => {
+			if (node && !node.contains(event.target as Node) && !event.defaultPrevented) {
+				// 'click_outside' というカスタムイベントを発行
+				node.dispatchEvent(new CustomEvent('click_outside'));
+			}
+		};
+
+		document.addEventListener('click', handleClick, true);
+
+		return {
+			destroy() {
+				document.removeEventListener('click', handleClick, true);
+			}
+		};
+	}
+
 	$: daysInMonth = getDaysInMonth(currentMonth);
 </script>
 
-<div class="datePickerWrapper" style="--selected-color: var({borderColor});">
+<!--
+  - `use:clickOutside` でアクションを適用
+  - `on:click_outside` で外側クリック時の動作を定義
+-->
+<div
+		class="datePickerWrapper"
+		style="--selected-color: var({borderColor});"
+		use:clickOutside
+		on:click_outside={closeCalendar}
+>
 	<input
-		type="text"
-		{id}
-		value={formattedDate}
-		{placeholder}
-		on:focus={toggleCalendar}
-		on:blur={() => {
-			if (!disableBlurClose) toggleCalendar();
-		}}
-		readonly
-		style="border-color: var({borderColor});"
+			type="text"
+			{id}
+			value={formattedDate}
+			{placeholder}
+			on:focus={openCalendar}
+			readonly
+			style="border-color: var({borderColor});"
 	/>
 
 	{#if showCalendar}
-		<div class="calendarOverlay" on:mousedown|preventDefault={() => {}}>
+		<!--
+      - カレンダー内のクリックが外側クリックと誤認されないようにイベントの伝播を止める
+    -->
+		<div class="calendarOverlay" on:click|stopPropagation>
 			<div class="calendarHeader">
 				<button on:click={prevMonth} aria-label="前月へ">&lt;</button>
 				<span>{currentMonth.toFormat('yyyy年MM月')}</span>
@@ -126,13 +152,13 @@
 			<div class="daysGrid">
 				{#each daysInMonth as day}
 					<button
-						class:currentMonthDay={day !== null}
-						class:selected={selectedDate &&
+							class:currentMonthDay={day !== null}
+							class:selected={selectedDate &&
 							day === DateTime.fromJSDate(selectedDate).day &&
 							currentMonth.month === DateTime.fromJSDate(selectedDate).month &&
 							currentMonth.year === DateTime.fromJSDate(selectedDate).year}
-						on:click={() => day && selectDay(day)}
-						disabled={day === null}
+							on:click={() => day && selectDay(day)}
+							disabled={day === null}
 					>
 						{day !== null ? day : ''}
 					</button>
@@ -142,7 +168,8 @@
 	{/if}
 </div>
 
-<style lang="css">
+<style>
+	/* スタイルは変更なし */
 	.datePickerWrapper {
 		position: relative;
 		display: inline-block;
@@ -153,6 +180,11 @@
 		border: 1px solid #ccc;
 		border-radius: 4px;
 		width: 120px;
+		cursor: pointer; /* クリックできることを示す */
+	}
+
+	.datePickerWrapper input:focus {
+		outline: none;
 	}
 
 	.calendarOverlay {
