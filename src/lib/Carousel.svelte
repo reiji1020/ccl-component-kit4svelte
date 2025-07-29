@@ -1,15 +1,12 @@
-<script lang="ts">
-	import './const/variables.css';
-
-	/**
-	 * Interface for carousel image data
-	 * @type src - Image URL
-	 * @type alt - Text for alt attribute
-	 */
+<script context="module" lang="ts">
 	export interface Imgsrc {
 		src: string;
 		alt: string;
 	}
+</script>
+
+<script lang="ts">
+	import './const/variables.css';
 
 	/**
 	 * Image data
