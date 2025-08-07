@@ -1,4 +1,9 @@
 <script context="module" lang="ts">
+	/**
+	 * 表示する画像のオブジェクト。｛src: string, alt: string｝を要素とした配列で指定
+	 * @type string src - Image URL
+	 * @type string alt - Text for alt attribute
+	 */
 	export interface Imgsrc {
 		src: string;
 		alt: string;

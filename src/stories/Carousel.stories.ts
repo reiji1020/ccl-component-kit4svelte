@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Carousel from '$lib/Carousel.svelte';
-import { CCLVividColor } from 'cclkit4svelte';
 
 const meta = {
 	title: 'CommonComponents/Carousel',
