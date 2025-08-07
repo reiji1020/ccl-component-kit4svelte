@@ -1,15 +1,17 @@
-<script lang="ts">
-	import './const/variables.css';
-
+<script context="module" lang="ts">
 	/**
-	 * Interface for carousel image data
-	 * @type src - Image URL
-	 * @type alt - Text for alt attribute
+	 * 表示する画像のオブジェクト。｛src: string, alt: string｝を要素とした配列で指定
+	 * @type string src - Image URL
+	 * @type string alt - Text for alt attribute
 	 */
 	export interface Imgsrc {
 		src: string;
 		alt: string;
 	}
+</script>
+
+<script lang="ts">
+	import './const/variables.css';
 
 	/**
 	 * Image data
