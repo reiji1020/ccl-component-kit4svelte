@@ -1,7 +1,5 @@
-import { DateTime } from 'luxon';
-
 const getYear = (): number => {
-	return DateTime.now().year;
+	return new Date().getFullYear();
 };
 
 export { getYear };
