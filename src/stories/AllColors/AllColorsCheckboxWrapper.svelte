@@ -8,11 +8,7 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLVividColor) as [name, color]}
 			<div class="color-sample">
-				<Checkbox
-					label={name}
-					checked={true}
-					{color}
-				/>
+				<Checkbox label={name} checked={true} {color} />
 			</div>
 		{/each}
 	</div>
@@ -21,11 +17,7 @@
 	<div class="color-grid">
 		{#each Object.entries(CCLPastelColor) as [name, color]}
 			<div class="color-sample">
-				<Checkbox
-					label={name}
-					checked={true}
-					{color}
-				/>
+				<Checkbox label={name} checked={true} {color} />
 			</div>
 		{/each}
 	</div>

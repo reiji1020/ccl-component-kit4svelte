@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Checkbox from '../lib/Checkbox.svelte';
-import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
+import { CCLVividColor } from '../lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import MultipleCheckboxesWrapper from './MultipleCheckboxesWrapper.svelte';
 import AllColorsCheckboxWrapper from './AllColors/AllColorsCheckboxWrapper.svelte';
@@ -13,15 +13,18 @@ const meta = {
 		label: {
 			control: { type: 'text' }
 		},
-		checked: {
-			control: { type: 'boolean' }
-		},
-		color: {
-			control: { type: 'select' },
-			options: Object.values(CCLVividColor)
-		},
-		onChange: fn()
-	}
+               checked: {
+                       control: { type: 'boolean' }
+               },
+               color: {
+                       control: { type: 'select' },
+                       options: Object.values(CCLVividColor)
+               },
+               disabled: {
+                       control: { type: 'boolean' }
+               },
+               onChange: fn()
+       }
 } satisfies Meta<Checkbox>;
 
 export default meta;
@@ -72,7 +75,11 @@ const createStory = (initialArgs: Story['args']): Story => ({
 export const Default = createStory({ label: 'Checkbox', checked: false });
 export const Checked = createStory({ label: 'Checked', checked: true });
 export const Disabled = createStory({ label: 'Disabled', checked: false, disabled: true });
-export const DisabledChecked = createStory({ label: 'Disabled Checked', checked: true, disabled: true });
+export const DisabledChecked = createStory({
+	label: 'Disabled Checked',
+	checked: true,
+	disabled: true
+});
 
 export const MultipleCheckboxes: Story = {
 	render: () => ({
@@ -80,8 +87,8 @@ export const MultipleCheckboxes: Story = {
 		props: {
 			checked1: false,
 			checked2: false,
-			checked3: false,
-		},
+			checked3: false
+		}
 	}),
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
@@ -123,7 +130,7 @@ export const MultipleCheckboxes: Story = {
 			await expect(checkbox2).toBeChecked();
 			await expect(checkbox3).toBeChecked();
 		});
-	},
+	}
 };
 
 export const AllColors: Story = {
@@ -137,5 +144,3 @@ export const AllColors: Story = {
 		}
 	}
 };
-
-

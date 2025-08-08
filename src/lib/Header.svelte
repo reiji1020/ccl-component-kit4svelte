@@ -23,7 +23,7 @@
 			href="https://candychupslab.netlify.app/"
 			target="_blank"
 			rel="noopener noreferrer"
-			style="display: inline-block; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;"
+			style="display: flex; height: 100%; width: 100%; align-items: center; justify-content: center;"
 		>
 			<svg viewBox="0 0 665 63" xmlns="http://www.w3.org/2000/svg">
 				<title>CANDY CHUPS Lab.</title>
@@ -119,4 +119,3 @@
 		fill: #fff;
 	}
 </style>
-

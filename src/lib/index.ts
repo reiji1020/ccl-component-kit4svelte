@@ -21,3 +21,4 @@ export { default as Alert } from './Alert.svelte';
 export { default as Select } from './Select.svelte';
 export { default as ToolTip } from './Tooltip.svelte';
 export { default as Input } from './Input.svelte';
+export { default as ChangeHistory } from './ChangeHistory.svelte';

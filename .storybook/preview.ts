@@ -3,7 +3,7 @@ import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import '../src/lib/const/variables.css';
 
 const preview: Preview = {
-    parameters: {
+	parameters: {
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
@@ -16,7 +16,7 @@ const preview: Preview = {
 		}
 	},
 
-    tags: ['autodocs']
+	tags: ['autodocs']
 };
 
 export default preview;

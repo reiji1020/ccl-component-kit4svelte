@@ -34,9 +34,9 @@
 	 * 状態が変更されたときのイベントハンドラ
 	 * @type {() => void}
 	 */
-	export let onChange: () => void = () => {};
+ export let onChange: () => void = () => {};
 
-	let checkMarkColor: 'white' = 'white';
+ const checkMarkColor = 'white' as const;
 
 	function handleChange(event: Event) {
 		if (disabled) {
@@ -48,9 +48,19 @@
 	}
 </script>
 
-<label class="checkboxWrapper" class:disabled={disabled}>
-	<input type="checkbox" bind:checked on:change={handleChange} {disabled} aria-label={label} name={label} />
-	<span class="customCheckbox" style="--bg-color: var({color}); --check-mark-color: {checkMarkColor};">
+<label class="checkboxWrapper" class:disabled>
+	<input
+		type="checkbox"
+		bind:checked
+		on:change={handleChange}
+		{disabled}
+		aria-label={label}
+		name={label}
+	/>
+	<span
+		class="customCheckbox"
+		style="--bg-color: var({color}); --check-mark-color: {checkMarkColor};"
+	>
 		{#if checked}
 			<svg
 				class="checkMark"

@@ -1,15 +1,12 @@
+<script context="module" lang="ts">
+	export interface Imgsrc {
+		src: string;
+		alt: string;
+	}
+</script>
+
 <script lang="ts">
 	import './const/variables.css';
-
-	/**
-	 * Interface for carousel image data
-	 * @type src - Image URL
-	 * @type alt - Text for alt attribute
-	 */
-	export interface Imgsrc {
-		src: string,
-		alt: string
-	}
 
 	/**
 	 * Image data
@@ -32,7 +29,7 @@
 	const nextSlide = () => {
 		if (src.length === 0) return;
 		currentIndex = (currentIndex + 1) % src.length;
-	}
+	};
 
 	/**
 	 * Move to the previous slide
@@ -40,10 +37,13 @@
 	const prevSlide = () => {
 		if (src.length === 0) return;
 		currentIndex = (currentIndex - 1 + src.length) % src.length;
-	}
+	};
 </script>
 
-<div class="carouselWrapper" style="--carousel-width: {csWidth}; --translate-x: calc(-{currentIndex} * 100%)">
+<div
+	class="carouselWrapper"
+	style="--carousel-width: {csWidth}; --translate-x: calc(-{currentIndex} * 100%)"
+>
 	<div class="slides">
 		{#each src as item, index}
 			<img class="slide" src={item.src} alt={item.alt} />

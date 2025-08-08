@@ -26,7 +26,7 @@
 					id={`pastel-${name.toLowerCase()}`}
 					label={name}
 					borderColor={color}
-										placeholder={`--${name.toLowerCase().replace(/_/g, '-')}`}
+					placeholder={`--${name.toLowerCase().replace(/_/g, '-')}`}
 				/>
 			</div>
 		{/each}

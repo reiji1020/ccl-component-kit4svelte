@@ -38,7 +38,7 @@
 	let circleColor: 'white' = 'white';
 </script>
 
-<label class="radioWrapper" class:disabled={disabled}>
+<label class="radioWrapper" class:disabled>
 	<input type="radio" bind:group {value} {disabled} aria-label={label} />
 	<span class="customRadio" style="--bg-color: var({color});">
 		{#if group === value}

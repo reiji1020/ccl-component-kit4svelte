@@ -57,8 +57,8 @@
 		}
 	}
 
-        // 背景色を取得
-        $: bodyColor = getBodyColor(borderColor);
+	// 背景色を取得
+	$: bodyColor = getBodyColor(borderColor);
 </script>
 
 <div class="CardWrapper" style="--border-color: var({borderColor})">
