@@ -8,6 +8,7 @@
 	import Carousel from '$lib/Carousel.svelte';
 	import CommonHeader from '$lib/CommonHeader.svelte';
     import ChangeHistory from "$lib/ChangeHistory.svelte";
+    import ServiceCard from "$lib/ServiceCard.svelte";
 </script>
 
 <Header />
@@ -19,3 +20,4 @@
 <Carousel />
 <CommonHeader />
 <ChangeHistory />
+<ServiceCard />
