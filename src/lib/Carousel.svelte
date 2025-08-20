@@ -6,7 +6,6 @@
 </script>
 
 <script lang="ts">
-
 	/**
 	 * Image data
 	 * Provide an array of objects containing image URL and alt text

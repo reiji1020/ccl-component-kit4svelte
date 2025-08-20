@@ -58,7 +58,8 @@
 				class="timeline-item"
 				style:--marker-color="var({item.color || defaultColor})"
 				style:--tag-color="var({item.color || defaultColor})"
-				style:--tag-bg-color="var({vividToPastelMap[item.color || defaultColor] || defaultPastelColor})"
+				style:--tag-bg-color="var({vividToPastelMap[item.color || defaultColor] ||
+					defaultPastelColor})"
 			>
 				<div class="timeline-marker"></div>
 				<div class="timeline-content">

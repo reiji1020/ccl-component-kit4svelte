@@ -78,7 +78,9 @@
 		border: 5px solid var(--border-color);
 		box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
 		background-color: #fff;
-		transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+		transition:
+			transform 0.2s ease-in-out,
+			box-shadow 0.2s ease-in-out;
 	}
 
 	.BookCardWrapper:hover {

@@ -34,5 +34,5 @@ const HeaderHeight = {
 
 export { CCLVividColor, CCLPastelColor, HeaderHeight };
 export type ColorVar =
-    (typeof CCLVividColor)[keyof typeof CCLVividColor] |
-    (typeof CCLPastelColor)[keyof typeof CCLPastelColor];
+	| (typeof CCLVividColor)[keyof typeof CCLVividColor]
+	| (typeof CCLPastelColor)[keyof typeof CCLPastelColor];

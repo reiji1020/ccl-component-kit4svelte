@@ -86,15 +86,23 @@ export const Multiple: Story = {
 		const q1Button = canvas.getByRole('button', { name: '質問1：これは何ですか？' });
 		const q2Button = canvas.getByRole('button', { name: '質問2：どうやって使いますか？' });
 
-		await step('項目Aをクリックすると開くこと', async () => {
+		await step('質問1をクリックすると開くこと', async () => {
 			await userEvent.click(q1Button);
-			await expect(canvas.getByText('これはアコーディオンコンポーネントです。')).toBeInTheDocument();
+			await expect(
+				canvas.getByText('これはアコーディオンコンポーネントです。')
+			).toBeInTheDocument();
 		});
 
-		await step('項目Bをクリックすると、項目Aも開いたままであること', async () => {
+		await step('質問2をクリックすると、質問1も開いたままであること', async () => {
 			await userEvent.click(q2Button);
-			await expect(canvas.getByText('これはアコーディオンコンポーネントです。')).toBeInTheDocument();
-			await expect(canvas.getByText('AccordionItemコンポーネントをAccordionコンポーネントの中に入れて使います。')).toBeInTheDocument();
+			await expect(
+				canvas.getByText('これはアコーディオンコンポーネントです。')
+			).toBeInTheDocument();
+			await expect(
+				canvas.getByText(
+					'AccordionItemコンポーネントをAccordionコンポーネントの中に入れて使います。'
+				)
+			).toBeInTheDocument();
 		});
 	}
 };

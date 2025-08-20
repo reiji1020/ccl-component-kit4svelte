@@ -35,7 +35,8 @@
 		initiallyOpen: (label: string) => void;
 	}
 
-	const { openItems, toggleItem, initiallyOpen } = getContext<AccordionContext>(ACCORDION_CONTEXT_KEY);
+	const { openItems, toggleItem, initiallyOpen } =
+		getContext<AccordionContext>(ACCORDION_CONTEXT_KEY);
 
 	onMount(() => {
 		if (isOpen) {
@@ -47,7 +48,10 @@
 	$: isContentOpen = $openItems.has(label);
 </script>
 
-<div class="accordion-item" style={`${headerColor ? `--header-bg-color: var(${headerColor});` : ''}${contentColor ? `--content-bg-color: var(${contentColor});` : ''}`}>
+<div
+	class="accordion-item"
+	style={`${headerColor ? `--header-bg-color: var(${headerColor});` : ''}${contentColor ? `--content-bg-color: var(${contentColor});` : ''}`}
+>
 	<h2 class="accordion-header">
 		<button
 			class="accordion-button"
@@ -56,7 +60,7 @@
 			on:click={() => toggleItem(label)}
 		>
 			<span class="button-label">{label}</span>
-			<span class="accordion-icon" class:open={isContentOpen}>▼</span>
+			<span class="accordion-icon" class:open={isContentOpen} aria-hidden="true">▼</span>
 		</button>
 	</h2>
 	{#if isContentOpen}

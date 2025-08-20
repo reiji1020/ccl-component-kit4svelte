@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	export let serviceName: string;
 	export let description: string;
 	export let imageUrl: string;

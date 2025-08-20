@@ -114,19 +114,19 @@
   - `on:click_outside` で外側クリック時の動作を定義
 -->
 <div
-		class="datePickerWrapper"
-		style="--selected-color: var({borderColor});"
-		use:clickOutside
-		on:click_outside={closeCalendar}
+	class="datePickerWrapper"
+	style="--selected-color: var({borderColor});"
+	use:clickOutside
+	on:click_outside={closeCalendar}
 >
 	<input
-			type="text"
-			{id}
-			value={formattedDate}
-			{placeholder}
-			on:focus={openCalendar}
-			readonly
-			style="border-color: var({borderColor});"
+		type="text"
+		{id}
+		value={formattedDate}
+		{placeholder}
+		on:focus={openCalendar}
+		readonly
+		style="border-color: var({borderColor});"
 	/>
 
 	{#if showCalendar}
@@ -151,13 +151,13 @@
 			<div class="daysGrid">
 				{#each daysInMonth as day}
 					<button
-							class:currentMonthDay={day !== null}
-							class:selected={selectedDate &&
+						class:currentMonthDay={day !== null}
+						class:selected={selectedDate &&
 							day === DateTime.fromJSDate(selectedDate).day &&
 							currentMonth.month === DateTime.fromJSDate(selectedDate).month &&
 							currentMonth.year === DateTime.fromJSDate(selectedDate).year}
-							on:click={() => day && selectDay(day)}
-							disabled={day === null}
+						on:click={() => day && selectDay(day)}
+						disabled={day === null}
 					>
 						{day !== null ? day : ''}
 					</button>

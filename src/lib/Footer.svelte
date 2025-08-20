@@ -1,14 +1,12 @@
 <script lang="ts">
-    import type { ColorVar } from './const/config';
+	import type { ColorVar } from './const/config';
 	import { getYear } from '$lib/scripts/date';
 
 	/**
-	 * フッター背景色
-	 * CCLVividColorの中から指定する
+	 * フッター背景色（CCLVividColor/CCLPastelColor の CSS 変数名）
 	 * @default --strawberry-pink
-	 * @type string
 	 */
-    export let bgColor: ColorVar;
+	export let bgColor: ColorVar = '--strawberry-pink';
 
 	/**
 	 * アクセス当日の年を４桁で算出、フッターの中に配置する

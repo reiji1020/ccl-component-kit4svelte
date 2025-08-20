@@ -37,7 +37,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		title: 'SvelteではじめるWebアプリ開発',
-		description: 'Svelteの基本から、SvelteKitを使った実践的なWebアプリケーション開発までを網羅した一冊です。',
+		description:
+			'Svelteの基本から、SvelteKitを使った実践的なWebアプリケーション開発までを網羅した一冊です。',
 		coverImageUrl: 'thumbnail.png',
 		altText: 'SvelteではじめるWebアプリ開発 書籍表紙',
 		linkUrl: 'https://example.com',

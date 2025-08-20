@@ -1,20 +1,16 @@
 <script lang="ts">
-    import type { ColorVar } from './const/config';
+	import type { ColorVar } from './const/config';
 
 	/**
-	 * ヘッダー背景色
-	 * CCLVividColorの中から指定する
+	 * ヘッダー背景色（CCLVividColor/CCLPastelColor の CSS 変数名）
 	 * @default --strawberry-pink
-	 * @type string
 	 */
-    export let bgColor: ColorVar;
+	export let bgColor: ColorVar = '--strawberry-pink';
 	/**
-	 * ヘッダー高さ
-	 * HeaderHeightの中から指定する
-	 * @default --hd-nomal
-	 * @type string
+	 * ヘッダー高さ（HeaderHeight の CSS 変数名）
+	 * @default --hd-normal
 	 */
-	export let height: string;
+	export let height: string = '--hd-normal';
 
 	/**
 	 * ヘッダーに表示するロゴ
