@@ -23,3 +23,6 @@ export { default as ToolTip } from './Tooltip.svelte';
 export { default as Input } from './Input.svelte';
 export { default as ChangeHistory } from './ChangeHistory.svelte';
 export { default as ServiceCard } from './ServiceCard.svelte';
+export { default as BookCard } from './BookCard.svelte';
+export { default as Tabs } from './Tabs.svelte';
+export { default as TabPanel } from './TabPanel.svelte';

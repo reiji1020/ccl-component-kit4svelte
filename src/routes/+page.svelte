@@ -9,6 +9,9 @@
 	import CommonHeader from '$lib/CommonHeader.svelte';
     import ChangeHistory from "$lib/ChangeHistory.svelte";
     import ServiceCard from "$lib/ServiceCard.svelte";
+    import BookCard from "$lib/BookCard.svelte";
+    import Tabs from "$lib/Tabs.svelte";
+    import TabPanel from "$lib/TabPanel.svelte";
 </script>
 
 <Header />
@@ -21,3 +24,6 @@
 <CommonHeader />
 <ChangeHistory />
 <ServiceCard />
+<BookCard />
+<Tabs />
+<TabPanel />
