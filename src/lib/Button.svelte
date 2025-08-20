@@ -1,31 +1,27 @@
 <script lang="ts">
-	import './const/variables.css';
+	import type { ColorVar } from './const/config';
 
 	/**
 	 * ボタンカラー、CCLVividColorの中から選ぶ
 	 * @default --strawberry-pink
-	 * @type string
 	 */
-	export let bgColor: string;
+	export let bgColor: ColorVar = '--strawberry-pink';
 
 	/**
 	 * ボタンの中に表示するテキスト
 	 * @default Button
-	 * @type string
 	 */
-	export let label: string;
+	export let label: string = 'Button';
 
 	/**
 	 * クリックイベントハンドラ
 	 * @default () => {}
-	 * @type {() => void}
 	 */
 	export let onClick: () => void = () => {};
 
 	/**
 	 * ボタンの非活性状態
 	 * @default false
-	 * @type boolean
 	 */
 	export let disabled: boolean = false;
 
@@ -38,8 +34,9 @@
 		return `var(${bgColor})`;
 	}
 
-	// 背景色を取得
+	// 背景色を取得（props 変更に追従）
 	let buttonColor = getButtonColor(bgColor);
+	$: buttonColor = getButtonColor(bgColor);
 </script>
 
 <!--汎用ボタン-->

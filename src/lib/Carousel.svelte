@@ -6,8 +6,6 @@
 </script>
 
 <script lang="ts">
-	import './const/variables.css';
-
 	/**
 	 * Image data
 	 * Provide an array of objects containing image URL and alt text

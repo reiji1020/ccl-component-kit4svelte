@@ -4,21 +4,12 @@
 	export let imageUrl: string;
 	export let altText: string;
 	export let linkUrl: string | undefined = undefined;
-	export let borderColor: string = 'var(--peach-pink)';
-
-	const colorMap: { [key: string]: string } = {
-		'var(--peach-pink)': 'var(--strawberry-pink)',
-		'var(--lemon-yellow)': 'var(--pineapple-yellow)',
-		'var(--sugar-blue)': 'var(--soda-blue)',
-		'var(--matcha-green)': 'var(--melon-green)',
-		'var(--akebi-purple)': 'var(--grape-purple)',
-		'var(--cloud-grey)': 'var(--wrap-grey)'
-	};
-
-	let borderColorHover: string;
-	$: {
-		borderColorHover = colorMap[borderColor] || borderColor;
-	}
+	/**
+	 * 枠線の色
+	 * @default --strawberry-pink
+	 * @type string
+	 */
+	export let borderColor: string = '--strawberry-pink';
 
 	const Tag = linkUrl ? 'a' : 'div';
 </script>
@@ -29,7 +20,7 @@
 	class="service-card"
 	target={linkUrl ? '_blank' : undefined}
 	rel={linkUrl ? 'noopener noreferrer' : undefined}
-	style="--card-border-color: {borderColor}; --card-border-color-hover: {borderColorHover};"
+	style="--card-border-color: var({borderColor});"
 >
 	<div class="image-container">
 		<img src={imageUrl} alt={altText} class="service-image" />
@@ -59,7 +50,6 @@
 	.service-card:hover {
 		transform: translateY(-4px);
 		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-		border-color: var(--card-border-color-hover);
 	}
 
 	.image-container {

@@ -15,7 +15,8 @@
 	--akebi-purple: #ddb2ff;
 	--cloud-grey: #a3a3a3;
 
-	--hd-height: var(--hd-nomal);
+	/* default header height */
+	--hd-height: var(--hd-normal);
 	/*header height*/
 	--hd-wide: 130px;
 	--hd-normal: 80px;
