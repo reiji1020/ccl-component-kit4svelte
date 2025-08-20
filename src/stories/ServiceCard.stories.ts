@@ -43,6 +43,27 @@ export const Default: Story = {
 		linkUrl: 'https://example.com',
 		borderColor: CCLVividColor.STRAWBERRY_PINK
 	},
+	parameters: {
+		docs: {
+			source: {
+				code: `
+<script>
+    import { ServiceCard } from 'cclkit4svelte';
+    import { CCLVividColor } from 'cclkit4svelte';
+</script>
+
+<ServiceCard
+    serviceName="オンライン学習プラットフォーム"
+    description="この素晴らしいサービスについての説明です。あなたの学習体験を次のレベルに引き上げます。"
+    imageUrl="thumbnail.png"
+    altText="オンライン学習プラットフォームのサムネイル"
+    linkUrl="https://example.com"
+    borderColor={CCLVividColor.STRAWBERRY_PINK}
+/>
+`
+			}
+		}
+	},
 	play: async ({ args, canvasElement, step }) => {
 		const canvas = within(canvasElement);
 
@@ -73,6 +94,26 @@ export const NoLink: Story = {
 		altText: '社内向けツールのアイコン',
 		borderColor: CCLVividColor.WRAP_GREY
 	},
+	parameters: {
+		docs: {
+			source: {
+				code: `
+<script>
+    import { ServiceCard } from 'cclkit4svelte';
+    import { CCLVividColor } from 'cclkit4svelte';
+</script>
+
+<ServiceCard
+    serviceName="社内向けツール"
+    description="このツールには外部リンクがありません。"
+    imageUrl="thumbnail.png"
+    altText="社内向けツールのアイコン"
+    borderColor={CCLVividColor.WRAP_GREY}
+/>
+`
+			}
+		}
+	},
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
 		const serviceName = canvas.getByText('社内向けツール');
@@ -94,7 +135,21 @@ export const AllColors: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: null
+				code: `
+<script>
+    import { ServiceCard } from 'cclkit4svelte';
+    import { CCLVividColor } from 'cclkit4svelte';
+</script>
+
+<div style="display: flex; flex-direction: column; gap: 20px;">
+    <ServiceCard borderColor={CCLVividColor.STRAWBERRY_PINK} serviceName="ピンク" description="..." imageUrl="thumbnail.png" altText="..." />
+    <ServiceCard borderColor={CCLVividColor.PINEAPPLE_YELLOW} serviceName="イエロー" description="..." imageUrl="thumbnail.png" altText="..." />
+    <ServiceCard borderColor={CCLVividColor.SODA_BLUE} serviceName="ブルー" description="..." imageUrl="thumbnail.png" altText="..." />
+    <ServiceCard borderColor={CCLVividColor.MELON_GREEN} serviceName="グリーン" description="..." imageUrl="thumbnail.png" altText="..." />
+    <ServiceCard borderColor={CCLVividColor.GRAPE_PURPLE} serviceName="パープル" description="..." imageUrl="thumbnail.png" altText="..." />
+    <ServiceCard borderColor={CCLVividColor.WRAP_GREY} serviceName="グレー" description="..." imageUrl="thumbnail.png" altText="..." />
+</div>
+`
 			}
 		}
 	}

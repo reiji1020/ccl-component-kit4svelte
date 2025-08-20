@@ -2,7 +2,10 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import { userEvent, within, expect } from '@storybook/test';
 import Tabs from '../lib/Tabs.svelte';
 import TabPanel from '../lib/TabPanel.svelte';
-import TabsWrapper from './TabsWrapper.svelte';
+
+// Import story wrappers
+import DefaultWrapper from './tabs/Default.svelte';
+import WithDisabledTabWrapper from './tabs/WithDisabledTab.svelte';
 
 const meta = {
 	title: 'CommonComponents/Tabs',
@@ -15,8 +18,31 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-	render: () => ({ Component: TabsWrapper }),
-	args: {},
+	render: () => ({ Component: DefaultWrapper }),
+	parameters: {
+		docs: {
+			source: {
+				code: `
+<script>
+    import { Tabs, TabPanel } from 'cclkit4svelte';
+	import { CCLVividColor } from 'cclkit4svelte';
+</script>
+
+<Tabs>
+	<TabPanel label="はじめに" color={CCLVividColor.STRAWBERRY_PINK}>
+		<p>ここにはじめにのコンテンツが入ります。</p>
+	</TabPanel>
+	<TabPanel label="使い方" color={CCLVividColor.PINEAPPLE_YELLOW}>
+		<p>ここに使い方のコンテンツが入ります。</p>
+	</TabPanel>
+	<TabPanel label="設定" color={CCLVividColor.SODA_BLUE}>
+		<p>ここに設定のコンテンツが入ります。</p>
+	</TabPanel>
+</Tabs>
+`
+			}
+		}
+	},
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
 
@@ -41,7 +67,31 @@ export const Default: Story = {
 };
 
 export const WithDisabledTab: Story = {
-	render: () => ({ Component: TabsWrapper }),
+	render: () => ({ Component: WithDisabledTabWrapper }),
+	parameters: {
+		docs: {
+			source: {
+				code: `
+<script>
+    import { Tabs, TabPanel } from 'cclkit4svelte';
+	import { CCLVividColor } from 'cclkit4svelte';
+</script>
+
+<Tabs>
+	<TabPanel label="はじめに" color={CCLVividColor.STRAWBERRY_PINK}>
+		<p>ここにはじめにのコンテンツが入ります。</p>
+	</TabPanel>
+	<TabPanel label="無効なタブ" color={CCLVividColor.WRAP_GREY} disabled={true}>
+		<p>このコンテンツは表示されません。</p>
+	</TabPanel>
+	<TabPanel label="設定" color={CCLVividColor.SODA_BLUE}>
+		<p>ここに設定のコンテンツが入ります。</p>
+	</TabPanel>
+</Tabs>
+`
+			}
+		}
+	},
 	play: async ({ canvasElement, step }) => {
 		const canvas = within(canvasElement);
 		const defaultTab = canvas.getByRole('tab', { name: 'はじめに' });
