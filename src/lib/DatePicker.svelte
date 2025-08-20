@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { DateTime } from 'luxon';
-	import './const/variables.css';
 
 	const dispatch = createEventDispatcher();
 

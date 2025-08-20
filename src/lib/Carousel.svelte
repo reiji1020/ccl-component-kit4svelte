@@ -6,7 +6,6 @@
 </script>
 
 <script lang="ts">
-	import './const/variables.css';
 
 	/**
 	 * Image data

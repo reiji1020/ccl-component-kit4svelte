@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './const/variables.css';
 
 	export let serviceName: string;
 	export let description: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './const/variables.css';
+    import type { ColorVar } from './const/config';
 
 	/**
 	 * ヘッダー背景色
@@ -7,7 +7,7 @@
 	 * @default --strawberry-pink
 	 * @type string
 	 */
-	export let bgColor: string;
+    export let bgColor: ColorVar;
 	/**
 	 * ヘッダー高さ
 	 * HeaderHeightの中から指定する

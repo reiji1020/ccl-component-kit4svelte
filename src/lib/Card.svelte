@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
-	import './const/variables.css';
 
 	/**
 	 * 枠線の色

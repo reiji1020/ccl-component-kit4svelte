@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './const/variables.css';
 	import { CCLVividColor, CCLPastelColor } from './const/config';
 
 	/**

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './const/variables.css';
+    import type { ColorVar } from './const/config';
 	import { getYear } from '$lib/scripts/date';
 
 	/**
@@ -8,7 +8,7 @@
 	 * @default --strawberry-pink
 	 * @type string
 	 */
-	export let bgColor: string;
+    export let bgColor: ColorVar;
 
 	/**
 	 * アクセス当日の年を４桁で算出、フッターの中に配置する

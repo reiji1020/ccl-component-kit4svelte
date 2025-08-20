@@ -19,6 +19,8 @@ export { default as ProgressBar } from './ProgressBar.svelte';
 export { default as Textarea } from './Textarea.svelte';
 export { default as Alert } from './Alert.svelte';
 export { default as Select } from './Select.svelte';
+// Prefer `Tooltip` export (keep backward compatible alias)
+export { default as Tooltip } from './Tooltip.svelte';
 export { default as ToolTip } from './Tooltip.svelte';
 export { default as Input } from './Input.svelte';
 export { default as ChangeHistory } from './ChangeHistory.svelte';
@@ -26,3 +28,5 @@ export { default as ServiceCard } from './ServiceCard.svelte';
 export { default as BookCard } from './BookCard.svelte';
 export { default as Tabs } from './Tabs.svelte';
 export { default as TabPanel } from './TabPanel.svelte';
+export { default as Accordion } from './Accordion.svelte';
+export { default as AccordionItem } from './AccordionItem.svelte';
