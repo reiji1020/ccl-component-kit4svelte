@@ -103,7 +103,7 @@ pnpm install cclkit4svelte
 
 ## About the development of this library
 
-The development of component libraries requires a Node.js environment with Version 20 or higher. Use npm as the package manager. Please check the `package.json` for detailed version information.
+The development of component libraries requires a Node.js environment with Version 20 or higher. Use pnpm as the package manager. Please check the `package.json` for detailed version information.
 
 We recommend [Volta](https://volta.sh/) for switching Node.js versions.
 
