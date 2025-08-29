@@ -1,8 +1,9 @@
 <script lang="ts">
   import { createEventDispatcher, onDestroy, onMount } from 'svelte';
-  import { browser } from '$app/environment';
   import { CCLVividColor } from '$lib/const/config';
   type VividVar = (typeof CCLVividColor)[keyof typeof CCLVividColor];
+
+  const isBrowser = typeof window !== 'undefined';
 
   const dispatch = createEventDispatcher<{ close: void }>();
 
@@ -100,7 +101,7 @@
     return () => window.removeEventListener('keydown', handle, true);
   });
 
-  $: if (browser) {
+  $: if (isBrowser) {
     if (open) {
       // 表示されたときに実施
       setTimeout(moveFocusIn, 0);
