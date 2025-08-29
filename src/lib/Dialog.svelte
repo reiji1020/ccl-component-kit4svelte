@@ -122,7 +122,9 @@
 </script>
 
 {#if open}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div class="ccl-dialog-backdrop" role="presentation" on:click={() => { if (closeOnOutside) close(); }}>
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div
       bind:this={panelEl}
       class="ccl-dialog-panel"
