@@ -31,3 +31,4 @@ export { default as Tabs } from './Tabs.svelte';
 export { default as TabPanel } from './TabPanel.svelte';
 export { default as Accordion } from './Accordion.svelte';
 export { default as AccordionItem } from './AccordionItem.svelte';
+export { default as Dialog } from './Dialog.svelte';
