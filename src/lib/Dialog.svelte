@@ -3,6 +3,8 @@
   import { CCLVividColor } from '$lib/const/config';
   type VividVar = (typeof CCLVividColor)[keyof typeof CCLVividColor];
 
+  const isBrowser = typeof window !== 'undefined';
+
   const dispatch = createEventDispatcher<{ close: void }>();
 
   /**
@@ -33,6 +35,7 @@
   // ヘッダー背景は borderColor と共通化
   let panelEl: HTMLElement | null = null;
   let previouslyFocused: Element | null = null;
+  const titleId = `ccl-dialog-title-${Math.random().toString(36).substring(2, 9)}`;
 
   function close() {
     dispatch('close');
@@ -98,17 +101,19 @@
     return () => window.removeEventListener('keydown', handle, true);
   });
 
-  $: if (open) {
-    // 表示されたときに実施
-    setTimeout(moveFocusIn, 0);
-    if (!unlockScroll) unlockScroll = lockScroll();
-  } else {
-    // 非表示に切り替わったとき
-    if (unlockScroll) {
-      unlockScroll();
-      unlockScroll = null;
+  $: if (isBrowser) {
+    if (open) {
+      // 表示されたときに実施
+      setTimeout(moveFocusIn, 0);
+      if (!unlockScroll) unlockScroll = lockScroll();
+    } else {
+      // 非表示に切り替わったとき
+      if (unlockScroll) {
+        unlockScroll();
+        unlockScroll = null;
+      }
+      restoreFocus();
     }
-    restoreFocus();
   }
 
   onDestroy(() => {
@@ -123,13 +128,13 @@
       class="ccl-dialog-panel"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="ccl-dialog-title"
+      aria-labelledby={titleId}
       style="--border-color: var({borderColor});"
       on:click|stopPropagation
       tabindex="-1"
     >
       <header class="ccl-dialog-header">
-        <h2 id="ccl-dialog-title" class="ccl-dialog-title">
+        <h2 id={titleId} class="ccl-dialog-title">
           <slot name="title">{title}</slot>
         </h2>
         <button class="ccl-dialog-close" aria-label="Close dialog" on:click={close}>
