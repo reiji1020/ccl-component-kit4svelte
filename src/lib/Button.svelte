@@ -30,6 +30,8 @@
 	 * @param bgColor - ボタンの背景色
 	 * @returns 背景色
 	 */
+	import { vividFor } from './const/colorMap';
+
 	function getButtonColor(bgColor: string): string {
 		return `var(${bgColor})`;
 	}
@@ -37,10 +39,16 @@
 	// 背景色を取得（props 変更に追従）
 	let buttonColor = getButtonColor(bgColor);
 	$: buttonColor = getButtonColor(bgColor);
+	$: buttonFg = vividFor(bgColor as string);
 </script>
 
 <!--汎用ボタン-->
-<button class="buttonWrapper" style="--bgColor: {buttonColor}" on:click={onClick} {disabled}>
+<button
+	class="buttonWrapper"
+	style="--bgColor: {buttonColor}; {buttonFg ? `--btn-fg: var(${buttonFg});` : ''}"
+	on:click={onClick}
+	{disabled}
+>
 	<span class="btLabel">{label}</span>
 </button>
 
@@ -63,7 +71,7 @@
 		flex-direction: column;
 		justify-content: center;
 		flex-shrink: 0;
-		color: #fff;
+		color: var(--btn-fg, #fff);
 		text-align: center;
 		font-size: 18px;
 		line-height: normal;

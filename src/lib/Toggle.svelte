@@ -40,7 +40,7 @@
 
 <label class="switchWrapper" class:disabled>
 	<input type="checkbox" {checked} on:change={handleChange} {disabled} />
-	<span class="slider" style="--bg-color: var({color});" />
+	<span class="slider" style={`--bg-color: var(${color});`}></span>
 </label>
 
 <style>

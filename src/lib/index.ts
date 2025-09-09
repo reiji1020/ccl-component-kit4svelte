@@ -32,3 +32,7 @@ export { default as TabPanel } from './TabPanel.svelte';
 export { default as Accordion } from './Accordion.svelte';
 export { default as AccordionItem } from './AccordionItem.svelte';
 export { default as Dialog } from './Dialog.svelte';
+export { default as Badge } from './Badge.svelte';
+// Drawer is now an internal primitive; use SlideMenu for public API
+export { default as SlideMenu } from './SlideMenu.svelte';
+export type { MenuItem } from './SlideMenu.svelte';

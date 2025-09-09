@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
+	import { vividFor } from './const/colorMap';
 
 	/**
 	 * テーブルメインカラー
@@ -57,13 +58,18 @@
 
 	// 背景色を取得
 	$: bodyColor = getBodyColor(tableColor);
+	// ヘッダの前景色（万一パステルが指定された場合に備える）
+	$: headerFg = vividFor(tableColor);
 </script>
 
 <!--汎用テーブル-->
 <div class="table-wrapper">
 	<table>
 		<!--テーブルヘッダー-->
-		<thead class="table-header" style="--bgColor: var({tableColor})">
+		<thead
+			class="table-header"
+			style="--bgColor: var({tableColor}); {headerFg ? `--th-fg: var(${headerFg});` : ''}"
+		>
 			<tr>
 				{#each dataHeader as title}
 					<th>{title}</th>
@@ -108,7 +114,7 @@
 
 	.table-header {
 		background-color: var(--bgColor);
-		color: #ffffff;
+		color: var(--th-fg, #ffffff);
 	}
 	.table-body-style {
 		text-align: center;

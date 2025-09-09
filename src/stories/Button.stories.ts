@@ -78,7 +78,7 @@ const createStory = (bgColor: string, label: string, disabled: boolean = false):
 	}
 });
 
-export const Disabled = createStory(CCLVividColor.SODA_BLUE, 'Disabled Button', true);
+export const Default = createStory(CCLVividColor.SODA_BLUE, 'Button', false);
 
 export const DisabledClicked = createStory(CCLVividColor.SODA_BLUE, 'Disabled Clicked', true);
 
