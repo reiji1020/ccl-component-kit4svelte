@@ -36,3 +36,5 @@ export { default as Badge } from './Badge.svelte';
 // Drawer is now an internal primitive; use SlideMenu for public API
 export { default as SlideMenu } from './SlideMenu.svelte';
 export type { MenuItem } from './SlideMenu.svelte';
+export { default as Toaster } from './Toaster.svelte';
+export { toast, toasts, type ToastItem, type ToastVariant } from './toast';
