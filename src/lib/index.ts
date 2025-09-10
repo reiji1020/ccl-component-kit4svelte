@@ -31,3 +31,13 @@ export { default as Tabs } from './Tabs.svelte';
 export { default as TabPanel } from './TabPanel.svelte';
 export { default as Accordion } from './Accordion.svelte';
 export { default as AccordionItem } from './AccordionItem.svelte';
+export { default as Dialog } from './Dialog.svelte';
+export { default as Badge } from './Badge.svelte';
+// Drawer is now an internal primitive; use SlideMenu for public API
+export { default as SlideMenu } from './SlideMenu.svelte';
+export type { MenuItem } from './types/slide-menu';
+export { default as Toaster } from './Toaster.svelte';
+export { toast, toasts, type ToastItem, type ToastVariant } from './toast';
+export { default as Skeleton } from './Skeleton.svelte';
+export { default as Breadcrumb } from './Breadcrumb.svelte';
+export type { BreadcrumbItem } from './types/breadcrumb';
