@@ -1,5 +1,14 @@
-## [2.0.6](https://github.com/reiji1020/ccl-component-kit4svelte/compare/2.0.5...2.0.6) (2025/08/20)
+## [2.0.7](https://github.com/reiji1020/ccl-component-kit4svelte/compare/2.0.6...2.0.6) (2025/09/11)
 
-### HOTFIX
+### Add multiple new components
 
-- Fixed an issue where CSS was not exported in production builds.
+- Several new components have been added.
+  - Badge
+  - BreadCrumb
+  - SlideMenu
+  - Toaster
+  - Skelton
+  - Dialog
+
+- We have migrated to Svelte v5.
+- Changes to formatting rules.
