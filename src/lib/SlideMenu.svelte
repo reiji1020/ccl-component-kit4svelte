@@ -5,11 +5,7 @@
   import { vividFor } from './const/colorMap';
   import { createEventDispatcher, tick } from 'svelte';
 
-  export type MenuItem = {
-    id: string;
-    label: string;
-    href?: string;
-  };
+  import type { MenuItem } from './types/slide-menu';
 
   /** 開閉状態（制御） */
   export let open: boolean = false;
