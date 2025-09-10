@@ -13,7 +13,10 @@ const meta = {
     separator: { control: 'text', description: '区切り文字（slot優先）' },
     ariaLabel: { control: 'text' },
     lastItemClickable: { control: 'boolean' },
-    activeColor: { control: { type: 'select' }, options: [undefined, ...Object.values(CCLVividColor), ...Object.values(CCLPastelColor)] }
+    activeColor: {
+      control: { type: 'select' },
+      options: [undefined, ...Object.values(CCLVividColor), ...Object.values(CCLPastelColor)]
+    }
   }
 } satisfies Meta<Breadcrumb>;
 

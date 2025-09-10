@@ -23,7 +23,9 @@
       <li>
         {#if i < items.length - 1 || lastItemClickable}
           {#if item.href}
-            <a href={item.href} style={i === items.length - 1 ? `color: var(${activeTextVar});` : undefined}
+            <a
+              href={item.href}
+              style={i === items.length - 1 ? `color: var(${activeTextVar});` : undefined}
               >{item.label}</a
             >
           {:else}
@@ -43,7 +45,6 @@
     {/each}
   </ol>
   <slot />
-  
 </nav>
 
 <style>

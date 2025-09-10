@@ -12,7 +12,8 @@
   // 固定カラースキーム
   const computedBase = '#eeeeee';
   const computedHighlight = '#ffffff';
-  $: styleInline = `--skel-base: ${computedBase}; --skel-highlight: ${computedHighlight};` +
+  $: styleInline =
+    `--skel-base: ${computedBase}; --skel-highlight: ${computedHighlight};` +
     (width ? ` width: ${width};` : '') +
     (height ? ` height: ${height};` : '');
 
