@@ -1,157 +1,148 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte';
-  import { CCLVividColor } from './const/config';
+  import { createEventDispatcher, onMount } from 'svelte';
   import type { ColorVar } from './const/config';
-  import { vividFor } from './const/colorMap';
+
+  export let page: number = 1; // 1-based
+  export let total: number | undefined = undefined; // total items
+  export let perPage: number = 10; // items per page when using total
+  export let pageCount: number | undefined = undefined; // total pages (alternative to total)
+  export let boundaryCount: number = 1; // pages maintained at each boundary
+  export let siblingCount: number = 1; // pages around current page
+  export let showFirstLast: boolean = true;
+  export let showPrevNext: boolean = true;
+  export let disabled: boolean = false;
+  export let accentColor: ColorVar = '--soda-blue';
+  export let ariaLabel: string = 'Pagination';
 
   const dispatch = createEventDispatcher<{ change: { page: number } }>();
 
-  /** 現在のページ(1始まり) */
-  export let page: number = 1;
-  /** 総アイテム数（`pageCount`とどちらか一方を指定） */
-  export let total: number | undefined = undefined;
-  /** 1ページあたり件数（`total`指定時に使用） */
-  export let perPage: number = 10;
-  /** 総ページ数（`total`の代わりに明示指定可） */
-  export let pageCount: number | undefined = undefined;
-
-  /** 省略せず両端に常に表示するページ数 */
-  export let boundaryCount: number = 1;
-  /** 現在ページの前後に表示するページ数 */
-  export let siblingCount: number = 1;
-
-  /** 最初/最後ページボタンの表示 */
-  export let showFirstLast: boolean = true;
-  /** 前へ/次へボタンの表示 */
-  export let showPrevNext: boolean = true;
-
-  /** 操作不可にする */
-  export let disabled: boolean = false;
-
-  /** アクセントカラー（選択中・ホバー等） */
-  export let accentColor: ColorVar = CCLVividColor.SODA_BLUE;
-
-  /** `nav`のARIAラベル */
-  export let ariaLabel: string = 'Pagination';
-
-  $: accentFg = vividFor(accentColor as string);
-  $: styleInline =
-    `--accent-color: var(${accentColor});` + (accentFg ? ` --accent-fg: var(${accentFg});` : '');
-
-  $: totalPages = Math.max(
-    1,
-    pageCount ?? (total != null ? Math.ceil(total / Math.max(1, perPage)) : 1)
-  );
-  $: currentPage = clamp(page, 1, totalPages);
-  $: pages = getVisiblePages(totalPages, currentPage, siblingCount, boundaryCount);
-
-  function clamp(n: number, min: number, max: number) {
-    return Math.min(max, Math.max(min, n));
+  // normalize and clamp helpers
+  function getPageCount(): number {
+    const count = pageCount ?? (total && perPage ? Math.ceil(total / perPage) : 1);
+    return Math.max(1, count || 1);
   }
 
-  function range(start: number, end: number) {
-    const arr: number[] = [];
-    for (let i = start; i <= end; i++) arr.push(i);
-    return arr;
+  function clampPage(p: number): number {
+    const max = getPageCount();
+    return Math.min(Math.max(1, Math.trunc(p || 1)), max);
   }
 
-  function getVisiblePages(
-    total: number,
-    current: number,
-    sib: number,
-    boundary: number
-  ): (number | 'ellipsis-start' | 'ellipsis-end')[] {
-    if (total <= 0) return [1];
+  $: page = clampPage(page);
 
-    const startPages = range(1, Math.min(boundary, total));
-    const endPages = range(Math.max(total - boundary + 1, boundary + 1), total);
+  function goTo(p: number) {
+    if (disabled) return;
+    const next = clampPage(p);
+    if (next !== page) {
+      page = next;
+      dispatch('change', { page });
+    }
+  }
 
-    // 兄弟範囲の開始/終了を計算
+  type Item = number | 'ellipsis';
+
+  function range(start: number, end: number): number[] {
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  }
+
+  function usePagination(): Item[] {
+    const totalPages = getPageCount();
+
+    // total pages small enough to show all
+    const totalNumbers = boundaryCount * 2 + siblingCount * 2 + 3; // first + last + current
+    const totalBlocks = totalNumbers + 2; // with two ellipses
+
+    if (totalPages <= totalBlocks) {
+      return range(1, totalPages);
+    }
+
+    const startPages = range(1, Math.min(boundaryCount, totalPages));
+    const endPages = range(
+      Math.max(totalPages - boundaryCount + 1, boundaryCount + 1),
+      totalPages
+    );
+
     const siblingsStart = Math.max(
-      Math.min(current - sib, total - boundary - sib * 2 - 1),
-      boundary + 2
+      Math.min(page - siblingCount, totalPages - boundaryCount - siblingCount * 2 - 1),
+      boundaryCount + 2
     );
     const siblingsEnd = Math.min(
-      Math.max(current + sib, boundary + sib * 2 + 2),
-      endPages.length > 0 ? endPages[0] - 2 : total - 1
+      Math.max(page + siblingCount, boundaryCount + siblingCount * 2 + 2),
+      endPages[0] - 2
     );
 
-    const pages: (number | 'ellipsis-start' | 'ellipsis-end')[] = [];
-    pages.push(...startPages);
+    const items: Item[] = [
+      ...startPages,
+      siblingsStart > boundaryCount + 2 ? 'ellipsis' : (boundaryCount + 1) as unknown as Item,
+      ...range(siblingsStart, siblingsEnd),
+      siblingsEnd < totalPages - boundaryCount - 1 ? 'ellipsis' : (totalPages - boundaryCount) as unknown as Item,
+      ...endPages
+    ];
 
-    if (siblingsStart > boundary + 2) {
-      pages.push('ellipsis-start');
-    } else if (boundary + 1 < total - boundary) {
-      pages.push(boundary + 1);
+    // Clean up potential duplicate numbers from the conditional fallbacks above
+    const normalized: Item[] = [];
+    let prev: Item | undefined = undefined;
+    for (const it of items) {
+      if (it === 'ellipsis') {
+        if (prev !== 'ellipsis') normalized.push('ellipsis');
+      } else {
+        if (it !== prev) normalized.push(it);
+      }
+      prev = it;
     }
-
-    pages.push(...range(siblingsStart, siblingsEnd));
-
-    if (siblingsEnd < total - boundary - 1) {
-      pages.push('ellipsis-end');
-    } else if (total - boundary > boundary) {
-      pages.push(total - boundary);
-    }
-
-    pages.push(...endPages);
-    // ユニーク化と並び順維持
-    const seen = new Set<string>();
-    return pages.filter((p) => {
-      const key = String(p);
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
+    return normalized;
   }
 
-  function goTo(target: number) {
-    if (disabled) return;
-    const next = clamp(target, 1, totalPages);
-    if (next !== currentPage) {
-      dispatch('change', { page: next });
+  $: items = usePagination();
+
+  onMount(() => {
+    // Ensure initial page is clamped and consumers can react if needed
+    const normalized = clampPage(page);
+    if (normalized !== page) {
+      page = normalized;
+      dispatch('change', { page });
     }
-  }
-  //
+  });
 </script>
 
-<nav class="ccl-pagination" aria-label={ariaLabel} style={styleInline}>
-  <ul class="list" role="list">
+<nav class="ccl-pagination" aria-label={ariaLabel} style={`--ccl-pagination-accent: var(${accentColor});`}>
+  <ul class="ccl-pagination__list" role="list">
     {#if showFirstLast}
       <li>
         <button
-          type="button"
-          class="item control"
+          class="ccl-pagination__control"
           on:click={() => goTo(1)}
-          aria-label="Go to first page"
-          disabled={disabled || currentPage === 1}>«</button
-        >
+          disabled={disabled || page === 1}
+          aria-label="go to first page"
+          type="button"
+        >«</button>
       </li>
     {/if}
     {#if showPrevNext}
       <li>
         <button
+          class="ccl-pagination__control"
+          on:click={() => goTo(page - 1)}
+          disabled={disabled || page === 1}
+          aria-label="go to previous page"
           type="button"
-          class="item control"
-          on:click={() => goTo(currentPage - 1)}
-          aria-label="Go to previous page"
-          disabled={disabled || currentPage === 1}>‹</button
-        >
+        >‹</button>
       </li>
     {/if}
 
-    {#each pages as p}
-      {#if p === 'ellipsis-start' || p === 'ellipsis-end'}
-        <li><span class="item ellipsis" aria-hidden="true">…</span></li>
+    {#each items as it}
+      {#if it === 'ellipsis'}
+        <li class="ccl-pagination__ellipsis" aria-hidden="true">…</li>
       {:else}
         <li>
           <button
+            class="ccl-pagination__page"
+            class:active={it === page}
+            aria-label={`go to page ${it}`}
+            aria-current={it === page ? 'page' : undefined}
+            disabled={disabled}
+            on:click={() => goTo(it)}
             type="button"
-            class="item {p === currentPage ? 'active' : ''}"
-            aria-current={p === currentPage ? 'page' : undefined}
-            aria-label={`Go to page ${p}`}
-            {disabled}
-            on:click={() => goTo(p as number)}>{p}</button
-          >
+          >{it}</button>
         </li>
       {/if}
     {/each}
@@ -159,99 +150,73 @@
     {#if showPrevNext}
       <li>
         <button
+          class="ccl-pagination__control"
+          on:click={() => goTo(page + 1)}
+          disabled={disabled || page === getPageCount()}
+          aria-label="go to next page"
           type="button"
-          class="item control"
-          on:click={() => goTo(currentPage + 1)}
-          aria-label="Go to next page"
-          disabled={disabled || currentPage === totalPages}>›</button
-        >
+        >›</button>
       </li>
     {/if}
     {#if showFirstLast}
       <li>
         <button
+          class="ccl-pagination__control"
+          on:click={() => goTo(getPageCount())}
+          disabled={disabled || page === getPageCount()}
+          aria-label="go to last page"
           type="button"
-          class="item control"
-          on:click={() => goTo(totalPages)}
-          aria-label="Go to last page"
-          disabled={disabled || currentPage === totalPages}>»</button
-        >
+        >»</button>
       </li>
     {/if}
   </ul>
-  <div class="sr-only" aria-live="polite">Page {currentPage} of {totalPages}</div>
 </nav>
 
 <style>
   .ccl-pagination {
+    --ccl-pagination-accent: var(--soda-blue);
     display: inline-block;
-    --accent-color: var(--soda-blue);
-    --size: 36px;
   }
-  .list {
-    display: flex;
+  .ccl-pagination__list {
+    list-style: none;
+    display: inline-flex;
     gap: 6px;
     padding: 0;
     margin: 0;
-    list-style: none;
     align-items: center;
   }
-  .item {
-    width: var(--size);
-    min-width: var(--size);
-    height: var(--size);
+  .ccl-pagination__page,
+  .ccl-pagination__control {
+    appearance: none;
+    border: 1px solid var(--wrap-grey, #ccc);
+    background: white;
+    color: inherit;
+    width: 36px;
+    height: 36px;
     padding: 0;
     border-radius: 50%;
-    border: 2px solid var(--cloud-grey);
-    background: white;
-    color: var(--wrap-grey);
-    font-size: 14px;
-    line-height: 1;
+    cursor: pointer;
+    font: inherit;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition:
-      border-color 0.15s,
-      color 0.15s,
-      background 0.15s;
   }
-  .item.control {
-    font-size: 18px; /* larger chevrons */
+  .ccl-pagination__page.active {
+    background: var(--ccl-pagination-accent);
+    border-color: var(--ccl-pagination-accent);
+    color: white;
   }
-  .item.ellipsis {
-    width: auto;
-    min-width: auto;
+  .ccl-pagination__ellipsis {
     padding: 0 4px;
-    border-radius: 0;
-    background: transparent;
-    border: none;
-    cursor: default;
-    color: var(--wrap-grey);
+    color: var(--wrap-grey, #888);
   }
-  .item:hover:not(:disabled) {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-  }
-  .item.active {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    color: var(--accent-fg, #fff);
-    cursor: default;
-  }
-  .item:disabled {
+  .ccl-pagination__page:disabled,
+  .ccl-pagination__control:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  .ccl-pagination__page:not(:disabled):hover,
+  .ccl-pagination__control:not(:disabled):hover {
+    border-color: var(--ccl-pagination-accent);
   }
 </style>

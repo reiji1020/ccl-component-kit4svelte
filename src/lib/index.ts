@@ -41,3 +41,4 @@ export { toast, toasts, type ToastItem, type ToastVariant } from './toast';
 export { default as Skeleton } from './Skeleton.svelte';
 export { default as Breadcrumb } from './Breadcrumb.svelte';
 export type { BreadcrumbItem } from './types/breadcrumb';
+export { default as Pagination } from './Pagination.svelte';
