@@ -42,3 +42,4 @@ export { default as Skeleton } from './Skeleton.svelte';
 export { default as Breadcrumb } from './Breadcrumb.svelte';
 export type { BreadcrumbItem } from './types/breadcrumb';
 export { default as Pagination } from './Pagination.svelte';
+export { default as ProgressList } from './ProgressList.svelte';
