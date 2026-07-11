@@ -14,8 +14,13 @@
   },
   "homepage": "https://github.com/reiji1020/ccl-component-kit4svelte#readme",
   "description": "Component kit for CANDY CHUPS Lab.",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=20.11.1",
+    "pnpm": ">=10.28.2"
+  },
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+    "preinstall": "node -e \"if (!/pnpm/.test(process.env.npm_execpath || '')) { console.error('Use pnpm to install dependencies.'); process.exit(1); }\"",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
