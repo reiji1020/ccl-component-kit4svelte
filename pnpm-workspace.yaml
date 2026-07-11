@@ -1,0 +1,18 @@
+packages:
+  - .
+
+# Supply-chain hardening:
+# - Delay newly published versions so compromised releases have time to be removed.
+# - Keep dependency build scripts on an explicit allow/deny list.
+# - Block transitive dependencies from pulling code via git/tarball URLs.
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 10080
+blockExoticSubdeps: true
+strictDepBuilds: true
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
+  svelte-preprocess: false
+savePrefix: ''
