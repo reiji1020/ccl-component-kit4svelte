@@ -11,5 +11,8 @@ trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 10080
 blockExoticSubdeps: true
 strictDepBuilds: true
-allowBuilds: {}
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
+  svelte-preprocess: false
 savePrefix: ''
