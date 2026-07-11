@@ -5,7 +5,7 @@ const CCLVividColor = {
   MELON_GREEN: '--melon-green',
   GRAPE_PURPLE: '--grape-purple',
   WRAP_GREY: '--wrap-grey'
-};
+} as const;
 
 const CCLPastelColorBase = {
   PEACH_PINK: '--peach-pink',
@@ -14,10 +14,151 @@ const CCLPastelColorBase = {
   MATCHA_GREEN: '--matcha-green',
   AKEBI_PURPLE: '--akebi-purple',
   CLOUD_GREY: '--cloud-grey'
-};
+} as const;
 
 const CCLPastelColor = {
   ...CCLPastelColorBase
+} as const;
+
+const CCLPaletteColor = {
+  STRAWBERRY_50: '--palette-strawberry-50',
+  STRAWBERRY_100: '--palette-strawberry-100',
+  STRAWBERRY_200: '--palette-strawberry-200',
+  STRAWBERRY_300: '--palette-strawberry-300',
+  STRAWBERRY_400: '--palette-strawberry-400',
+  STRAWBERRY_500: '--palette-strawberry-500',
+  STRAWBERRY_600: '--palette-strawberry-600',
+  STRAWBERRY_700: '--palette-strawberry-700',
+  STRAWBERRY_800: '--palette-strawberry-800',
+  STRAWBERRY_900: '--palette-strawberry-900',
+  PINEAPPLE_50: '--palette-pineapple-50',
+  PINEAPPLE_100: '--palette-pineapple-100',
+  PINEAPPLE_200: '--palette-pineapple-200',
+  PINEAPPLE_300: '--palette-pineapple-300',
+  PINEAPPLE_400: '--palette-pineapple-400',
+  PINEAPPLE_500: '--palette-pineapple-500',
+  PINEAPPLE_600: '--palette-pineapple-600',
+  PINEAPPLE_700: '--palette-pineapple-700',
+  PINEAPPLE_800: '--palette-pineapple-800',
+  PINEAPPLE_900: '--palette-pineapple-900',
+  SODA_50: '--palette-soda-50',
+  SODA_100: '--palette-soda-100',
+  SODA_200: '--palette-soda-200',
+  SODA_300: '--palette-soda-300',
+  SODA_400: '--palette-soda-400',
+  SODA_500: '--palette-soda-500',
+  SODA_600: '--palette-soda-600',
+  SODA_700: '--palette-soda-700',
+  SODA_800: '--palette-soda-800',
+  SODA_900: '--palette-soda-900',
+  MELON_50: '--palette-melon-50',
+  MELON_100: '--palette-melon-100',
+  MELON_200: '--palette-melon-200',
+  MELON_300: '--palette-melon-300',
+  MELON_400: '--palette-melon-400',
+  MELON_500: '--palette-melon-500',
+  MELON_600: '--palette-melon-600',
+  MELON_700: '--palette-melon-700',
+  MELON_800: '--palette-melon-800',
+  MELON_900: '--palette-melon-900',
+  PEACH_50: '--palette-peach-50',
+  PEACH_100: '--palette-peach-100',
+  PEACH_200: '--palette-peach-200',
+  PEACH_300: '--palette-peach-300',
+  PEACH_400: '--palette-peach-400',
+  PEACH_500: '--palette-peach-500',
+  PEACH_600: '--palette-peach-600',
+  PEACH_700: '--palette-peach-700',
+  PEACH_800: '--palette-peach-800',
+  PEACH_900: '--palette-peach-900',
+  LEMON_50: '--palette-lemon-50',
+  LEMON_100: '--palette-lemon-100',
+  LEMON_200: '--palette-lemon-200',
+  LEMON_300: '--palette-lemon-300',
+  LEMON_400: '--palette-lemon-400',
+  LEMON_500: '--palette-lemon-500',
+  LEMON_600: '--palette-lemon-600',
+  LEMON_700: '--palette-lemon-700',
+  LEMON_800: '--palette-lemon-800',
+  LEMON_900: '--palette-lemon-900',
+  SUGAR_50: '--palette-sugar-50',
+  SUGAR_100: '--palette-sugar-100',
+  SUGAR_200: '--palette-sugar-200',
+  SUGAR_300: '--palette-sugar-300',
+  SUGAR_400: '--palette-sugar-400',
+  SUGAR_500: '--palette-sugar-500',
+  SUGAR_600: '--palette-sugar-600',
+  SUGAR_700: '--palette-sugar-700',
+  SUGAR_800: '--palette-sugar-800',
+  SUGAR_900: '--palette-sugar-900',
+  MATCHA_50: '--palette-matcha-50',
+  MATCHA_100: '--palette-matcha-100',
+  MATCHA_200: '--palette-matcha-200',
+  MATCHA_300: '--palette-matcha-300',
+  MATCHA_400: '--palette-matcha-400',
+  MATCHA_500: '--palette-matcha-500',
+  MATCHA_600: '--palette-matcha-600',
+  MATCHA_700: '--palette-matcha-700',
+  MATCHA_800: '--palette-matcha-800',
+  MATCHA_900: '--palette-matcha-900',
+  AKEBI_50: '--palette-akebi-50',
+  AKEBI_100: '--palette-akebi-100',
+  AKEBI_200: '--palette-akebi-200',
+  AKEBI_300: '--palette-akebi-300',
+  AKEBI_400: '--palette-akebi-400',
+  AKEBI_500: '--palette-akebi-500',
+  AKEBI_600: '--palette-akebi-600',
+  AKEBI_700: '--palette-akebi-700',
+  AKEBI_800: '--palette-akebi-800',
+  AKEBI_900: '--palette-akebi-900',
+  GRAPE_50: '--palette-grape-50',
+  GRAPE_100: '--palette-grape-100',
+  GRAPE_200: '--palette-grape-200',
+  GRAPE_300: '--palette-grape-300',
+  GRAPE_400: '--palette-grape-400',
+  GRAPE_500: '--palette-grape-500',
+  GRAPE_600: '--palette-grape-600',
+  GRAPE_700: '--palette-grape-700',
+  GRAPE_800: '--palette-grape-800',
+  GRAPE_900: '--palette-grape-900',
+  WRAP_50: '--palette-wrap-50',
+  WRAP_100: '--palette-wrap-100',
+  WRAP_200: '--palette-wrap-200',
+  WRAP_300: '--palette-wrap-300',
+  WRAP_400: '--palette-wrap-400',
+  WRAP_500: '--palette-wrap-500',
+  WRAP_600: '--palette-wrap-600',
+  WRAP_700: '--palette-wrap-700',
+  WRAP_800: '--palette-wrap-800',
+  WRAP_900: '--palette-wrap-900',
+  CLOUD_50: '--palette-cloud-50',
+  CLOUD_100: '--palette-cloud-100',
+  CLOUD_200: '--palette-cloud-200',
+  CLOUD_300: '--palette-cloud-300',
+  CLOUD_400: '--palette-cloud-400',
+  CLOUD_500: '--palette-cloud-500',
+  CLOUD_600: '--palette-cloud-600',
+  CLOUD_700: '--palette-cloud-700',
+  CLOUD_800: '--palette-cloud-800',
+  CLOUD_900: '--palette-cloud-900'
+} as const;
+
+const CCLSemanticColor = {
+  SURFACE_GLASS: '--color-surface-glass',
+  ACTION_PRIMARY_DEFAULT: '--color-action-primary-default',
+  ACTION_PRIMARY_HOVER: '--color-action-primary-hover',
+  ACTION_PRIMARY_PRESSED: '--color-action-primary-pressed',
+  ACTION_SECONDARY_DEFAULT: '--color-action-secondary-default',
+  ACTION_SECONDARY_HOVER: '--color-action-secondary-hover',
+  SURFACE_STRAWBERRY_SUBTLE: '--color-surface-strawberry-subtle',
+  SURFACE_SODA_SUBTLE: '--color-surface-soda-subtle',
+  SURFACE_PINEAPPLE_SUBTLE: '--color-surface-pineapple-subtle',
+  TEXT_LINK: '--color-text-link',
+  TEXT_BRAND: '--color-text-brand',
+  BORDER_ACCENT: '--color-border-accent',
+  FOCUS_RING: '--color-focus-ring',
+  STATUS_SUCCESS: '--color-status-success',
+  STATUS_WARNING: '--color-status-warning'
 } as const;
 
 export enum ProgressBarHeight {
@@ -32,7 +173,9 @@ const HeaderHeight = {
   NALLOW: '--hd-nallow'
 };
 
-export { CCLVividColor, CCLPastelColor, HeaderHeight };
+export { CCLVividColor, CCLPastelColor, CCLPaletteColor, CCLSemanticColor, HeaderHeight };
 export type ColorVar =
   | (typeof CCLVividColor)[keyof typeof CCLVividColor]
-  | (typeof CCLPastelColor)[keyof typeof CCLPastelColor];
+  | (typeof CCLPastelColor)[keyof typeof CCLPastelColor]
+  | (typeof CCLPaletteColor)[keyof typeof CCLPaletteColor]
+  | (typeof CCLSemanticColor)[keyof typeof CCLSemanticColor];

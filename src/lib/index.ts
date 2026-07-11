@@ -13,7 +13,13 @@ export { default as RadioButton } from './RadioButton.svelte';
 export { default as Toggle } from './Toggle.svelte';
 export { default as FormGroup } from './FormGroup.svelte';
 export { default as DatePicker } from './DatePicker.svelte';
-export { CCLVividColor, CCLPastelColor, HeaderHeight } from './const/config';
+export {
+  CCLVividColor,
+  CCLPastelColor,
+  CCLPaletteColor,
+  CCLSemanticColor,
+  HeaderHeight
+} from './const/config';
 export type { ColorVar } from './const/config';
 export { default as Spinner } from './Spinner.svelte';
 export { default as ProgressBar } from './ProgressBar.svelte';
