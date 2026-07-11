@@ -5,7 +5,7 @@ const CCLVividColor = {
   MELON_GREEN: '--melon-green',
   GRAPE_PURPLE: '--grape-purple',
   WRAP_GREY: '--wrap-grey'
-};
+} as const;
 
 const CCLPastelColorBase = {
   PEACH_PINK: '--peach-pink',
@@ -14,7 +14,7 @@ const CCLPastelColorBase = {
   MATCHA_GREEN: '--matcha-green',
   AKEBI_PURPLE: '--akebi-purple',
   CLOUD_GREY: '--cloud-grey'
-};
+} as const;
 
 const CCLPastelColor = {
   ...CCLPastelColorBase
