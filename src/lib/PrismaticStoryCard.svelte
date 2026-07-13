@@ -156,25 +156,25 @@
   }
 
   .image,
-  .image-fallback,
-  .image-slot :global(*) {
+  .image-fallback {
     display: block;
     width: 100%;
     height: 100%;
   }
 
-  .image {
+  .image,
+  .image-slot :global(img),
+  .image-slot :global(video) {
+    display: block;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 
-  .square-image .image {
-    width: auto;
-    max-width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-  }
-
-  .square-image :global(*) {
+  .square-image .image,
+  .square-image :global(img),
+  .square-image :global(video) {
+    display: block;
     width: auto;
     max-width: 100%;
     aspect-ratio: 1 / 1;
@@ -182,12 +182,14 @@
   }
 
   .size-featured .square-image .image,
-  .size-featured .square-image :global(*) {
+  .size-featured .square-image :global(img),
+  .size-featured .square-image :global(video) {
     height: 300px;
   }
 
   .size-default .square-image .image,
-  .size-default .square-image :global(*) {
+  .size-default .square-image :global(img),
+  .size-default .square-image :global(video) {
     height: 230px;
   }
 
