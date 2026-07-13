@@ -3,6 +3,7 @@ import PrismaticStoryCard from '$lib/PrismaticStoryCard.svelte';
 import { CCLVividColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
 import AllColorsPrismaticStoryCardWrapper from './AllColors/AllColorsPrismaticStoryCardWrapper.svelte';
+import PrismaticStoryCardSquareSlotWrapper from './PrismaticStoryCardSquareSlotWrapper.svelte';
 
 const toneOptions = [
   CCLVividColor.STRAWBERRY_PINK,
@@ -165,6 +166,32 @@ export const WithSquareImage: Story = {
 
     await step('タイトルが表示されていること', async () => {
       await expect(canvas.getByText('正方形画像を中央に配置したStoryCard')).toBeInTheDocument();
+    });
+  }
+};
+
+export const WithSquareSlotImage: Story = {
+  render: () => ({ Component: PrismaticStoryCardSquareSlotWrapper }),
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: null
+      }
+    }
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('slot経由の画像にalt属性が設定されていること', async () => {
+      await expect(canvas.getByRole('img')).toHaveAttribute(
+        'alt',
+        'slot経由の正方形画像サムネイル'
+      );
+    });
+
+    await step('タイトルが表示されていること', async () => {
+      await expect(canvas.getByText('slotで正方形画像を差し込んだStoryCard')).toBeInTheDocument();
     });
   }
 };

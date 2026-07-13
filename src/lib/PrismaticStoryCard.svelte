@@ -76,7 +76,7 @@
 
   function handleLinkClick() {
     if (href) {
-      window.open(href, '_blank', 'noopener noreferrer');
+      window.open(href, '_blank', 'noopener,noreferrer');
     }
   }
 </script>
@@ -174,11 +174,20 @@
     object-fit: contain;
   }
 
-  .size-featured .square-image .image {
+  .square-image :global(*) {
+    width: auto;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+
+  .size-featured .square-image .image,
+  .size-featured .square-image :global(*) {
     height: 300px;
   }
 
-  .size-default .square-image .image {
+  .size-default .square-image .image,
+  .size-default .square-image :global(*) {
     height: 230px;
   }
 
