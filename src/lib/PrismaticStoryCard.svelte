@@ -68,17 +68,12 @@
       end: CCLPastelColor.SUGAR_BLUE
     }
   };
+  const linkElement = 'a';
 
   $: stops = gradientStops[tone] ?? fallbackStops;
   $: gradientStart = `var(${stops.start})`;
   $: gradientEnd = `var(${stops.end})`;
   $: accentColor = `var(${tone})`;
-
-  function handleLinkClick() {
-    if (href) {
-      window.open(href, '_blank', 'noopener,noreferrer');
-    }
-  }
 </script>
 
 <article
@@ -107,7 +102,15 @@
     <h3 class="title">{title}</h3>
 
     {#if href}
-      <button class="link" type="button" on:click={handleLinkClick}>{linkLabel}</button>
+      <svelte:element
+        this={linkElement}
+        class="link"
+        {href}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {linkLabel}
+      </svelte:element>
     {/if}
   </div>
 </article>
@@ -243,12 +246,7 @@
 
   .link {
     margin-top: auto;
-    padding: 0;
-    border: 0;
-    background: transparent;
     color: var(--accent-color);
-    cursor: pointer;
-    font-family: inherit;
     font-size: 13px;
     font-weight: 700;
     line-height: 1.4;

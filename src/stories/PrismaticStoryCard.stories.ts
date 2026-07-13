@@ -91,8 +91,11 @@ const createStory = (
     }
 
     if (href) {
-      await step('CTAボタンが表示されていること', async () => {
-        await expect(canvas.getByRole('button', { name: args.linkLabel })).toBeInTheDocument();
+      await step('CTAリンクが表示されていること', async () => {
+        await expect(canvas.getByRole('link', { name: args.linkLabel })).toHaveAttribute(
+          'href',
+          href
+        );
       });
     }
   }
