@@ -5,6 +5,7 @@ export { default as Button } from './Button.svelte';
 export { default as PrismaticGradientButton } from './PrismaticGradientButton.svelte';
 export { default as PrismaticSectionHeading } from './PrismaticSectionHeading.svelte';
 export { default as PrismaticStoryCard } from './PrismaticStoryCard.svelte';
+export { default as PrismaticWorkCard } from './PrismaticWorkCard.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as Thumbnail } from './Thumbnail.svelte';
 export { default as Card } from './Card.svelte';
