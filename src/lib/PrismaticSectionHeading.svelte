@@ -1,4 +1,4 @@
-<script module lang="ts">
+<script context="module" lang="ts">
   export type PrismaticSectionHeadingTone =
     | '--strawberry-pink'
     | '--pineapple-yellow'
@@ -17,13 +17,11 @@
 <script lang="ts">
   import { CCLVividColor } from './const/config';
 
-  let {
-    eyebrow = 'LATEST',
-    title = 'Latest Stories',
-    tone = CCLVividColor.STRAWBERRY_PINK
-  }: PrismaticSectionHeadingProps = $props();
+  export let eyebrow: string = 'LATEST';
+  export let title: string = 'Latest Stories';
+  export let tone: PrismaticSectionHeadingTone = CCLVividColor.STRAWBERRY_PINK;
 
-  let toneValue = $derived(`var(${tone})`);
+  $: toneValue = `var(${tone})`;
 </script>
 
 <div class="prismatic-section-heading" style="--eyebrow-color: {toneValue};">
