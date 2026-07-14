@@ -16,6 +16,9 @@
   export type PrismaticSiteHeaderProps = {
     brand?: string;
     brandHref?: string;
+    logoUrl?: string;
+    logoAlt?: string;
+    logoHeight?: string;
     navigation?: PrismaticSiteHeaderItem[];
     ariaLabel?: string;
     tone?: PrismaticSiteHeaderTone;
@@ -35,6 +38,9 @@
 
   export let brand: string = 'CANDY CHUPS Lab.';
   export let brandHref: string | undefined = undefined;
+  export let logoUrl: string | undefined = undefined;
+  export let logoAlt: string | undefined = undefined;
+  export let logoHeight: string = '40px';
   export let navigation: PrismaticSiteHeaderItem[] = defaultNavigation;
   export let ariaLabel: string = 'メインナビゲーション';
   export let tone: PrismaticSiteHeaderTone = CCLVividColor.STRAWBERRY_PINK;
@@ -45,9 +51,31 @@
 
 <header class="prismatic-site-header" style="--accent-color: {accentColor};">
   {#if brandHref}
-    <svelte:element this={brandLinkElement} class="brand" href={brandHref}>{brand}</svelte:element>
+    <svelte:element this={brandLinkElement} class="brand" href={brandHref}>
+      {#if logoUrl}
+        <img
+          class="brand-logo"
+          src={logoUrl}
+          alt={logoAlt ?? brand}
+          style="--logo-height: {logoHeight};"
+        />
+      {:else}
+        {brand}
+      {/if}
+    </svelte:element>
   {:else}
-    <span class="brand">{brand}</span>
+    <span class="brand">
+      {#if logoUrl}
+        <img
+          class="brand-logo"
+          src={logoUrl}
+          alt={logoAlt ?? brand}
+          style="--logo-height: {logoHeight};"
+        />
+      {:else}
+        {brand}
+      {/if}
+    </span>
   {/if}
 
   <nav aria-label={ariaLabel}>
@@ -88,11 +116,21 @@
   }
 
   .brand {
+    display: flex;
+    align-items: center;
     flex: 0 0 auto;
     color: var(--accent-color);
     font-size: 18px;
     text-decoration: none;
     white-space: nowrap;
+  }
+
+  .brand-logo {
+    display: block;
+    width: auto;
+    max-width: min(260px, 40vw);
+    height: var(--logo-height);
+    object-fit: contain;
   }
 
   nav {

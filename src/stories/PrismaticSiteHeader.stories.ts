@@ -24,6 +24,9 @@ const meta = {
   argTypes: {
     brand: { control: { type: 'text' } },
     brandHref: { control: { type: 'text' } },
+    logoUrl: { control: { type: 'text' } },
+    logoAlt: { control: { type: 'text' } },
+    logoHeight: { control: { type: 'text' } },
     navigation: { control: { type: 'object' } },
     ariaLabel: { control: { type: 'text' } },
     tone: {
@@ -55,6 +58,33 @@ export const Default: Story = {
       await expect(canvas.getByRole('link', { name: 'DISCOVER' })).toHaveAttribute(
         'aria-current',
         'page'
+      );
+    });
+  }
+};
+
+export const WithLogo: Story = {
+  args: {
+    brandHref: '/',
+    logoUrl: 'beace.svg',
+    logoAlt: 'CANDY CHUPS Lab.',
+    logoHeight: '40px',
+    tone: CCLVividColor.STRAWBERRY_PINK
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('SVGロゴ画像が表示されていること', async () => {
+      await expect(canvas.getByRole('img', { name: 'CANDY CHUPS Lab.' })).toHaveAttribute(
+        'src',
+        'beace.svg'
+      );
+    });
+
+    await step('ロゴ画像にブランドリンクが設定されていること', async () => {
+      await expect(canvas.getByRole('link', { name: 'CANDY CHUPS Lab.' })).toHaveAttribute(
+        'href',
+        '/'
       );
     });
   }
