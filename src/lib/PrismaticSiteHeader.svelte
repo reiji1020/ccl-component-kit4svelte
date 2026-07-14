@@ -61,6 +61,7 @@
 
   $: accentColor = `var(${tone})`;
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
+  $: logoLabel = logoAlt?.trim() || brand;
 </script>
 
 <header class="prismatic-site-header" style="--accent-color: {accentColor};">
@@ -70,7 +71,7 @@
         <span
           class="brand-logo"
           role="img"
-          aria-label={logoAlt ?? brand}
+          aria-label={logoLabel}
           data-logo-url={logoUrl}
           style="--logo-height: {logoHeight}; --logo-image: {logoImage};"
         ></span>
@@ -84,7 +85,7 @@
         <span
           class="brand-logo"
           role="img"
-          aria-label={logoAlt ?? brand}
+          aria-label={logoLabel}
           data-logo-url={logoUrl}
           style="--logo-height: {logoHeight}; --logo-image: {logoImage};"
         ></span>

@@ -90,6 +90,26 @@ export const WithLogo: Story = {
   }
 };
 
+export const WithDecorativeLogoAlt: Story = {
+  args: {
+    brand: 'CANDY CHUPS Lab.',
+    brandHref: '/',
+    logoUrl: 'candy-chups-lab.svg',
+    logoAlt: '',
+    tone: CCLVividColor.STRAWBERRY_PINK
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('空のlogoAltでもブランドリンクに名前が付くこと', async () => {
+      await expect(canvas.getByRole('link', { name: 'CANDY CHUPS Lab.' })).toHaveAttribute(
+        'href',
+        '/'
+      );
+    });
+  }
+};
+
 export const LogoUrlWithQuote: Story = {
   args: {
     logoUrl: "candy-chups-lab.svg?variant=team's",
