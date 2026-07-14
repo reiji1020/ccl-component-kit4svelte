@@ -46,7 +46,21 @@
   export let tone: PrismaticSiteHeaderTone = CCLVividColor.STRAWBERRY_PINK;
 
   const brandLinkElement = 'a';
+
+  function toCssUrl(value: string): string {
+    const escaped = value
+      .replace(/\0/g, '\uFFFD')
+      .replace(/\\/g, '\\\\')
+      .replace(/"/g, '\\"')
+      .replace(/\n/g, '\\a ')
+      .replace(/\r/g, '\\d ')
+      .replace(/\f/g, '\\c ');
+
+    return `url("${escaped}")`;
+  }
+
   $: accentColor = `var(${tone})`;
+  $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
 </script>
 
 <header class="prismatic-site-header" style="--accent-color: {accentColor};">
@@ -58,7 +72,7 @@
           role="img"
           aria-label={logoAlt ?? brand}
           data-logo-url={logoUrl}
-          style="--logo-height: {logoHeight}; --logo-image: url('{logoUrl}');"
+          style="--logo-height: {logoHeight}; --logo-image: {logoImage};"
         ></span>
       {:else}
         {brand}
@@ -72,7 +86,7 @@
           role="img"
           aria-label={logoAlt ?? brand}
           data-logo-url={logoUrl}
-          style="--logo-height: {logoHeight}; --logo-image: url('{logoUrl}');"
+          style="--logo-height: {logoHeight}; --logo-image: {logoImage};"
         ></span>
       {:else}
         {brand}

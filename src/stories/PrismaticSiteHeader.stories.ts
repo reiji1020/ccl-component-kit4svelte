@@ -90,6 +90,25 @@ export const WithLogo: Story = {
   }
 };
 
+export const LogoUrlWithQuote: Story = {
+  args: {
+    logoUrl: "candy-chups-lab.svg?variant=team's",
+    logoAlt: '引用符を含むURLのロゴ',
+    tone: CCLVividColor.GRAPE_PURPLE
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('引用符を含むロゴURLが安全に設定されていること', async () => {
+      const logo = canvas.getByRole('img', { name: '引用符を含むURLのロゴ' });
+      await expect(logo).toHaveAttribute('data-logo-url', "candy-chups-lab.svg?variant=team's");
+      await expect(logo.style.getPropertyValue('--logo-image')).toBe(
+        `url("candy-chups-lab.svg?variant=team's")`
+      );
+    });
+  }
+};
+
 export const Japanese: Story = {
   args: {
     brand: 'キャンディ研究所',
