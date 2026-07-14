@@ -7,6 +7,7 @@ export { default as PrismaticSectionHeading } from './PrismaticSectionHeading.sv
 export { default as PrismaticStoryCard } from './PrismaticStoryCard.svelte';
 export { default as PrismaticWorkCard } from './PrismaticWorkCard.svelte';
 export { default as PrismaticBookCard } from './PrismaticBookCard.svelte';
+export { default as PrismaticSiteHeader } from './PrismaticSiteHeader.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as Thumbnail } from './Thumbnail.svelte';
 export { default as Card } from './Card.svelte';
