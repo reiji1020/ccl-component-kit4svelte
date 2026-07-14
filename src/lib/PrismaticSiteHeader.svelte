@@ -53,12 +53,13 @@
   {#if brandHref}
     <svelte:element this={brandLinkElement} class="brand" href={brandHref}>
       {#if logoUrl}
-        <img
+        <span
           class="brand-logo"
-          src={logoUrl}
-          alt={logoAlt ?? brand}
-          style="--logo-height: {logoHeight};"
-        />
+          role="img"
+          aria-label={logoAlt ?? brand}
+          data-logo-url={logoUrl}
+          style="--logo-height: {logoHeight}; --logo-image: url('{logoUrl}');"
+        ></span>
       {:else}
         {brand}
       {/if}
@@ -66,12 +67,13 @@
   {:else}
     <span class="brand">
       {#if logoUrl}
-        <img
+        <span
           class="brand-logo"
-          src={logoUrl}
-          alt={logoAlt ?? brand}
-          style="--logo-height: {logoHeight};"
-        />
+          role="img"
+          aria-label={logoAlt ?? brand}
+          data-logo-url={logoUrl}
+          style="--logo-height: {logoHeight}; --logo-image: url('{logoUrl}');"
+        ></span>
       {:else}
         {brand}
       {/if}
@@ -127,10 +129,12 @@
 
   .brand-logo {
     display: block;
-    width: auto;
+    width: min(260px, 40vw);
     max-width: min(260px, 40vw);
     height: var(--logo-height);
-    object-fit: contain;
+    background: var(--accent-color);
+    -webkit-mask: var(--logo-image) left center / contain no-repeat;
+    mask: var(--logo-image) left center / contain no-repeat;
   }
 
   nav {

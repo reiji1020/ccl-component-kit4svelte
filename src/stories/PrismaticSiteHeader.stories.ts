@@ -76,7 +76,7 @@ export const WithLogo: Story = {
 
     await step('SVGロゴ画像が表示されていること', async () => {
       await expect(canvas.getByRole('img', { name: 'CANDY CHUPS Lab.' })).toHaveAttribute(
-        'src',
+        'data-logo-url',
         'beace.svg'
       );
     });
