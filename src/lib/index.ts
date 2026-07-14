@@ -2,6 +2,14 @@
 import './const/variables.css'; // カスタムプロパティ読み込み用
 export { default as Header } from './Header.svelte';
 export { default as Button } from './Button.svelte';
+export { default as PrismaticGradientButton } from './PrismaticGradientButton.svelte';
+export { default as PrismaticSectionHeading } from './PrismaticSectionHeading.svelte';
+export { default as PrismaticStoryCard } from './PrismaticStoryCard.svelte';
+export { default as PrismaticWorkCard } from './PrismaticWorkCard.svelte';
+export { default as PrismaticBookCard } from './PrismaticBookCard.svelte';
+export { default as PrismaticSiteHeader } from './PrismaticSiteHeader.svelte';
+export { default as PrismaticSiteFooter } from './PrismaticSiteFooter.svelte';
+export { default as PrismaticAmbientGlow } from './PrismaticAmbientGlow.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as Thumbnail } from './Thumbnail.svelte';
 export { default as Card } from './Card.svelte';
@@ -13,7 +21,13 @@ export { default as RadioButton } from './RadioButton.svelte';
 export { default as Toggle } from './Toggle.svelte';
 export { default as FormGroup } from './FormGroup.svelte';
 export { default as DatePicker } from './DatePicker.svelte';
-export { CCLVividColor, CCLPastelColor, HeaderHeight } from './const/config';
+export {
+  CCLVividColor,
+  CCLPastelColor,
+  CCLPaletteColor,
+  CCLSemanticColor,
+  HeaderHeight
+} from './const/config';
 export type { ColorVar } from './const/config';
 export { default as Spinner } from './Spinner.svelte';
 export { default as ProgressBar } from './ProgressBar.svelte';
