@@ -1,0 +1,2 @@
+import{c as w,k as T,m as k,b as x,n as D,D as E,S as O}from"./runtime-D_sK044f.js";function n(r,f){return r===f||(r==null?void 0:r[O])===f}function B(r={},f,i,Y){var p=w.r,S=D;return T(()=>{var a,t;return k(()=>{a=t,t=[],x(()=>{n(i(...t),r)||(f(r,...t),a&&n(i(...a),r)&&f(null,...a))})}),()=>{let s=S;for(;s!==p&&s.parent!==null&&s.parent.f&E;)s=s.parent;const h=()=>{t&&n(i(...t),r)&&f(null,...t)},c=s.teardown;s.teardown=()=>{h(),c==null||c()}}}),r}export{B as b};
+//# sourceMappingURL=this-BLH605vg.js.map
