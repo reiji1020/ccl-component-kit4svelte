@@ -66,7 +66,7 @@ export const Default: Story = {
 export const WithLogo: Story = {
   args: {
     brandHref: '/',
-    logoUrl: 'beace.svg',
+    logoUrl: 'candy-chups-lab.svg',
     logoAlt: 'CANDY CHUPS Lab.',
     logoHeight: '40px',
     tone: CCLVividColor.STRAWBERRY_PINK
@@ -77,7 +77,7 @@ export const WithLogo: Story = {
     await step('SVGロゴ画像が表示されていること', async () => {
       await expect(canvas.getByRole('img', { name: 'CANDY CHUPS Lab.' })).toHaveAttribute(
         'data-logo-url',
-        'beace.svg'
+        'candy-chups-lab.svg'
       );
     });
 
