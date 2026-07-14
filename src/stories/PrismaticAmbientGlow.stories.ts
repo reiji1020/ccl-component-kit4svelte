@@ -55,6 +55,12 @@ export const Default: Story = {
       );
     });
 
+    await step('発光表現が通常コンテンツより背面に配置されること', async () => {
+      await expect(getComputedStyle(canvas.getByTestId('prismatic-ambient-glow')).zIndex).toBe(
+        '-1'
+      );
+    });
+
     await step('指定したtoneと調整値が反映されていること', async () => {
       const glow = canvas.getByTestId('prismatic-ambient-glow');
       await expect(glow).toHaveAttribute('data-tone', CCLPastelColor.PEACH_PINK);

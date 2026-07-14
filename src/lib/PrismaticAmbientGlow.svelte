@@ -56,6 +56,7 @@
   $: glowBlur = blurs[blur];
 </script>
 
+<!-- The containing block should use position: relative and isolation: isolate. -->
 <span
   class="ambient-glow {position}"
   aria-hidden="true"
@@ -71,7 +72,7 @@
 <style>
   .ambient-glow {
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     display: block;
     width: var(--glow-size);
     height: var(--glow-size);

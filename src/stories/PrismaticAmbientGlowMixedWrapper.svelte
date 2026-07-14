@@ -32,6 +32,7 @@
 <style>
   .composition {
     position: relative;
+    isolation: isolate;
     min-height: 620px;
     overflow: hidden;
     padding: 64px 32px;
@@ -39,8 +40,6 @@
   }
 
   .content {
-    position: relative;
-    z-index: 1;
     display: grid;
     justify-items: center;
     gap: 24px;

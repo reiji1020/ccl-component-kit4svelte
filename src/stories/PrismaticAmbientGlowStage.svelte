@@ -23,6 +23,7 @@
 <style>
   .stage {
     position: relative;
+    isolation: isolate;
     display: grid;
     min-height: 440px;
     overflow: hidden;
@@ -31,8 +32,6 @@
   }
 
   p {
-    position: relative;
-    z-index: 1;
     margin: 0;
     color: var(--palette-grape-900);
     font:

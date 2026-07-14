@@ -47,6 +47,7 @@
 
   .sample {
     position: relative;
+    isolation: isolate;
     min-height: 220px;
     overflow: hidden;
     border: 1px solid var(--palette-wrap-200);
