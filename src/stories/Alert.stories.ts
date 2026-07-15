@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Alert from '../lib/Alert.svelte';
-import { expect, fn, userEvent, within } from '@storybook/test';
+import AlertDismissWrapper from './AlertDismissWrapper.svelte';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta = {
   title: 'CommonComponents/Alert',
@@ -19,8 +20,7 @@ const meta = {
     },
     outline: {
       control: { type: 'boolean' }
-    },
-    onDismiss: { action: 'dismiss' }
+    }
   }
 } satisfies Meta<Alert>;
 
@@ -28,6 +28,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Success: Story = {
+  render: (args) => ({ Component: AlertDismissWrapper, props: args }),
   args: {
     message: '操作が正常に完了しました。',
     type: 'success',
@@ -44,10 +45,10 @@ export const Success: Story = {
         await expect(dismissButton).toBeInTheDocument();
       });
 
-      await step('閉じるボタンをクリックするとonDismissイベントが発火すること', async () => {
+      await step('閉じるボタンをクリックするとdismissイベントが発火すること', async () => {
         const dismissButton = canvas.getByLabelText('Dismiss alert');
         await userEvent.click(dismissButton);
-        await expect(args.onDismiss).toHaveBeenCalled();
+        await expect(canvas.getByTestId('dismiss-status')).toHaveTextContent('dismissed');
       });
     }
   }

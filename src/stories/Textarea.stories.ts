@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Textarea from '../lib/Textarea.svelte';
-import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
+import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 import AllColorsTextareaWrapper from './AllColors/AllColorsTextareaWrapper.svelte';
 
@@ -63,6 +63,21 @@ export const Disabled: Story = {
     borderColor: CCLVividColor.WRAP_GREY,
     rows: 7,
     cols: 40
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByLabelText('入力不可');
+    const initialValue = '編集できません.\n複数行のテキストです.\n無効化されています.';
+
+    await step('テキストエリアが無効であること', async () => {
+      await expect(textarea).toBeDisabled();
+      await expect(textarea).toHaveValue(initialValue);
+    });
+
+    await step('無効なテキストエリアは操作後も値が変わらないこと', async () => {
+      await userEvent.type(textarea, '変更後の値');
+      await expect(textarea).toHaveValue(initialValue);
+    });
   }
 };
 
@@ -73,6 +88,19 @@ export const NoLabel: Story = {
     borderColor: CCLVividColor.PINEAPPLE_YELLOW,
     rows: 3,
     cols: 25
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const textarea = canvas.getByRole('textbox');
+
+    await step('ラベルがなくてもplaceholderでテキストエリアを識別できること', async () => {
+      await expect(textarea).toHaveAttribute('placeholder', 'ラベルなしのテキストエリア');
+    });
+
+    await step('ラベルがないテキストエリアへ入力できること', async () => {
+      await userEvent.type(textarea, 'ラベルなし入力');
+      await expect(textarea).toHaveValue('ラベルなし入力');
+    });
   }
 };
 

@@ -3,7 +3,7 @@ import AccordionItem from '../lib/AccordionItem.svelte';
 import ItemWrapper from './accordion/ItemWrapper.svelte';
 import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
 
-const colorOptions = { ...CCLVividColor, ...CCLPastelColor };
+const colorOptions = [...Object.values(CCLVividColor), ...Object.values(CCLPastelColor)];
 
 const meta = {
   title: 'CommonComponents/Accordion/AccordionItem',

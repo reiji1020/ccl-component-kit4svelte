@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import { within, userEvent, expect } from '@storybook/test';
-import Header from '$lib/Header.svelte';
 import { CCLVividColor, HeaderHeight } from '$lib/const/config';
 import HeaderWithDrawerWrapper from './HeaderWithDrawerWrapper.svelte';
 
@@ -17,7 +16,7 @@ const heightOptions = [HeaderHeight.NALLOW, HeaderHeight.NORMAL, HeaderHeight.WI
 
 const meta = {
   title: 'Compositions/HeaderWithDrawer',
-  component: Header,
+  component: HeaderWithDrawerWrapper,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },
   argTypes: {
@@ -26,7 +25,7 @@ const meta = {
     side: { control: { type: 'radio' }, options: ['left', 'right', 'top', 'bottom'] },
     size: { control: { type: 'text' } }
   }
-} satisfies Meta<Header>;
+} satisfies Meta<HeaderWithDrawerWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

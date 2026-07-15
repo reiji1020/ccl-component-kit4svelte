@@ -32,7 +32,8 @@ const createStory = (initialArgs: Story['args']): Story => ({
   },
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const radio = canvas.getByRole('radio', { hidden: true });
+    const radio = canvas.getByRole('radio', { hidden: true }) as HTMLInputElement;
+    const wasChecked = radio.checked;
 
     await step('初期状態が正しいこと', async () => {
       if (args?.group === args?.value) {
@@ -45,7 +46,11 @@ const createStory = (initialArgs: Story['args']): Story => ({
     await step('クリック操作が正しく行われること', async () => {
       await userEvent.click(radio);
       if (args?.disabled) {
-        await expect(radio).toBeChecked(); // Disabled radio should not change state
+        if (wasChecked) {
+          await expect(radio).toBeChecked();
+        } else {
+          await expect(radio).not.toBeChecked();
+        }
       } else {
         await expect(radio).toBeChecked();
       }
@@ -80,6 +85,7 @@ export const MultipleRadioButtons: Story = {
       selectedValue: 'option1'
     }
   }),
+  args: { value: 'option1', group: 'option1' },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
@@ -118,7 +124,7 @@ export const MultipleRadioButtons: Story = {
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsRadioButtonWrapper }),
-  args: {},
+  args: { value: 'sample', group: 'sample' },
   parameters: {
     docs: {
       source: {

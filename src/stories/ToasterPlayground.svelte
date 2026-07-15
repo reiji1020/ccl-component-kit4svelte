@@ -23,5 +23,5 @@
       >Use controls to edit message/duration/variant, then click Show Toast.</span
     >
   {/if}
-  <Toaster {position} {maxVisible} {dismissible} />
+  <Toaster {position} {maxVisible} {dismissible} message="" duration={0} />
 </div>

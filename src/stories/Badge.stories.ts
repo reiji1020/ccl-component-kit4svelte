@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import { expect, within } from '@storybook/test';
 import Badge from '$lib/Badge.svelte';
 import { CCLVividColor, CCLPastelColor } from '$lib/const/config';
+import type { ColorVar } from '$lib/const/config';
 import AllColorsBadgeWrapper from './AllColors/AllColorsBadgeWrapper.svelte';
 
 const colorOptions = [...Object.values(CCLVividColor), ...Object.values(CCLPastelColor)];
@@ -32,12 +33,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const createStory = (
-  color: string,
+  color: ColorVar,
   variant: 'solid' | 'outline',
   size: 'sm' | 'md' | 'lg',
   label: string
 ): Story => ({
-  args: { color, variant, size, label },
+  args: { color, variant, size, label, ariaLabel: label },
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('バッジのテキストが表示されていること', async () => {
@@ -51,7 +52,9 @@ const createStory = (
       await expect(host).toHaveAttribute('data-size', size);
     });
     await step('色プロパティが設定されていること', async () => {
-      await expect(args.color).toBe(color);
+      const el = await canvas.findByText(label);
+      const host = el.closest('.ccl-badge') as HTMLElement;
+      await expect(host.style.getPropertyValue('--badge-color').trim()).toBe(`var(${color})`);
     });
   }
 });
@@ -61,7 +64,13 @@ export const Default: Story = createStory(CCLVividColor.SODA_BLUE, 'solid', 'md'
 export const Outline: Story = createStory(CCLVividColor.STRAWBERRY_PINK, 'outline', 'md', 'Beta');
 
 export const LargePastel: Story = {
-  args: { color: CCLPastelColor.LEMON_YELLOW, variant: 'solid', size: 'lg', label: 'Featured' },
+  args: {
+    color: CCLPastelColor.LEMON_YELLOW,
+    variant: 'solid',
+    size: 'lg',
+    label: 'Featured',
+    ariaLabel: 'Featured'
+  },
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('バッジのテキストが表示されていること', async () => {
@@ -84,7 +93,7 @@ export const LargePastel: Story = {
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsBadgeWrapper }),
-  args: {},
+  args: { label: 'Color sample', ariaLabel: 'Color sample' },
   parameters: {
     docs: {
       source: { code: null }

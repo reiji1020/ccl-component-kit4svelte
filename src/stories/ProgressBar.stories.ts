@@ -86,7 +86,7 @@ export const Default: Story = {
     });
 
     await step('バーの幅(%)が正しく計算されてstyleに適用されていること', async () => {
-      const expectedProgress = (args.value / args.maxValue) * 100;
+      const expectedProgress = ((args.value ?? 0) / (args.maxValue ?? 100)) * 100;
       await expect(progressBar.style.width).toBe(`${expectedProgress}%`);
     });
   }
@@ -154,7 +154,7 @@ export const FullProgress: Story = {
     });
 
     await step('バーの幅(%)が正しく計算されてstyleに適用されていること', async () => {
-      const expectedProgress = (args.value / args.maxValue) * 100;
+      const expectedProgress = ((args.value ?? 0) / (args.maxValue ?? 100)) * 100;
       await expect(progressBar.style.width).toBe(`${expectedProgress}%`);
     });
   }

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import PrismaticSectionHeading from '$lib/PrismaticSectionHeading.svelte';
+import type { PrismaticSectionHeadingTone } from '$lib/PrismaticSectionHeading.svelte';
 import { CCLVividColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
 import AllColorsPrismaticSectionHeadingWrapper from './AllColors/AllColorsPrismaticSectionHeadingWrapper.svelte';
@@ -37,7 +38,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createStory = (eyebrow: string, title: string, tone: string): Story => ({
+const createStory = (eyebrow: string, title: string, tone: PrismaticSectionHeadingTone): Story => ({
   args: {
     eyebrow,
     title,

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Select from '../lib/Select.svelte';
-import { CCLVividColor, CCLPastelColor } from '../lib/const/config';
+import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 import AllColorsSelectWrapper from './AllColors/AllColorsSelectWrapper.svelte';
 
@@ -58,6 +58,20 @@ export const Disabled: Story = {
     value: 'option2',
     disabled: true,
     borderColor: CCLVividColor.WRAP_GREY
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByLabelText('選択不可');
+
+    await step('セレクトボックスが無効であること', async () => {
+      await expect(select).toBeDisabled();
+      await expect(select).toHaveValue('option2');
+    });
+
+    await step('無効なセレクトボックスは操作後も値が変わらないこと', async () => {
+      await userEvent.selectOptions(select, 'option1');
+      await expect(select).toHaveValue('option2');
+    });
   }
 };
 
@@ -67,6 +81,19 @@ export const NoLabel: Story = {
     options: defaultOptions,
     value: 'option3',
     borderColor: CCLVividColor.PINEAPPLE_YELLOW
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole('combobox');
+
+    await step('ラベルがなくてもroleでセレクトボックスを識別できること', async () => {
+      await expect(select).toHaveValue('option3');
+    });
+
+    await step('ラベルがないセレクトボックスでも選択できること', async () => {
+      await userEvent.selectOptions(select, 'option1');
+      await expect(select).toHaveValue('option1');
+    });
   }
 };
 

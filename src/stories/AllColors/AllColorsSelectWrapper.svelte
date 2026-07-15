@@ -1,7 +1,8 @@
 <script lang="ts">
   import Select from '../../lib/Select.svelte';
-  import type { SelectOption } from '../lib/Select.svelte';
   import { CCLVividColor, CCLPastelColor } from '../../lib/const/config';
+
+  type SelectOption = { value: string; label: string };
 
   const options: SelectOption[] = [
     { value: 'option1', label: 'オプション 1' },

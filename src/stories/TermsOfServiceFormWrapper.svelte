@@ -18,8 +18,8 @@
     これはダミーのテキストです。
   </p>
 
-  <FormGroup forId="terms-agree">
-    <Checkbox label="利用規約に同意する" id="terms-agree" bind:checked={agreedToTerms} />
+  <FormGroup>
+    <Checkbox label="利用規約に同意する" bind:checked={agreedToTerms} />
   </FormGroup>
 
   <Button

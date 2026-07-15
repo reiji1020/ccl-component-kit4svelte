@@ -10,6 +10,11 @@ CANDY CHUPS Labのサイトで使うコンポーネントのキットです。
 
 このライブラリの開発を行うにはSvelteの導入が必要です。
 
+## Svelte互換性
+
+`cclkit4svelte` 4.x はSvelte 5専用です。Svelte 4はサポート対象外です。
+実装方針と段階的な移行ルールは[docs/SVELTE_5_MIGRATION.md](docs/SVELTE_5_MIGRATION.md)を参照してください。
+
 ## Figma
 
 [Figma](https://www.figma.com/file/RWLq3IaUeF0soEH666sXQC/Common-Component?type=design&node-id=0%3A1&mode=design&t=ESVNyUtQevAFIe3o-1)

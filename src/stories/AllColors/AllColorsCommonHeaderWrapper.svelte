@@ -13,6 +13,7 @@
           height={HeaderHeight.NORMAL}
           logo="beace.svg"
           logoHeight="50px"
+          href="/"
         />
         <span>{name}</span>
       </div>
@@ -28,6 +29,7 @@
           height={HeaderHeight.NORMAL}
           logo="beace.svg"
           logoHeight="50px"
+          href="/"
         />
         <span>{name}</span>
       </div>
