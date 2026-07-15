@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
-import { CCLVividColor, CCLPastelColor } from '$lib/const/config';
+import { CCLVividColor } from '$lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import AllColorsButtonWrapper from './AllColors/AllColorsButtonWrapper.svelte';
 
@@ -44,18 +44,16 @@ const createStory = (bgColor: string, label: string, disabled: boolean = false):
   },
   play: async ({ args, canvasElement, step }) => {
     const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
+    const button = canvas.getByRole('button', { name: label });
 
-    await step('ボタンが存在すること', async () => {
+    await step('ボタンがラベルをaccessible nameとして表示していること', async () => {
       await expect(button).toBeInTheDocument();
+      await expect(button).toHaveAccessibleName(label);
+      await expect(button).toHaveTextContent(label);
     });
 
-    await step('ボタンの色が正しく設定されていること', async () => {
-      await expect(args.bgColor).toBe(bgColor);
-    });
-
-    await step('ボタンのラベルが正しく設定されていること', async () => {
-      await expect(args.label).toBe(label);
+    await step('ボタンの色がCSS custom propertyへ反映されていること', async () => {
+      await expect(button.style.getPropertyValue('--bgColor').trim()).toBe(`var(${bgColor})`);
     });
 
     if (disabled) {
