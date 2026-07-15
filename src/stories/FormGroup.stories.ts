@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
-import FormGroup from '../lib/FormGroup.svelte';
-import Input from '../lib/Input.svelte';
-import Checkbox from '../lib/Checkbox.svelte';
+import FormGroupInputWrapper from './FormGroupInputWrapper.svelte';
 import RegistrationFormWrapper from './RegistrationFormWrapper.svelte';
 import TermsOfServiceFormWrapper from './TermsOfServiceFormWrapper.svelte';
-import { expect, fn, userEvent, within } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
 
 const meta = {
   title: 'Form/FormGroup',
-  component: FormGroup,
+  component: FormGroupInputWrapper,
   tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
@@ -16,11 +14,9 @@ const meta = {
     errorMessage: { control: 'text' },
     forId: { control: 'text' },
     // Inputコンポーネントの値を制御するためのargType
-    value: { control: 'text' },
-    // Checkboxコンポーネントのチェック状態を制御するためのargType
-    checked: { control: 'boolean' }
+    value: { control: 'text' }
   }
-} satisfies Meta<FormGroup>;
+} satisfies Meta<FormGroupInputWrapper>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -32,13 +28,7 @@ export const Default: Story = {
     forId: 'username-input',
     value: '' // 初期値を設定
   },
-  render: (args) => ({
-    Component: FormGroup,
-    props: args,
-    template: `<FormGroup label="${args.label}" helpText="${args.helpText}" errorMessage="${args.errorMessage}" forId="${args.forId}">
-						<Input type="text" id="${args.forId}" bind:value={${JSON.stringify(args.value)}} />
-					</FormGroup>`
-  })
+  render: (args) => ({ Component: FormGroupInputWrapper, props: args })
 };
 
 export const RegistrationFormExample: Story = {

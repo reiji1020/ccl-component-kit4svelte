@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import { expect, within } from '@storybook/test';
 import CommonHeader from '$lib/CommonHeader.svelte';
 import { CCLVividColor, CCLPastelColor, HeaderHeight } from '$lib/const/config';
+import type { ColorVar } from '$lib/const/config';
 import AllColorsCommonHeaderWrapper from './AllColors/AllColorsCommonHeaderWrapper.svelte';
 
 const colorOptions = [
@@ -41,7 +42,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const createStory = (
-  bgColor: string,
+  bgColor: ColorVar,
   height: string,
   logo: string,
   logoHeight: string,
@@ -91,7 +92,7 @@ export const NallowHeader = createStory(
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsCommonHeaderWrapper }),
-  args: {},
+  args: { logo: 'logo.png', logoHeight: '40px', href: '/' },
   parameters: {
     docs: {
       source: {

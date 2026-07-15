@@ -2,8 +2,9 @@
   import Header from '$lib/Header.svelte';
   import SlideMenu from '$lib/SlideMenu.svelte';
   import { CCLVividColor, HeaderHeight } from '$lib/const/config';
+  import type { ColorVar } from '$lib/const/config';
 
-  export let bgColor: string = CCLVividColor.STRAWBERRY_PINK;
+  export let bgColor: ColorVar = CCLVividColor.STRAWBERRY_PINK;
   export let height: string = HeaderHeight.NORMAL;
   export let side: 'left' | 'right' | 'top' | 'bottom' = 'left';
   export let size: string = '320px';

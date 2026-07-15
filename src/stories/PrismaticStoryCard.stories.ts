@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import PrismaticStoryCard from '$lib/PrismaticStoryCard.svelte';
+import type { PrismaticStoryCardTone } from '$lib/PrismaticStoryCard.svelte';
 import { CCLVividColor } from '$lib/const/config';
 import { expect, within } from '@storybook/test';
 import AllColorsPrismaticStoryCardWrapper from './AllColors/AllColorsPrismaticStoryCardWrapper.svelte';
@@ -60,7 +61,7 @@ type Story = StoryObj<typeof meta>;
 const createStory = (
   title: string,
   size: 'featured' | 'default',
-  tone: string,
+  tone: PrismaticStoryCardTone,
   label?: string,
   href?: string
 ): Story => ({

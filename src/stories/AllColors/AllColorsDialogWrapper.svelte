@@ -3,7 +3,8 @@
   import Button from '../../lib/Button.svelte';
   import { CCLVividColor, CCLPastelColor } from '../../lib/const/config';
 
-  type Entry = { name: string; color: string; open: boolean };
+  type VividVar = (typeof CCLVividColor)[keyof typeof CCLVividColor];
+  type Entry = { name: string; color: VividVar; open: boolean };
   let vividEntries: Entry[] = Object.entries(CCLVividColor).map(([name, color]) => ({
     name,
     color,

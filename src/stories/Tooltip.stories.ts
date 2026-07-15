@@ -16,7 +16,6 @@ const meta = {
   argTypes: {
     text: {
       control: 'text',
-      type: { required: true },
       description: 'ツールチップとして表示されるテキスト'
     },
     position: {
@@ -93,7 +92,7 @@ export const AllColors: Story = {
   render: () => ({
     Component: AllColorsTooltipWrapper
   }),
-  args: {},
+  args: { text: 'Color sample' },
   parameters: {
     layout: 'fullscreen',
     docs: {

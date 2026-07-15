@@ -118,7 +118,7 @@ export const Invalid = createStory(
     const input = canvas.getByLabelText('メールアドレス');
 
     await step('バリデーションメッセージが正しく表示されること', async () => {
-      const validationMessage = canvas.getByText(args.validationMessage);
+      const validationMessage = canvas.getByText(args.validationMessage ?? '');
       await expect(validationMessage).toBeInTheDocument();
     });
 

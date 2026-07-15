@@ -8,7 +8,7 @@
   <div class="color-grid">
     {#each Object.entries(CCLVividColor) as [name, color]}
       <div class="color-sample">
-        <Badge {color} variant="solid" size="md" label={name} />
+        <Badge {color} variant="solid" size="md" label={name} ariaLabel={name} />
       </div>
     {/each}
   </div>
@@ -17,7 +17,7 @@
   <div class="color-grid">
     {#each Object.entries(CCLPastelColor) as [name, color]}
       <div class="color-sample">
-        <Badge {color} variant="solid" size="md" label={name} />
+        <Badge {color} variant="solid" size="md" label={name} ariaLabel={name} />
       </div>
     {/each}
   </div>
@@ -26,7 +26,7 @@
   <div class="color-grid">
     {#each Object.entries(CCLVividColor) as [name, color]}
       <div class="color-sample">
-        <Badge {color} variant="outline" size="md" label={name} />
+        <Badge {color} variant="outline" size="md" label={name} ariaLabel={name} />
       </div>
     {/each}
   </div>
@@ -35,7 +35,7 @@
   <div class="color-grid">
     {#each Object.entries(CCLPastelColor) as [name, color]}
       <div class="color-sample">
-        <Badge {color} variant="outline" size="md" label={name} />
+        <Badge {color} variant="outline" size="md" label={name} ariaLabel={name} />
       </div>
     {/each}
   </div>

@@ -66,7 +66,12 @@ export const Default = createStory(
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsThumbnailWrapper }),
-  args: {},
+  args: {
+    imageSize: '120px',
+    borderColor: CCLVividColor.STRAWBERRY_PINK,
+    src: 'thumbnail.png',
+    altText: 'Thumbnail color sample'
+  },
   parameters: {
     docs: {
       source: {

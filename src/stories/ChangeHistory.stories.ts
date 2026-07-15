@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import ChangeHistory from '$lib/ChangeHistory.svelte';
-import type { HistoryItem } from '$lib/ChangeHistory.svelte';
+import type { ComponentProps } from 'svelte';
 import { CCLVividColor } from '$lib/const/config';
+
+type HistoryItem = NonNullable<ComponentProps<ChangeHistory>['historyItems']>[number];
 
 const meta: Meta<ChangeHistory> = {
   title: 'CommonComponents/ChangeHistory',

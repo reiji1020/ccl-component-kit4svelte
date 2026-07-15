@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
-import { within, expect } from '@storybook/test';
+import { within, expect, userEvent } from '@storybook/test';
 import Toaster from '$lib/Toaster.svelte';
 import { toast } from '$lib/index';
 import ToasterPlayground from './ToasterPlayground.svelte';
@@ -18,17 +18,12 @@ const meta = {
     maxVisible: {
       control: { type: 'number', min: 1, max: 10 },
       description: '同時に画面上に表示する最大数',
-      table: { category: 'Behavior', defaultValue: { summary: 5 } }
-    },
-    defaultDuration: {
-      control: { type: 'number', min: 0, step: 100 },
-      description: '個別指定がないときの自動消滅時間 (ms)。0 を指定すると自動消滅しない',
-      table: { category: 'Behavior', defaultValue: { summary: 3000 } }
+      table: { category: 'Behavior', defaultValue: { summary: '5' } }
     },
     dismissible: {
       control: { type: 'boolean' },
       description: '閉じる（×）ボタンを表示するかどうか',
-      table: { category: 'Behavior', defaultValue: { summary: true } }
+      table: { category: 'Behavior', defaultValue: { summary: 'true' } }
     },
     // 直接表示のための入力（Toaster に props で渡す）
     message: {
@@ -58,11 +53,18 @@ export const Default: Story = {
   args: {
     position: 'top-right',
     maxVisible: 5,
-    defaultDuration: 3000,
     dismissible: true,
     message: 'Hello',
     variant: 'info',
     duration: 0
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('デフォルトのトーストが表示されること', async () => {
+      const status = await canvas.findByRole('status');
+      await expect(status).toHaveTextContent('Hello');
+    });
+    toast.clear();
   },
   parameters: {
     docs: {
@@ -72,7 +74,7 @@ export const Default: Story = {
   import { Toaster } from 'cclkit4svelte';
 </script>
 
-<Toaster position="top-right" maxVisible={5} defaultDuration={3000} dismissible message="Hello" variant="info" duration={0} />
+<Toaster position="top-right" maxVisible={5} dismissible message="Hello" variant="info" duration={0} />
         `.trim()
       }
     }
@@ -84,17 +86,17 @@ export const AutoDismiss: Story = {
   args: {
     position: 'top-right',
     maxVisible: 5,
-    defaultDuration: 800,
     dismissible: false,
     message: 'Auto dismiss in 800ms',
-    variant: 'info'
+    variant: 'info',
+    duration: 800
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
-    await step('defaultDuration で自動消滅すること', async () => {
+    await step('duration で自動消滅すること', async () => {
       // グローバルストアをクリーンにしてから、このストーリーのトーストを発火
       toast.clear();
-      toast.show({ message: 'Auto dismiss in 800ms', variant: 'info' });
+      toast.show({ message: 'Auto dismiss in 800ms', variant: 'info', duration: 800 });
       const status = await canvas.findByRole('status');
       await expect(status).toBeInTheDocument();
     });
@@ -103,7 +105,7 @@ export const AutoDismiss: Story = {
     docs: {
       source: {
         code: `
-<Toaster position="top-right" defaultDuration={800} message="Auto dismiss in 800ms" variant="info" />
+<Toaster position="top-right" message="Auto dismiss in 800ms" variant="info" duration={800} />
         `.trim()
       }
     }
@@ -115,10 +117,18 @@ export const CustomMessage: Story = {
   args: {
     position: 'top-right',
     maxVisible: 5,
-    defaultDuration: 3000,
     variant: 'info',
     message: 'Type your message here',
     duration: 3000
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    await step('Controlsの内容でトーストを表示できること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'Show Toast' }));
+      const status = await canvas.findByRole('status');
+      await expect(status).toHaveTextContent('Type your message here');
+    });
+    toast.clear();
   },
   argTypes: {
     variant: {
@@ -140,7 +150,7 @@ export const CustomMessage: Story = {
   },
   parameters: {
     controls: {
-      include: ['position', 'maxVisible', 'defaultDuration', 'variant', 'message', 'duration']
+      include: ['position', 'maxVisible', 'variant', 'message', 'duration']
     }
   }
 };
@@ -154,7 +164,6 @@ function makeVariantStory(
     args: {
       position: 'top-right',
       maxVisible: 5,
-      defaultDuration: 3000,
       dismissible: true,
       message,
       variant,
@@ -178,7 +187,7 @@ function makeVariantStory(
   import { Toaster } from 'cclkit4svelte';
 </script>
 
-<Toaster position="top-right" maxVisible={5} defaultDuration={3000} dismissible message="${message}" variant="${variant}" duration={0} />
+<Toaster position="top-right" maxVisible={5} dismissible message="${message}" variant="${variant}" duration={0} />
           `.trim()
         }
       }
@@ -189,24 +198,24 @@ function makeVariantStory(
 export const Success: Story = {
   ...makeVariantStory('success', 'Saved successfully'),
   parameters: {
-    controls: { include: ['position', 'maxVisible', 'defaultDuration', 'dismissible'] }
+    controls: { include: ['position', 'maxVisible', 'dismissible'] }
   }
 };
 export const Error: Story = {
   ...makeVariantStory('error', 'Something went wrong'),
   parameters: {
-    controls: { include: ['position', 'maxVisible', 'defaultDuration', 'dismissible'] }
+    controls: { include: ['position', 'maxVisible', 'dismissible'] }
   }
 };
 export const Warning: Story = {
   ...makeVariantStory('warning', 'Check your input'),
   parameters: {
-    controls: { include: ['position', 'maxVisible', 'defaultDuration', 'dismissible'] }
+    controls: { include: ['position', 'maxVisible', 'dismissible'] }
   }
 };
 export const Info: Story = {
   ...makeVariantStory('info', 'Here is some information'),
   parameters: {
-    controls: { include: ['position', 'maxVisible', 'defaultDuration', 'dismissible'] }
+    controls: { include: ['position', 'maxVisible', 'dismissible'] }
   }
 };

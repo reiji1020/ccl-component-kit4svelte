@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import { expect, within } from '@storybook/test';
 import Header from '$lib/Header.svelte';
 import { CCLVividColor, CCLPastelColor, HeaderHeight } from '$lib/const/config';
+import type { ColorVar } from '$lib/const/config';
 import AllColorsHeaderWrapper from './AllColors/AllColorsHeaderWrapper.svelte';
 
 const colorOptions = [
@@ -37,7 +38,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createStory = (bgColor: string, height: string): Story => ({
+const createStory = (bgColor: ColorVar, height: string): Story => ({
   args: {
     bgColor,
     height
