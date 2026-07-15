@@ -85,6 +85,7 @@ export const MultipleRadioButtons: Story = {
       selectedValue: 'option1'
     }
   }),
+  args: { value: 'option1', group: 'option1' },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
@@ -123,7 +124,7 @@ export const MultipleRadioButtons: Story = {
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsRadioButtonWrapper }),
-  args: {},
+  args: { value: 'sample', group: 'sample' },
   parameters: {
     docs: {
       source: {

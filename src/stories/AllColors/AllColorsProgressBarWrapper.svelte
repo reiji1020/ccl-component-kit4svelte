@@ -1,6 +1,6 @@
 <script lang="ts">
   import ProgressBar from '../../lib/ProgressBar.svelte';
-  import { CCLVividColor, CCLPastelColor } from '../../lib/const/config';
+  import { CCLVividColor, CCLPastelColor, ProgressBarHeight } from '../../lib/const/config';
 
   const vividColors = [
     { name: 'STRAWBERRY_PINK', bar: CCLVividColor.STRAWBERRY_PINK, bg: CCLPastelColor.PEACH_PINK },
@@ -39,7 +39,7 @@
             barColor={colorOption.bar}
             backgroundColor={colorOption.bg}
             containerWidth="100%"
-            height="20px"
+            height={ProgressBarHeight.WIDE}
           />
           <span style="font-size: 14px; color: #555;">{colorOption.name}</span>
         </div>
@@ -60,7 +60,7 @@
             barColor={colorOption.bar}
             backgroundColor={colorOption.bg}
             containerWidth="100%"
-            height="20px"
+            height={ProgressBarHeight.WIDE}
           />
           <span style="font-size: 14px; color: #555;">{colorOption.name}</span>
         </div>

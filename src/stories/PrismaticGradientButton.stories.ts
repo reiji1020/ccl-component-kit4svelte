@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import PrismaticGradientButton from '$lib/PrismaticGradientButton.svelte';
 import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
+import type { ColorVar } from '$lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import AllColorsPrismaticGradientButtonWrapper from './AllColors/AllColorsPrismaticGradientButtonWrapper.svelte';
 
@@ -51,7 +52,7 @@ const createStory = (
   label: string,
   tone: 'primary' | 'secondary',
   size: 'large' | 'medium',
-  color: string,
+  color: ColorVar,
   expectedGradientStart: string,
   expectedGradientEnd: string,
   disabled: boolean = false

@@ -134,7 +134,12 @@ export const NoLink: Story = {
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsBookCardWrapper }),
-  args: {},
+  args: {
+    title: 'Color sample',
+    description: 'BookCard color sample',
+    coverImageUrl: 'thumbnail.png',
+    altText: 'BookCard color sample'
+  },
   parameters: {
     docs: {
       source: {

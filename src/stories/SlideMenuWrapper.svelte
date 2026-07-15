@@ -1,6 +1,7 @@
 <script lang="ts">
   import SlideMenu from '$lib/SlideMenu.svelte';
   import { CCLVividColor } from '$lib/const/config';
+  import type { ColorVar } from '$lib/const/config';
 
   export let side: 'left' | 'right' = 'left';
   export let size: string = '320px';
@@ -8,7 +9,7 @@
   export let ariaLabel: string = 'メインメニュー';
   export let items: { id: string; label: string; href?: string }[] = [];
   export let currentId: string | undefined = undefined;
-  export let accentColor: string = CCLVividColor.SODA_BLUE;
+  export let accentColor: ColorVar = CCLVividColor.SODA_BLUE;
 
   let open = false;
   const openMenu = () => (open = true);

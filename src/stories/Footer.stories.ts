@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Footer from '$lib/Footer.svelte';
 import { CCLVividColor } from '$lib/const/config';
+import type { ColorVar } from '$lib/const/config';
 import { expect } from '@storybook/test';
 import AllColorsFooterWrapper from './AllColors/AllColorsFooterWrapper.svelte';
 
@@ -31,7 +32,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createStory = (bgColor: string): Story => ({
+const createStory = (bgColor: ColorVar): Story => ({
   args: {
     bgColor
   },

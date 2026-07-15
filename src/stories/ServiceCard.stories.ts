@@ -131,7 +131,12 @@ NoLink.storyName = 'NoLink';
 
 export const AllColors: Story = {
   render: () => ({ Component: AllColorsServiceCardWrapper }),
-  args: {},
+  args: {
+    serviceName: 'Color sample',
+    description: 'ServiceCard color sample',
+    imageUrl: 'thumbnail.png',
+    altText: 'ServiceCard color sample'
+  },
   parameters: {
     docs: {
       source: {

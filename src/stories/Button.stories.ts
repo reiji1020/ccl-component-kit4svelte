@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from '$lib/Button.svelte';
 import { CCLVividColor } from '$lib/const/config';
+import type { ColorVar } from '$lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import AllColorsButtonWrapper from './AllColors/AllColorsButtonWrapper.svelte';
 
@@ -35,7 +36,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const createStory = (bgColor: string, label: string, disabled: boolean = false): Story => ({
+const createStory = (bgColor: ColorVar, label: string, disabled: boolean = false): Story => ({
   args: {
     bgColor,
     label,
