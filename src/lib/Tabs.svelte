@@ -3,11 +3,12 @@
   import { writable } from 'svelte/store';
 
   import { TABS_CONTEXT_KEY } from './scripts/tabsContext';
+  import type { TabData, TabsContext } from './scripts/tabsContext';
 
-  const tabData = writable([]);
+  const tabData = writable<TabData[]>([]);
   const activeTabLabel = writable('');
 
-  setContext(TABS_CONTEXT_KEY, {
+  setContext<TabsContext>(TABS_CONTEXT_KEY, {
     addTab: (tab) => {
       tabData.update((currentTabs) => {
         const newTabs = [...currentTabs, tab];

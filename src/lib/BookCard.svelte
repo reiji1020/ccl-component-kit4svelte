@@ -1,5 +1,7 @@
 <script lang="ts">
   import Button from './Button.svelte';
+  import { CCLVividColor } from './const/config';
+  import type { ColorVar } from './const/config';
 
   /**
    * 書籍のタイトル
@@ -43,7 +45,10 @@
    * @default --strawberry-pink
    * @type string
    */
-  export let borderColor: string = '--strawberry-pink';
+  export let borderColor: string = CCLVividColor.STRAWBERRY_PINK;
+  let buttonColor: ColorVar;
+  // Preserve support for consumer-defined CSS custom properties at the public boundary.
+  $: buttonColor = borderColor as ColorVar;
 
   function handleLinkClick() {
     if (linkUrl) {
@@ -63,7 +68,7 @@
     </div>
     {#if linkUrl}
       <div class="BookCardLinkWrapper">
-        <Button label={linkText} bgColor={borderColor} onClick={handleLinkClick} />
+        <Button label={linkText} bgColor={buttonColor} onClick={handleLinkClick} />
       </div>
     {/if}
   </div>
