@@ -1,3 +1,28 @@
+## [4.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/3.1.0...4.0.0) (2026/07/15)
+
+### Breaking Changes
+
+- Raised the supported Svelte peer dependency to `^5.0.0` and documented the Svelte 5-only migration contract. (#93, #114)
+
+### Bug Fixes
+
+- Resolved Svelte 5 type errors across public components while preserving their public APIs. (#111, #121)
+- Resolved Storybook type errors and aligned stories and wrappers with component prop contracts. (#112, #122)
+- Supplied required component props in the demo route for Svelte 5 type checking. (#113, #123)
+- Added accessible Carousel navigation controls and verified slide changes through interaction tests. (#105, #117)
+
+### Testing
+
+- Stabilized DatePicker stories with fixed dates and deterministic navigation assertions. (#106, #116)
+- Preserved the initial checked state in disabled RadioButton story tests. (#104, #115)
+- Added disabled and unlabeled state coverage for form input stories. (#109, #118)
+- Replaced args-only Button story assertions with rendered DOM verification. (#108, #119)
+- Reworked Table story tests around rendered headers, rows, styles, and scrolling behavior. (#107, #120)
+
+### Maintenance
+
+- Restricted npm publishing to published GitHub Releases instead of merges to `main`. (#103, #110)
+
 ## [3.1.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/3.0.0...3.1.0) (2026/07/15)
 
 ### Features
