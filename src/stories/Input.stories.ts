@@ -57,20 +57,51 @@ export const Password = createStory({
   borderColor: CCLVividColor.SODA_BLUE
 });
 
-export const Disabled = createStory({
-  id: 'disabled-input',
-  label: '入力不可',
-  placeholder: 'このフィールドは無効です',
-  value: '編集できません',
-  disabled: true,
-  borderColor: CCLVividColor.WRAP_GREY
-});
+export const Disabled = createStory(
+  {
+    id: 'disabled-input',
+    label: '入力不可',
+    placeholder: 'このフィールドは無効です',
+    value: '編集できません',
+    disabled: true,
+    borderColor: CCLVividColor.WRAP_GREY
+  },
+  async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByLabelText('入力不可');
 
-export const NoLabel = createStory({
-  id: 'no-label-input',
-  placeholder: 'ラベルなしの入力フィールド',
-  borderColor: CCLVividColor.PINEAPPLE_YELLOW
-});
+    await step('入力フィールドが無効であること', async () => {
+      await expect(input).toBeDisabled();
+      await expect(input).toHaveValue('編集できません');
+    });
+
+    await step('無効な入力フィールドは操作後も値が変わらないこと', async () => {
+      await userEvent.type(input, '変更後の値');
+      await expect(input).toHaveValue('編集できません');
+    });
+  }
+);
+
+export const NoLabel = createStory(
+  {
+    id: 'no-label-input',
+    placeholder: 'ラベルなしの入力フィールド',
+    borderColor: CCLVividColor.PINEAPPLE_YELLOW
+  },
+  async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('textbox');
+
+    await step('ラベルがなくてもplaceholderで入力フィールドを識別できること', async () => {
+      await expect(input).toHaveAttribute('placeholder', 'ラベルなしの入力フィールド');
+    });
+
+    await step('ラベルがない入力フィールドへ入力できること', async () => {
+      await userEvent.type(input, 'ラベルなし入力');
+      await expect(input).toHaveValue('ラベルなし入力');
+    });
+  }
+);
 
 export const Invalid = createStory(
   {
