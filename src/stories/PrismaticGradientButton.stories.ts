@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import PrismaticGradientButton from '$lib/PrismaticGradientButton.svelte';
-import { CCLVividColor } from '$lib/const/config';
+import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
 import { expect, fn, userEvent, within } from '@storybook/test';
 import AllColorsPrismaticGradientButtonWrapper from './AllColors/AllColorsPrismaticGradientButtonWrapper.svelte';
 
@@ -52,6 +52,8 @@ const createStory = (
   tone: 'primary' | 'secondary',
   size: 'large' | 'medium',
   color: string,
+  expectedGradientStart: string,
+  expectedGradientEnd: string,
   disabled: boolean = false
 ): Story => ({
   args: {
@@ -67,17 +69,23 @@ const createStory = (
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button', { name: label });
 
-    await step('ボタンが表示されていること', async () => {
+    await step('ボタンがラベルをaccessible nameとして表示していること', async () => {
       await expect(button).toBeInTheDocument();
+      await expect(button).toHaveAccessibleName(label);
+      await expect(button).toHaveTextContent(label);
     });
 
-    await step('ラベルが表示されていること', async () => {
-      await expect(canvas.getByText(label)).toBeInTheDocument();
+    await step('toneとsizeがclassへ反映されていること', async () => {
+      await expect(button).toHaveClass(`tone-${tone}`, `size-${size}`);
     });
 
-    await step('toneとsizeが反映されていること', async () => {
-      await expect(args.tone).toBe(tone);
-      await expect(args.size).toBe(size);
+    await step('色指定がグラデーションのCSS custom propertyへ反映されていること', async () => {
+      await expect(button.style.getPropertyValue('--gradient-start').trim()).toBe(
+        `var(${expectedGradientStart})`
+      );
+      await expect(button.style.getPropertyValue('--gradient-end').trim()).toBe(
+        `var(${expectedGradientEnd})`
+      );
     });
 
     if (disabled) {
@@ -106,13 +114,17 @@ export const Default = createStory(
   'EXPLORE THE LAB',
   'primary',
   'large',
-  CCLVividColor.STRAWBERRY_PINK
+  CCLVividColor.STRAWBERRY_PINK,
+  CCLVividColor.STRAWBERRY_PINK,
+  CCLVividColor.SODA_BLUE
 );
 
 export const Secondary = createStory(
   'EXPLORE THE LAB',
   'secondary',
   'medium',
+  CCLVividColor.PINEAPPLE_YELLOW,
+  CCLPastelColor.LEMON_YELLOW,
   CCLVividColor.PINEAPPLE_YELLOW
 );
 
@@ -121,6 +133,8 @@ export const Disabled = createStory(
   'secondary',
   'large',
   CCLVividColor.PINEAPPLE_YELLOW,
+  CCLPastelColor.LEMON_YELLOW,
+  CCLPastelColor.PEACH_PINK,
   true
 );
 
@@ -147,7 +161,9 @@ export const AllColors: Story = {
     });
 
     await step('Secondaryの6色が表示されていること', async () => {
-      const secondarySection = canvas.getByRole('heading', { name: 'Secondary' }).closest('section');
+      const secondarySection = canvas
+        .getByRole('heading', { name: 'Secondary' })
+        .closest('section');
 
       await expect(secondarySection).not.toBeNull();
       await expect(within(secondarySection as HTMLElement).getAllByRole('button')).toHaveLength(6);
