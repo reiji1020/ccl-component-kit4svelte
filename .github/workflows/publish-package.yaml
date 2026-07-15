@@ -1,10 +1,10 @@
 name: Publish Package to npmjs
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - published
 permissions:
-  contents: write
+  contents: read
   id-token: write
 jobs:
   build:
@@ -35,6 +35,4 @@ jobs:
         run: pnpm run package
 
       - name: Deploy Package to NPM
-        run: npm publish --access public && pnpm semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm publish --access public
