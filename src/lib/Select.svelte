@@ -1,10 +1,12 @@
-<script lang="ts">
-  import { CCLVividColor } from './const/config';
-
+<script context="module" lang="ts">
   /**
    * オプションの型定義
    */
   export type SelectOption = { value: string; label: string };
+</script>
+
+<script lang="ts">
+  import { CCLVividColor } from './const/config';
 
   /**
    * ラベルのテキスト

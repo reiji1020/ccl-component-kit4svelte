@@ -1,5 +1,7 @@
 <script lang="ts">
   import Button from './Button.svelte';
+  import { CCLVividColor } from './const/config';
+  import type { ColorVar } from './const/config';
 
   /**
    * 書籍のタイトル
@@ -43,7 +45,7 @@
    * @default --strawberry-pink
    * @type string
    */
-  export let borderColor: string = '--strawberry-pink';
+  export let borderColor: ColorVar = CCLVividColor.STRAWBERRY_PINK;
 
   function handleLinkClick() {
     if (linkUrl) {

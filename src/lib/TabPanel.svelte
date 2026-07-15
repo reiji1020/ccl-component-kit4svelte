@@ -22,7 +22,8 @@
   export let disabled: boolean = false;
 
   import { TABS_CONTEXT_KEY } from './scripts/tabsContext';
-  const { addTab, activeTabLabel } = getContext(TABS_CONTEXT_KEY);
+  import type { TabsContext } from './scripts/tabsContext';
+  const { addTab, activeTabLabel } = getContext<TabsContext>(TABS_CONTEXT_KEY);
 
   onMount(() => {
     addTab({ label, color, disabled });

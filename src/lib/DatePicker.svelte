@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createEventDispatcher } from 'svelte';
+  import type { Action } from 'svelte/action';
   import { DateTime } from 'luxon';
 
   const dispatch = createEventDispatcher();
@@ -89,7 +90,11 @@
    * Svelte Action to detect clicks outside an element.
    * @param {HTMLElement} node
    */
-  function clickOutside(node: HTMLElement) {
+  const clickOutside: Action<
+    HTMLElement,
+    undefined,
+    { 'on:click_outside': (event: CustomEvent<void>) => void }
+  > = (node) => {
     const handleClick = (event: MouseEvent) => {
       if (node && !node.contains(event.target as Node) && !event.defaultPrevented) {
         // 'click_outside' というカスタムイベントを発行
@@ -104,7 +109,7 @@
         document.removeEventListener('click', handleClick, true);
       }
     };
-  }
+  };
 
   $: daysInMonth = getDaysInMonth(currentMonth);
 </script>

@@ -1,3 +1,17 @@
+<script context="module" lang="ts">
+  /**
+   * 更新履歴の表示項目
+   */
+  export interface HistoryItem {
+    date: string;
+    title: string;
+    tag?: string;
+    color?: string;
+    version?: string;
+    details?: string[];
+  }
+</script>
+
 <script lang="ts">
   import { CCLVividColor, CCLPastelColor } from './const/config';
 
@@ -10,15 +24,6 @@
    * @property {string} [version] - バージョン番号 (例: "v1.1.0")。省略可能
    * @property {string[]} [details] - 更新内容の詳細なリスト。省略可能
    */
-  export interface HistoryItem {
-    date: string;
-    title: string;
-    tag?: string;
-    color?: string;
-    version?: string;
-    details?: string[];
-  }
-
   /**
    * 表示する更新履歴の配列
    * @type {HistoryItem[]}
