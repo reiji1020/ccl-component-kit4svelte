@@ -44,12 +44,12 @@
 >
   <div class="slides">
     {#each src as item, index}
-      <img class="slide" src={item.src} alt={item.alt} />
+      <img class="slide" src={item.src} alt={item.alt} aria-hidden={index !== currentIndex} />
     {/each}
   </div>
   <div class="buttons">
-    <button on:click={prevSlide}>❮</button>
-    <button on:click={nextSlide}>❯</button>
+    <button type="button" aria-label="前のスライドへ" on:click={prevSlide}>❮</button>
+    <button type="button" aria-label="次のスライドへ" on:click={nextSlide}>❯</button>
   </div>
 </div>
 
