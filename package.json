@@ -21,6 +21,7 @@
   },
   "scripts": {
     "preinstall": "node -e \"if (!/pnpm/.test(process.env.npm_execpath || '')) { console.error('Use pnpm to install dependencies.'); process.exit(1); }\"",
+    "prepare": "svelte-kit sync",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
@@ -85,7 +86,7 @@
     "vite": "^5.4.20"
   },
   "peerDependencies": {
-    "svelte": "^4.0.0"
+    "svelte": "^5.0.0"
   },
   "volta": {
     "node": "20.11.1",
