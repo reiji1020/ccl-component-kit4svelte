@@ -45,7 +45,10 @@
    * @default --strawberry-pink
    * @type string
    */
-  export let borderColor: ColorVar = CCLVividColor.STRAWBERRY_PINK;
+  export let borderColor: string = CCLVividColor.STRAWBERRY_PINK;
+  let buttonColor: ColorVar;
+  // Preserve support for consumer-defined CSS custom properties at the public boundary.
+  $: buttonColor = borderColor as ColorVar;
 
   function handleLinkClick() {
     if (linkUrl) {
@@ -65,7 +68,7 @@
     </div>
     {#if linkUrl}
       <div class="BookCardLinkWrapper">
-        <Button label={linkText} bgColor={borderColor} onClick={handleLinkClick} />
+        <Button label={linkText} bgColor={buttonColor} onClick={handleLinkClick} />
       </div>
     {/if}
   </div>
