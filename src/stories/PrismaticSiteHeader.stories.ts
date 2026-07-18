@@ -3,6 +3,7 @@ import { expect, within } from '@storybook/test';
 import PrismaticSiteHeader from '$lib/PrismaticSiteHeader.svelte';
 import { CCLVividColor } from '$lib/const/config';
 import AllColorsPrismaticSiteHeaderWrapper from './AllColors/AllColorsPrismaticSiteHeaderWrapper.svelte';
+import PrismaticSiteHeaderLogoSlotWrapper from './PrismaticSiteHeaderLogoSlotWrapper.svelte';
 import PrismaticSiteHeaderMixedWrapper from './PrismaticSiteHeaderMixedWrapper.svelte';
 
 const toneOptions = [
@@ -27,6 +28,10 @@ const meta = {
     logoUrl: { control: { type: 'text' } },
     logoAlt: { control: { type: 'text' } },
     logoHeight: { control: { type: 'text' } },
+    logoWidth: { control: { type: 'text' } },
+    logoFit: { control: { type: 'select' }, options: ['contain', 'cover'] },
+    padding: { control: { type: 'text' } },
+    minHeight: { control: { type: 'text' } },
     navigation: { control: { type: 'object' } },
     ariaLabel: { control: { type: 'text' } },
     tone: {
@@ -86,6 +91,48 @@ export const WithLogo: Story = {
         'href',
         '/'
       );
+    });
+  }
+};
+
+export const CompactLogoLayout: Story = {
+  args: {
+    brandHref: '/',
+    logoUrl: 'candy-chups-lab.svg',
+    logoAlt: 'CANDY CHUPS Lab.',
+    logoHeight: '48px',
+    logoWidth: '180px',
+    logoFit: 'contain',
+    padding: '18px 28px',
+    minHeight: '84px',
+    tone: CCLVividColor.SODA_BLUE
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('ロゴ幅とヘッダー密度を指定できること', async () => {
+      const logo = canvas.getByRole('img', { name: 'CANDY CHUPS Lab.' });
+      await expect(logo.style.getPropertyValue('--logo-width')).toBe('180px');
+      await expect(logo.style.getPropertyValue('--logo-fit')).toBe('contain');
+    });
+  }
+};
+
+export const WithLogoSlot: Story = {
+  render: () => ({ Component: PrismaticSiteHeaderLogoSlotWrapper }),
+  args: {},
+  parameters: {
+    docs: {
+      source: {
+        code: null
+      }
+    }
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('ロゴslotの内容がブランドリンクとして表示されること', async () => {
+      await expect(canvas.getByRole('link', { name: 'CCL Studio' })).toHaveAttribute('href', '/');
     });
   }
 };

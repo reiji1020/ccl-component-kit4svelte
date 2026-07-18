@@ -26,6 +26,7 @@ const meta = {
     linkLabel: { control: { type: 'text' } },
     imageUrl: { control: { type: 'text' } },
     imageAlt: { control: { type: 'text' } },
+    size: { control: { type: 'select' }, options: ['default', 'large'] },
     tone: {
       control: { type: 'select' },
       options: toneOptions
@@ -67,6 +68,35 @@ export const WithImage: Story = {
 
     await step('表紙画像にalt属性が設定されていること', async () => {
       await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'PrismaticBookCardの書影');
+    });
+  }
+};
+
+export const Large: Story = {
+  args: {
+    href: 'https://example.com',
+    linkLabel: 'READ MORE',
+    imageUrl: 'thumbnail.png',
+    imageAlt: 'largeサイズのPrismaticBookCard表紙',
+    size: 'large',
+    tone: CCLVividColor.GRAPE_PURPLE
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('largeサイズをStorybookで選択できること', async () => {
+      await expect(args.size).toBe('large');
+    });
+
+    await step('largeサイズでもリンクと画像が表示されること', async () => {
+      await expect(canvas.getByRole('img')).toHaveAttribute(
+        'alt',
+        'largeサイズのPrismaticBookCard表紙'
+      );
+      await expect(canvas.getByRole('link', { name: 'READ MORE' })).toHaveAttribute(
+        'href',
+        'https://example.com'
+      );
     });
   }
 };

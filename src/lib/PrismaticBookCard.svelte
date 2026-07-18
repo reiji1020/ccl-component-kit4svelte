@@ -7,11 +7,14 @@
     | '--grape-purple'
     | '--wrap-grey';
 
+  export type PrismaticBookCardSize = 'default' | 'large';
+
   export type PrismaticBookCardProps = {
     href?: string;
     linkLabel?: string;
     imageUrl?: string;
     imageAlt?: string;
+    size?: PrismaticBookCardSize;
     tone?: PrismaticBookCardTone;
   };
 </script>
@@ -24,6 +27,7 @@
   export let linkLabel: string = 'READ MORE';
   export let imageUrl: string | undefined = undefined;
   export let imageAlt: string = '';
+  export let size: PrismaticBookCardSize = 'default';
   export let tone: PrismaticBookCardTone = CCLVividColor.STRAWBERRY_PINK;
 
   const gradientEndColors: Record<string, ColorVar> = {
@@ -42,7 +46,7 @@
 </script>
 
 <article
-  class="prismatic-book-card"
+  class="prismatic-book-card size-{size}"
   style="--gradient-start: {gradientStart}; --gradient-end: {gradientEnd}; --accent-color: {accentColor};"
 >
   <div class="cover-slot" aria-label={imageUrl ? undefined : imageAlt || undefined}>
@@ -97,6 +101,13 @@
     letter-spacing: 0;
   }
 
+  .size-large {
+    gap: 24px;
+    width: min(100%, 370px);
+    height: 590px;
+    padding: 28px;
+  }
+
   .cover-slot {
     position: relative;
     display: flex;
@@ -107,6 +118,11 @@
     overflow: hidden;
     border-radius: 18px;
     background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  }
+
+  .size-large .cover-slot {
+    height: 442px;
+    border-radius: 22px;
   }
 
   .cover-image,
@@ -140,6 +156,11 @@
     overflow-wrap: anywhere;
   }
 
+  .size-large .link,
+  .size-large .link-label {
+    font-size: 14px;
+  }
+
   .link-icon {
     display: block;
     flex: 0 0 16px;
@@ -165,6 +186,10 @@
     .prismatic-book-card {
       height: auto;
       min-height: 500px;
+    }
+
+    .size-large {
+      min-height: 590px;
     }
 
     .cover-slot {

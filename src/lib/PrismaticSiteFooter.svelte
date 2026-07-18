@@ -12,6 +12,8 @@
     href: string;
   };
 
+  export type PrismaticSiteFooterDensity = 'default' | 'compact' | 'studio';
+
   export type PrismaticSiteFooterProps = {
     brand?: string;
     brandHref?: string;
@@ -21,6 +23,9 @@
     links?: PrismaticSiteFooterLink[];
     copyright?: string;
     ariaLabel?: string;
+    density?: PrismaticSiteFooterDensity;
+    studioGradientStart?: PrismaticSiteFooterTone;
+    studioGradientLast?: PrismaticSiteFooterTone;
     tone?: PrismaticSiteFooterTone;
   };
 </script>
@@ -43,6 +48,9 @@
   export let links: PrismaticSiteFooterLink[] = defaultLinks;
   export let copyright: string = `Copyright © ${year} CANDY CHUPS Lab. All Rights Reserved.`;
   export let ariaLabel: string = 'フッターナビゲーション';
+  export let density: PrismaticSiteFooterDensity = 'default';
+  export let studioGradientStart: PrismaticSiteFooterTone | undefined = undefined;
+  export let studioGradientLast: PrismaticSiteFooterTone | undefined = undefined;
   export let tone: PrismaticSiteFooterTone = CCLVividColor.STRAWBERRY_PINK;
 
   function toCssUrl(value: string): string {
@@ -58,11 +66,18 @@
   }
 
   $: accentColor = `var(${tone})`;
+  $: studioGradientStartColor = studioGradientStart
+    ? `var(${studioGradientStart})`
+    : 'var(--palette-grape-900)';
+  $: studioGradientLastColor = studioGradientLast ? `var(${studioGradientLast})` : accentColor;
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
   $: logoLabel = logoAlt?.trim() || brand;
 </script>
 
-<footer class="prismatic-site-footer" style="--accent-color: {accentColor};">
+<footer
+  class="prismatic-site-footer density-{density}"
+  style="--accent-color: {accentColor}; --studio-gradient-start: {studioGradientStartColor}; --studio-gradient-last: {studioGradientLastColor};"
+>
   <div class="footer-main">
     {#if brandHref}
       <a class="brand" href={brandHref}>
@@ -118,19 +133,31 @@
     min-height: 180px;
     box-sizing: border-box;
     padding: 40px 48px 32px;
-    border: 1.5px solid color-mix(in srgb, var(--accent-color) 52%, transparent);
+    border: 1.5px solid color-mix(in srgb, var(--accent-color) 64%, var(--palette-grape-900));
     border-radius: 34px;
     background: linear-gradient(
       112deg,
-      color-mix(in srgb, var(--accent-color) 78%, var(--color-surface-glass)) 0%,
-      color-mix(in srgb, var(--accent-color) 42%, var(--color-surface-glass)) 58%,
-      color-mix(in srgb, var(--accent-color) 18%, var(--color-surface-glass)) 100%
+      var(--studio-gradient-start) 0%,
+      color-mix(in srgb, var(--studio-gradient-start) 68%, var(--studio-gradient-last)) 54%,
+      var(--studio-gradient-last) 100%
     );
     box-shadow: 0 16px 20px color-mix(in srgb, var(--palette-grape-900) 18%, transparent);
-    color: var(--palette-grape-900);
+    color: var(--color-surface-glass);
     font-family: Inter, sans-serif;
     line-height: normal;
     letter-spacing: 0;
+  }
+
+  .density-compact {
+    gap: 20px;
+    min-height: 132px;
+    padding: 28px 36px 24px;
+  }
+
+  .density-studio {
+    gap: 40px;
+    min-height: 240px;
+    padding: 52px 56px 40px;
   }
 
   .footer-main {
@@ -154,7 +181,7 @@
     display: block;
     width: min(300px, 48vw);
     height: var(--logo-height);
-    background: var(--color-surface-glass);
+    background: currentColor;
     -webkit-mask: var(--logo-image) left center / contain no-repeat;
     mask: var(--logo-image) left center / contain no-repeat;
   }

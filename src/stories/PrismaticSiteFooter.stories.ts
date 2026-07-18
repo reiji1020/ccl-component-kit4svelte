@@ -23,6 +23,9 @@ const meta = {
     links: { control: { type: 'object' } },
     copyright: { control: { type: 'text' } },
     ariaLabel: { control: { type: 'text' } },
+    density: { control: { type: 'select' }, options: ['default', 'compact', 'studio'] },
+    studioGradientStart: { control: { type: 'select' }, options: toneOptions },
+    studioGradientLast: { control: { type: 'select' }, options: toneOptions },
     tone: {
       control: { type: 'select' },
       options: toneOptions
@@ -97,6 +100,93 @@ export const CustomContent: Story = {
   }
 };
 
+export const StudioDensity: Story = {
+  args: {
+    brand: 'CANDY CHUPS Lab.',
+    brandHref: '/',
+    links: [
+      { label: 'WORKS', href: '#works' },
+      { label: 'BOOKS', href: '#books' },
+      { label: 'CONTACT', href: '#contact' }
+    ],
+    copyright: '© 2026 CANDY CHUPS Lab.',
+    density: 'studio',
+    tone: CCLVividColor.GRAPE_PURPLE
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('studio密度を指定できること', async () => {
+      await expect(args.density).toBe('studio');
+    });
+
+    await step('studioデザインでもリンクとコピーライトが表示されること', async () => {
+      await expect(canvas.getByRole('link', { name: 'WORKS' })).toHaveAttribute(
+        'href',
+        '#works'
+      );
+      await expect(canvas.getByText('© 2026 CANDY CHUPS Lab.')).toBeInTheDocument();
+    });
+  }
+};
+
+export const StudioCustomGradient: Story = {
+  args: {
+    brand: 'CANDY CHUPS Lab.',
+    brandHref: '/',
+    links: [
+      { label: 'WORKS', href: '#works' },
+      { label: 'BOOKS', href: '#books' },
+      { label: 'CONTACT', href: '#contact' }
+    ],
+    copyright: '© 2026 CANDY CHUPS Lab.',
+    density: 'studio',
+    studioGradientStart: CCLVividColor.GRAPE_PURPLE,
+    studioGradientLast: CCLVividColor.PINEAPPLE_YELLOW,
+    tone: CCLVividColor.GRAPE_PURPLE
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('studioグラデーション色を指定できること', async () => {
+      await expect(args.studioGradientStart).toBe(CCLVividColor.GRAPE_PURPLE);
+      await expect(args.studioGradientLast).toBe(CCLVividColor.PINEAPPLE_YELLOW);
+    });
+
+    await step('カスタムグラデーションでも主要情報が表示されること', async () => {
+      await expect(canvas.getByRole('link', { name: 'WORKS' })).toHaveAttribute(
+        'href',
+        '#works'
+      );
+      await expect(canvas.getByText('© 2026 CANDY CHUPS Lab.')).toBeInTheDocument();
+    });
+  }
+};
+
+export const CompactDensity: Story = {
+  args: {
+    brand: 'CANDY CHUPS Lab.',
+    links: [{ label: 'CONTACT', href: '#contact' }],
+    density: 'compact',
+    tone: CCLVividColor.SODA_BLUE
+  },
+  play: async ({ args, canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('compact密度を指定できること', async () => {
+      await expect(args.density).toBe('compact');
+    });
+
+    await step('compact密度でも主要情報が表示されること', async () => {
+      await expect(canvas.getByText('CANDY CHUPS Lab.')).toBeInTheDocument();
+      await expect(canvas.getByRole('link', { name: 'CONTACT' })).toHaveAttribute(
+        'href',
+        '#contact'
+      );
+    });
+  }
+};
+
 export const MixedWithFooter: Story = {
   render: () => ({ Component: PrismaticSiteFooterMixedWrapper }),
   args: {},
@@ -118,7 +208,7 @@ export const AllColors: Story = {
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
 
-    await step('すべてのtone名が表示されていること', async () => {
+    await step('studioのカラーバリエーションが表示されていること', async () => {
       for (const name of Object.keys(CCLVividColor)) {
         await expect(canvas.getByRole('heading', { name })).toBeInTheDocument();
       }
