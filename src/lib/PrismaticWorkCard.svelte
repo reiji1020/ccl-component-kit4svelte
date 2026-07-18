@@ -9,6 +9,7 @@
 
   export type PrismaticWorkCardProps = {
     title?: string;
+    description?: string;
     href?: string;
     linkLabel?: string;
     imageUrl?: string;
@@ -22,6 +23,7 @@
   import type { ColorVar } from './const/config';
 
   export let title: string = 'CCL Component Kit';
+  export let description: string | undefined = undefined;
   export let href: string | undefined = undefined;
   export let linkLabel: string = 'VIEW PROJECT';
   export let imageUrl: string | undefined = undefined;
@@ -57,7 +59,13 @@
   </div>
 
   <div class="body">
-    <h3 class="title">{title}</h3>
+    <div class="copy">
+      <h3 class="title">{title}</h3>
+
+      {#if description}
+        <p class="description">{description}</p>
+      {/if}
+    </div>
 
     {#if href}
       <svelte:element
@@ -140,6 +148,14 @@
     min-width: 0;
   }
 
+  .copy {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .title {
     margin: 0;
     max-width: 100%;
@@ -147,6 +163,17 @@
     font-size: 26px;
     font-weight: 700;
     line-height: normal;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .description {
+    margin: 0;
+    max-width: 100%;
+    color: color-mix(in srgb, var(--palette-grape-900) 34%, var(--palette-wrap-800));
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.75;
     overflow-wrap: anywhere;
     word-break: normal;
   }

@@ -8,7 +8,8 @@
   <section class="sample">
     <h2>PrismaticWorkCard</h2>
     <PrismaticWorkCard
-      title="Prismatic Design の制作実績"
+      title="Prismatic Designの制作実績"
+      description="選択した制作実績の目的や内容を短く伝える概要文を表示します。"
       href="https://example.com"
       linkLabel="VIEW PROJECT"
       imageUrl="thumbnail.png"

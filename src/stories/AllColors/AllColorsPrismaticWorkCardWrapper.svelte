@@ -11,7 +11,12 @@
     <div class="work-card-grid">
       {#each vividColors as [name, tone] (name)}
         <div class="color-sample">
-          <PrismaticWorkCard title={`${name} の制作実績`} linkLabel="VIEW PROJECT" {tone} />
+          <PrismaticWorkCard
+            title={`${name}の制作実績`}
+            description="各toneで概要文の折り返しと余白を確認するためのサンプルです。"
+            linkLabel="VIEW PROJECT"
+            {tone}
+          />
         </div>
       {/each}
     </div>
