@@ -125,14 +125,18 @@
 
 <style>
   .prismatic-site-footer {
+    --footer-gap: 32px;
+    --footer-min-height: 180px;
+    --footer-padding: 40px 48px 32px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 32px;
+    gap: var(--footer-gap);
     width: min(100%, 1300px);
-    min-height: 180px;
+    min-height: var(--footer-min-height);
     box-sizing: border-box;
-    padding: 40px 48px 32px;
+    padding: var(--footer-padding);
     border: 1.5px solid color-mix(in srgb, var(--accent-color) 64%, var(--palette-grape-900));
     border-radius: 34px;
     background: linear-gradient(
@@ -149,15 +153,15 @@
   }
 
   .density-compact {
-    gap: 20px;
-    min-height: 132px;
-    padding: 28px 36px 24px;
+    --footer-gap: 20px;
+    --footer-min-height: 132px;
+    --footer-padding: 28px 36px 24px;
   }
 
   .density-studio {
-    gap: 40px;
-    min-height: 240px;
-    padding: 52px 56px 40px;
+    --footer-gap: 40px;
+    --footer-min-height: 240px;
+    --footer-padding: 52px 56px 40px;
   }
 
   .footer-main {
@@ -225,10 +229,23 @@
 
   @media (max-width: 640px) {
     .prismatic-site-footer {
-      gap: 28px;
-      min-height: 220px;
-      padding: 32px 28px 28px;
+      --footer-gap: 28px;
+      --footer-min-height: 220px;
+      --footer-padding: 32px 28px 28px;
+
       border-radius: 28px;
+    }
+
+    .density-compact {
+      --footer-gap: 20px;
+      --footer-min-height: 132px;
+      --footer-padding: 28px 28px 24px;
+    }
+
+    .density-studio {
+      --footer-gap: 40px;
+      --footer-min-height: 240px;
+      --footer-padding: 52px 28px 40px;
     }
 
     .footer-main {

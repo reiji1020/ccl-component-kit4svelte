@@ -49,8 +49,8 @@
   export let logoHeight: string = '40px';
   export let logoWidth: string = 'min(260px, 40vw)';
   export let logoFit: PrismaticSiteHeaderLogoFit = 'contain';
-  export let padding: string = '24px 35px';
-  export let minHeight: string = '104px';
+  export let padding: string | undefined = undefined;
+  export let minHeight: string | undefined = undefined;
   export let navigation: PrismaticSiteHeaderItem[] = defaultNavigation;
   export let ariaLabel: string = 'メインナビゲーション';
   export let tone: PrismaticSiteHeaderTone = CCLVividColor.STRAWBERRY_PINK;
@@ -70,13 +70,17 @@
   }
 
   $: accentColor = `var(${tone})`;
+  $: headerPadding = padding ?? '24px 35px';
+  $: headerMobilePadding = padding ?? '22px 28px';
+  $: headerSmallPadding = padding ?? '20px 22px';
+  $: headerMinHeight = minHeight ?? '104px';
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
   $: logoLabel = logoAlt?.trim() || brand;
 </script>
 
 <header
   class="prismatic-site-header"
-  style="--accent-color: {accentColor}; --header-padding: {padding}; --header-min-height: {minHeight};"
+  style="--accent-color: {accentColor}; --header-padding: {headerPadding}; --header-mobile-padding: {headerMobilePadding}; --header-small-padding: {headerSmallPadding}; --header-min-height: {headerMinHeight};"
 >
   {#if brandHref}
     <svelte:element this={brandLinkElement} class="brand" href={brandHref}>
@@ -222,8 +226,8 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
-      min-height: 104px;
-      padding: 22px 28px;
+      min-height: var(--header-min-height);
+      padding: var(--header-mobile-padding);
     }
 
     nav {
@@ -241,7 +245,7 @@
 
   @media (max-width: 480px) {
     .prismatic-site-header {
-      padding: 20px 22px;
+      padding: var(--header-small-padding);
       border-radius: 28px;
     }
 
