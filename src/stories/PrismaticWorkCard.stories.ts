@@ -25,6 +25,9 @@ const meta = {
     title: {
       control: { type: 'text' }
     },
+    description: {
+      control: { type: 'text' }
+    },
     href: {
       control: { type: 'text' }
     },
@@ -63,11 +66,60 @@ export const Default: Story = {
       ).toBeInTheDocument();
     });
 
-    await step('CTAリンクが表示されていること', async () => {
+    await step('概要文なしでもCTAリンクが表示されていること', async () => {
       await expect(canvas.getByRole('link', { name: 'VIEW PROJECT' })).toHaveAttribute(
         'href',
         'https://example.com'
       );
+    });
+  }
+};
+
+export const WithDescription: Story = {
+  args: {
+    title: 'CCL Component Kit',
+    description:
+      'Svelte向けのUIコンポーネントライブラリ。サイトやアプリで使う共通UIを、Prismatic Designの色彩でまとめます。',
+    href: 'https://www.npmjs.com/package/cclkit4svelte',
+    linkLabel: 'VIEW PROJECT',
+    tone: CCLVividColor.SODA_BLUE
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('概要文がタイトルとリンクの間に表示されていること', async () => {
+      await expect(
+        canvas.getByText(
+          'Svelte向けのUIコンポーネントライブラリ。サイトやアプリで使う共通UIを、Prismatic Designの色彩でまとめます。'
+        )
+      ).toBeInTheDocument();
+    });
+
+    await step('概要文つきでもCTAリンクが表示されていること', async () => {
+      await expect(canvas.getByRole('link', { name: 'VIEW PROJECT' })).toHaveAttribute(
+        'href',
+        'https://www.npmjs.com/package/cclkit4svelte'
+      );
+    });
+  }
+};
+
+export const LongDescription: Story = {
+  args: {
+    title: 'Selected Works Showcase',
+    description:
+      'Selected Worksで複数行の紹介文を表示する想定です。長めの説明や区切りのない英数字MixedContentForResponsiveLayoutVerificationが入っても、カード幅からはみ出さず読みやすく折り返されます。',
+    href: 'https://example.com',
+    linkLabel: 'VIEW PROJECT',
+    tone: CCLVividColor.MELON_GREEN
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('長い概要文が表示されていること', async () => {
+      await expect(
+        canvas.getByText(/Selected Worksで複数行の紹介文を表示する想定です/)
+      ).toBeInTheDocument();
     });
   }
 };
@@ -100,6 +152,7 @@ export const Japanese: Story = {
 export const WithImage: Story = {
   args: {
     title: '画像を差し込んだWorkCard',
+    description: '画像付きの制作実績として、プロジェクトの概要を短く添えます。',
     href: 'https://example.com',
     linkLabel: 'VIEW PROJECT',
     imageUrl: 'thumbnail.png',
@@ -113,8 +166,10 @@ export const WithImage: Story = {
       await expect(canvas.getByRole('img')).toHaveAttribute('alt', 'WorkCardのサムネイル');
     });
 
-    await step('タイトルが表示されていること', async () => {
-      await expect(canvas.getByText('画像を差し込んだWorkCard')).toBeInTheDocument();
+    await step('画像つきでも概要文が表示されていること', async () => {
+      await expect(
+        canvas.getByText('画像付きの制作実績として、プロジェクトの概要を短く添えます。')
+      ).toBeInTheDocument();
     });
   }
 };
@@ -122,6 +177,7 @@ export const WithImage: Story = {
 export const WithoutLink: Story = {
   args: {
     title: 'リンクなしの制作実績',
+    description: '公開前のプロジェクトでも、概要文だけを先に表示できます。',
     linkLabel: 'COMING SOON',
     tone: CCLVividColor.PINEAPPLE_YELLOW
   },
@@ -158,7 +214,7 @@ export const MixedWithServiceCard: Story = {
     });
 
     await step('既存ServiceCardとの差分を確認できること', async () => {
-      await expect(canvas.getByText('Prismatic Design の制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('Prismatic Designの制作実績')).toBeInTheDocument();
       await expect(canvas.getByText('既存サービスカード')).toBeInTheDocument();
     });
   }
@@ -189,12 +245,12 @@ export const AllColors: Story = {
     });
 
     await step('各tone名の制作実績が表示されていること', async () => {
-      await expect(canvas.getByText('STRAWBERRY_PINK の制作実績')).toBeInTheDocument();
-      await expect(canvas.getByText('PINEAPPLE_YELLOW の制作実績')).toBeInTheDocument();
-      await expect(canvas.getByText('SODA_BLUE の制作実績')).toBeInTheDocument();
-      await expect(canvas.getByText('MELON_GREEN の制作実績')).toBeInTheDocument();
-      await expect(canvas.getByText('GRAPE_PURPLE の制作実績')).toBeInTheDocument();
-      await expect(canvas.getByText('WRAP_GREY の制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('STRAWBERRY_PINKの制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('PINEAPPLE_YELLOWの制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('SODA_BLUEの制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('MELON_GREENの制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('GRAPE_PURPLEの制作実績')).toBeInTheDocument();
+      await expect(canvas.getByText('WRAP_GREYの制作実績')).toBeInTheDocument();
     });
   }
 };
