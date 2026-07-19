@@ -196,5 +196,9 @@
       height: auto;
       aspect-ratio: 7 / 10;
     }
+
+    .size-large .cover-slot {
+      height: auto;
+    }
   }
 </style>
