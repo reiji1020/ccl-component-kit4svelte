@@ -1,7 +1,7 @@
 # ccl-component-kit4svelte
 
 [![Release Storybook to GitHubPages](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml/badge.svg?branch=main)](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml)
-[![Publish Package to npmjs](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml/badge.svg?branch=main)](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml)
+[![Publish Package to npmjs](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml/badge.svg)](https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml)
 
 ![library_card](static/library_card.png)
 
