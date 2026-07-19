@@ -39,6 +39,10 @@
   ];
 
   const year = new Date().getFullYear();
+  const lightLastTones: PrismaticSiteFooterTone[] = [
+    CCLVividColor.PINEAPPLE_YELLOW,
+    CCLVividColor.MELON_GREEN
+  ];
 
   export let brand: string = 'CANDY CHUPS Lab.';
   export let brandHref: string | undefined = undefined;
@@ -69,14 +73,18 @@
   $: studioGradientStartColor = studioGradientStart
     ? `var(${studioGradientStart})`
     : 'var(--palette-grape-900)';
-  $: studioGradientLastColor = studioGradientLast ? `var(${studioGradientLast})` : accentColor;
+  $: lastTone = studioGradientLast ?? tone;
+  $: studioGradientLastColor = `var(${lastTone})`;
+  $: footerTextColor = lightLastTones.includes(lastTone)
+    ? 'var(--palette-grape-900)'
+    : 'var(--color-surface-glass)';
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
   $: logoLabel = logoAlt?.trim() || brand;
 </script>
 
 <footer
   class="prismatic-site-footer density-{density}"
-  style="--accent-color: {accentColor}; --studio-gradient-start: {studioGradientStartColor}; --studio-gradient-last: {studioGradientLastColor};"
+  style="--accent-color: {accentColor}; --studio-gradient-start: {studioGradientStartColor}; --studio-gradient-last: {studioGradientLastColor}; --footer-text-color: {footerTextColor};"
 >
   <div class="footer-main">
     {#if brandHref}
@@ -146,7 +154,7 @@
       var(--studio-gradient-last) 100%
     );
     box-shadow: 0 16px 20px color-mix(in srgb, var(--palette-grape-900) 18%, transparent);
-    color: var(--color-surface-glass);
+    color: var(--footer-text-color);
     font-family: Inter, sans-serif;
     line-height: normal;
     letter-spacing: 0;
