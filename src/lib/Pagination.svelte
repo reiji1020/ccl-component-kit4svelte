@@ -17,21 +17,26 @@
   const dispatch = createEventDispatcher<{ change: { page: number } }>();
 
   // normalize and clamp helpers
-  function getPageCount(): number {
-    const count = pageCount ?? (total && perPage ? Math.ceil(total / perPage) : 1);
+  function getPageCount(
+    pageCountValue: number | undefined,
+    totalValue: number | undefined,
+    perPageValue: number
+  ): number {
+    const count =
+      pageCountValue ?? (totalValue && perPageValue ? Math.ceil(totalValue / perPageValue) : 1);
     return Math.max(1, count || 1);
   }
 
-  function clampPage(p: number): number {
-    const max = getPageCount();
-    return Math.min(Math.max(1, Math.trunc(p || 1)), max);
+  function clampPage(p: number, totalPages: number): number {
+    return Math.min(Math.max(1, Math.trunc(p || 1)), totalPages);
   }
 
-  $: page = clampPage(page);
+  $: totalPages = getPageCount(pageCount, total, perPage);
+  $: page = clampPage(page, totalPages);
 
   function goTo(p: number) {
     if (disabled) return;
-    const next = clampPage(p);
+    const next = clampPage(p, totalPages);
     if (next !== page) {
       page = next;
       dispatch('change', { page });
@@ -44,37 +49,50 @@
     return Array.from({ length: end - start + 1 }, (_, i) => start + i);
   }
 
-  function usePagination(): Item[] {
-    const totalPages = getPageCount();
-
+  function usePagination(
+    currentPage: number,
+    totalPages: number,
+    currentBoundaryCount: number,
+    currentSiblingCount: number
+  ): Item[] {
     // total pages small enough to show all
-    const totalNumbers = boundaryCount * 2 + siblingCount * 2 + 3; // first + last + current
+    const totalNumbers = currentBoundaryCount * 2 + currentSiblingCount * 2 + 3; // first + last + current
     const totalBlocks = totalNumbers + 2; // with two ellipses
 
     if (totalPages <= totalBlocks) {
       return range(1, totalPages);
     }
 
-    const startPages = range(1, Math.min(boundaryCount, totalPages));
+    const startPages = range(1, Math.min(currentBoundaryCount, totalPages));
     const endPages = range(
-      Math.max(totalPages - boundaryCount + 1, boundaryCount + 1),
+      Math.max(totalPages - currentBoundaryCount + 1, currentBoundaryCount + 1),
       totalPages
     );
 
     const siblingsStart = Math.max(
-      Math.min(page - siblingCount, totalPages - boundaryCount - siblingCount * 2 - 1),
-      boundaryCount + 2
+      Math.min(
+        currentPage - currentSiblingCount,
+        totalPages - currentBoundaryCount - currentSiblingCount * 2 - 1
+      ),
+      currentBoundaryCount + 2
     );
     const siblingsEnd = Math.min(
-      Math.max(page + siblingCount, boundaryCount + siblingCount * 2 + 2),
+      Math.max(
+        currentPage + currentSiblingCount,
+        currentBoundaryCount + currentSiblingCount * 2 + 2
+      ),
       endPages[0] - 2
     );
 
     const items: Item[] = [
       ...startPages,
-      siblingsStart > boundaryCount + 2 ? 'ellipsis' : (boundaryCount + 1) as unknown as Item,
+      siblingsStart > currentBoundaryCount + 2
+        ? 'ellipsis'
+        : ((currentBoundaryCount + 1) as unknown as Item),
       ...range(siblingsStart, siblingsEnd),
-      siblingsEnd < totalPages - boundaryCount - 1 ? 'ellipsis' : (totalPages - boundaryCount) as unknown as Item,
+      siblingsEnd < totalPages - currentBoundaryCount - 1
+        ? 'ellipsis'
+        : ((totalPages - currentBoundaryCount) as unknown as Item),
       ...endPages
     ];
 
@@ -92,11 +110,11 @@
     return normalized;
   }
 
-  $: items = usePagination();
+  $: items = usePagination(page, totalPages, boundaryCount, siblingCount);
 
   onMount(() => {
     // Ensure initial page is clamped and consumers can react if needed
-    const normalized = clampPage(page);
+    const normalized = clampPage(page, totalPages);
     if (normalized !== page) {
       page = normalized;
       dispatch('change', { page });
@@ -152,7 +170,7 @@
         <button
           class="ccl-pagination__control"
           on:click={() => goTo(page + 1)}
-          disabled={disabled || page === getPageCount()}
+          disabled={disabled || page === totalPages}
           aria-label="go to next page"
           type="button"
         >›</button>
@@ -162,8 +180,8 @@
       <li>
         <button
           class="ccl-pagination__control"
-          on:click={() => goTo(getPageCount())}
-          disabled={disabled || page === getPageCount()}
+          on:click={() => goTo(totalPages)}
+          disabled={disabled || page === totalPages}
           aria-label="go to last page"
           type="button"
         >»</button>

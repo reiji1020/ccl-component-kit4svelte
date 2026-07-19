@@ -61,13 +61,13 @@ export const Default: Story = {
     await step('次へをクリックすると、アクティブページが 2 になること', async () => {
       const next = await canvas.getByRole('button', { name: /go to next page/i });
       await userEvent.click(next);
-      const page2 = await canvas.getByRole('button', { name: /go to page 2/i });
+      const page2 = await canvas.findByRole('button', { name: /go to page 2/i });
       await expect(page2).toHaveAttribute('aria-current', 'page');
     });
     await step('最後へをクリックすると、アクティブページが 最終 になること', async () => {
       const last = await canvas.getByRole('button', { name: /go to last page/i });
       await userEvent.click(last);
-      const lastPage = await canvas.getByRole('button', { name: /go to page 12/i });
+      const lastPage = await canvas.findByRole('button', { name: /go to page 12/i });
       await expect(lastPage).toHaveAttribute('aria-current', 'page');
     });
   }
@@ -89,13 +89,13 @@ export const ManyPages: Story = {
     await step('前へをクリックすると、アクティブページが 9 になること', async () => {
       const prev = await canvas.getByRole('button', { name: /go to previous page/i });
       await userEvent.click(prev);
-      const page9 = await canvas.getByRole('button', { name: /go to page 9/i });
+      const page9 = await canvas.findByRole('button', { name: /go to page 9/i });
       await expect(page9).toHaveAttribute('aria-current', 'page');
     });
     await step('最後へをクリックすると、アクティブページが 最終 になること', async () => {
       const last = await canvas.getByRole('button', { name: /go to last page/i });
       await userEvent.click(last);
-      const page50 = await canvas.getByRole('button', { name: /go to page 50/i });
+      const page50 = await canvas.findByRole('button', { name: /go to page 50/i });
       await expect(page50).toHaveAttribute('aria-current', 'page');
     });
   }
@@ -117,13 +117,13 @@ export const MinimalControls: Story = {
     await step('次へをクリックすると、アクティブページが 4 になること', async () => {
       const next = await canvas.getByRole('button', { name: /go to next page/i });
       await userEvent.click(next);
-      const page4 = await canvas.getByRole('button', { name: /go to page 4/i });
+      const page4 = await canvas.findByRole('button', { name: /go to page 4/i });
       await expect(page4).toHaveAttribute('aria-current', 'page');
     });
     await step('前へをクリックすると、アクティブページが 3 に戻ること', async () => {
       const prev = await canvas.getByRole('button', { name: /go to previous page/i });
       await userEvent.click(prev);
-      const page3 = await canvas.getByRole('button', { name: /go to page 3/i });
+      const page3 = await canvas.findByRole('button', { name: /go to page 3/i });
       await expect(page3).toHaveAttribute('aria-current', 'page');
     });
   }

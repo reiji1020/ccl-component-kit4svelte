@@ -11,6 +11,7 @@
       <h2>{name}</h2>
       <PrismaticSiteFooter
         {tone}
+        density="studio"
         brandHref="/"
         logoUrl="candy-chups-lab.svg"
         logoAlt="CANDY CHUPS Lab."

@@ -13,12 +13,18 @@
     active?: boolean;
   };
 
+  export type PrismaticSiteHeaderLogoFit = 'contain' | 'cover';
+
   export type PrismaticSiteHeaderProps = {
     brand?: string;
     brandHref?: string;
     logoUrl?: string;
     logoAlt?: string;
     logoHeight?: string;
+    logoWidth?: string;
+    logoFit?: PrismaticSiteHeaderLogoFit;
+    padding?: string;
+    minHeight?: string;
     navigation?: PrismaticSiteHeaderItem[];
     ariaLabel?: string;
     tone?: PrismaticSiteHeaderTone;
@@ -41,6 +47,10 @@
   export let logoUrl: string | undefined = undefined;
   export let logoAlt: string | undefined = undefined;
   export let logoHeight: string = '40px';
+  export let logoWidth: string = 'min(260px, 40vw)';
+  export let logoFit: PrismaticSiteHeaderLogoFit = 'contain';
+  export let padding: string | undefined = undefined;
+  export let minHeight: string | undefined = undefined;
   export let navigation: PrismaticSiteHeaderItem[] = defaultNavigation;
   export let ariaLabel: string = 'メインナビゲーション';
   export let tone: PrismaticSiteHeaderTone = CCLVividColor.STRAWBERRY_PINK;
@@ -60,11 +70,18 @@
   }
 
   $: accentColor = `var(${tone})`;
+  $: headerPadding = padding ?? '24px 35px';
+  $: headerMobilePadding = padding ?? '22px 28px';
+  $: headerSmallPadding = padding ?? '20px 22px';
+  $: headerMinHeight = minHeight ?? '104px';
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
   $: logoLabel = logoAlt?.trim() || brand;
 </script>
 
-<header class="prismatic-site-header" style="--accent-color: {accentColor};">
+<header
+  class="prismatic-site-header"
+  style="--accent-color: {accentColor}; --header-padding: {headerPadding}; --header-mobile-padding: {headerMobilePadding}; --header-small-padding: {headerSmallPadding}; --header-min-height: {headerMinHeight};"
+>
   {#if brandHref}
     <svelte:element this={brandLinkElement} class="brand" href={brandHref}>
       {#if logoUrl}
@@ -73,10 +90,10 @@
           role="img"
           aria-label={logoLabel}
           data-logo-url={logoUrl}
-          style="--logo-height: {logoHeight}; --logo-image: {logoImage};"
+          style="--logo-height: {logoHeight}; --logo-width: {logoWidth}; --logo-fit: {logoFit}; --logo-image: {logoImage};"
         ></span>
       {:else}
-        {brand}
+        <slot name="logo">{brand}</slot>
       {/if}
     </svelte:element>
   {:else}
@@ -87,10 +104,10 @@
           role="img"
           aria-label={logoLabel}
           data-logo-url={logoUrl}
-          style="--logo-height: {logoHeight}; --logo-image: {logoImage};"
+          style="--logo-height: {logoHeight}; --logo-width: {logoWidth}; --logo-fit: {logoFit}; --logo-image: {logoImage};"
         ></span>
       {:else}
-        {brand}
+        <slot name="logo">{brand}</slot>
       {/if}
     </span>
   {/if}
@@ -119,9 +136,9 @@
     justify-content: space-between;
     gap: 32px;
     width: min(100%, 1300px);
-    min-height: 104px;
+    min-height: var(--header-min-height);
     box-sizing: border-box;
-    padding: 24px 35px;
+    padding: var(--header-padding);
     border: 1.5px solid color-mix(in srgb, var(--accent-color) 42%, transparent);
     border-radius: 34px;
     background: color-mix(in srgb, var(--color-surface-glass) 78%, transparent);
@@ -144,12 +161,12 @@
 
   .brand-logo {
     display: block;
-    width: min(260px, 40vw);
-    max-width: min(260px, 40vw);
+    width: var(--logo-width);
+    max-width: min(100%, 48vw);
     height: var(--logo-height);
     background: var(--accent-color);
-    -webkit-mask: var(--logo-image) left center / contain no-repeat;
-    mask: var(--logo-image) left center / contain no-repeat;
+    -webkit-mask: var(--logo-image) left center / var(--logo-fit) no-repeat;
+    mask: var(--logo-image) left center / var(--logo-fit) no-repeat;
   }
 
   nav {
@@ -209,8 +226,8 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 12px;
-      min-height: 104px;
-      padding: 22px 28px;
+      min-height: var(--header-min-height);
+      padding: var(--header-mobile-padding);
     }
 
     nav {
@@ -228,7 +245,7 @@
 
   @media (max-width: 480px) {
     .prismatic-site-header {
-      padding: 20px 22px;
+      padding: var(--header-small-padding);
       border-radius: 28px;
     }
 

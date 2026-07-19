@@ -35,6 +35,9 @@ const meta = {
     linkLabel: {
       control: { type: 'text' }
     },
+    showLink: {
+      control: { type: 'boolean' }
+    },
     imageUrl: {
       control: { type: 'text' }
     },
@@ -140,6 +143,37 @@ export const WithImage: Story = {
 
     await step('タイトルが表示されていること', async () => {
       await expect(canvas.getByText('画像を差し込んだStoryCard')).toBeInTheDocument();
+    });
+  }
+};
+
+export const WithoutInlineLink: Story = {
+  args: {
+    title: 'Selected Story Feature',
+    label: 'FEATURE',
+    href: 'https://example.com',
+    linkLabel: 'READ MORE',
+    showLink: false,
+    imageUrl: 'thumbnail.png',
+    imageAlt: 'リンク非表示のStoryCardサムネイル',
+    size: 'featured',
+    tone: CCLVividColor.PINEAPPLE_YELLOW
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('タイトルと画像が中心の表示になること', async () => {
+      await expect(
+        canvas.getByRole('heading', { name: 'Selected Story Feature', level: 3 })
+      ).toBeInTheDocument();
+      await expect(canvas.getByRole('img')).toHaveAttribute(
+        'alt',
+        'リンク非表示のStoryCardサムネイル'
+      );
+    });
+
+    await step('showLinkがfalseのときREAD MOREリンクが表示されないこと', async () => {
+      await expect(canvas.queryByRole('link', { name: 'READ MORE' })).not.toBeInTheDocument();
     });
   }
 };

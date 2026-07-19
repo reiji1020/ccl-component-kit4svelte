@@ -12,6 +12,8 @@
     href: string;
   };
 
+  export type PrismaticSiteFooterDensity = 'default' | 'compact' | 'studio';
+
   export type PrismaticSiteFooterProps = {
     brand?: string;
     brandHref?: string;
@@ -21,6 +23,9 @@
     links?: PrismaticSiteFooterLink[];
     copyright?: string;
     ariaLabel?: string;
+    density?: PrismaticSiteFooterDensity;
+    studioGradientStart?: PrismaticSiteFooterTone;
+    studioGradientLast?: PrismaticSiteFooterTone;
     tone?: PrismaticSiteFooterTone;
   };
 </script>
@@ -34,6 +39,20 @@
   ];
 
   const year = new Date().getFullYear();
+  const darkTextTones: PrismaticSiteFooterTone[] = [
+    CCLVividColor.STRAWBERRY_PINK,
+    CCLVividColor.PINEAPPLE_YELLOW,
+    CCLVividColor.SODA_BLUE,
+    CCLVividColor.MELON_GREEN
+  ];
+  const darkTextColor =
+    'color-mix(in srgb, var(--palette-grape-900) 70%, black)';
+
+  function getTextColor(tone: PrismaticSiteFooterTone | undefined): string {
+    return tone && darkTextTones.includes(tone)
+      ? darkTextColor
+      : 'var(--color-surface-glass)';
+  }
 
   export let brand: string = 'CANDY CHUPS Lab.';
   export let brandHref: string | undefined = undefined;
@@ -43,6 +62,9 @@
   export let links: PrismaticSiteFooterLink[] = defaultLinks;
   export let copyright: string = `Copyright © ${year} CANDY CHUPS Lab. All Rights Reserved.`;
   export let ariaLabel: string = 'フッターナビゲーション';
+  export let density: PrismaticSiteFooterDensity = 'default';
+  export let studioGradientStart: PrismaticSiteFooterTone | undefined = undefined;
+  export let studioGradientLast: PrismaticSiteFooterTone | undefined = undefined;
   export let tone: PrismaticSiteFooterTone = CCLVividColor.STRAWBERRY_PINK;
 
   function toCssUrl(value: string): string {
@@ -58,11 +80,21 @@
   }
 
   $: accentColor = `var(${tone})`;
+  $: studioGradientStartColor = studioGradientStart
+    ? `var(${studioGradientStart})`
+    : 'var(--palette-grape-900)';
+  $: startTextColor = getTextColor(studioGradientStart);
+  $: lastTone = studioGradientLast ?? tone;
+  $: studioGradientLastColor = `var(${lastTone})`;
+  $: lastTextColor = getTextColor(lastTone);
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
   $: logoLabel = logoAlt?.trim() || brand;
 </script>
 
-<footer class="prismatic-site-footer" style="--accent-color: {accentColor};">
+<footer
+  class="prismatic-site-footer density-{density}"
+  style="--accent-color: {accentColor}; --studio-gradient-start: {studioGradientStartColor}; --studio-gradient-last: {studioGradientLastColor}; --footer-start-text-color: {startTextColor}; --footer-last-text-color: {lastTextColor};"
+>
   <div class="footer-main">
     {#if brandHref}
       <a class="brand" href={brandHref}>
@@ -110,27 +142,43 @@
 
 <style>
   .prismatic-site-footer {
+    --footer-gap: 32px;
+    --footer-min-height: 180px;
+    --footer-padding: 40px 48px 32px;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 32px;
+    gap: var(--footer-gap);
     width: min(100%, 1300px);
-    min-height: 180px;
+    min-height: var(--footer-min-height);
     box-sizing: border-box;
-    padding: 40px 48px 32px;
-    border: 1.5px solid color-mix(in srgb, var(--accent-color) 52%, transparent);
+    padding: var(--footer-padding);
+    border: 1.5px solid color-mix(in srgb, var(--accent-color) 64%, var(--palette-grape-900));
     border-radius: 34px;
     background: linear-gradient(
       112deg,
-      color-mix(in srgb, var(--accent-color) 78%, var(--color-surface-glass)) 0%,
-      color-mix(in srgb, var(--accent-color) 42%, var(--color-surface-glass)) 58%,
-      color-mix(in srgb, var(--accent-color) 18%, var(--color-surface-glass)) 100%
+      var(--studio-gradient-start) 0%,
+      color-mix(in srgb, var(--studio-gradient-start) 68%, var(--studio-gradient-last)) 54%,
+      var(--studio-gradient-last) 100%
     );
     box-shadow: 0 16px 20px color-mix(in srgb, var(--palette-grape-900) 18%, transparent);
-    color: var(--palette-grape-900);
+    color: var(--footer-start-text-color);
     font-family: Inter, sans-serif;
     line-height: normal;
     letter-spacing: 0;
+  }
+
+  .density-compact {
+    --footer-gap: 20px;
+    --footer-min-height: 132px;
+    --footer-padding: 28px 36px 24px;
+  }
+
+  .density-studio {
+    --footer-gap: 40px;
+    --footer-min-height: 240px;
+    --footer-padding: 52px 56px 40px;
   }
 
   .footer-main {
@@ -154,12 +202,13 @@
     display: block;
     width: min(300px, 48vw);
     height: var(--logo-height);
-    background: var(--color-surface-glass);
+    background: currentColor;
     -webkit-mask: var(--logo-image) left center / contain no-repeat;
     mask: var(--logo-image) left center / contain no-repeat;
   }
 
   nav {
+    color: var(--footer-last-text-color);
     min-width: 0;
   }
 
@@ -198,15 +247,32 @@
 
   @media (max-width: 640px) {
     .prismatic-site-footer {
-      gap: 28px;
-      min-height: 220px;
-      padding: 32px 28px 28px;
+      --footer-gap: 28px;
+      --footer-min-height: 220px;
+      --footer-padding: 32px 28px 28px;
+
       border-radius: 28px;
+    }
+
+    .density-compact {
+      --footer-gap: 20px;
+      --footer-min-height: 132px;
+      --footer-padding: 28px 28px 24px;
+    }
+
+    .density-studio {
+      --footer-gap: 40px;
+      --footer-min-height: 240px;
+      --footer-padding: 52px 28px 40px;
     }
 
     .footer-main {
       flex-direction: column;
       gap: 24px;
+    }
+
+    nav {
+      color: var(--footer-start-text-color);
     }
 
     ul {
