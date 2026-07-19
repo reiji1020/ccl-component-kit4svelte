@@ -121,7 +121,8 @@
   }
 
   .size-large .cover-slot {
-    height: 442px;
+    height: auto;
+    aspect-ratio: 156 / 221;
     border-radius: 22px;
   }
 
@@ -195,10 +196,6 @@
     .cover-slot {
       height: auto;
       aspect-ratio: 7 / 10;
-    }
-
-    .size-large .cover-slot {
-      height: auto;
     }
   }
 </style>

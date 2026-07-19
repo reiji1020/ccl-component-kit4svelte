@@ -187,6 +187,31 @@ export const CompactDensity: Story = {
   }
 };
 
+export const MobileCompactDensity: Story = {
+  args: {
+    brand: 'CANDY CHUPS Lab.',
+    links: [{ label: 'CONTACT', href: '#contact' }],
+    density: 'compact',
+    tone: CCLVividColor.SODA_BLUE
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1'
+    }
+  },
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+
+    await step('モバイル向けcompact表示でも主要情報が表示されること', async () => {
+      await expect(canvas.getByText('CANDY CHUPS Lab.')).toBeInTheDocument();
+      await expect(canvas.getByRole('link', { name: 'CONTACT' })).toHaveAttribute(
+        'href',
+        '#contact'
+      );
+    });
+  }
+};
+
 export const MixedWithFooter: Story = {
   render: () => ({ Component: PrismaticSiteFooterMixedWrapper }),
   args: {},

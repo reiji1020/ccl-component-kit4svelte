@@ -271,6 +271,10 @@
       gap: 24px;
     }
 
+    nav {
+      color: var(--footer-start-text-color);
+    }
+
     ul {
       justify-content: flex-start;
     }

@@ -98,6 +98,14 @@ export const Large: Story = {
         'https://example.com'
       );
     });
+
+    await step('幅が変わってもlarge表紙の比率が維持されること', async () => {
+      const cover = canvasElement.querySelector('.cover-slot');
+
+      await expect(cover).not.toBeNull();
+      const { width, height } = (cover as HTMLElement).getBoundingClientRect();
+      await expect(width / height).toBeCloseTo(156 / 221, 2);
+    });
   }
 };
 
