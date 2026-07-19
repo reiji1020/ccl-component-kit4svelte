@@ -13,6 +13,7 @@
     label?: string;
     href?: string;
     linkLabel?: string;
+    showLink?: boolean;
     imageUrl?: string;
     imageAlt?: string;
     squareImage?: boolean;
@@ -34,6 +35,7 @@
   export let label: string | undefined = undefined;
   export let href: string | undefined = undefined;
   export let linkLabel: string = 'Read more';
+  export let showLink: boolean = true;
   export let imageUrl: string | undefined = undefined;
   export let imageAlt: string = '';
   export let squareImage: boolean = false;
@@ -101,7 +103,7 @@
 
     <h3 class="title">{title}</h3>
 
-    {#if href}
+    {#if href && showLink}
       <svelte:element
         this={linkElement}
         class="link"
