@@ -45,18 +45,18 @@ pnpm install cclkit4svelte
 
 ## 本ライブラリの開発について
 
-コンポーネントライブラリの開発には、Node.jsのVersion20以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
+コンポーネントライブラリの開発には、Node.js 22.23.1以降の環境が必要です。パッケージマネージャにはpnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
 
 Node.jsのバージョン切り替えには[Volta](https://volta.sh/)をおすすめします。
 
 ```zsh
 volta install node
 # or
-volta install node@20
+volta install node@22.23.1
 
 node -v
 #任意のNodeのバージョンが表示されればOK
-v20.11.1
+v22.23.1
 ```
 
 また、本ライブラリの開発には`pnpm`の導入が必要です。`npm`や`yarn`では開発準備ができないためご注意ください。voltaを使用している場合、pnpmもvoltaを使用して導入することができます。
@@ -108,18 +108,18 @@ pnpm install cclkit4svelte
 
 ## About the development of this library
 
-The development of component libraries requires a Node.js environment with Version 20 or higher. Use pnpm as the package manager. Please check the `package.json` for detailed version information.
+The development of component libraries requires Node.js 22.23.1 or later. Use pnpm as the package manager. Please check `package.json` for detailed version information.
 
 We recommend [Volta](https://volta.sh/) for switching Node.js versions.
 
 ```zsh
 volta install node
 # or
-volta install node@20
+volta install node@22.23.1
 
 node -v
 #Once the desired Node version is displayed, it is OK.
-v20.11.1
+v22.23.1
 ```
 
 Also, you need to install `pnpm` to develop this library. Note that `npm` and `yarn` do not prepare you for development; if you are using volta, pnpm can also be installed using volta.

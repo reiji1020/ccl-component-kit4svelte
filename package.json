@@ -16,7 +16,7 @@
   "description": "Component kit for CANDY CHUPS Lab.",
   "packageManager": "pnpm@10.28.2",
   "engines": {
-    "node": ">=20.11.1",
+    "node": ">=22.23.1",
     "pnpm": ">=10.28.2"
   },
   "scripts": {
@@ -89,7 +89,7 @@
     "svelte": "^5.0.0"
   },
   "volta": {
-    "node": "20.11.1",
+    "node": "22.23.1",
     "npm": "10.5.0"
   }
 }
