@@ -1,3 +1,18 @@
+## [4.0.1](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.0...4.0.1) (2026/07/19)
+
+### Features
+
+- Added optional descriptions to PrismaticWorkCard with long-text wrapping and expanded Storybook coverage. (#125, #127)
+- Added configurable Prismatic component variants for headers, story and book cards, and Studio footers. (#126, #128)
+
+### Bug Fixes
+
+- Recomputed Pagination items after page changes, including minimal controls with `siblingCount={0}`. (#129, #131)
+
+### Maintenance
+
+- Aligned the npm publish workflow badges in the repository and Storybook READMEs with release-triggered runs. (#130, #132)
+
 ## [4.0.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/3.1.0...4.0.0) (2026/07/15)
 
 ### Breaking Changes
