@@ -39,10 +39,20 @@
   ];
 
   const year = new Date().getFullYear();
-  const lightTones: PrismaticSiteFooterTone[] = [
+  const darkTextTones: PrismaticSiteFooterTone[] = [
+    CCLVividColor.STRAWBERRY_PINK,
     CCLVividColor.PINEAPPLE_YELLOW,
+    CCLVividColor.SODA_BLUE,
     CCLVividColor.MELON_GREEN
   ];
+  const darkTextColor =
+    'color-mix(in srgb, var(--palette-grape-900) 70%, black)';
+
+  function getTextColor(tone: PrismaticSiteFooterTone | undefined): string {
+    return tone && darkTextTones.includes(tone)
+      ? darkTextColor
+      : 'var(--color-surface-glass)';
+  }
 
   export let brand: string = 'CANDY CHUPS Lab.';
   export let brandHref: string | undefined = undefined;
@@ -73,14 +83,10 @@
   $: studioGradientStartColor = studioGradientStart
     ? `var(${studioGradientStart})`
     : 'var(--palette-grape-900)';
-  $: startTextColor = studioGradientStart && lightTones.includes(studioGradientStart)
-    ? 'var(--palette-grape-900)'
-    : 'var(--color-surface-glass)';
+  $: startTextColor = getTextColor(studioGradientStart);
   $: lastTone = studioGradientLast ?? tone;
   $: studioGradientLastColor = `var(${lastTone})`;
-  $: lastTextColor = lightTones.includes(lastTone)
-    ? 'var(--palette-grape-900)'
-    : 'var(--color-surface-glass)';
+  $: lastTextColor = getTextColor(lastTone);
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
   $: logoLabel = logoAlt?.trim() || brand;
 </script>
