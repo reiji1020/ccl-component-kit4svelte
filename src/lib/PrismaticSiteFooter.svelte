@@ -39,7 +39,7 @@
   ];
 
   const year = new Date().getFullYear();
-  const lightLastTones: PrismaticSiteFooterTone[] = [
+  const lightTones: PrismaticSiteFooterTone[] = [
     CCLVividColor.PINEAPPLE_YELLOW,
     CCLVividColor.MELON_GREEN
   ];
@@ -73,9 +73,12 @@
   $: studioGradientStartColor = studioGradientStart
     ? `var(${studioGradientStart})`
     : 'var(--palette-grape-900)';
+  $: startTextColor = studioGradientStart && lightTones.includes(studioGradientStart)
+    ? 'var(--palette-grape-900)'
+    : 'var(--color-surface-glass)';
   $: lastTone = studioGradientLast ?? tone;
   $: studioGradientLastColor = `var(${lastTone})`;
-  $: footerTextColor = lightLastTones.includes(lastTone)
+  $: lastTextColor = lightTones.includes(lastTone)
     ? 'var(--palette-grape-900)'
     : 'var(--color-surface-glass)';
   $: logoImage = logoUrl ? toCssUrl(logoUrl) : 'none';
@@ -84,7 +87,7 @@
 
 <footer
   class="prismatic-site-footer density-{density}"
-  style="--accent-color: {accentColor}; --studio-gradient-start: {studioGradientStartColor}; --studio-gradient-last: {studioGradientLastColor}; --footer-text-color: {footerTextColor};"
+  style="--accent-color: {accentColor}; --studio-gradient-start: {studioGradientStartColor}; --studio-gradient-last: {studioGradientLastColor}; --footer-start-text-color: {startTextColor}; --footer-last-text-color: {lastTextColor};"
 >
   <div class="footer-main">
     {#if brandHref}
@@ -154,7 +157,7 @@
       var(--studio-gradient-last) 100%
     );
     box-shadow: 0 16px 20px color-mix(in srgb, var(--palette-grape-900) 18%, transparent);
-    color: var(--footer-text-color);
+    color: var(--footer-start-text-color);
     font-family: Inter, sans-serif;
     line-height: normal;
     letter-spacing: 0;
@@ -199,6 +202,7 @@
   }
 
   nav {
+    color: var(--footer-last-text-color);
     min-width: 0;
   }
 
