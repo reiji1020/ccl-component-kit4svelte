@@ -1,4 +1,4 @@
-import{j as e,M as l}from"./index-MU6tZYMK.js";import{useMDXComponents as s}from"./index-wrzntKIx.js";import"./iframe-BsajmtEG.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-Ca4lBP7z.js";import"./index-Bhqu_tAV.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",img:"img",p:"p",pre:"pre",...s(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"Docs/README"}),`
+import{j as e,M as l}from"./index-S23GjrkX.js";import{useMDXComponents as s}from"./index-CvmfykrP.js";import"./iframe-BEDDUJ-1.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-Ca4lBP7z.js";import"./index-Bhqu_tAV.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",img:"img",p:"p",pre:"pre",...s(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"Docs/README"}),`
 `,e.jsx(n.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
 `,e.jsxs(n.p,{children:[e.jsx(n.a,{href:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml",rel:"nofollow",children:e.jsx(n.img,{src:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml/badge.svg?branch=main",alt:"Release Storybook to GitHubPages"})}),`
 `,e.jsx(n.a,{href:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml",rel:"nofollow",children:e.jsx(n.img,{src:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml/badge.svg",alt:"Publish Package to npmjs"})})]}),`
@@ -75,4 +75,4 @@ v20.11.1
 `})}),`
 `,e.jsxs(n.p,{children:["When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store ",e.jsx(n.code,{children:"stories"})," in the ",e.jsx(n.code,{children:"src/stories"})," directory."]}),`
 `,e.jsxs(n.p,{children:["The component itself should be stored in the ",e.jsx(n.code,{children:"lib"})," directory."]})]})}function p(i={}){const{wrapper:n}={...s(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{p as default};
-//# sourceMappingURL=README-B4jp0-Gt.js.map
+//# sourceMappingURL=README-CLlT4p_3.js.map
