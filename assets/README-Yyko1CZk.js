@@ -1,4 +1,4 @@
-import{j as e,M as l}from"./index-S23GjrkX.js";import{useMDXComponents as s}from"./index-CvmfykrP.js";import"./iframe-BEDDUJ-1.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-Ca4lBP7z.js";import"./index-Bhqu_tAV.js";function o(i){const n={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",img:"img",p:"p",pre:"pre",...s(),...i.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"Docs/README"}),`
+import{j as e,M as l}from"./index-CStoQ9fO.js";import{useMDXComponents as s}from"./index-DdKFqkNe.js";import"./iframe-B5OO08hQ.js";import"./_commonjsHelpers-Cpj98o6Y.js";import"./index-Ca4lBP7z.js";import"./index-Bhqu_tAV.js";function i(o){const n={a:"a",code:"code",h1:"h1",h2:"h2",hr:"hr",img:"img",p:"p",pre:"pre",...s(),...o.components};return e.jsxs(e.Fragment,{children:[e.jsx(l,{title:"Docs/README"}),`
 `,e.jsx(n.h1,{id:"ccl-component-kit4svelte",children:"ccl-component-kit4svelte"}),`
 `,e.jsxs(n.p,{children:[e.jsx(n.a,{href:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml",rel:"nofollow",children:e.jsx(n.img,{src:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/storybook-release.yaml/badge.svg?branch=main",alt:"Release Storybook to GitHubPages"})}),`
 `,e.jsx(n.a,{href:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml",rel:"nofollow",children:e.jsx(n.img,{src:"https://github.com/reiji1020/ccl-component-kit4svelte/actions/workflows/publish-package.yaml/badge.svg",alt:"Publish Package to npmjs"})})]}),`
@@ -23,15 +23,15 @@ npm i cclkit4svelte
 pnpm i cclkit4svelte
 `})}),`
 `,e.jsx(n.h2,{id:"本ライブラリの開発について",children:"本ライブラリの開発について"}),`
-`,e.jsxs(n.p,{children:["コンポーネントライブラリの開発には、Node.jsのVersion20以降の環境が必要です。パッケージマネージャにはnpmを使用します。詳細なバージョンについては",e.jsx(n.code,{children:"package.json"}),"に記載をしていますのでご確認ください。"]}),`
+`,e.jsxs(n.p,{children:["コンポーネントライブラリの開発には、Node.js 22.23.4以降の環境が必要です。パッケージマネージャにはpnpmを使用します。詳細なバージョンについては",e.jsx(n.code,{children:"package.json"}),"に記載をしていますのでご確認ください。"]}),`
 `,e.jsxs(n.p,{children:["Node.jsのバージョン切り替えには",e.jsx(n.a,{href:"https://volta.sh/",rel:"nofollow",children:"Volta"}),"をおすすめします。"]}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-zsh",children:`volta install node
 # or
-volta install node@20
+volta install node@22.23.4
 
 node -v
 #任意のNodeのバージョンが表示されればOK
-v20.11.1
+v22.23.4
 `})}),`
 `,e.jsxs(n.p,{children:["また、本ライブラリの開発には",e.jsx(n.code,{children:"pnpm"}),"の導入が必要です。",e.jsx(n.code,{children:"npm"}),"や",e.jsx(n.code,{children:"yarn"}),"では開発準備ができないためご注意ください。voltaを使用している場合、pnpmもvoltaを使用して導入することができます。"]}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-zsh",children:`volta install pnpm
@@ -60,19 +60,19 @@ npm i cclkit4svelte
 pnpm i cclkit4svelte
 `})}),`
 `,e.jsx(n.h2,{id:"about-the-development-of-this-library",children:"About the development of this library"}),`
-`,e.jsxs(n.p,{children:["The development of component libraries requires a Node.js environment with Version 20 or higher. Use npm as the package manager. Please check the ",e.jsx(n.code,{children:"package.json"})," for detailed version information."]}),`
+`,e.jsxs(n.p,{children:["The development of component libraries requires Node.js 22.23.4 or later. Use pnpm as the package manager. Please check ",e.jsx(n.code,{children:"package.json"})," for detailed version information."]}),`
 `,e.jsxs(n.p,{children:["We recommend ",e.jsx(n.a,{href:"https://volta.sh/",rel:"nofollow",children:"Volta"})," for switching Node.js versions."]}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-zsh",children:`volta install node
 # or
-volta install node@20
+volta install node@22.23.4
 
 node -v
 #Once the desired Node version is displayed, it is OK.
-v20.11.1
+v22.23.4
 `})}),`
 `,e.jsxs(n.p,{children:["Also, you need to install ",e.jsx(n.code,{children:"pnpm"})," to develop this library. Note that ",e.jsx(n.code,{children:"npm"})," and ",e.jsx(n.code,{children:"yarn"})," do not prepare you for development; if you are using volta, pnpm can also be installed using volta."]}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-zsh",children:`volta install pnpm
 `})}),`
 `,e.jsxs(n.p,{children:["When developing a new component, always create a component specification together with it, which can be found in the Storybook. Store ",e.jsx(n.code,{children:"stories"})," in the ",e.jsx(n.code,{children:"src/stories"})," directory."]}),`
-`,e.jsxs(n.p,{children:["The component itself should be stored in the ",e.jsx(n.code,{children:"lib"})," directory."]})]})}function p(i={}){const{wrapper:n}={...s(),...i.components};return n?e.jsx(n,{...i,children:e.jsx(o,{...i})}):o(i)}export{p as default};
-//# sourceMappingURL=README-CLlT4p_3.js.map
+`,e.jsxs(n.p,{children:["The component itself should be stored in the ",e.jsx(n.code,{children:"lib"})," directory."]})]})}function p(o={}){const{wrapper:n}={...s(),...o.components};return n?e.jsx(n,{...o,children:e.jsx(i,{...o})}):i(o)}export{p as default};
+//# sourceMappingURL=README-Yyko1CZk.js.map
