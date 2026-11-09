@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.1...4.0.2) (2026/11/09)
+
+### Maintenance
+
+- Updated the development and CI runtime to Node.js 22.23.4 LTS, including upstream security fixes. (#134, #135)
+- Updated Storybook to 8.6.19. (#150)
+
 ## [4.0.1](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.0...4.0.1) (2026/07/19)
 
 ### Features
