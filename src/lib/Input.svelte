@@ -1,4 +1,9 @@
+<script context="module" lang="ts">
+  let nextInputId = 0;
+</script>
+
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { CCLVividColor } from './const/config';
 
   /**
@@ -45,10 +50,9 @@
 
   /**
    * コンポーネントのID
-   * @default 'ccl-input'
    * @type string
    */
-  export let id: string = 'ccl-input';
+  export let id: string | undefined = undefined;
 
   /**
    * バリデーションメッセージ
@@ -63,15 +67,21 @@
    * @type boolean
    */
   export let isValid: boolean = true;
+
+  let generatedId: string | undefined;
+  onMount(() => {
+    generatedId = `ccl-input-${++nextInputId}`;
+  });
+  $: inputId = id ?? generatedId;
+  $: errorId = !isValid && validationMessage && inputId ? `${inputId}-error` : undefined;
 </script>
 
-<div class="input-wrapper">
-  {#if label}
-    <label for={id} class="input-label">{label}</label>
-  {/if}
+{#snippet field()}
   {#if type === 'text'}
     <input
-      {id}
+      id={inputId}
+      aria-invalid={!isValid}
+      aria-describedby={errorId}
       type="text"
       bind:value
       {placeholder}
@@ -82,7 +92,9 @@
     />
   {:else if type === 'password'}
     <input
-      {id}
+      id={inputId}
+      aria-invalid={!isValid}
+      aria-describedby={errorId}
       type="password"
       bind:value
       {placeholder}
@@ -93,7 +105,9 @@
     />
   {:else if type === 'email'}
     <input
-      {id}
+      id={inputId}
+      aria-invalid={!isValid}
+      aria-describedby={errorId}
       type="email"
       bind:value
       {placeholder}
@@ -104,7 +118,9 @@
     />
   {:else if type === 'number'}
     <input
-      {id}
+      id={inputId}
+      aria-invalid={!isValid}
+      aria-describedby={errorId}
       type="number"
       bind:value
       {placeholder}
@@ -114,8 +130,22 @@
       style="--border-color: var({borderColor})"
     />
   {/if}
+{/snippet}
+
+<div class="input-wrapper">
+  {#if label && id === undefined}
+    <label class="input-wrapper">
+      <span class="input-label">{label}</span>
+      {@render field()}
+    </label>
+  {:else}
+    {#if label}
+      <label for={id} class="input-label">{label}</label>
+    {/if}
+    {@render field()}
+  {/if}
   {#if !isValid && validationMessage}
-    <span class="validation-message">{validationMessage}</span>
+    <span id={errorId} class="validation-message">{validationMessage}</span>
   {/if}
 </div>
 
