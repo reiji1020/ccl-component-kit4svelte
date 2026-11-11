@@ -5,6 +5,7 @@ import TabPanel from '../lib/TabPanel.svelte';
 
 // Import story wrappers
 import DefaultWrapper from './tabs/Default.svelte';
+import DynamicWrapper from './tabs/Dynamic.svelte';
 import WithDisabledTabWrapper from './tabs/WithDisabledTab.svelte';
 
 const meta = {
@@ -16,6 +17,45 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const Dynamic: Story = {
+  render: () => ({ Component: DynamicWrapper }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const summary = await canvas.findByRole('tab', { name: '概要' });
+
+    await step('追加したタブを選べること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'タブを追加' }));
+      await userEvent.click(await canvas.findByRole('tab', { name: '詳細' }));
+      await expect(canvas.getByRole('tabpanel')).toHaveTextContent('詳細パネル');
+    });
+
+    await step('選択中のタブの名前を変更しても選択が維持されること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'タブ名を変更' }));
+      const renamed = await canvas.findByRole('tab', { name: '詳細設定' });
+      await expect(renamed).toHaveAttribute('aria-selected', 'true');
+      await expect(canvas.getByRole('tabpanel', { name: '詳細設定' })).toBeVisible();
+    });
+
+    await step('選択中のタブの無効化と再有効化が反映されること', async () => {
+      const details = canvas.getByRole('tab', { name: '詳細設定' });
+      await userEvent.click(canvas.getByRole('button', { name: 'タブを無効化' }));
+      await expect(details).toBeDisabled();
+      await expect(summary).toHaveAttribute('aria-selected', 'true');
+      await userEvent.click(canvas.getByRole('button', { name: 'タブを有効化' }));
+      await expect(details).toBeEnabled();
+      await userEvent.click(details);
+      await expect(details).toHaveAttribute('aria-selected', 'true');
+    });
+
+    await step('選択中のタブを削除すると有効なタブに切り替わること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'タブを削除' }));
+      await expect(canvas.queryByRole('tab', { name: '詳細設定' })).not.toBeInTheDocument();
+      await expect(summary).toHaveAttribute('aria-selected', 'true');
+      await expect(canvas.getByRole('tabpanel')).toHaveTextContent('概要パネル');
+    });
+  }
+};
 
 export const Default: Story = {
   render: () => ({ Component: DefaultWrapper }),

@@ -23,13 +23,17 @@
 
   import { TABS_CONTEXT_KEY } from './scripts/tabsContext';
   import type { TabsContext } from './scripts/tabsContext';
-  const { addTab, activeTabLabel } = getContext<TabsContext>(TABS_CONTEXT_KEY);
+  const { setTab, removeTab, activeTab } = getContext<TabsContext>(TABS_CONTEXT_KEY);
+  const key = Symbol('tab-panel');
+  let mounted = false;
 
   onMount(() => {
-    addTab({ label, color, disabled });
+    mounted = true;
+    return () => removeTab(key);
   });
 
-  $: isActive = $activeTabLabel === label;
+  $: if (mounted) setTab(key, { label, color, disabled });
+  $: isActive = $activeTab === key;
 </script>
 
 {#if isActive}

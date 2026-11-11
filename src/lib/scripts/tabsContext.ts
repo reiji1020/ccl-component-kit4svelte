@@ -1,4 +1,4 @@
-import type { Writable } from 'svelte/store';
+import type { Readable } from 'svelte/store';
 
 export type TabData = {
   label: string;
@@ -7,8 +7,9 @@ export type TabData = {
 };
 
 export type TabsContext = {
-  addTab: (tab: TabData) => void;
-  activeTabLabel: Writable<string>;
+  setTab: (key: symbol, tab: TabData) => void;
+  removeTab: (key: symbol) => void;
+  activeTab: Readable<symbol | undefined>;
 };
 
 export const TABS_CONTEXT_KEY = Symbol('tabs-context');
