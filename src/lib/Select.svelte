@@ -3,9 +3,11 @@
    * オプションの型定義
    */
   export type SelectOption = { value: string; label: string };
+  let nextSelectId = 0;
 </script>
 
 <script lang="ts">
+  import { onMount } from 'svelte';
   import { CCLVividColor } from './const/config';
 
   /**
@@ -44,18 +46,26 @@
 
   /**
    * コンポーネントのID
-   * @default 'ccl-select'
    * @type string
    */
-  export let id: string = 'ccl-select';
+  export let id: string | undefined = undefined;
+
+  let generatedId: string | undefined;
+  onMount(() => {
+    generatedId = `ccl-select-${++nextSelectId}`;
+  });
 </script>
 
-<div class="select-wrapper">
+<svelte:element this={label && id === undefined ? 'label' : 'div'} class="select-wrapper">
   {#if label}
-    <label for={id} class="select-label">{label}</label>
+    {#if id === undefined}
+      <span class="select-label">{label}</span>
+    {:else}
+      <label for={id} class="select-label">{label}</label>
+    {/if}
   {/if}
   <select
-    {id}
+    id={id ?? generatedId}
     bind:value
     {disabled}
     class="select-field"
@@ -65,7 +75,7 @@
       <option value={option.value}>{option.label}</option>
     {/each}
   </select>
-</div>
+</svelte:element>
 
 <style>
   .select-wrapper {
