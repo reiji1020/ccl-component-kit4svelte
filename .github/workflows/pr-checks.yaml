@@ -1,0 +1,53 @@
+name: PR checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CI: 'true'
+      STORYBOOK_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.23.4'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm run package
+      - run: node --test --test-concurrency=1 tests/*.test.mjs
+      - run: pnpm build-storybook
+      - name: Install Chromium
+        shell: bash
+        run: |
+          playwright_package=$(node -p "require.resolve('playwright/package.json', { paths: [require.resolve('@storybook/test-runner')] })")
+          node "$(dirname "$playwright_package")/cli.js" install --with-deps chromium
+      - name: Run Storybook interaction tests
+        shell: bash
+        run: |
+          python3 -m http.server 6006 --bind 127.0.0.1 --directory public/storybook > storybook-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          curl --fail --silent --show-error --retry 30 --retry-connrefused --retry-delay 1 \
+            http://127.0.0.1:6006/index.json > /dev/null
+          pnpm test-sb --url http://127.0.0.1:6006 --maxWorkers 2 2>&1 | tee storybook-test.log
+      - name: Upload Storybook test results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-test-results
+          path: |
+            storybook-server.log
+            storybook-test.log
+            coverage/storybook/
+          if-no-files-found: ignore
