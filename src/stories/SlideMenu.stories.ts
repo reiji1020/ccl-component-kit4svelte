@@ -58,6 +58,12 @@ export const Default: Story = {
       const dialogHidden = await canvas.findByRole('dialog', { hidden: true });
       await expect(dialogHidden).toHaveAttribute('aria-hidden', 'true');
     });
+    await step('再び開いたメニューをEscapeで閉じられること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: /open menu/i }));
+      const dialog = await canvas.findByRole('dialog');
+      await userEvent.keyboard('{Escape}');
+      await expect(dialog).toHaveAttribute('aria-hidden', 'true');
+    });
   }
 };
 
