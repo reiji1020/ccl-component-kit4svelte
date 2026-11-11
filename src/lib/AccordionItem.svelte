@@ -54,6 +54,7 @@
 >
   <h2 class="accordion-header">
     <button
+      type="button"
       class="accordion-button"
       aria-expanded={isContentOpen}
       aria-controls={`accordion-panel-${label}`}

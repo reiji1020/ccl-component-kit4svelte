@@ -140,9 +140,9 @@
     -->
     <div class="calendarOverlay" on:click|stopPropagation>
       <div class="calendarHeader">
-        <button on:click={prevMonth} aria-label="前月へ">&lt;</button>
+        <button type="button" on:click={prevMonth} aria-label="前月へ">&lt;</button>
         <span>{currentMonth.toFormat('yyyy年MM月')}</span>
-        <button on:click={nextMonth} aria-label="次月へ">&gt;</button>
+        <button type="button" on:click={nextMonth} aria-label="次月へ">&gt;</button>
       </div>
       <div class="weekdays">
         <span>日</span>
@@ -156,6 +156,7 @@
       <div class="daysGrid">
         {#each daysInMonth as day}
           <button
+            type="button"
             class:currentMonthDay={day !== null}
             class:selected={selectedDate &&
               day === DateTime.fromJSDate(selectedDate).day &&
