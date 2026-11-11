@@ -34,9 +34,11 @@
   export let borderColor: string = '--strawberry-pink';
 
   let showCalendar = false;
-  let currentMonth: DateTime = selectedDate ? DateTime.fromJSDate(selectedDate) : DateTime.local();
+  let currentMonth: DateTime;
 
-  $: formattedDate = selectedDate ? DateTime.fromJSDate(selectedDate).toFormat('yyyy/MM/dd') : '';
+  $: selected = selectedDate ? DateTime.fromJSDate(selectedDate) : null;
+  $: currentMonth = selected ?? DateTime.local();
+  $: formattedDate = selected?.toFormat('yyyy/MM/dd') ?? '';
 
   // --- イベントハンドラを整理 ---
   function openCalendar() {
@@ -158,10 +160,7 @@
           <button
             type="button"
             class:currentMonthDay={day !== null}
-            class:selected={selectedDate &&
-              day === DateTime.fromJSDate(selectedDate).day &&
-              currentMonth.month === DateTime.fromJSDate(selectedDate).month &&
-              currentMonth.year === DateTime.fromJSDate(selectedDate).year}
+            class:selected={selected && day === selected.day && currentMonth.hasSame(selected, 'month')}
             on:click={() => day && selectDay(day)}
             disabled={day === null}
           >
