@@ -33,6 +33,7 @@
   <div role="tablist" class="tab-list">
     {#each $tabData as tab}
       <button
+        type="button"
         role="tab"
         class="tab-button"
         class:active={tab.label === $activeTabLabel}

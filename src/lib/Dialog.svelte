@@ -145,7 +145,9 @@
         <h2 id={titleId} class="ccl-dialog-title">
           <slot name="title">{title}</slot>
         </h2>
-        <button class="ccl-dialog-close" aria-label="Close dialog" on:click={close}> × </button>
+        <button type="button" class="ccl-dialog-close" aria-label="Close dialog" on:click={close}>
+          ×
+        </button>
       </header>
       <section class="ccl-dialog-body">
         <slot />
