@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher, onMount, onDestroy } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -43,14 +43,16 @@
     } catch {}
   }
 
-  $: lockScroll(open && backdrop);
+  let mounted = false;
+  $: if (mounted) lockScroll(open && backdrop);
 
   onMount(() => {
-    window.addEventListener('keydown', handleKeydown, { capture: true });
-  });
-  onDestroy(() => {
-    window.removeEventListener('keydown', handleKeydown, { capture: true } as any);
-    lockScroll(false);
+    mounted = true;
+    window.addEventListener('keydown', handleKeydown, true);
+    return () => {
+      window.removeEventListener('keydown', handleKeydown, true);
+      lockScroll(false);
+    };
   });
 </script>
 
