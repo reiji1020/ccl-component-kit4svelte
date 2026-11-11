@@ -69,6 +69,25 @@ volta install pnpm
 
 コンポーネントそのものは`lib`ディレクトリの中に格納してください。
 
+### PRの検証
+
+PRでは型チェック、パッケージ生成、SSR回帰テスト、StorybookのビルドとChromium操作テストを実行します。公開用シークレットは不要です。失敗時はActionsの `storybook-test-results` から、実行済みのテストのログとカバレッジを確認できます。
+
+ローカルで再現するには、Bashで以下を実行します。Chromiumのシステム依存関係も必要なLinux環境では、インストールコマンドに `--with-deps` を追加してください。
+
+```bash
+pnpm install --frozen-lockfile
+pnpm check
+pnpm run package
+node --test --test-concurrency=1 tests/*.test.mjs
+pnpm build-storybook
+playwright_package=$(node -p "require.resolve('playwright/package.json', { paths: [require.resolve('@storybook/test-runner')] })")
+node "$(dirname "$playwright_package")/cli.js" install chromium
+python3 -m http.server 6006 --bind 127.0.0.1 --directory public/storybook
+```
+
+サーバー起動後に別のターミナルで `pnpm test-sb --url http://127.0.0.1:6006` を実行します。
+
 ---
 
 # ccl-component-kit
