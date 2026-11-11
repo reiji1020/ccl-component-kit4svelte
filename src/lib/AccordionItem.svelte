@@ -1,6 +1,10 @@
+<script context="module" lang="ts">
+  let nextItemId = 0;
+</script>
+
 <script lang="ts">
   import { getContext, onMount } from 'svelte';
-  import { writable, type Readable } from 'svelte/store';
+  import type { Readable } from 'svelte/store';
 
   /**
    * 項目のヘッダーとして常に表示されるテキスト
@@ -38,7 +42,14 @@
   const { openItems, toggleItem, initiallyOpen } =
     getContext<AccordionContext>(ACCORDION_CONTEXT_KEY);
 
+  let buttonId: string | undefined;
+  let panelId: string | undefined;
+
   onMount(() => {
+    // Allocate IDs after hydration so the initial server and client markup agree.
+    const itemId = ++nextItemId;
+    buttonId = `ccl-accordion-button-${itemId}`;
+    panelId = `ccl-accordion-panel-${itemId}`;
     if (isOpen) {
       initiallyOpen(label);
     }
@@ -55,9 +66,10 @@
   <h2 class="accordion-header">
     <button
       type="button"
+      id={buttonId}
       class="accordion-button"
       aria-expanded={isContentOpen}
-      aria-controls={`accordion-panel-${label}`}
+      aria-controls={isContentOpen ? panelId : undefined}
       on:click={() => toggleItem(label)}
     >
       <span class="button-label">{label}</span>
@@ -67,9 +79,9 @@
   {#if isContentOpen}
     <div
       class="accordion-content"
-      id={`accordion-panel-${label}`}
+      id={panelId}
       role="region"
-      aria-labelledby={`accordion-button-${label}`}
+      aria-labelledby={buttonId}
     >
       <div class="content-padding">
         <slot />

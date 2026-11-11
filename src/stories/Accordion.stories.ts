@@ -8,6 +8,7 @@ import DefaultWrapper from './accordion/Default.svelte';
 import MultipleWrapper from './accordion/Multiple.svelte';
 import InitiallyOpenWrapper from './accordion/InitiallyOpen.svelte';
 import CustomColorsWrapper from './accordion/CustomColors.svelte';
+import RepeatedLabelsWrapper from './accordion/RepeatedLabels.svelte';
 
 const meta = {
   title: 'CommonComponents/Accordion',
@@ -18,6 +19,34 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const RepeatedLabels: Story = {
+  render: () => ({ Component: RepeatedLabelsWrapper }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const [first, second] = await canvas.findAllByRole('button', { name: '詳細' });
+
+    await step('同じ見出しでも各パネルが対応するボタンを参照すること', async () => {
+      await userEvent.click(second);
+      const [firstPanel, secondPanel] = await canvas.findAllByRole('region', { name: '詳細' });
+      await expect(firstPanel).toHaveTextContent('最初のパネル');
+      await expect(secondPanel).toHaveTextContent('2番目のパネル');
+      await expect(first.id).not.toBe(second.id);
+      await expect(firstPanel.id).not.toBe(secondPanel.id);
+      await expect(firstPanel).toHaveAttribute('aria-labelledby', first.id);
+      await expect(secondPanel).toHaveAttribute('aria-labelledby', second.id);
+      await expect(first).toHaveAttribute('aria-controls', firstPanel.id);
+      await expect(second).toHaveAttribute('aria-controls', secondPanel.id);
+    });
+
+    await step('片方を閉じてももう片方のパネルが開いたままであること', async () => {
+      await userEvent.click(second);
+      await expect(second).toHaveAttribute('aria-expanded', 'false');
+      await expect(second).not.toHaveAttribute('aria-controls');
+      await expect(canvas.getByRole('region', { name: '詳細' })).toHaveTextContent('最初のパネル');
+    });
+  }
+};
 
 export const Default: Story = {
   render: () => ({ Component: DefaultWrapper }),
