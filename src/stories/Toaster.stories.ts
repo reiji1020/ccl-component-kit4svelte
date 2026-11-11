@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
-import { within, expect, userEvent } from '@storybook/test';
+import { within, expect, userEvent, waitFor } from '@storybook/test';
 import Toaster from '$lib/Toaster.svelte';
 import { toast } from '$lib/index';
 import ToasterPlayground from './ToasterPlayground.svelte';
@@ -98,7 +98,10 @@ export const AutoDismiss: Story = {
       toast.clear();
       toast.show({ message: 'Auto dismiss in 800ms', variant: 'info', duration: 800 });
       const status = await canvas.findByRole('status');
-      await expect(status).toBeInTheDocument();
+      await expect(status).toHaveTextContent('Auto dismiss in 800ms');
+      await waitFor(() => expect(canvas.queryByRole('status')).not.toBeInTheDocument(), {
+        timeout: 3000
+      });
     });
   },
   parameters: {
