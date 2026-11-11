@@ -37,11 +37,10 @@
   export let disabled: boolean = false;
 
   /**
-   * コンポーネントのID
-   * @default 'ccl-textarea'
+   * コンポーネントのID。省略時はラベルで入力欄を包む。
    * @type string
    */
-  export let id: string = 'ccl-textarea';
+  export let id: string | undefined = undefined;
 
   /**
    * 行数
@@ -58,9 +57,13 @@
   export let cols: number = 20;
 </script>
 
-<div class="textarea-wrapper">
+<svelte:element this={label && id === undefined ? 'label' : 'div'} class="textarea-wrapper">
   {#if label}
-    <label for={id} class="textarea-label">{label}</label>
+    {#if id === undefined}
+      <span class="textarea-label">{label}</span>
+    {:else}
+      <label for={id} class="textarea-label">{label}</label>
+    {/if}
   {/if}
   <textarea
     {id}
@@ -71,8 +74,8 @@
     {cols}
     class="textarea-field"
     style="--border-color: var({borderColor})"
-  />
-</div>
+  ></textarea>
+</svelte:element>
 
 <style>
   .textarea-wrapper {
