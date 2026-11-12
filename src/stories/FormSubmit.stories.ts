@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/svelte';
 import { expect, userEvent, within } from '@storybook/test';
 import FormSubmitWrapper from './FormSubmitWrapper.svelte';
 import FormAttributesWrapper from './FormAttributesWrapper.svelte';
+import UsageFormExample from './UsageFormExample.svelte';
 
 const meta = {
   title: 'CommonComponents/FormSubmit',
@@ -9,6 +10,32 @@ const meta = {
 } satisfies Meta<FormSubmitWrapper>;
 
 export default meta;
+
+export const UsageExample: StoryObj<typeof meta> = {
+  render: () => ({ Component: UsageFormExample }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const send = canvas.getByRole('button', { name: 'Send' });
+    const email = canvas.getByRole('textbox', { name: 'Email' });
+    const result = canvas.getByRole('status', { name: 'Submitted data' });
+
+    await step('必須欄が空の場合は送信されないこと', async () => {
+      await userEvent.click(send);
+      await expect(email).toHaveFocus();
+      await expect(result.textContent).toBe('');
+    });
+
+    await step('利用例で入力した値が送信結果に反映されること', async () => {
+      await userEvent.type(email, 'member@example.com');
+      await userEvent.selectOptions(canvas.getByRole('combobox', { name: 'Plan' }), 'basic');
+      await userEvent.click(send);
+      await expect(JSON.parse(result.textContent ?? '')).toEqual({
+        email: 'member@example.com',
+        plan: 'basic'
+      });
+    });
+  }
+};
 
 export const NativeAttributes: StoryObj<typeof meta> = {
   render: () => ({ Component: FormAttributesWrapper }),
