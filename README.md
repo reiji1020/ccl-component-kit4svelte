@@ -73,6 +73,8 @@ volta install pnpm
 
 PRでは型チェック、パッケージ生成、SSR回帰テスト、StorybookのビルドとChromium操作テストを実行します。公開用シークレットは不要です。失敗時はActionsの `storybook-test-results` から、実行済みのテストのログとカバレッジを確認できます。
 
+CIではPlaywright公式コンテナに同梱されたChromiumとシステム依存関係を使います。ロックファイル内のPlaywrightを更新するときは、CIのコンテナタグも同じバージョンに揃えてください。
+
 ローカルで再現するには、Bashで以下を実行します。Chromiumのシステム依存関係も必要なLinux環境では、インストールコマンドに `--with-deps` を追加してください。
 
 ```bash
