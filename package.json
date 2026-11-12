@@ -1,6 +1,6 @@
 {
   "name": "cclkit4svelte",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "author": "reiji1020 <sk@reiji1020.info>",
   "license": "MIT",
   "type": "module",
@@ -59,7 +59,7 @@
     "@storybook/svelte": "^8.6.14",
     "@storybook/sveltekit": "^8.6.14",
     "@storybook/test": "^8.6.14",
-    "@storybook/test-runner": "^0.17.0",
+    "@storybook/test-runner": "^0.19.1",
     "@sveltejs/adapter-auto": "^3.3.1",
     "@sveltejs/kit": "^2.37.1",
     "@sveltejs/package": "^2.5.0",

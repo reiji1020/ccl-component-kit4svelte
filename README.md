@@ -43,6 +43,54 @@ npm i cclkit4svelte
 pnpm install cclkit4svelte
 ```
 
+### Svelte 5 quickstart
+
+Svelte 5の `+page.svelte` などに貼り付けて使えます。公開エントリーポイントの `cclkit4svelte` からコンポーネントを読み込むと、パレットとCSSカスタムプロパティも読み込まれます。
+
+```svelte
+<script>
+  import { Button, CCLVividColor } from 'cclkit4svelte';
+</script>
+
+<Button label="Hello" type="button" bgColor={CCLVividColor.SODA_BLUE} />
+```
+
+CSS変数だけを使う場合や、アプリのエントリーポイントで先に読み込みたい場合は `import 'cclkit4svelte/style.css';` を使えます。通常のコンポーネント利用では追加のCSS importは不要です。配色は `bgColor` などのpropsに `CCLVividColor` のトークンを渡して変更できます。
+
+### Form example
+
+フォーム属性を追加した **4.0.3以降**向けの例です。`bind:value` で入力値を同期し、`required` はブラウザーの必須入力検証に使われます。送信時は `name` が `FormData` のキーになります。この例はデータを画面に表示します。
+
+```svelte
+<script>
+  import { Button, CCLVividColor, Input, Select } from 'cclkit4svelte';
+
+  let email = $state('');
+  let plan = $state('');
+  let result = $state('');
+
+  const plans = [
+    { value: '', label: 'Choose a plan' },
+    { value: 'basic', label: 'Basic' }
+  ];
+
+  function submit(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    result = JSON.stringify(Object.fromEntries(data));
+  }
+</script>
+
+<form onsubmit={submit}>
+  <Input label="Email" type="email" name="email" autocomplete="email" required bind:value={email} />
+  <Select label="Plan" name="plan" options={plans} required bind:value={plan} />
+  <Button label="Send" type="submit" bgColor={CCLVividColor.SODA_BLUE} />
+  <output aria-label="Submitted data">{result}</output>
+</form>
+```
+
+`Button` は `type` を省略するとフォーム内で送信ボタンになります。フォームを送信しない操作には `type="button"` を指定してください。
+
 ## 本ライブラリの開発について
 
 コンポーネントライブラリの開発には、Node.js 22.23.4以降の環境が必要です。パッケージマネージャにはpnpmを使用します。詳細なバージョンについては`package.json`に記載をしていますのでご確認ください。
@@ -68,6 +116,27 @@ volta install pnpm
 新規コンポーネントを開発する場合は、必ずStorybookで確認できるコンポーネント仕様書を一緒に作成してください。`stories`は`src/stories`ディレクトリの中に格納してください。
 
 コンポーネントそのものは`lib`ディレクトリの中に格納してください。
+
+### PRの検証
+
+PRでは型チェック、パッケージ生成、SSR回帰テスト、StorybookのビルドとChromium操作テストを実行します。公開用シークレットは不要です。失敗時はActionsの `storybook-test-results` から、実行済みのテストのログとカバレッジを確認できます。
+
+CIではPlaywright公式コンテナに同梱されたChromiumとシステム依存関係を使います。ロックファイル内のPlaywrightを更新するときは、CIのコンテナタグも同じバージョンに揃えてください。
+
+ローカルで再現するには、Bashで以下を実行します。Chromiumのシステム依存関係も必要なLinux環境では、インストールコマンドに `--with-deps` を追加してください。
+
+```bash
+pnpm install --frozen-lockfile
+pnpm check
+pnpm run package
+node --test --test-concurrency=1 tests/*.test.mjs
+pnpm build-storybook
+playwright_package=$(node -p "require.resolve('playwright/package.json', { paths: [require.resolve('@storybook/test-runner')] })")
+node "$(dirname "$playwright_package")/cli.js" install chromium
+python3 -m http.server 6006 --bind 127.0.0.1 --directory public/storybook
+```
+
+サーバー起動後に別のターミナルで `pnpm test-sb --url http://127.0.0.1:6006` を実行します。
 
 ---
 
@@ -105,6 +174,12 @@ npm i cclkit4svelte
 
 pnpm install cclkit4svelte
 ```
+
+### Svelte 5 usage
+
+Copy the [quickstart](#svelte-5-quickstart) or [form example](#form-example) above into a Svelte 5 component, such as `+page.svelte`. Import components and color tokens from `cclkit4svelte`. The package entry point loads the palette and CSS custom properties automatically. To load the variables on their own or earlier in the app, use `import 'cclkit4svelte/style.css';`. Pass a token such as `CCLVividColor.SODA_BLUE` to `bgColor` to customize the button.
+
+The form example uses the HTML attributes available in **4.0.3 and later**. It binds values with `bind:value`, uses native `required` validation, and displays the submitted `FormData` entries keyed by `name`. A `Button` without a `type` submits its enclosing form. Use `type="button"` for actions that should leave the form open.
 
 ## About the development of this library
 

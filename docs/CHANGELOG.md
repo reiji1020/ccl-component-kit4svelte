@@ -1,3 +1,21 @@
+## [4.0.3](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.2...4.0.3) (2026/11/12)
+
+### Bug Fixes
+
+- Isolated Toaster notifications from server-side rendering and fixed SlideMenu rendering on the server. (#152, #151)
+- Prevented form submission from DatePicker, Tabs, Accordion, and Dialog controls. (#153)
+- Kept Tabs in sync with changes to their panels and DatePicker's displayed month in sync with external date updates. (#154, #155)
+- Fixed label associations in Textarea, Input, Select, and Accordion, and associated Input validation messages with their fields. (#156, #157, #137)
+
+### Enhancements
+
+- Added native HTML form attributes to Input and Select and configurable button types to Button. (#136)
+- Added Svelte 5 quickstart and form examples to the README and Storybook. (#139)
+
+### Maintenance
+
+- Added pull request checks for types, packaging, SSR, and Storybook interactions using the official Playwright container. (#138, #169)
+
 ## [4.0.2](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.1...4.0.2) (2026/11/09)
 
 ### Maintenance

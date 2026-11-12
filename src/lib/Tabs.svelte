@@ -1,45 +1,51 @@
 <script lang="ts">
   import { setContext } from 'svelte';
-  import { writable } from 'svelte/store';
+  import { get, writable } from 'svelte/store';
 
   import { TABS_CONTEXT_KEY } from './scripts/tabsContext';
   import type { TabData, TabsContext } from './scripts/tabsContext';
 
-  const tabData = writable<TabData[]>([]);
-  const activeTabLabel = writable('');
+  type RegisteredTab = TabData & { key: symbol };
+  const tabData = writable<RegisteredTab[]>([]);
+  const activeTab = writable<symbol | undefined>(undefined);
+
+  function updateTabs(tabs: RegisteredTab[]) {
+    tabData.set(tabs);
+    const selected = get(activeTab);
+    if (!tabs.some((tab) => tab.key === selected && !tab.disabled)) {
+      activeTab.set(tabs.find((tab) => !tab.disabled)?.key);
+    }
+  }
 
   setContext<TabsContext>(TABS_CONTEXT_KEY, {
-    addTab: (tab) => {
-      tabData.update((currentTabs) => {
-        const newTabs = [...currentTabs, tab];
-        // Set the first tab as active by default
-        if (newTabs.length === 1) {
-          activeTabLabel.set(tab.label);
-        }
-        return newTabs;
-      });
+    setTab(key, data) {
+      const tabs = get(tabData);
+      const tab = { key, ...data };
+      updateTabs(
+        tabs.some((entry) => entry.key === key)
+          ? tabs.map((entry) => (entry.key === key ? tab : entry))
+          : [...tabs, tab]
+      );
     },
-    activeTabLabel
+    removeTab(key) {
+      updateTabs(get(tabData).filter((tab) => tab.key !== key));
+    },
+    activeTab
   });
-
-  let activeColor = '--strawberry-pink';
-  $: {
-    const activeTab = $tabData.find((t) => t.label === $activeTabLabel);
-    activeColor = activeTab ? activeTab.color : '--strawberry-pink';
-  }
 </script>
 
 <div class="tabs-container">
   <div role="tablist" class="tab-list">
-    {#each $tabData as tab}
+    {#each $tabData as tab (tab.key)}
       <button
+        type="button"
         role="tab"
         class="tab-button"
-        class:active={tab.label === $activeTabLabel}
-        aria-selected={tab.label === $activeTabLabel}
+        class:active={tab.key === $activeTab}
+        aria-selected={tab.key === $activeTab}
         aria-controls={`tab-panel-${tab.label}`}
         id={`tab-button-${tab.label}`}
-        on:click={() => activeTabLabel.set(tab.label)}
+        on:click={() => activeTab.set(tab.key)}
         style="--active-color: var({tab.color});"
         disabled={tab.disabled}
       >

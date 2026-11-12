@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount, tick } from 'svelte';
   import {
     toasts,
     dismiss,
@@ -21,7 +22,14 @@
   // duration は任意（既定: undefined）
   export let duration: number;
 
-  $: list = $toasts.slice(0, maxVisible);
+  let mounted = false;
+  onMount(() => {
+    mounted = true;
+    return () => {
+      mounted = false;
+    };
+  });
+  $: list = mounted ? $toasts.slice(0, maxVisible) : [];
 
   function colorVars(item: ToastItem) {
     const bgVar = variantColor[item.variant];
@@ -46,11 +54,15 @@
 
   let lastSig = '';
   // Direct props pathway (message/variant/duration)
-  $: if (message) {
+  $: if (mounted && message) {
     const sig = `${message}|${variant ?? 'info'}|${duration ?? ''}`;
     if (sig !== lastSig) {
-      showToast({ message, variant, duration });
       lastSig = sig;
+      const options = { message, variant, duration };
+      // Update the shared store after this component's reactive flush.
+      void tick().then(() => {
+        if (mounted && lastSig === sig) showToast(options);
+      });
     }
   }
 </script>

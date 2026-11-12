@@ -3,9 +3,10 @@ import DatePicker from '../lib/DatePicker.svelte';
 import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 import AllColorsDatePickerWrapper from './AllColors/AllColorsDatePickerWrapper.svelte';
+import DatePickerExternalDateWrapper from './DatePickerExternalDateWrapper.svelte';
 
 const meta = {
-  title: 'Form/DatePicker',
+  title: 'CommonComponents/DatePicker',
   component: DatePicker,
   tags: ['autodocs'],
   argTypes: {
@@ -86,6 +87,33 @@ export const WithInitialDate: Story = {
 
     await step('日付選択後にカレンダーが閉じること', async () => {
       await expect(canvas.queryByText('2023年01月')).not.toBeInTheDocument();
+    });
+  }
+};
+
+export const WithExternalDateUpdate: Story = {
+  render: () => ({ Component: DatePickerExternalDateWrapper }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByPlaceholderText('日付を選択');
+    const changedDate = canvas.getByRole('status', { name: '選択イベントの日付' });
+
+    await step('親から日付を変更すると入力欄とカレンダーが同期すること', async () => {
+      await expect(input).toHaveValue('2026/01/15');
+      await userEvent.click(canvas.getByRole('button', { name: '3月の日付に変更' }));
+      await expect(input).toHaveValue('2026/03/20');
+      await expect(changedDate.textContent).toBe('');
+      await userEvent.click(input);
+      await expect(canvas.getByText('2026年03月')).toBeVisible();
+      await expect(canvas.getByRole('button', { name: '20' })).toHaveClass('selected');
+    });
+
+    await step('月移動後の日付選択で変更イベントが発火すること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: '次月へ' }));
+      await expect(canvas.getByText('2026年04月')).toBeVisible();
+      await userEvent.click(canvas.getByRole('button', { name: '15' }));
+      await expect(input).toHaveValue('2026/04/15');
+      await expect(changedDate).toHaveTextContent('2026/4/15');
     });
   }
 };

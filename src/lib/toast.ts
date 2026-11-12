@@ -29,6 +29,8 @@ const DEFAULT_DURATION = 3000;
 
 export function show(opts: ShowOptions): string {
   const id = genId();
+  if (typeof window === 'undefined') return id;
+
   const item: ToastItem = {
     id,
     title: opts.title,
@@ -37,7 +39,7 @@ export function show(opts: ShowOptions): string {
     duration: opts.duration ?? DEFAULT_DURATION
   };
   toasts.update((list) => [item, ...list].slice(0, 50));
-  if (typeof window !== 'undefined' && item.duration > 0) {
+  if (item.duration > 0) {
     window.setTimeout(() => dismiss(id), item.duration);
   }
   return id;

@@ -3,9 +3,10 @@ import Textarea from '../lib/Textarea.svelte';
 import { CCLVividColor } from '../lib/const/config';
 import { expect, userEvent, within } from '@storybook/test';
 import AllColorsTextareaWrapper from './AllColors/AllColorsTextareaWrapper.svelte';
+import TextareaMultipleWrapper from './TextareaMultipleWrapper.svelte';
 
 const meta = {
-  title: 'Form/Textarea',
+  title: 'CommonComponents/Textarea',
   component: Textarea,
   tags: ['autodocs'],
   argTypes: {
@@ -100,6 +101,34 @@ export const NoLabel: Story = {
     await step('ラベルがないテキストエリアへ入力できること', async () => {
       await userEvent.type(textarea, 'ラベルなし入力');
       await expect(textarea).toHaveValue('ラベルなし入力');
+    });
+  }
+};
+
+export const Multiple: Story = {
+  render: () => ({ Component: TextareaMultipleWrapper }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const first = canvas.getByRole('textbox', { name: 'First note' });
+    const second = canvas.getByRole('textbox', { name: 'Second note' });
+
+    await step('ID省略時もラベルがそれぞれの入力欄に対応すること', async () => {
+      await expect(first).toHaveValue('first');
+      await expect(second).toHaveValue('second');
+      await userEvent.click(canvas.getByText('Second note'));
+      await expect(second).toHaveFocus();
+      await userEvent.type(second, ' edited');
+      await expect(first).toHaveValue('first');
+      await expect(canvas.getByRole('status', { name: 'Second note value' })).toHaveTextContent(
+        'second edited'
+      );
+    });
+
+    await step('明示IDを指定したラベルが対応する入力欄にフォーカスすること', async () => {
+      const explicit = canvas.getByRole('textbox', { name: 'Explicit note' });
+      await expect(explicit).toHaveAttribute('id', 'explicit-note');
+      await userEvent.click(canvas.getByText('Explicit note'));
+      await expect(explicit).toHaveFocus();
     });
   }
 };

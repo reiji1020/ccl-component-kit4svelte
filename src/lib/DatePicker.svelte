@@ -34,9 +34,11 @@
   export let borderColor: string = '--strawberry-pink';
 
   let showCalendar = false;
-  let currentMonth: DateTime = selectedDate ? DateTime.fromJSDate(selectedDate) : DateTime.local();
+  let currentMonth: DateTime;
 
-  $: formattedDate = selectedDate ? DateTime.fromJSDate(selectedDate).toFormat('yyyy/MM/dd') : '';
+  $: selected = selectedDate ? DateTime.fromJSDate(selectedDate) : null;
+  $: currentMonth = selected ?? DateTime.local();
+  $: formattedDate = selected?.toFormat('yyyy/MM/dd') ?? '';
 
   // --- イベントハンドラを整理 ---
   function openCalendar() {
@@ -140,9 +142,9 @@
     -->
     <div class="calendarOverlay" on:click|stopPropagation>
       <div class="calendarHeader">
-        <button on:click={prevMonth} aria-label="前月へ">&lt;</button>
+        <button type="button" on:click={prevMonth} aria-label="前月へ">&lt;</button>
         <span>{currentMonth.toFormat('yyyy年MM月')}</span>
-        <button on:click={nextMonth} aria-label="次月へ">&gt;</button>
+        <button type="button" on:click={nextMonth} aria-label="次月へ">&gt;</button>
       </div>
       <div class="weekdays">
         <span>日</span>
@@ -156,11 +158,9 @@
       <div class="daysGrid">
         {#each daysInMonth as day}
           <button
+            type="button"
             class:currentMonthDay={day !== null}
-            class:selected={selectedDate &&
-              day === DateTime.fromJSDate(selectedDate).day &&
-              currentMonth.month === DateTime.fromJSDate(selectedDate).month &&
-              currentMonth.year === DateTime.fromJSDate(selectedDate).year}
+            class:selected={selected && day === selected.day && currentMonth.hasSame(selected, 'month')}
             on:click={() => day && selectDay(day)}
             disabled={day === null}
           >
