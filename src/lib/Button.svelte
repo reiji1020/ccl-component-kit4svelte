@@ -25,6 +25,9 @@
    */
   export let disabled: boolean = false;
 
+  /** 省略時は従来どおり、フォーム内でネイティブの送信ボタンとして動作する。 */
+  export let type: 'button' | 'submit' | 'reset' | undefined = undefined;
+
   /**
    * ボタンの背景色を取得する関数
    * @param bgColor - ボタンの背景色
@@ -44,6 +47,7 @@
 
 <!--汎用ボタン-->
 <button
+  {type}
   class="buttonWrapper"
   style="--bgColor: {buttonColor}; {buttonFg ? `--btn-fg: var(${buttonFg});` : ''}"
   on:click={onClick}
