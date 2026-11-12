@@ -4,6 +4,7 @@
 
 <script lang="ts">
   import { onMount } from 'svelte';
+  import type { HTMLInputAttributes } from 'svelte/elements';
   import { CCLVividColor } from './const/config';
 
   /**
@@ -68,6 +69,16 @@
    */
   export let isValid: boolean = true;
 
+  export let name: string | undefined = undefined;
+  export let required = false;
+  export let autocomplete: HTMLInputAttributes['autocomplete'] = undefined;
+  export let readonly = false;
+  export let min: HTMLInputAttributes['min'] = undefined;
+  export let max: HTMLInputAttributes['max'] = undefined;
+  export let step: HTMLInputAttributes['step'] = undefined;
+
+  $: formAttributes = { name, required, autocomplete, readonly };
+
   let generatedId: string | undefined;
   onMount(() => {
     generatedId = `ccl-input-${++nextInputId}`;
@@ -83,6 +94,7 @@
       aria-invalid={!isValid}
       aria-describedby={errorId}
       type="text"
+      {...formAttributes}
       bind:value
       {placeholder}
       {disabled}
@@ -96,6 +108,7 @@
       aria-invalid={!isValid}
       aria-describedby={errorId}
       type="password"
+      {...formAttributes}
       bind:value
       {placeholder}
       {disabled}
@@ -109,6 +122,7 @@
       aria-invalid={!isValid}
       aria-describedby={errorId}
       type="email"
+      {...formAttributes}
       bind:value
       {placeholder}
       {disabled}
@@ -122,6 +136,10 @@
       aria-invalid={!isValid}
       aria-describedby={errorId}
       type="number"
+      {...formAttributes}
+      {min}
+      {max}
+      {step}
       bind:value
       {placeholder}
       {disabled}

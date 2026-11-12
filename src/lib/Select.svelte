@@ -49,6 +49,8 @@
    * @type string
    */
   export let id: string | undefined = undefined;
+  export let name: string | undefined = undefined;
+  export let required = false;
 
   let generatedId: string | undefined;
   onMount(() => {
@@ -66,6 +68,8 @@
   {/if}
   <select
     id={id ?? generatedId}
+    {name}
+    {required}
     bind:value
     {disabled}
     class="select-field"
