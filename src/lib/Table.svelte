@@ -1,6 +1,8 @@
 <script lang="ts">
   import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
   import { vividFor } from './const/colorMap';
+  import type { Snippet } from 'svelte';
+  import type { TableSort } from './types/table';
 
   /**
    * テーブルメインカラー
@@ -31,6 +33,48 @@
    * @type Array<Array<string | number>>
    */
   export let tableData: (string | number)[][];
+
+  /** Receives the cell value, its source row index, and its column index. */
+  export let cell: Snippet<[string | number, number, number]> | undefined = undefined;
+  export let empty: Snippet | undefined = undefined;
+  export let width = '90%';
+  export let height = '200px';
+  export let sortableColumns: number[] = [];
+  export let sort: TableSort | null = null;
+  export let onSortChange: ((sort: TableSort) => void) | undefined = undefined;
+
+  function changeSort(column: number) {
+    sort = {
+      column,
+      direction: sort?.column === column && sort.direction === 'ascending'
+        ? 'descending'
+        : 'ascending'
+    };
+    onSortChange?.(sort);
+  }
+
+  function orderRows(data: typeof tableData, current: TableSort | null) {
+    const rows = data.map((row, index) => ({ row, index }));
+    if (!current) return rows;
+    const { column, direction } = current;
+    return rows.sort((a, b) => {
+      const left = a.row[column];
+      const right = b.row[column];
+      if (left === undefined) return right === undefined ? 0 : 1;
+      if (right === undefined) return -1;
+      let comparison: number;
+      if (typeof left === 'number' && typeof right === 'number') {
+        comparison = left - right;
+      } else if (typeof left !== typeof right) {
+        comparison = typeof left === 'number' ? -1 : 1;
+      } else {
+        comparison = String(left).localeCompare(String(right));
+      }
+      return direction === 'ascending' ? comparison : -comparison;
+    });
+  }
+
+  $: rows = orderRows(tableData, sort);
 
   /**
    * テーブルカラーに応じた背景色を取得する関数
@@ -63,7 +107,7 @@
 </script>
 
 <!--汎用テーブル-->
-<div class="table-wrapper">
+<div class="table-wrapper" style:max-width={width} style:height={height}>
   <table>
     <!--テーブルヘッダー-->
     <thead
@@ -71,18 +115,41 @@
       style="--bgColor: var({tableColor}); {headerFg ? `--th-fg: var(${headerFg});` : ''}"
     >
       <tr>
-        {#each dataHeader as title}
-          <th>{title}</th>
+        {#each dataHeader as title, column}
+          <th scope="col" aria-sort={sort?.column === column ? sort.direction : undefined}>
+            {#if sortableColumns.includes(column)}
+              <button type="button" onclick={() => changeSort(column)}>
+                {title}
+                {#if sort?.column === column}
+                  <span aria-hidden="true">{sort.direction === 'ascending' ? '↑' : '↓'}</span>
+                {/if}
+              </button>
+            {:else}
+              {title}
+            {/if}
+          </th>
         {/each}
       </tr>
     </thead>
     <tbody>
-      {#each tableData as row}
+      {#each rows as { row, index } (index)}
         <tr class="table-body-style" style="--table-body-color: var({bodyColor})">
-          {#each row as data}
-            <td>{data}</td>
+          {#each row as data, column}
+            <td>
+              {#if cell}
+                {@render cell(data, index, column)}
+              {:else}
+                {data}
+              {/if}
+            </td>
           {/each}
         </tr>
+      {:else}
+        {#if empty}
+          <tr class="table-body-style" style="--table-body-color: var({bodyColor})">
+            <td colspan={Math.max(1, dataHeader.length)}>{@render empty()}</td>
+          </tr>
+        {/if}
       {/each}
     </tbody>
   </table>
@@ -107,8 +174,6 @@
 
   .table-wrapper {
     overflow-y: auto;
-    max-width: 90%;
-    height: 200px;
     -webkit-overflow-scrolling: touch;
   }
 
