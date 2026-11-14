@@ -171,19 +171,19 @@
   .input-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--ccl-field-gap, 8px);
   }
 
   .input-label {
-    font-size: 14px;
+    font-size: var(--ccl-field-label-font-size, 14px);
     color: var(--wrap-grey);
   }
 
   .input-field {
-    padding: 10px 15px;
-    border-radius: 8px;
+    padding: var(--ccl-field-padding-block, 10px) var(--ccl-field-padding-inline, 15px);
+    border-radius: var(--ccl-field-radius, 8px);
     border: 2px solid var(--border-color);
-    font-size: 16px;
+    font-size: var(--ccl-field-font-size, 16px);
     outline: none;
     transition: border-color 0.2s;
   }
@@ -203,7 +203,7 @@
   }
 
   .validation-message {
-    font-size: 12px;
+    font-size: var(--ccl-input-error-font-size, 12px);
     color: var(--ccl-error-color, var(--strawberry-pink));
   }
 </style>
