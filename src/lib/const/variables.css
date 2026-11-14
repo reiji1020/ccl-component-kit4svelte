@@ -154,6 +154,19 @@
   --color-status-success: #538107;
   --color-status-warning: #af6b1c;
 
+  /* Component dimensions */
+  --ccl-field-gap: 8px;
+  --ccl-field-label-font-size: 14px;
+  --ccl-field-padding-block: 10px;
+  --ccl-field-padding-inline: 15px;
+  --ccl-field-radius: 8px;
+  --ccl-field-font-size: 16px;
+  --ccl-input-error-font-size: 12px;
+  --ccl-button-radius: 50px;
+  --ccl-button-padding-block: 15px;
+  --ccl-button-padding-inline: 45px;
+  --ccl-button-font-size: 18px;
+
   /* default header height */
   --hd-height: var(--hd-normal);
   /*header height*/

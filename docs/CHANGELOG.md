@@ -1,3 +1,10 @@
+## [4.1.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.3...4.1.0) (2026/11/14)
+
+### Features
+
+- Added custom cell and empty-state snippets, configurable dimensions, and accessible column sorting to Table while preserving its existing data API. (#140, #173)
+- Added CSS dimension tokens for Button, Input, and Select without changing their default dimensions. Input and Select share field tokens, and the documentation includes scoped override examples. (#141, #174)
+
 ## [4.0.3](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.2...4.0.3) (2026/11/12)
 
 ### Bug Fixes

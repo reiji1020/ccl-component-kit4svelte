@@ -14,6 +14,7 @@ export { default as Footer } from './Footer.svelte';
 export { default as Thumbnail } from './Thumbnail.svelte';
 export { default as Card } from './Card.svelte';
 export { default as Table } from './Table.svelte';
+export type { TableSort } from './types/table';
 export { default as Carousel } from './Carousel.svelte';
 export { default as CommonHeader } from './CommonHeader.svelte';
 export { default as Checkbox } from './Checkbox.svelte';

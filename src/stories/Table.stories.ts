@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Table from '$lib/Table.svelte';
 import { CCLPastelColor, CCLVividColor } from '$lib/const/config';
-import { expect, within } from '@storybook/test';
+import { expect, userEvent, within } from '@storybook/test';
+import TableCustomWrapper from './TableCustomWrapper.svelte';
 
 const colorOptions = [
   CCLVividColor.STRAWBERRY_PINK,
@@ -29,6 +30,46 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+export const CustomCells: Story = {
+  args: { tableColor: CCLVividColor.SODA_BLUE, dataHeader: [], tableData: [] },
+  render: () => ({ Component: TableCustomWrapper }),
+  play: async ({ canvasElement, step }) => {
+    const canvas = within(canvasElement);
+    const table = canvas.getByRole('table');
+    const body = within(table.querySelector('tbody')!);
+    const count = canvas.getByRole('button', { name: '件数' });
+
+    await step('セルの操作とサイズ指定が反映されること', async () => {
+      await expect(canvas.getByRole('link', { name: 'Beta' })).toHaveAttribute('href', '#item-0');
+      await expect(body.getByText('公開')).toBeVisible();
+      const wrapper = table.parentElement!;
+      await expect(getComputedStyle(wrapper).height).toBe('140px');
+      await expect(wrapper.getBoundingClientRect().width).toBeLessThanOrEqual(640);
+    });
+
+    await step('列を昇順と降順に切り替え、元の行を操作できること', async () => {
+      await userEvent.click(body.getByRole('checkbox', { name: 'Beta をチェック' }));
+      await userEvent.click(count);
+      await expect(canvas.getByRole('columnheader', { name: '件数' })).toHaveAttribute('aria-sort', 'ascending');
+      await expect(body.getAllByRole('row')[0]).toHaveTextContent('Alpha');
+      await expect(body.getByRole('checkbox', { name: 'Beta をチェック' })).toBeChecked();
+      await expect(body.getByRole('checkbox', { name: 'Alpha をチェック' })).not.toBeChecked();
+      await userEvent.click(body.getByRole('button', { name: 'Alpha を選択' }));
+      await expect(canvas.getByRole('status', { name: '選択した行' })).toHaveTextContent('Alpha');
+      await userEvent.click(count);
+      await expect(canvas.getByRole('columnheader', { name: '件数' })).toHaveAttribute('aria-sort', 'descending');
+      await expect(body.getAllByRole('row')[0]).toHaveTextContent('Beta');
+      await expect(canvas.getByRole('status', { name: '並べ替え' })).toHaveTextContent('descending');
+    });
+
+    await step('行がない場合に空状態が表示されること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: '一覧を空にする' }));
+      await expect(body.getByRole('cell')).toHaveAttribute('colspan', '3');
+      await expect(body.getByText('表示する項目がありません')).toBeVisible();
+    });
+  }
+};
 
 const createStory = (
   tableColor: string,

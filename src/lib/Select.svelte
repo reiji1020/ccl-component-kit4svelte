@@ -85,19 +85,19 @@
   .select-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--ccl-field-gap, 8px);
   }
 
   .select-label {
-    font-size: 14px;
+    font-size: var(--ccl-field-label-font-size, 14px);
     color: var(--wrap-grey);
   }
 
   .select-field {
-    padding: 10px 15px;
-    border-radius: 8px;
+    padding: var(--ccl-field-padding-block, 10px) var(--ccl-field-padding-inline, 15px);
+    border-radius: var(--ccl-field-radius, 8px);
     border: 2px solid var(--border-color);
-    font-size: 16px;
+    font-size: var(--ccl-field-font-size, 16px);
     outline: none;
     transition: border-color 0.2s;
     background-color: white; /* 背景色を白に設定 */

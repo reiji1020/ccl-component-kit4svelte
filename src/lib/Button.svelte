@@ -59,9 +59,9 @@
 <style>
   .buttonWrapper {
     display: flex;
-    border-radius: 50px;
+    border-radius: var(--ccl-button-radius, 50px);
     border: none;
-    padding: 15px 45px;
+    padding: var(--ccl-button-padding-block, 15px) var(--ccl-button-padding-inline, 45px);
     background: var(--bgColor);
   }
   .buttonWrapper:hover {
@@ -77,7 +77,7 @@
     flex-shrink: 0;
     color: var(--btn-fg, #fff);
     text-align: center;
-    font-size: 18px;
+    font-size: var(--ccl-button-font-size, 18px);
     line-height: normal;
   }
 </style>
