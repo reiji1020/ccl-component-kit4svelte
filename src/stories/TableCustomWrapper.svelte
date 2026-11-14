@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge, Button, CCLVividColor, Table, type TableSort } from '$lib/index';
+  import { Badge, Button, CCLVividColor, Checkbox, Table, type TableSort } from '$lib/index';
 
   let sort = $state<TableSort | null>(null);
   let selected = $state('');
@@ -23,6 +23,7 @@
   {#snippet cell(value, row, column)}
     {#if column === 0}
       <a href={`#item-${row}`}>{value}</a>
+      <Checkbox label={`${value} をチェック`} />
       <Button label={`${value} を選択`} type="button" onClick={() => (selected = String(data[row][0]))} />
     {:else if column === 2}
       <Badge label={String(value)} ariaLabel={undefined} />

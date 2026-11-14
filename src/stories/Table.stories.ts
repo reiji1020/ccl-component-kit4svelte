@@ -49,9 +49,12 @@ export const CustomCells: Story = {
     });
 
     await step('列を昇順と降順に切り替え、元の行を操作できること', async () => {
+      await userEvent.click(body.getByRole('checkbox', { name: 'Beta をチェック' }));
       await userEvent.click(count);
       await expect(canvas.getByRole('columnheader', { name: '件数' })).toHaveAttribute('aria-sort', 'ascending');
       await expect(body.getAllByRole('row')[0]).toHaveTextContent('Alpha');
+      await expect(body.getByRole('checkbox', { name: 'Beta をチェック' })).toBeChecked();
+      await expect(body.getByRole('checkbox', { name: 'Alpha をチェック' })).not.toBeChecked();
       await userEvent.click(body.getByRole('button', { name: 'Alpha を選択' }));
       await expect(canvas.getByRole('status', { name: '選択した行' })).toHaveTextContent('Alpha');
       await userEvent.click(count);

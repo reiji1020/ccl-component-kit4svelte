@@ -132,7 +132,7 @@
       </tr>
     </thead>
     <tbody>
-      {#each rows as { row, index }}
+      {#each rows as { row, index } (index)}
         <tr class="table-body-style" style="--table-body-color: var({bodyColor})">
           {#each row as data, column}
             <td>
