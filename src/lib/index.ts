@@ -12,6 +12,7 @@ export { default as PrismaticSiteFooter } from './PrismaticSiteFooter.svelte';
 export { default as PrismaticAmbientGlow } from './PrismaticAmbientGlow.svelte';
 export { default as Footer } from './Footer.svelte';
 export { default as Thumbnail } from './Thumbnail.svelte';
+export { default as Avatar } from './Avatar.svelte';
 export { default as Card } from './Card.svelte';
 export { default as EmptyState } from './EmptyState.svelte';
 export { default as Table } from './Table.svelte';
