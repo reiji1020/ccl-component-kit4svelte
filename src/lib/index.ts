@@ -2,6 +2,7 @@
 import './const/variables.css'; // カスタムプロパティ読み込み用
 export { default as Header } from './Header.svelte';
 export { default as Button } from './Button.svelte';
+export { default as IconButton } from './IconButton.svelte';
 export { default as PrismaticGradientButton } from './PrismaticGradientButton.svelte';
 export { default as PrismaticSectionHeading } from './PrismaticSectionHeading.svelte';
 export { default as PrismaticStoryCard } from './PrismaticStoryCard.svelte';
