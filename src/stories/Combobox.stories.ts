@@ -48,9 +48,11 @@ export const Default: Story = {
       await expect(input).toHaveAttribute('aria-expanded', 'true');
       const form = input.closest('form')!;
       form.reset();
-      await waitFor(() => expect(input).toHaveValue('デザイン'));
-      await expect(input).toHaveAttribute('aria-expanded', 'false');
-      await expect(new FormData(form).get('team')).toBe('design');
+      await waitFor(async () => {
+        await expect(input).toHaveAttribute('aria-expanded', 'false');
+        await expect(input).toHaveValue('デザイン');
+        await expect(new FormData(form).get('team')).toBe('design');
+      });
     });
   }
 };
