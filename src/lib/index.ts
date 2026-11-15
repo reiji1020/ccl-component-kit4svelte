@@ -39,6 +39,7 @@ export { default as Select } from './Select.svelte';
 export { default as Tooltip } from './Tooltip.svelte';
 export { default as ToolTip } from './Tooltip.svelte';
 export { default as Input } from './Input.svelte';
+export { default as FileUpload } from './FileUpload.svelte';
 export { default as ChangeHistory } from './ChangeHistory.svelte';
 export { default as ServiceCard } from './ServiceCard.svelte';
 export { default as BookCard } from './BookCard.svelte';
