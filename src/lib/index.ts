@@ -17,6 +17,8 @@ export { default as Table } from './Table.svelte';
 export type { TableSort } from './types/table';
 export { default as Carousel } from './Carousel.svelte';
 export { default as CommonHeader } from './CommonHeader.svelte';
+export { default as DropdownMenu } from './DropdownMenu.svelte';
+export type { DropdownMenuItem } from './DropdownMenu.svelte';
 export { default as Checkbox } from './Checkbox.svelte';
 export { default as RadioButton } from './RadioButton.svelte';
 export { default as Toggle } from './Toggle.svelte';
