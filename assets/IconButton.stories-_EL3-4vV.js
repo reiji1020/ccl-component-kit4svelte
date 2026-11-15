@@ -1,0 +1,38 @@
+import{w,u as r,e as o}from"./index-VcOyZcGC.js";import{b as m,f as E,d as _}from"./utils-CYv1eXzJ.js";import{a5 as k,a0 as I,a1 as M,a2 as D,a3 as H,ac as V,g as F}from"./runtime-wsfZMhMn.js";import{a as G}from"./render-Bg5rVFe_.js";import{p as K}from"./props-CRdl8imZ.js";import{I as S}from"./IconButton-BqHgeokP.js";import"./snippet-DqqiZiQY.js";import"./branches-BA38eCjI.js";import"./attributes-AocaKpir.js";import"./style-CzvSAXNl.js";import"./class-DLL6I9hl.js";import"./config-CTdRYYkh.js";function A(){var e="/home/runner/work/ccl-component-kit4svelte/ccl-component-kit4svelte/src/stories/IconButtonExample.svelte",a="4eaf649d025d0fee595eca9351afbbe488ca7c91",t=window,n="__coverage__",l={path:"/home/runner/work/ccl-component-kit4svelte/ccl-component-kit4svelte/src/stories/IconButtonExample.svelte",statementMap:{0:{start:{line:5,column:11},end:{line:5,column:171}},1:{start:{line:6,column:13},end:{line:6,column:53}},2:{start:{line:9,column:16},end:{line:9,column:53}},3:{start:{line:10,column:13},end:{line:10,column:23}},4:{start:{line:11,column:16},end:{line:11,column:24}},5:{start:{line:12,column:12},end:{line:12,column:35}},6:{start:{line:15,column:15},end:{line:19,column:3}},7:{start:{line:16,column:13},end:{line:16,column:19}},8:{start:{line:18,column:3},end:{line:18,column:27}},9:{start:{line:21,column:2},end:{line:29,column:5}},10:{start:{line:24,column:4},end:{line:24,column:22}},11:{start:{line:26,column:18},end:{line:26,column:33}},12:{start:{line:32,column:14},end:{line:32,column:32}},13:{start:{line:33,column:12},end:{line:33,column:27}},14:{start:{line:35,column:1},end:{line:35,column:17}},15:{start:{line:36,column:1},end:{line:36,column:71}},16:{start:{line:36,column:25},end:{line:36,column:69}},17:{start:{line:37,column:1},end:{line:37,column:30}},18:{start:{line:39,column:1},end:{line:39,column:255}}},fnMap:{0:{name:"IconButtonExample",decl:{start:{line:8,column:24},end:{line:8,column:41}},loc:{start:{line:8,column:61},end:{line:38,column:1}},line:8},1:{name:"(anonymous_1)",decl:{start:{line:15,column:15},end:{line:15,column:16}},loc:{start:{line:15,column:29},end:{line:19,column:3}},line:15},2:{name:"(anonymous_2)",decl:{start:{line:23,column:3},end:{line:23,column:4}},loc:{start:{line:23,column:18},end:{line:25,column:4}},line:23},3:{name:"(anonymous_3)",decl:{start:{line:26,column:12},end:{line:26,column:13}},loc:{start:{line:26,column:18},end:{line:26,column:33}},line:26},4:{name:"(anonymous_4)",decl:{start:{line:36,column:19},end:{line:36,column:20}},loc:{start:{line:36,column:25},end:{line:36,column:69}},line:36}},branchMap:{0:{loc:{start:{line:36,column:45},end:{line:36,column:63}},type:"binary-expr",locations:[{start:{line:36,column:45},end:{line:36,column:57}},{start:{line:36,column:61},end:{line:36,column:63}}],line:36}},s:{0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0},f:{0:0,1:0,2:0,3:0,4:0},b:{0:[0,0]},inputSourceMap:{version:3,file:null,sources:["/home/runner/work/ccl-component-kit4svelte/ccl-component-kit4svelte/src/stories/IconButtonExample.svelte"],names:[],mappings:";;AACE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAO,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAU,MAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAwB;;;;;6DADjD;CAEE,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA;AACtB,CAAA,CAAA,CAAA,CAAA,CAAI,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAC,CAAC,CAAA;;;;;QAIV,CAAA,CAAA,CAAA,CAAI,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;OACX,CAAA,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;;sBAAH,CAAA,CAAA,CAAG,CAAA;;;EAFP,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAU,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;;;WAAa,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA,CAAA;;2BAAiB,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA;GAC1C,CAAA,CAAA,CAAA,CAAI;;;;;KAMf,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;oBAAN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;;SAAN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;mDAAE,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;;AATN;"},_coverageSchema:"1a1c01bbd47fc00a2c39e90264f33305004495a9",hash:"4eaf649d025d0fee595eca9351afbbe488ca7c91"},C=t[n]||(t[n]={});(!C[e]||C[e].hash!==a)&&(C[e]=l);var s=C[e];return A=function(){return s},s}A();var T=(A().s[0]++,_('<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m4 16 11-11 4 4L8 20H4z" stroke-width="2"></path></svg>')),R=(A().s[1]++,E("<!> <output> </output>",1));function y(e,a){A().f[0]++;let t=(A().s[2]++,K(a,"disabled",3,!1)),n=(A().s[3]++,k(0));var l=(A().s[4]++,R()),C=(A().s[5]++,I(l));{A().s[6]++;const B=h=>{A().f[1]++;var x=(A().s[7]++,T());A().s[8]++,m(h,x)};A().s[9]++,S(C,{label:"編集",get disabled(){return A().f[2]++,A().s[10]++,t()},onclick:()=>(A().f[3]++,A().s[11]++,V(n)),icon:B,$$slots:{icon:!0}})}var s=(A().s[12]++,M(C,2)),g=(A().s[13]++,D(s));A().s[14]++,A().s[15]++,H(()=>(A().f[4]++,A().s[16]++,G(g,`${A().b[0][0]++,F(n)??(A().b[0][1]++,"")}回実行`))),A().s[17]++,m(e,l)}A().s[18]++;y.__docgen={data:[{name:"disabled",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"boolean",text:"boolean"},static:!1,readonly:!1,defaultValue:"false"}],name:"IconButtonExample.svelte"};const J={title:"CommonComponents/IconButton",component:y,tags:["autodocs"]},c={play:async({canvasElement:e,step:a})=>{const t=w(e);await a("名前で識別でき、キーボードで実行されること",async()=>{const n=t.getByRole("button",{name:"編集"});await r.tab(),await o(n).toHaveFocus(),await r.keyboard("{Enter} "),await o(t.getByText("2回実行")).toBeVisible()})}},i={args:{disabled:!0},play:async({canvasElement:e,step:a})=>{const t=w(e);await a("無効状態ではフォーカスも実行もできないこと",async()=>{const n=t.getByRole("button",{name:"編集"});await o(n).toBeDisabled(),await r.tab(),await o(n).not.toHaveFocus(),await r.click(n),await o(t.getByText("0回実行")).toBeVisible()})}};var u,d,p;c.parameters={...c.parameters,docs:{...(u=c.parameters)==null?void 0:u.docs,source:{originalSource:`{
+  play: async ({
+    canvasElement,
+    step
+  }) => {
+    const canvas = within(canvasElement);
+    await step('名前で識別でき、キーボードで実行されること', async () => {
+      const button = canvas.getByRole('button', {
+        name: '編集'
+      });
+      await userEvent.tab();
+      await expect(button).toHaveFocus();
+      await userEvent.keyboard('{Enter} ');
+      await expect(canvas.getByText('2回実行')).toBeVisible();
+    });
+  }
+}`,...(p=(d=c.parameters)==null?void 0:d.docs)==null?void 0:p.source}}};var v,b,f;i.parameters={...i.parameters,docs:{...(v=i.parameters)==null?void 0:v.docs,source:{originalSource:`{
+  args: {
+    disabled: true
+  },
+  play: async ({
+    canvasElement,
+    step
+  }) => {
+    const canvas = within(canvasElement);
+    await step('無効状態ではフォーカスも実行もできないこと', async () => {
+      const button = canvas.getByRole('button', {
+        name: '編集'
+      });
+      await expect(button).toBeDisabled();
+      await userEvent.tab();
+      await expect(button).not.toHaveFocus();
+      await userEvent.click(button);
+      await expect(canvas.getByText('0回実行')).toBeVisible();
+    });
+  }
+}`,...(f=(b=i.parameters)==null?void 0:b.docs)==null?void 0:f.source}}};const Y=["Default","Disabled"];export{c as Default,i as Disabled,Y as __namedExportsOrder,J as default};
+//# sourceMappingURL=IconButton.stories-_EL3-4vV.js.map

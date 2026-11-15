@@ -1,0 +1,68 @@
+import{w as k,e,u as a,a as K}from"./index-VcOyZcGC.js";import{e as R,b as S,f as T}from"./utils-CYv1eXzJ.js";import{a5 as w,a2 as m,a1 as v,a3 as G,a6 as I,a7 as F,a4 as y,g as p}from"./runtime-wsfZMhMn.js";import{a as x}from"./render-Bg5rVFe_.js";import{p as Q}from"./props-CRdl8imZ.js";import{C as N}from"./Combobox-CI4nS-pq.js";import"./index-client-DNfhmc7L.js";import"./if-iigMaAYr.js";import"./branches-BA38eCjI.js";import"./each-B9rz6Kal.js";import"./attributes-AocaKpir.js";import"./style-CzvSAXNl.js";import"./class-DLL6I9hl.js";import"./this-CYzLQJzs.js";import"./config-CTdRYYkh.js";function A(){var l="/home/runner/work/ccl-component-kit4svelte/ccl-component-kit4svelte/src/stories/ComboboxExample.svelte",t="60c886d3693f07cca4c2f1d12349456ac5ac72ce",n=window,C="__coverage__",i={path:"/home/runner/work/ccl-component-kit4svelte/ccl-component-kit4svelte/src/stories/ComboboxExample.svelte",statementMap:{0:{start:{line:5,column:11},end:{line:5,column:193}},1:{start:{line:8,column:1},end:{line:8,column:23}},2:{start:{line:10,column:16},end:{line:10,column:53}},3:{start:{line:11,column:13},end:{line:11,column:30}},4:{start:{line:12,column:17},end:{line:12,column:28}},5:{start:{line:14,column:17},end:{line:18,column:2}},6:{start:{line:20,column:12},end:{line:20,column:18}},7:{start:{line:21,column:12},end:{line:21,column:25}},8:{start:{line:23,column:1},end:{line:41,column:4}},9:{start:{line:27,column:3},end:{line:27,column:18}},10:{start:{line:31,column:3},end:{line:31,column:21}},11:{start:{line:35,column:3},end:{line:35,column:23}},12:{start:{line:39,column:3},end:{line:39,column:31}},13:{start:{line:43,column:14},end:{line:43,column:32}},14:{start:{line:44,column:12},end:{line:44,column:27}},15:{start:{line:46,column:1},end:{line:46,column:17}},16:{start:{line:48,column:16},end:{line:48,column:36}},17:{start:{line:49,column:14},end:{line:49,column:31}},18:{start:{line:51,column:1},end:{line:51,column:19}},19:{start:{line:52,column:1},end:{line:52,column:15}},20:{start:{line:54,column:1},end:{line:57,column:4}},21:{start:{line:55,column:2},end:{line:55,column:49}},22:{start:{line:56,column:2},end:{line:56,column:55}},23:{start:{line:59,column:1},end:{line:62,column:4}},24:{start:{line:60,column:2},end:{line:60,column:25}},25:{start:{line:61,column:2},end:{line:61,column:86}},26:{start:{line:64,column:1},end:{line:64,column:26}},27:{start:{line:65,column:1},end:{line:65,column:9}},28:{start:{line:67,column:1},end:{line:67,column:251}}},fnMap:{0:{name:"ComboboxExample",decl:{start:{line:7,column:24},end:{line:7,column:39}},loc:{start:{line:7,column:59},end:{line:66,column:1}},line:7},1:{name:"(anonymous_1)",decl:{start:{line:26,column:2},end:{line:26,column:3}},loc:{start:{line:26,column:16},end:{line:28,column:3}},line:26},2:{name:"(anonymous_2)",decl:{start:{line:30,column:2},end:{line:30,column:3}},loc:{start:{line:30,column:17},end:{line:32,column:3}},line:30},3:{name:"(anonymous_3)",decl:{start:{line:34,column:2},end:{line:34,column:3}},loc:{start:{line:34,column:14},end:{line:36,column:3}},line:34},4:{name:"(anonymous_4)",decl:{start:{line:38,column:2},end:{line:38,column:3}},loc:{start:{line:38,column:21},end:{line:40,column:3}},line:38},5:{name:"(anonymous_5)",decl:{start:{line:54,column:19},end:{line:54,column:20}},loc:{start:{line:54,column:25},end:{line:57,column:2}},line:54},6:{name:"(anonymous_6)",decl:{start:{line:59,column:25},end:{line:59,column:26}},loc:{start:{line:59,column:36},end:{line:62,column:2}},line:59}},branchMap:{0:{loc:{start:{line:55,column:27},end:{line:55,column:45}},type:"binary-expr",locations:[{start:{line:55,column:27},end:{line:55,column:39}},{start:{line:55,column:43},end:{line:55,column:45}}],line:55},1:{loc:{start:{line:56,column:29},end:{line:56,column:51}},type:"binary-expr",locations:[{start:{line:56,column:29},end:{line:56,column:45}},{start:{line:56,column:49},end:{line:56,column:51}}],line:56},2:{loc:{start:{line:61,column:26},end:{line:61,column:77}},type:"binary-expr",locations:[{start:{line:61,column:26},end:{line:61,column:71}},{start:{line:61,column:75},end:{line:61,column:77}}],line:61}},s:{0:0,1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0,10:0,11:0,12:0,13:0,14:0,15:0,16:0,17:0,18:0,19:0,20:0,21:0,22:0,23:0,24:0,25:0,26:0,27:0,28:0},f:{0:0,1:0,2:0,3:0,4:0,5:0,6:0},b:{0:[0,0],1:[0,0],2:[0,0]},inputSourceMap:{version:3,file:null,sources:["/home/runner/work/ccl-component-kit4svelte/ccl-component-kit4svelte/src/stories/ComboboxExample.svelte"],names:[],mappings:";;AACE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAO,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,MAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAsB;;;;2DAD7C;;;CAEE,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA;AACtB,CAAA,CAAA,CAAA,CAAA,CAAI,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAC,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA;AAC3B,CAAA,CAAA,CAAA,CAAA,CAAI,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAS,CAAA,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAC,CAAA,CAAE,CAAA;;AACzB,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAO,CAAA,CAAA,CAAA;AACT,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAK,EAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA;AAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAK,EAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAO,CAAA,CAAA;AACjE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAS,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAK,EAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;;;KAIpC,CAAA,CAAA,CAAA,CAAI,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;oBAAJ,CAAA,CAAA,CAAA,CAAI,CAAA;;CAIF,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;;;;UAA4B,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAO;;;;UAAG,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAA,CAAA;;;MAAE,CAAA,CAAA,CAAA,CAAA,CAAU,CAAA,CAAA,CAAA;;;;MAAV,CAAA,CAAA,CAAA,CAAA,CAAU,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;;;;;KAGlE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;oBAAN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;;SAAN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;;AACN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,aADN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA,CAAA,CAAA,CAAA;sBACN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;;SAAN,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAA;SARR,CAAA,CAAA,CAAA,CAAI,CAAA;;;iCAOW,CAAA,CAAA,CAAA,CAAA,CAAK,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;mCACL,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAS,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;;;mBARxB,CAAA,CAAA,CAAA,CAAI,CAAA,CAAA,CAAwD,KAAK,CAAA,CAAA,CAAA,CAAA,CAAK;AACrE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAK,CAAC,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAc,CAAA,CAAA;AACpB,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAS,CAAA,CAAG,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,CAAC,CAAA,CAAA,CAAG,CAAC,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAQ,CAAC,CAAA,CAAA,CAAA,CAAA,CAAK,CAAC,aAAa,CAAA,CAAE,CAAA,CAAA,CAAG,CAAC,CAAA,CAAA,CAAA,CAAA,CAAA,CAAM,KAAK,CAAA,CAAE,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA,CAAA;CACxE,CAAC,CAAA;;oBAHA,CAAA,CAAA,CAAA,CAAI,CAAA;;AAFG;"},_coverageSchema:"1a1c01bbd47fc00a2c39e90264f33305004495a9",hash:"60c886d3693f07cca4c2f1d12349456ac5ac72ce"},o=n[C]||(n[C]={});(!o[l]||o[l].hash!==t)&&(o[l]=i);var s=o[l];return A=function(){return s},s}A();var O=(A().s[0]++,T('<form style="max-width: 300px; min-height: 180px"><!> <button type="submit">送信</button> <button type="reset">リセット</button> <output> </output> <output> </output></form>'));function _(l,t){A().f[0]++,A().s[1]++,F(t,!0);let n=(A().s[2]++,Q(t,"disabled",3,!1)),C=(A().s[3]++,w("design")),i=(A().s[4]++,w(""));const o=(A().s[5]++,[{value:"design",label:"デザイン"},{value:"data",label:"データ分析"},{value:"support",label:"サポート"}]);var s=(A().s[6]++,O()),d=(A().s[7]++,m(s));A().s[8]++,N(d,{name:"team",label:"担当チーム",get options(){return A().f[1]++,A().s[9]++,o},get disabled(){return A().f[2]++,A().s[10]++,n()},get value(){return A().f[3]++,A().s[11]++,p(C)},set value(c){A().f[4]++,A().s[12]++,y(C,c,!0)}});var b=(A().s[13]++,v(d,6)),V=(A().s[14]++,m(b));A().s[15]++;var D=(A().s[16]++,v(b,2)),H=(A().s[17]++,m(D));A().s[18]++,A().s[19]++,A().s[20]++,G(()=>{A().f[5]++,A().s[21]++,x(V,`選択値: ${A().b[0][0]++,p(C)??(A().b[0][1]++,"")}`),A().s[22]++,x(H,`送信値: ${A().b[1][0]++,p(i)??(A().b[1][1]++,"")}`)}),A().s[23]++,R("submit",s,c=>{A().f[6]++,A().s[24]++,c.preventDefault(),A().s[25]++,y(i,String((A().b[2][0]++,new FormData(c.currentTarget).get("team")??(A().b[2][1]++,""))),!0)}),A().s[26]++,S(l,s),A().s[27]++,I()}A().s[28]++;_.__docgen={data:[{name:"disabled",visibility:"public",keywords:[],kind:"let",type:{kind:"type",type:"boolean",text:"boolean"},static:!1,readonly:!1,defaultValue:"false"}],name:"ComboboxExample.svelte"};const nA={title:"CommonComponents/Combobox",component:_,tags:["autodocs"]},r={play:async({canvasElement:l,step:t})=>{const n=k(l),C=n.getByRole("combobox",{name:"担当チーム"}),i=n.getByRole("button",{name:"送信"});await t("初期選択が表示され、検索文字列に該当する候補だけが表示されること",async()=>{await e(C).toHaveValue("デザイン"),await a.clear(C),await a.type(C,"デ"),await e(n.getAllByRole("option")).toHaveLength(2)}),await t("候補をキーボードで選び、対応する値がフォームで送信されること",async()=>{await a.keyboard("{ArrowDown}{ArrowDown}{Enter}"),await e(C).toHaveValue("データ分析"),await a.click(i),await e(n.getByText("送信値: data")).toBeVisible()}),await t("検索結果なしを表示し、Escapeで選択済みの表示に戻ること",async()=>{await a.clear(C),await a.type(C,"営業"),await e(n.getByText("該当する項目がありません")).toBeVisible(),await a.keyboard("{Escape}"),await e(C).toHaveAttribute("aria-expanded","false"),await e(C).toHaveValue("データ分析")}),await t("リセットボタンで表示とバインド値とフォーム送信値が初期選択に戻ること",async()=>{await a.click(n.getByRole("button",{name:"リセット"})),await e(C).toHaveValue("デザイン"),await e(n.getByText("選択値: design")).toBeVisible(),await a.click(i),await e(n.getByText("送信値: design")).toBeVisible()}),await t("form.reset() で検索中の入力と候補表示も初期状態に戻ること",async()=>{await a.clear(C),await a.type(C,"営業"),await e(C).toHaveAttribute("aria-expanded","true");const o=C.closest("form");o.reset(),await K(async()=>{await e(C).toHaveAttribute("aria-expanded","false"),await e(C).toHaveValue("デザイン"),await e(new FormData(o).get("team")).toBe("design")})})}},u={args:{disabled:!0},play:async({canvasElement:l,step:t})=>{await t("無効状態では候補の入力ができないこと",async()=>{await e(k(l).getByRole("combobox")).toBeDisabled()})}};var f,g,E;r.parameters={...r.parameters,docs:{...(f=r.parameters)==null?void 0:f.docs,source:{originalSource:`{
+  play: async ({
+    canvasElement,
+    step
+  }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole('combobox', {
+      name: '担当チーム'
+    });
+    const submit = canvas.getByRole('button', {
+      name: '送信'
+    });
+    await step('初期選択が表示され、検索文字列に該当する候補だけが表示されること', async () => {
+      await expect(input).toHaveValue('デザイン');
+      await userEvent.clear(input);
+      await userEvent.type(input, 'デ');
+      await expect(canvas.getAllByRole('option')).toHaveLength(2);
+    });
+    await step('候補をキーボードで選び、対応する値がフォームで送信されること', async () => {
+      await userEvent.keyboard('{ArrowDown}{ArrowDown}{Enter}');
+      await expect(input).toHaveValue('データ分析');
+      await userEvent.click(submit);
+      await expect(canvas.getByText('送信値: data')).toBeVisible();
+    });
+    await step('検索結果なしを表示し、Escapeで選択済みの表示に戻ること', async () => {
+      await userEvent.clear(input);
+      await userEvent.type(input, '営業');
+      await expect(canvas.getByText('該当する項目がありません')).toBeVisible();
+      await userEvent.keyboard('{Escape}');
+      await expect(input).toHaveAttribute('aria-expanded', 'false');
+      await expect(input).toHaveValue('データ分析');
+    });
+    await step('リセットボタンで表示とバインド値とフォーム送信値が初期選択に戻ること', async () => {
+      await userEvent.click(canvas.getByRole('button', {
+        name: 'リセット'
+      }));
+      await expect(input).toHaveValue('デザイン');
+      await expect(canvas.getByText('選択値: design')).toBeVisible();
+      await userEvent.click(submit);
+      await expect(canvas.getByText('送信値: design')).toBeVisible();
+    });
+    await step('form.reset() で検索中の入力と候補表示も初期状態に戻ること', async () => {
+      await userEvent.clear(input);
+      await userEvent.type(input, '営業');
+      await expect(input).toHaveAttribute('aria-expanded', 'true');
+      const form = input.closest('form')!;
+      form.reset();
+      await waitFor(async () => {
+        await expect(input).toHaveAttribute('aria-expanded', 'false');
+        await expect(input).toHaveValue('デザイン');
+        await expect(new FormData(form).get('team')).toBe('design');
+      });
+    });
+  }
+}`,...(E=(g=r.parameters)==null?void 0:g.docs)==null?void 0:E.source}}};var B,M,h;u.parameters={...u.parameters,docs:{...(B=u.parameters)==null?void 0:B.docs,source:{originalSource:`{
+  args: {
+    disabled: true
+  },
+  play: async ({
+    canvasElement,
+    step
+  }) => {
+    await step('無効状態では候補の入力ができないこと', async () => {
+      await expect(within(canvasElement).getByRole('combobox')).toBeDisabled();
+    });
+  }
+}`,...(h=(M=u.parameters)==null?void 0:M.docs)==null?void 0:h.source}}};const tA=["Default","Disabled"];export{r as Default,u as Disabled,tA as __namedExportsOrder,nA as default};
+//# sourceMappingURL=Combobox.stories-IlbEcSu-.js.map
