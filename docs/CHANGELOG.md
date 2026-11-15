@@ -1,3 +1,16 @@
+## [4.2.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.1.0...4.2.0) (2026/11/15)
+
+### Features
+
+- Added DropdownMenu with keyboard navigation, action and link items, and focus restoration. (#142, #176)
+- Added Popover for non-modal content and forms, with viewport-aware placement and focus restoration. (#143, #177)
+- Added Combobox with searchable single selection, keyboard navigation, and native form submission. (#144, #178)
+- Added EmptyState with optional illustrations and actions for empty results, first use, and missing data. (#145, #179)
+- Added Avatar with three sizes, initials as a fallback, and accessible naming options. (#146, #180)
+- Added IconButton with custom icons, an accessible label, and configurable focus color. (#147, #181)
+- Added Container, Stack, and Grid for responsive content layout. (#148, #182)
+- Added FileUpload with single or multiple selection, file removal, and client-side type and size validation. (#149, #183)
+
 ## [4.1.0](https://github.com/reiji1020/ccl-component-kit4svelte/compare/4.0.3...4.1.0) (2026/11/14)
 
 ### Features
