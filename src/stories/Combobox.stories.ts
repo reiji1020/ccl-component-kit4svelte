@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
-import { expect, userEvent, within } from '@storybook/test';
+import { expect, userEvent, waitFor, within } from '@storybook/test';
 import ComboboxExample from './ComboboxExample.svelte';
 
 const meta = {
@@ -34,6 +34,23 @@ export const Default: Story = {
       await userEvent.keyboard('{Escape}');
       await expect(input).toHaveAttribute('aria-expanded', 'false');
       await expect(input).toHaveValue('データ分析');
+    });
+    await step('リセットボタンで表示とバインド値とフォーム送信値が初期選択に戻ること', async () => {
+      await userEvent.click(canvas.getByRole('button', { name: 'リセット' }));
+      await expect(input).toHaveValue('デザイン');
+      await expect(canvas.getByText('選択値: design')).toBeVisible();
+      await userEvent.click(submit);
+      await expect(canvas.getByText('送信値: design')).toBeVisible();
+    });
+    await step('form.reset() で検索中の入力と候補表示も初期状態に戻ること', async () => {
+      await userEvent.clear(input);
+      await userEvent.type(input, '営業');
+      await expect(input).toHaveAttribute('aria-expanded', 'true');
+      const form = input.closest('form')!;
+      form.reset();
+      await waitFor(() => expect(input).toHaveValue('デザイン'));
+      await expect(input).toHaveAttribute('aria-expanded', 'false');
+      await expect(new FormData(form).get('team')).toBe('design');
     });
   }
 };

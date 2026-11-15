@@ -30,7 +30,6 @@
   }: Props = $props();
   let generatedId = $state<string>();
   const id = $derived(suppliedId ?? generatedId);
-  onMount(() => { generatedId = `ccl-combobox-${++nextComboboxId}`; });
   const selectedLabel = $derived(options.find(option => option.value === value)?.label ?? '');
   let query = $state('');
   let editing = $state(false);
@@ -41,6 +40,34 @@
   const expanded = $derived(open && !disabled);
   const matches = $derived(options.filter(option => option.label.toLocaleLowerCase()
     .includes(query.trim().toLocaleLowerCase())));
+
+  onMount(() => {
+    generatedId = `ccl-combobox-${++nextComboboxId}`;
+    const form = input.form;
+    if (!form) return;
+
+    const initialValue = value;
+    input.defaultValue = selectedLabel;
+    let mounted = true;
+    function reset(event: Event) {
+      queueMicrotask(() => {
+        if (!mounted || event.defaultPrevented) return;
+        const changed = value !== initialValue;
+        value = initialValue;
+        close();
+        // Restore the text even if the selected value did not change.
+        input.defaultValue = selectedLabel;
+        input.value = selectedLabel;
+        if (changed) onChange?.(initialValue);
+      });
+    }
+
+    form.addEventListener('reset', reset);
+    return () => {
+      mounted = false;
+      form.removeEventListener('reset', reset);
+    };
+  });
 
   $effect(() => { if (disabled) close(); });
 

@@ -15,5 +15,7 @@
 }}>
   <Combobox name="team" label="担当チーム" {options} {disabled} bind:value />
   <button type="submit">送信</button>
+  <button type="reset">リセット</button>
+  <output>選択値: {value}</output>
   <output>送信値: {submitted}</output>
 </form>
